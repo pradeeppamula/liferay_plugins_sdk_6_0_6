@@ -1,0 +1,22 @@
+{
+    "environment": "production",
+    "connectionMode": "cloud",
+    "development": {
+        "mongoURI": {
+            "local": "mongodb://test:test@localhost:28000,localhost:28001,localhost:28002/",
+            "cloud": "mongodb://test:test@ds035428.mongolab.com:35428/"
+        }
+    },
+    "test": {
+        "mongoURI": {
+            "local": "mongodb://test:test@localhost:28000,localhost:28001,localhost:28002/",
+            "cloud": "mongodb://test:test@ds035428.mongolab.com:35428/"
+        }
+    },
+    "production": {
+        "mongoURI": {
+            "local": "mongodb://test:test@localhost:28000,localhost:28001,localhost:28002/",
+            "cloud": "mongodb://test:test@ds035428.mongolab.com:35428/"
+        }
+    }
+}

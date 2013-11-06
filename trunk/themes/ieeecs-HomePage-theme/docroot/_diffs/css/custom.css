@@ -1,0 +1,143 @@
+/* This will contain any bootstrap overrides and custom css.  This will be the last css file included in the layout */
+
+/* GLOBAL ANCHOR STYLING */
+a:hover {
+	text-decoration: none;
+}
+
+/* NAVBAR STYLING */
+.login-button-container {
+    margin-right: 10px;
+}
+.navbar-header {
+    background-color: #272525;
+}
+.navbar-myhome {
+	background-color: rgba(70, 70, 70, 0.95)!important;
+	border: 0px solid transparent !important;
+}
+.navbar-myhome-subnav {
+    border: 0px solid transparent !important;
+	top: 50px!important;
+	min-height: 30px !important;
+	height: 30px !important;
+	z-index: 1029 !important;
+	background-color: rgba(44, 44, 44, 0.95)!important;
+}
+.navbar-myhome-subnav .nav>li>a {
+	position: relative;
+	display: block;
+	padding: 5px 15px;
+}
+.navbar-myhome-subnav .navbar-nav>li>a {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	line-height: 30px;
+}
+.profile-img-container {
+	padding: 4px;
+}
+.profile-img-small {
+	border-radius: 18px;
+	-webkit-border-radius: 18px;
+	-moz-border-radius: 18px;
+	width: 35px;
+	height: 35px;
+}
+.navbar-profile-dropdown {
+	padding-top: 8px !important;
+	padding-bottom: 6px !important;
+}
+.navbar-icon-dropdown { 
+	padding-top: 10px !important;
+	padding-bottom: 10px !important; 
+}
+.advanced-search { line-height: 50px; }
+
+.toggle-controls a > .control-off {
+	display: none;
+}
+
+.toggle-controls a > .control-on {
+	display: inline-block;
+}
+.controls-hidden .toggle-controls a > .control-on {
+	display: none;
+}
+
+.controls-hidden .toggle-controls a > .control-off {
+	display: inline-block;
+}
+
+/* FOOTER STYLING */
+#footer {
+	background-color: #000000;
+	color: #ffffff;
+	height: 180px;
+}
+
+.footer-bottom {
+	height: 60px;
+	line-height: 60px;
+	background-color: #333;
+	font-size: 12px;
+	color: #ddd;
+	font-style: normal;
+	padding: 0 40px 0 40px;
+}
+.footer-top {
+	height: 120px;
+	background-color: #444;
+	color: #eee;
+	font-size: 14px;
+	line-height: 120px;
+	font-weight: bold;
+	padding: 0 40px 0 40px;
+}
+.footer-links > a {
+	padding: 0 10px 0 10px;
+}
+
+.footer-social-links > a {
+	padding: 0 10px 0 10px;
+  	opacity: 0.8;
+  	transition: 0.1s linear;
+  	-moz-transition: 0.1s linear;
+  	-webkit-transition: 0.1s linear;
+}
+.footer-social-links > a:hover {
+	opacity: 1.0;
+}
+
+/* BELOW ARE THE NON-BOOTSTRAP STYLES THAT HAVE BEEN OVERRIDEN FOR THIS THEME - dockbar.css */
+.dockbar .toggle-controls a {
+}
+
+.controls-hidden .toggle-controls a {
+	opacity: 0.7;
+    -moz-opacity: 0.7;
+    -webkit-opacity: 0.7;
+    -khtml-opacity: 0.7;
+}
+/* BELOW ARE THE NON-BOOTSTRAP STYLES THAT HAVE BEEN OVERRIDEN FOR THIS THEME - application.css */
+.aui-menu-content, .lfr-menu-list ul {
+	border: 1px solid;
+	border-color: #AEAFB1 #777879 #777879 #AEAFB1;
+	padding: 2px 0;
+	text-align: center;
+} 
+
+.aui-menu-content li a.aui-focus {
+	background-color: #428bca;
+	color: #ffffff;
+}
+
+.aui-menu-content li {
+	display: block;
+}
+/* BELOW ARE THE NON-BOOTSTRAP STYLES THAT HAVE BEEN OVERRIDEN FOR THIS THEME - css.jsp [I dislike that file] */
+ul {
+	margin: 0em;
+	margin-left: 0em;
+}
+/* END LEGACY STYLE MODIFICATIONS */

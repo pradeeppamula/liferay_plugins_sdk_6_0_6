@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
+
+<xs:element name="csdlresponse">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="status" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="code" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element name="message" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element name="hits" type="xs:integer" minOccurs="1" maxOccurs="1"></xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="openurlconfiguration" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="versionnumber" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element name="image" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element name="imageheight" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element name="imagewidth" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element name="imagealttext" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+            <xs:element name="baseurl" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="contentlist" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="content" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="contentid" type="xs:string" maxOccurs="1"></xs:element>
+                  <xs:element name="categorylist" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="packagelist" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="package" minOccurs="0" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="packageid" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="productlist" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element name="product" minOccurs="0" maxOccurs="unbounded">
+                                      <xs:complexType>
+                                        <xs:sequence>
+                                          <xs:element name="productid" type="xs:string" maxOccurs="1"></xs:element>
+                                          <xs:element name="title" type="xs:string" maxOccurs="1"></xs:element>
+                                          <xs:element name="producttype" type="xs:string" maxOccurs="1"></xs:element>
+                                          <xs:element name="subject" type="xs:string" maxOccurs="1"></xs:element>
+                                          <xs:element name="description" type="xs:string" maxOccurs="1"></xs:element>
+                                          <xs:element name="updatetime" type="xs:dateTime" maxOccurs="1"></xs:element>
+                                          <xs:element name="price" type="xs:string" maxOccurs="1"></xs:element>
+                                          <xs:element name="productmetadata" minOccurs="0" maxOccurs="1">
+                                            <xs:complexType>
+                                              <xs:sequence>
+                                                <xs:element name="value" minOccurs="0" maxOccurs="unbounded">
+                                                  <xs:complexType>
+                                                    <xs:simpleContent>
+                                                      <xs:extension base="xs:string">
+                                                        <xs:attribute name="name" type="xs:string"></xs:attribute>
+                                                      </xs:extension>
+                                                    </xs:simpleContent>
+                                                  </xs:complexType>
+                                                </xs:element>
+                                              </xs:sequence>
+                                            </xs:complexType>
+                                          </xs:element>
+                                        </xs:sequence>
+                                      </xs:complexType>
+                                    </xs:element>
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                              <xs:element name="title" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="subtitle" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="description" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="publicationdate" type="xs:dateTime" maxOccurs="1"></xs:element>
+                              <xs:element name="publisher" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="mediatypes" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="packagetype" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="price" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="updatetime" type="xs:dateTime" maxOccurs="1"></xs:element>
+                              <xs:element name="packagemetadata" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element name="value" minOccurs="0" maxOccurs="unbounded">
+                                      <xs:complexType>
+                                        <xs:simpleContent>
+                                          <xs:extension base="xs:string">
+                                            <xs:attribute name="name" type="xs:string"></xs:attribute>
+                                          </xs:extension>
+                                        </xs:simpleContent>
+                                      </xs:complexType>
+                                    </xs:element>
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="doi" type="xs:string" maxOccurs="1"></xs:element>
+                  <xs:element name="title" type="xs:string" maxOccurs="1"></xs:element>
+                  <xs:element name="subtitle" type="xs:string" maxOccurs="1"></xs:element>
+                  <xs:element name="publicationdate" type="xs:dateTime" maxOccurs="1"></xs:element>
+                  <xs:element name="length" type="xs:string" maxOccurs="1"></xs:element>
+                  <xs:element name="summary" type="xs:string" maxOccurs="1"></xs:element>
+                  <xs:element name="copyright" type="xs:string" maxOccurs="1"></xs:element>
+                  <xs:element name="contenttype" type="xs:string" maxOccurs="1"></xs:element>
+                  <xs:element name="keywords" type="xs:string" maxOccurs="1"></xs:element>
+                  <xs:element name="filename" type="xs:string" maxOccurs="1"></xs:element>
+                  <xs:element name="mediaformats" type="xs:string" maxOccurs="1"></xs:element>
+                  <xs:element name="uri" type="xs:string" maxOccurs="1"></xs:element>
+                  <xs:element name="price" type="xs:string" maxOccurs="1"></xs:element>
+                  <xs:element name="defaultprice" type="xs:string" maxOccurs="1"></xs:element>
+                  <xs:element name="xplore" type="xs:string" maxOccurs="1"></xs:element>
+                  <xs:element name="peerreview" type="xs:string" maxOccurs="1"></xs:element>
+                  <xs:element name="updatetime" type="xs:dateTime" maxOccurs="1"></xs:element>
+                  <xs:element name="creatorlist" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="creator" minOccurs="0" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="givenname" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="surname" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="sponsor" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="role" type="xs:string" maxOccurs="1"></xs:element>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="referencelist" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="reference" minOccurs="0" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="referenceid" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="display" type="xs:string" maxOccurs="1"></xs:element>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="associatedcontentlist" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="associatedcontent" minOccurs="0" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="associatedcontentid" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="displaystring" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="linkstring" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="linktype" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="link" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="price" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="mediatype" type="xs:string" maxOccurs="1"></xs:element>
+                              <xs:element name="creatorlist" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element name="creator" minOccurs="0" maxOccurs="unbounded">
+                                      <xs:complexType>
+                                        <xs:sequence>
+                                          <xs:element name="givenname" type="xs:string" maxOccurs="1"></xs:element>
+                                          <xs:element name="surname" type="xs:string" maxOccurs="1"></xs:element>
+                                          <xs:element name="sponsor" type="xs:string" maxOccurs="1"></xs:element>
+                                          <xs:element name="role" type="xs:string" maxOccurs="1"></xs:element>
+                                        </xs:sequence>
+                                      </xs:complexType>
+                                    </xs:element>
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                              <xs:element name="associatedcontentmetadata" minOccurs="0" maxOccurs="1">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element name="value" minOccurs="0" maxOccurs="unbounded">
+                                      <xs:complexType>
+                                        <xs:simpleContent>
+                                          <xs:extension base="xs:string">
+                                            <xs:attribute name="name" type="xs:string"></xs:attribute>
+                                          </xs:extension>
+                                        </xs:simpleContent>
+                                      </xs:complexType>
+                                    </xs:element>
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+</xs:schema>

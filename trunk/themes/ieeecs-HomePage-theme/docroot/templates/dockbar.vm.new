@@ -1,0 +1,118 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+
+    <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
+    <a class="navbar-brand" href="#">CSDLBundle</a>
+
+    <!-- Place everything within .navbar-collapse to hide it until above 768px -->
+    <div class="nav-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav col-lg-2 aui-toolbar">
+        #if ($is_signed_in)
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li class="add-content has-submenu" id="_145_addContent">
+              <a class="menu-button" href="javascript:;">Add</a>
+            </li>        
+            <li class="manage-content has-submenu" id="_145_manageContent">
+                <a class="menu-button" href="javascript:;">Manage</a>
+            </li>    
+            <li class="divider"></li> 
+            <li class="toggle-controls" id="_145_toggleControls">
+              <a href="javascript:;">Toggle Edit Controls</a>
+            </li>
+          </ul>
+        </li>
+        #end 
+      </ul>
+       <div class="dockbar-messages aui-widget aui-component aui-overlay aui-underlay aui-widget-positioned aui-widget-stacked aui-underlay-hidden" id="_145_dockbarMessages" style="left: 1662px; top: 162px; z-index: 301;">
+        <div class="aui-header"></div>
+        <div class="aui-body"></div>
+        <div class="aui-footer"></div>
+        <div class="aui-overlay-content aui-underlay-content aui-widget-stdmod" id="aui_3_2_0_1363">
+            <div class="aui-widget-hd">
+                <button class="aui-buttonitem-content aui-widget aui-component aui-buttonitem aui-state-default aui-buttonitem-icon-only aui-underlay-close" id="aui_3_2_0_1400" title="" type="button">
+                    <span class="aui-buttonitem-icon aui-icon aui-icon-close"></span>
+                    <span class="aui-buttonitem-label aui-helper-hidden" id="aui_3_2_0_1464"></span>
+                </button>
+            </div>
+            <div class="aui-widget-bd"></div>
+        </div>
+    </div>
+    <div class="aui-menu add-content-menu aui-overlaycontext-hidden aui-widget aui-component aui-overlay aui-overlaycontext aui-widget-positioned aui-widget-stacked" id="_145_addContentContainer" style="left: 46px; top: 29px; z-index: 101002;">
+        <div class="aui-menu-content aui-overlay-content aui-overlaycontext-content aui-widget-stdmod" id="aui_3_2_0_1528">
+            <ul>            
+                <li class="add-application last more-applications aui-menu-item">                
+                    <a href="javascript:; showDragDrop();" id="_145_addApplication" tabindex="-1">Portlets / Widgets</a>
+                </li>        
+            </ul>
+        </div>
+    </div>
+    <div class="aui-menu manage-content-menu aui-overlaycontext-hidden aui-widget aui-component aui-overlay aui-overlaycontext aui-widget-positioned aui-widget-stacked" id="_145_manageContentContainer" style="left: 130px; top: 29px; z-index: 101004;">
+        <div class="aui-menu-content aui-overlay-content aui-overlaycontext-content aui-widget-stdmod" id="aui_3_2_0_1696">
+            <ul>                   
+                <li class="page-layout aui-menu-item">
+                    <a href="javascript:;" id="pageTemplate" tabindex="-1">Page Layout</a>
+                </li>                             
+                <li class="control-panel last aui-menu-item" id="_145_controlPanel">
+                    <a href="/portal/group/control_panel?doAsGroupId=$!{scopeGroupId}&amp;refererPlid=$!{plid}" id="aui_3_2_0_1741" tabindex="-1">Control Panel</a>
+                </li>          
+            </ul>
+        </div>
+    </div>
+      #if ($is_signed_in)
+      <!-- search bar -->
+      <form class="navbar-form pull-left col-lg-4" action="">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search">
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="button"><i class="icon-search"></i></button>
+            </span>
+          </div>
+      </form> <!-- /search bar -->
+      #end 
+      <!-- login/logout container -->
+      <ul class="nav navbar-nav pull-right">
+        #if (!$is_signed_in)
+          <a data-toggle="modal" href="#myModal" class="btn btn-primary navbar-btn"><i class="icon-fixed-width icon-signin icon-large"></i>Login</a>
+        #end
+        #if ($is_signed_in)
+         <li class="dropdown">
+          <a href="#" class="dropdown-toggle profile-dropdown" data-toggle="dropdown">
+          <!-- TODO: dynamically retrieve user image here -->
+          <img class="profile-img-small" alt="$!{user_name}" src="http://localhost:8080/portal/image/user_male_portrait?img_id=13905&t=1375672866971">
+            $!{user_name}<b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="add-content has-submenu" id="_145_addContent">
+              <strong><blockquote>test@liferay.com</blockquote></strong>
+            </li>        
+            <li class="manage-content has-submenu" id="_145_manageContent">
+                 <a class="user-fullname" href="/portal/group/control_panel/manage?p_p_auth=ZYC32jqP&amp;p_p_id=2&amp;p_p_lifecycle=0&amp;p_p_state=maximized&amp;p_p_mode=view&amp;doAsGroupId=$!{scopeGroupId}&amp;refererPlid=$!{plid}&amp;_2_struts_action=%2Fmy_account%2Fedit_user&amp;_2_backURL=%2Fportal%2Fweb%2Fstc1">$!{user_name}</a>
+            </li>     
+            <li class="divider"></li>
+            <li><a href="/portal/c/portal/logout"><i class="icon-fixed-width icon-signout icon-large"></i>Logout</a></li>
+          </ul>
+        </li>  
+        #end
+      </ul>
+    </div><!-- /.nav-collapse -->
+  </div><!-- /.container -->
+</div><!-- /.navbar -->
+
+<script type="text/javascript">
+#* 
+--------------------------------------------------------------
+  Important to keep this one line here as it will
+  distinguish this Theme dockbar from the 
+  resident "tweaked" Liferay dockbar.
+-------------------------------------------------------------- 
+*#
+  AUI().use("liferay-dockbar-custom",function(a){(function(){Liferay.DockbarCustom.init()})()});
+</script>
