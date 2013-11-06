@@ -1,0 +1,5 @@
+#*
+This file allows you to override and define new Velocity variables.
+*#
+#set ($elasticSearchURL = $propsUtil.get("ieee.cs.elastic.search.url"))
+#set($currentPageURL = $community_default_url.split("[?]").get(0))

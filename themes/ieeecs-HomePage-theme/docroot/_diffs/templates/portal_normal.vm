@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+#parse ($init)
+<html class="#language("lang.dir")" dir="#language("lang.dir")" lang="$w3c_language_id">
+<head>
+	<meta charset="utf-8">
+    <title>$the_title - $company_name</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	## This is required by Liferay, where they import all their junk.
+	$theme.include($top_head_include)
+
+    ## CSS
+    <link rel="stylesheet" href="/ieeecs-HomePage-theme/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/ieeecs-HomePage-theme/css/font-awesome.min.css">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="/ieeecs-HomePage-theme/css/font-awesome-ie7.min.css">
+    <![endif]-->
+
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        background-color: #004d85;
+		-webkit-font-smoothing: antialiased;
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight: 300;
+      }
+
+      ## Wrapper for page content to push down footer
+      #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -20px;
+         /* Pad bottom by footer height */
+  		padding: 0 0 85px;
+  		margin-top: 85px;
+      }
+
+      ## Lastly, apply responsive CSS fixes as necessary
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+      ## REMOVE BOOTSTRAP GUTTER PADDING
+      [class*='col-'] { padding-left: 0; padding-right: 0; }
+
+
+        ## NAVBAR STYLES MOVE TO CUSTOM.css
+        body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
+        margin-right: 0px;
+        }
+        .modal-backdrop {
+        z-index: 1029;
+        }
+
+        .square-close {
+            padding: 7px !important;
+        }
+
+        em { font-weight: bold; }
+        .portlet-borderless-container { min-height: 0 !important;}
+
+      ## SEARCH RELATED STYLES TODO: MOVE TO CUSTOM.CSS
+        #myhome-search-container .search-results {
+            background-color: #fff;
+            display: none;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            position: absolute;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            -ms-border-radius: 3px;
+            -o-border-radius: 3px;
+            border-radius: 3px;
+            text-align: left;
+            position:absolute;
+            top:42px;
+            left: 24%;
+        }
+
+        #myhome-search-container .search-results ul {
+            background-color: #fff;
+            display: block;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            -ms-border-radius: 3px;
+            -o-border-radius: 3px;
+            border-radius: 3px;
+            text-align: left;
+        }
+
+
+        #myhome-search-container .search-results ul > li {
+            border-top: 1px solid #e5e5e5;
+            border-bottom: 1px solid #fff;
+            cursor: pointer;
+            padding: 10px 8px;
+            font-size: 13px;
+            list-style-type: none;
+            background-image: none;
+            margin: 0;
+        }
+        #myhome-search-container .search-results ul li:last-of-type {
+            -webkit-border-radius: 0 0 3px 3px;
+            -moz-border-radius: 0 0 3px 3px;
+            -ms-border-radius: 0 0 3px 3px;
+            -o-border-radius: 0 0 3px 3px;
+            border-radius: 0 0 3px 3px;
+        }
+        #myhome-search-container .search-results ul li:first-of-type {
+            border-top: 1px solid #fff;
+            -webkit-border-radius: 3px 3px 0 0;
+            -moz-border-radius: 3px 3px 0 0;
+            -ms-border-radius: 3px 3px 0 0;
+            -o-border-radius: 3px 3px 0 0;
+            border-radius: 3px 3px 0 0;
+        }
+        #myhome-search-container .search-results ul li:hover {
+            background-color: #428bca;
+            border-top: 1px solid #357ebd;
+            border-bottom: 1px solid #357ebd;
+            -webkit-box-shadow: 0 1px 0 #2F73AD inset;
+        }
+        #myhome-search-container .search-results ul li:hover p.title {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        #myhome-search-container .search-results li:hover p.summary {
+            color: #ffffff;
+            font-size: 11px;
+        }
+        #myhome-search-container .search-results ul li p.title {
+            color: #004d85;
+            font-weight: bold;
+        }
+        #myhome-search-container .search-results li > p > em {
+            color: #000000;
+            font-style: normal;
+        }
+        #myhome-search-container .search-results li p.summary {
+            color: #999;
+            font-size: 11px;
+        }
+
+        .advanced-result-count-container {
+            display:none;
+            border-bottom: 1px solid #f1f1f1;
+            margin: 0 auto 10px;
+            padding: 0 15px;
+            text-transform: uppercase;
+        }
+
+        .advanced-search-filters-container {
+            background-color: #D1D1D1;
+            min-height: 110px;
+            padding: 10px 15px;
+        }
+
+        .advanced-search-results {
+            margin: 0 auto;
+            font-size: 12px;
+            padding: 0 15px;
+        }
+        .advanced-search-result {
+            border-bottom: 1px solid #f1f1f1;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .advanced-search-result span {
+            float:right;
+        }
+
+        .advanced-search-pagination {
+            text-align: center;
+        }
+
+        .advanced-search-pagination > .pagination li a.active {
+            color: #ffffff;
+            cursor: default;
+            background-color: #428bca;
+            border-color: #428bca;
+        }
+
+        .article { background-color: #660000;  }
+        .webinar { background-color: #003366; }
+        .readynote { background-color: #66ccff; }
+        .essentialset { background-color: #CC6600; }
+
+        #enable-filters-link { display: none; }
+        .filters-link-container {margin-top:10px;}
+
+        @media (min-width: 768px) {
+            .advanced-search-modal {
+                width: 800px !important;
+            }
+        }
+
+    </style>
+
+    ## HTML5 shim, for IE6-8 support of HTML5 elements
+    <!--[if lt IE 9]>
+    	<script type="text/javascript" src="/ieeecs-HomePage-theme/js/html5shiv.js"></script>
+    <![endif]-->
+
+    ## Fav and touch icons
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="#">
+    <link rel="apple-touch-icon-precomposed" href="#">
+	<link rel="shortcut icon" href="/ieeecs-HomePage-theme/images/favicon.ico">
+	<link rel="icon" href="/ieeecs-HomePage-theme/images/favicon.ico">
+	
+	## Required JS Files
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    ## flowplayer javascript component
+    <script type="text/javascript" src="/ieeecs-HomePage-theme/js/flowplayer.min.js"></script>
+	<script type="text/javascript" src="/ieeecs-HomePage-theme/js/handlebars-1.0.0.js"></script>
+    <script type="text/javascript" src="/ieeecs-HomePage-theme/js/ember-1.0.0.js"></script>
+	<script type="text/javascript" src="/ieeecs-HomePage-theme/js/dockbar.customizable.js"></script>
+</head>
+<body>
+    ## top anchor
+    <a id="top" href="#"></a>
+	## Wrap all page content here
+    <div id="wrap">
+    	## Include the main dockbar
+		#parse ("$full_templates_path/dockbar.vm")
+
+		## Begin page content
+		<div class="container">
+			<header id="banner" role="banner">
+				#if ($has_navigation)	
+					#parse ("$full_templates_path/navigation.vm") 
+				#end
+			</header>
+			<div id="content" class="row-fluid">
+				#if ($selectable)
+					$theme.include($content_include)
+				#else
+					$portletDisplay.recycle()
+					$portletDisplay.setTitle($the_title)
+					$theme.wrapPortlet("portlet.vm", $content_include)
+				#end
+			</div>
+		</div>
+	</div> ## /wrap
+
+	## Sign In Modal Template
+	#parse ("$full_templates_path/login.vm") 
+	
+	## Le javascript
+	##==================================================
+	## Placed at the end of the document so the pages load faster
+	<script type="text/javascript" src="/ieeecs-HomePage-theme/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/ieeecs-HomePage-theme/js/infinity.min.js"></script>
+    <script type="text/javascript" src="/ieeecs-HomePage-theme/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="/ieeecs-HomePage-theme/js/moment.min.js"></script>
+    ## Javascript that is needed for the search bar.  It had to be placed here because the javascript is not recognized after the velocity parser parses dockbar.vm.
+    <script type="text/javascript">
+        jQuery( document ).ready(function() {
+            jQuery('#myhome-search-input').on("focus", function() {
+                // show the search results bar if there is text there
+                if(jQuery('#myhome-search-input').val().trim() != '') {
+                    jQuery('#myhome-search-container .search-results').show();
+                }
+            });
+            jQuery('#myhome-search-input').on("focusout", function() {
+                jQuery('#myhome-search-container .search-results').hide();
+            });
+            jQuery('.datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true
+            });
+        });
+    </script>
+</body>
+$theme.include($bottom_include)
+</html>

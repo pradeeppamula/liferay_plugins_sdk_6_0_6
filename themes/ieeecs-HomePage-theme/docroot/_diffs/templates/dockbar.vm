@@ -1,0 +1,904 @@
+<nav class="navbar navbar-inverse navbar-myhome navbar-fixed-top" role="navigation" data-namespace="_145_" id="dockbar">
+  <div class="">
+  ## Brand and toggle get grouped for better mobile display
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/portal/web/myhome/home">My<i class="icon-home"></i></a>
+  </div>
+
+  ## Place everything within .navbar-collapse to hide it until above 768px
+  <div class="navbar-collapse collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav col-md-2 col-sm-2">
+        #if ($is_signed_in)
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle navbar-icon-dropdown" data-toggle="dropdown">
+              <i class="icon-fixed-width icon-cog icon-2x"></i>
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu aui-toolbar">
+              <li class="add-content has-submenu" id="_145_addContent">
+                <a class="menu-button" href="javascript:;">
+                  <i class="icon-plus icon-fixed-width icon-large"></i>
+                  Add
+                </a>
+              </li>        
+              <li class="manage-content has-submenu" id="_145_manageContent">
+                <a class="menu-button" href="javascript:;">
+                  <i class="icon-sitemap icon-fixed-width icon-large"></i>
+                  Manage
+                </a>
+              </li>    
+              <li class="toggle-controls" id="_145_toggleControls">
+                <a href="javascript:;">
+                  <i class="control-on icon-check icon-fixed-width icon-large"></i>
+                  <i class="control-off icon-check-empty icon-fixed-width icon-large"></i>
+                  Toggle Edit Controls
+                </a>
+              </li>
+            </ul>
+          </li>
+        #end 
+      </ul> ## /.nav .navbar-nav .col-md-2 .col-sm-2
+
+      <div class="dockbar-messages aui-widget aui-component aui-overlay aui-underlay aui-widget-positioned aui-widget-stacked aui-underlay-hidden" id="_145_dockbarMessages" style="left: 1662px; top: 162px; z-index: 301;">
+        <div class="aui-header"></div>
+        <div class="aui-body"></div>
+        <div class="aui-footer"></div>
+        <div class="aui-overlay-content aui-underlay-content aui-widget-stdmod" id="aui_3_2_0_1363">
+            <div class="aui-widget-hd">
+                <button class="aui-buttonitem-content aui-widget aui-component aui-buttonitem aui-state-default aui-buttonitem-icon-only aui-underlay-close" id="aui_3_2_0_1400" title="" type="button">
+                    <span class="aui-buttonitem-icon aui-icon aui-icon-close"></span>
+                    <span class="aui-buttonitem-label aui-helper-hidden" id="aui_3_2_0_1464"></span>
+                </button>
+            </div>
+            <div class="aui-widget-bd"></div>
+        </div> 
+      </div>## /#_145_dockbarMessages
+    
+      <div class="aui-menu add-content-menu aui-overlaycontext-hidden aui-widget aui-component aui-overlay aui-overlaycontext aui-widget-positioned aui-widget-stacked" id="_145_addContentContainer" style="left: 46px; top: 29px; z-index: 101002;">
+          <div class="aui-menu-content aui-overlay-content aui-overlaycontext-content aui-widget-stdmod" id="aui_3_2_0_1528">
+              <ul>            
+                  <li class="add-application last more-applications aui-menu-item">                
+                      <a href="javascript:; showDragDrop();" id="_145_addApplication" tabindex="-1">Portlets / Widgets</a>
+                  </li>        
+              </ul>
+          </div>
+      </div> ## /#_145_addContentContainer
+
+      <div class="aui-menu manage-content-menu aui-overlaycontext-hidden aui-widget aui-component aui-overlay aui-overlaycontext aui-widget-positioned aui-widget-stacked" id="_145_manageContentContainer" style="left: 130px; top: 29px; z-index: 101004;">
+          <div class="aui-menu-content aui-overlay-content aui-overlaycontext-content aui-widget-stdmod" id="aui_3_2_0_1696">
+              <ul>                   
+                  <li class="page-layout aui-menu-item">
+                      <a href="javascript:;" id="pageTemplate" tabindex="-1">Page Layout</a>
+                  </li>                             
+                  <li class="control-panel last aui-menu-item" id="_145_controlPanel">
+                      <a href="/portal/group/control_panel?doAsGroupId=$!{scopeGroupId}&amp;refererPlid=$!{plid}" id="aui_3_2_0_1741" tabindex="-1">Control Panel</a>
+                  </li>          
+              </ul>
+          </div>
+      </div> ## /#_145_manageContentContainer
+
+      ## search bar
+      <div id="myhome-search-container">
+      #if ($is_signed_in)
+        <script type="text/x-handlebars" data-template-name="search">
+            <div class="col-md-5 col-sm-4 search-app">
+                <form class="navbar-form" action="" role="search">
+                    <div class="input-group">
+                        {{view Ember.TextField id="myhome-search-input" action="performSearch" valueBinding="searchText" classNames="form-control" placeholder="Search for articles, conferences and more..."}}
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" {{action 'setUpFullSearch'}}><i class="icon-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-1 col-sm-1 advanced-search search-app">
+                <a href="#"  {{action 'showAdvancedSearchModal'}}>Advanced</a>
+            </div>
+            <div class="search-results col-md-5 col-sm-5">
+                <ul>
+                    {{#each item in content}}
+                    <li>
+                        <p{{action 'viewContentItem' item}} class="title">{{{item.title}}}</p>
+                        <p class="summary">{{{item.summary}}}</p>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+
+            <div class="modal fade" id="advanced-search-modal">
+                <div class="modal-dialog advanced-search-modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close square-close" data-dismiss="modal" aria-hidden="true">
+                                 <i class="icon-remove"></i>
+                            </button>
+                            <div class="form-group input-group advanced-search-form">
+                                {{view Ember.TextField id="myhome-advanced-search-input" valueBinding="advancedSearchText" classNames="form-control" placeholder="Search for articles, conferences and more..."}}
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button" {{action 'performAdvancedSearch'}}>SEARCH</button>
+                                </span>
+                            </div>
+                            <div class="filters-link-container">
+                                <a id="disable-filters-link" href="#" {{ action 'disableFilters'}}>
+                                    Disable Filters <i class="icon-caret-up icon-fixed-width"></i>
+                                </a>
+                                <a id="enable-filters-link" href="#" {{ action 'enableFilters'}}>
+                                    Enable Filters <i class="icon-caret-down icon-fixed-width"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="advanced-search-filters-container">
+                            <div class="form-group col-md-12 col-sm-12">
+                                Content Types:
+                                {{view Ember.Checkbox checkedBinding="filterByArticle"}} Article
+                                {{view Ember.Checkbox checkedBinding="filterByWebinar"}} Webinar
+                            </div>
+                            <div class>
+                                <div class="col-md-4 col-sm-4">
+                                    <div>
+                                        <label>From:</label>
+                                    </div>
+                                    <div id="advanced-search-dp-start-date" class="input-group col-md-8 col-sm-8">
+                                        {{view Ember.TextField id="advanced-search-start-date" valueBinding="advancedSearchStartDate" classNames="form-control datepicker" placeholder="YYYY-MM-DD"}}
+                                        <span class="input-group-addon"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <div>
+                                        <label>To:</label>
+                                    </div>
+                                    <div id="advanced-search-dp-end-date" class="input-group col-md-8 col-sm-8">
+                                        {{view Ember.TextField id="advanced-search-end-date" valueBinding="advancedSearchEndDate" classNames="form-control datepicker" placeholder="YYYY-MM-DD"}}
+                                        <span class="input-group-addon"><i class="icon-calendar"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="advanced-result-count-container">
+                                <h6>{{numberOfAdvancedResults}} RESULTS FOUND</h6>
+                            </div>
+                            <div class="advanced-search-results">
+                                {{#each item in controller.paginatedContent}}
+                                <div class="advanced-search-result">
+                                    {{#unless item.isNoResult}}
+                                        <span {{bindAttr class=":badge item.contentType"}}>{{item.contentType}}</span>
+                                    {{/unless}}
+                                    <h5><a href="#" {{action 'viewContentItem' item}}>{{{item.title}}}</a></h5>
+                                    <p class="summary">{{{item.summary}}}</p>
+                                    <div {{ bindAttr class=":alert :alert-block :alert-success :fade :hide item.confirmId :success" }}>
+                                        <button type="button" class="close" aria-hidden="true" {{ action 'hideAddBundleSuccess' item.confirmId }}>x</button>
+                                        <h4><i class="icon-check-sign icon-3x icon-fixed-width"></i>Added To Bundle!</h4>
+                                    </div> ## /.success
+                                    <div {{ bindAttr class=":alert :alert-block :alert-danger :fade :hide item.confirmId :error" }}>
+                                        <button type="button" class="close" aria-hidden="true" {{ action 'hideAddBundleError' item.confirmId}}>x</button>
+                                        {{#unless bundleLimitError}}
+                                            <p>
+                                                <i class="icon-warning-sign icon-3x icon-fixed-width"></i>
+                                                Your bundle is at its limit, would you like to increase the size?
+                                                <a class="btn btn-default" href="#" {{ action 'goToBundlePurchase' item }}>Make it happen</a>
+                                            </p>
+                                        {{else}}
+                                            <h4><i class="icon-exclamation-sign icon-3x icon-fixed-width"></i>There was a problem adding this item to your bundle, please try again or contact help@computer.org.</h4>
+                                        {{/unless}}
+                                    </div> ## /.error
+                                    <div {{ bindAttr class=":alert :alert-block :alert-warning :fade :hide item.confirmId :warning" }}>
+                                        <button type="button" class="close" aria-hidden="true"  {{ action 'hideAddBundleConfirm' item.confirmId }}>x</button>
+                                        <p>
+                                            <i class="icon-warning-sign icon-3x icon-fixed-width"></i>
+                                            Are you sure you would like to add this item to your bundle?
+                                            <button {{bindAttr class=":btn :btn-default item.isSavingToBundle:disabled"}} {{ action 'addItemToBundle' item item.confirmId}} >
+                                                {{#unless item.isSavingToBundle }}
+                                                    Yes
+                                                {{else}}
+                                                    Please Wait
+                                                {{/unless}}
+                                            </button>
+                                        </p>
+                                    </div> ## /.warning
+                                    {{#unless item.isNoResult}}
+                                        <a href="#" {{ bindAttr class=":btn :btn-info :btn-xs item.hasFullAccess:hide"}} {{ action 'showAddBundleConfirm' item.confirmId }} >Add To Bundle</a>
+                                    {{/unless}}
+                                </div>
+                                {{/each}}
+                            </div> ## /.advanced-search-results
+                            {{#unless noResultsFound}}
+                            <div class="advanced-search-pagination">
+                                <ul class="pagination pagination-sm">
+                                    {{#unless hasPrevPage}}
+                                        <li class="disabled"><a href="#">&laquo;</a></li>
+                                    {{else}}
+                                        <li>{{#linkTo 'search.page' prevPage target="controller"}}&laquo;{{/linkTo}}</li>
+                                    {{/unless}}
+                                    {{#each pages}}
+                                        {{view SearchApp.PaginationView contentBinding="this"}}
+                                    {{/each}}
+                                    {{#unless hasNextPage}}
+                                        <li class="disabled"><a href="#">&raquo;</a></li>
+                                    {{else}}
+                                        <li>{{#linkTo 'search.page' nextPage target="controller"}}&raquo;{{/linkTo}}</li>
+                                    {{/unless}}
+                                </ul>
+                            </div> ## /.advanced-search-pagination
+                            {{/unless}}
+                        </div>
+                    </div>## /.modal-content
+                </div>## /.modal-dialog
+            </div>## /#advanced-search-modal
+        </script>
+      <script type="text/x-handlebars" data-template-name="pagination">
+          {{#with view}}
+              {{#linkTo 'search.page' page}}
+                {{content.page_id}}
+              {{/linkTo}}
+          {{/with}}
+      </script>
+      #end
+      </div> ## /#myhome-search-container
+      ## /search bar
+
+      ## login/logout container
+      <ul class="nav navbar-nav navbar-right">
+          #if (!$is_signed_in)
+          <div class="login-button-container">
+              <a data-toggle="modal" href="#myModal" class="btn btn-primary navbar-btn">
+                <i class="icon-fixed-width icon-signin icon-large"></i>
+                Login
+              </a>
+          </div>
+          #end
+          #if ($is_signed_in)
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle navbar-profile-dropdown" data-toggle="dropdown">
+              <img class="profile-img-small" alt="$!{user_name}" src="/portal/image/user_male_portrait?img_id=$user.portraitId&t=1375672866971"/>
+              $!{user_name}<b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <strong><blockquote>$!{user_email_address}</blockquote></strong>
+              </li>        
+              <li>
+                   <a class="user-fullname" href="/portal/group/control_panel/manage?p_p_auth=ZYC32jqP&amp;p_p_id=2&amp;p_p_lifecycle=0&amp;p_p_state=maximized&amp;p_p_mode=view&amp;doAsGroupId=$!{scopeGroupId}&amp;refererPlid=$!{plid}&amp;_2_struts_action=%2Fmy_account%2Fedit_user&amp;_2_backURL=%2Fportal%2Fweb%2Fstc1">
+                      <i class="icon-fixed-width icon-edit icon-large"></i>
+                      $!{user_name}
+                  </a>
+              </li>     
+              <li class="divider"></li>
+              <li>
+                <a href="/portal/c/portal/logout">
+                  <i class="icon-fixed-width icon-signout icon-large"></i>
+                  Logout
+                </a>
+              </li>
+            </ul>## /.dropdown-menu
+          </li>## /.dropdown
+          #end 
+      </ul> ## /.nav .navbar-nav .navbar-right ## ## /login/logout container
+    </div> ## /.nav-collapse .collapse .navbar-ex1-collapse
+  </div> ## /.
+</nav>## /.navbar
+<script type="text/javascript">
+#* 
+--------------------------------------------------------------
+  Important to keep this one line here as it will
+  distinguish this Theme dockbar from the 
+  resident "tweaked" Liferay dockbar.
+-------------------------------------------------------------- 
+*#
+  AUI().use("liferay-dockbar-custom",function(a){(function(){Liferay.DockbarCustom.init()})()});
+</script>
+<script type="text/javascript">
+     #*
+      This is the search application initialization.  We are attaching it
+      to a specific dom element.
+      *#
+    SearchApp = Ember.Application.create({
+        rootElement: '#myhome-search-container'
+    });
+
+     #*
+      We specify the root index route for this application.
+      We force the index to use the "search" template.
+     *#
+    SearchApp.Router.map(function(match) {
+        this.resource("search", { path: "/" }, function() {
+            this.route("page", { path: "/:page_id" });
+        });
+    });
+
+    #*
+      This is the main model for search results.
+     *#
+    SearchApp.Content = Ember.Object.extend({
+        isSavingToBundle: false,
+        isNoResult: false,
+        itemId: null,
+        doi: "",
+        sku: "",
+        publisher: "",
+        summary: "",
+        publicationDate: null,
+        title: "",
+        contentType: "",
+        hasFullAccess: false,
+        bundleLimitError: true,
+        publicationDateFormatted: function() {
+            var publicationDate = new Date(this.get('publicationDate'));
+            var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            return months[publicationDate.getMonth()] + ' ' + publicationDate.getDate() + ', ' + publicationDate.getFullYear();
+        }.property('publicationDate'),
+        confirmId: function() {
+            return 'add-bundle-confirm-' + this.get('itemId');
+        }.property('itemId')
+    });
+
+    #*
+       This is the pagination mixin.  This is needed because Ember doesn't have a
+       pagination module in its core as of today [10.08.12].
+     *#
+    var get = Ember.get, set = Ember.set;
+
+    Ember.PaginationMixin = Ember.Mixin.create({
+        pages: function() {
+            var availablePages = this.get('availablePages'),
+            pages = [],
+            page;
+            for (i = 0; i < availablePages; i++) {
+                page = i + 1;
+                pages.push({ page_id: page.toString() });
+            }
+            return pages;
+        }.property('availablePages'),
+        currentPage: function() {
+            return parseInt(this.get('selectedPage'), 10) || 1;
+        }.property('selectedPage'),
+        nextPage: function() {
+            var nextPage = this.get('currentPage') + 1;
+            var availablePages = this.get('availablePages');
+            if (nextPage <= availablePages) {
+                return Ember.Object.create({id: nextPage});
+            } else {
+                return Ember.Object.create({id: this.get('currentPage')});
+            }
+        }.property('currentPage', 'availablePages'),
+        hasNextPage: function() {
+            var nextPage = this.get('currentPage') + 1;
+            var availablePages = this.get('availablePages');
+            return (nextPage <= availablePages);
+        }.property('currentPage', 'availablePages'),
+        hasPrevPage: function() {
+            var prevPage = this.get('currentPage') - 1;
+            return (prevPage > 0);
+        }.property('currentPage'),
+        prevPage: function() {
+            var prevPage = this.get('currentPage') - 1;
+            if (prevPage > 0) {
+                return Ember.Object.create({id: prevPage});
+            } else {
+                return Ember.Object.create({id: this.get('currentPage')});
+            }
+        }.property('currentPage'),
+        availablePages: function() {
+            return Math.ceil((this.get('advancedContent.length') / this.get('itemsPerPage')) || 1);
+        }.property('advancedContent.length'),
+        paginatedContent: function() {
+            var selectedPage = this.get('selectedPage') || 1;
+            var upperBound = (selectedPage * this.get('itemsPerPage'));
+            var lowerBound = (selectedPage * this.get('itemsPerPage')) - this.get('itemsPerPage');
+            var models = this.get('advancedContent');
+            return models.slice(lowerBound, upperBound);
+        }.property('selectedPage', 'advancedContent.@each')
+    });
+
+     #*
+      This is the controller for the search app, that will handle
+      all the application's actions.
+     *#
+    SearchApp.SearchController = Ember.ArrayController.extend(Ember.PaginationMixin, {
+        content: [],
+        advancedContent: [],
+        userPurchaseData: null,
+        contentTypes: ['article', 'webinar'],
+        numberOfAdvancedResults: 0,
+        isLoading: false,
+        searchText: '',
+        advancedSearchText: '',
+        advancedSearchEndDate: null,
+        advancedSearchStartDate: null,
+        filterByArticle: false,
+        filterByWebinar: false,
+        filtersAreEnabled: true,
+        itemsPerPage: 5,
+        selectedPage: 1,
+        maxResultSize: 100,
+        noResultsFound: function() {
+            console.log(this.get('numberOfAdvancedResults'));
+            return this.get('numberOfAdvancedResults') == 0;
+        }.property('numberOfAdvancedResults'),
+        bundleHasSpace: function(type) {
+            _self = this;
+            var userPurchaseData = _self.get('userPurchaseData');
+            var userContentCount;
+            var bundleType;
+
+            #*
+             First check to see if the user has purchase information through
+             their organization, if they don't, return false so that they will
+             have to request a quote.
+            *#
+            if(userPurchaseData.bundle == undefined ||
+                userPurchaseData.bundle.csdl_article == undefined) {
+                return false;
+            }
+            // get the number of content items the user has for the type
+            if(type == 'article') {
+                userContentCount = userPurchaseData.units.csdl_article.length;
+                bundleType =  userPurchaseData.bundle.csdl_article;
+            }
+
+            #*
+              now add up the number of items in the bundle, and check that against
+              the number of items that the user has to see if they have available space.
+             *#
+            var totalBundleCount = 0;
+            var idx = 0;
+            for(idx;idx<bundleType.length;idx++) {
+                totalBundleCount += bundleType[idx].number_of_items;
+            }
+            return userContentCount < totalBundleCount;
+        },
+        valueDidChange: function() {
+            #*
+              TODO [10.07.13]: include in future release.  For now we are omitting
+              the typeahead search.
+             *#
+
+            #*
+            // get the search text
+            var sText = this.get('searchText');
+            // only perform the search if there is search text
+            if(sText.trim() != '') {
+                this.search();
+            } else {
+                // hide the search results list
+                jQuery('#myhome-search-container .search-results').hide();
+            }  *#
+        }.observes('searchText'),
+        search: function(isAdvancedSearch) {
+            _self = this;
+            // reset the selected page to page 1
+            _self.set('selectedPage', 1);
+            // tell the app that we are loading data
+            _self.set('isLoading', true);
+
+            var sText;
+            var data;
+            if(isAdvancedSearch) {
+                // get the search text
+                sText = _self.get('advancedSearchText');
+
+                // get if the filters are enabled
+                var filtersEnabled = this.get('filtersAreEnabled');
+
+                // build the base json data for the search
+                data = {
+                    "query" : {
+                        "multi_match" : {
+                            "fields" : ["title^2", "summary"],
+                            "query" : sText,
+                            "type" : "prefix"
+                        }
+                    },
+                    "highlight" : {
+                        "fields" : {
+                            "title" : {},
+                            "summary" : {}
+                        }
+                    },
+                    "from" : 0, "size" : this.get('maxResultSize')
+                }
+
+                // if the filters are enabled, build the filtered search query
+                if(filtersEnabled) {
+                    data.filter = {"bool":{"must":[]}};
+
+                    // get the start date
+                    var start = this.get('advancedSearchStartDate');
+                    if(start == undefined) {
+                        this.set('advancedSearchStartDate', jQuery('#advanced-search-start-date').val());
+                        start = this.get('advancedSearchStartDate');
+                    }
+                    var startDate = start+'T00:00:00';
+
+                    // get the end date
+                    var end = this.get('advancedSearchEndDate');
+                    if(end == undefined) {
+                        this.set('advancedSearchEndDate', jQuery('#advanced-search-end-date').val());
+                        end = this.get('advancedSearchEndDate');
+                    }
+                    var endDate = end +'T23:59:59';
+
+                    // add the date range for the publication date
+                    var range = {
+                        "range" : {
+                            "publicationdate" : {
+                                "from" : startDate,
+                                "to" :  endDate
+                            }
+                        }
+                    }
+                    data.filter.bool.must.pushObject(range);
+
+                    // retrieve the content type filters
+                    var articleFilter = _self.get('filterByArticle');
+                    var webinarFilter = _self.get('filterByWebinar');
+
+                    // if one or more of the content type filters are set, add them to the query
+                    if( articleFilter ||  webinarFilter ) {
+                        data.filter.bool.should =  [];
+                        var terms = { "terms" : { "contentType": [] } };
+                        // add the article filter
+                        if(articleFilter) {
+                            terms.terms.contentType.pushObject("article");
+                        }
+                        // add the webinar filter
+                        if(webinarFilter) {
+                            terms.terms.contentType.pushObject("webinar");
+                        }
+                        data.filter.bool.should.pushObject(terms);
+                    }
+                }
+            } else { // we are performing the basic search
+
+                // show the search results box if it was hidden
+                if(!jQuery('#myhome-search-container .search-results').is(":visible")) {
+                    jQuery('#myhome-search-container .search-results').show();
+                }
+
+                // get the search text
+                sText = _self.get('searchText');
+
+                // build the json data for the search
+                data = {
+                    "query" : {
+                        "multi_match" : {
+                            "fields" : ["title^2", "summary"],
+                            "query" : sText,
+                            "type" : "prefix"
+                        }
+                    },
+                    "highlight" : {
+                        "fields" : {
+                            "title" : {},
+                            "summary" : {}
+                        }
+                    }
+                }
+            }
+
+##		POST on the ES REST API endpoint
+            jQuery.ajax({
+                type: 'post',
+                contentType: 'application/json',
+                url: '$elasticSearchURL/content/_search',
+                data: JSON.stringify(data),
+                success: function(response) {   
+                    if(isAdvancedSearch) {
+##					remove the old search results
+                        _self.set('advancedContent', []);
+                    } else {
+##					remove the old search results
+                        _self.set('content', []);
+                    }
+##				loading is over, so we can remove the "loading" item
+                    _self.set('isLoading', false);
+
+                    if(response.hits.total == 0) {
+##					build the "no results" content item
+                        var contentItem = SearchApp.Content.create({
+                            isNoResult: true,
+                            title: "NO RESULTS FOUND FOR <em>" + sText + "</em>"
+                        });
+                        if(isAdvancedSearch) {
+##						hide the number of results container
+                            jQuery('.advanced-result-count-container').hide();
+##						add the item to the list
+                            _self.get('advancedContent').pushObject(contentItem);
+##						reset the number of advanced search results
+                            _self.set('numberOfAdvancedResults', 0);
+                        } else {
+##						add the item to the list
+                            _self.pushObject(contentItem);
+                        }
+                    } else {
+                        if(isAdvancedSearch) {
+##						show the number of results
+                            jQuery('.advanced-result-count-container').show();
+                            _self.set('numberOfAdvancedResults', response.hits.hits.length);
+                        }
+                        var userPurchaseData = _self.get('userPurchaseData');
+                        var count = 0;
+##					iterate over each of the results building content models
+                        response.hits.hits.forEach(function(item) {
+                            count++;
+##						build the content model object
+                            var contentItem = SearchApp.Content.create({
+                                itemId: ''+count+'',
+                                publisher: item._source.publisher,
+                                summary: (item.highlight != undefined && item.highlight.summary != undefined) ? item.highlight.summary: item._source.summary,
+                                publicationDate: item._source.publicationdate,
+                                title: (item.highlight != undefined && item.highlight.title != undefined) ? item.highlight.title: item._source.title,
+                                contentType: item._source.contentType,
+                                doi: (item._source.contentType == 'article') ? item._source.doi : '',
+                                sku: (item._source.contentType == 'webinar') ? item._source.sku : ''
+                            });
+
+##						check to see if the user has full access to this item
+                            if(contentItem.contentType == 'article' && userPurchaseData.units !== undefined &&userPurchaseData.units.csdl_article !== undefined ) {
+								 #* iterate over the purchase data's dois and see if we find a match,
+                                   meaning it has already been added to the user's bundle
+                                  *#
+                                 var idx = 0;
+                                 for(idx=0;idx<userPurchaseData.units.csdl_article.length;idx++) {
+                                    if(contentItem.doi == userPurchaseData.units.csdl_article[idx]) {
+                                        contentItem.hasFullAccess = true;
+                                        break;
+                                    }
+                                 }
+
+                            } else if(contentItem.contentType == 'webinar') {
+                                #*
+                                  Right now we'll give them access to view any webinar from
+                                  the search results.  They will already have their selected
+                                  webinars based on their agreement with sales, so if they
+                                  wanted to change their webinar bundle items, they would have
+                                  to contact sales again at this point.
+                                 *#
+                                 contentItem.hasFullAccess = true;
+                            }
+
+                            if(isAdvancedSearch) {
+##							add the item to the list
+                                _self.get('advancedContent').pushObject(contentItem);
+                            } else {
+##							add the item to the list
+                                _self.pushObject(contentItem);
+                            }
+                        });
+                    }
+                },
+                error: function(error) {
+                    console.log("An error occurred when searching for content:" + error);
+                },
+                dataType: 'json'
+            });
+        },
+        actions: {
+            hideSearchApp: function() {
+               #* just in case we need to hide the search bar,
+                 this is useful for pages that are public i.e. landing/purchase
+                *#
+               jQuery('.search-app').hide();
+            },
+            setUserPurchaseData: function(data) {
+                this.set('userPurchaseData', data);
+            },
+            addItemToBundleConfirmation: function(payload) {
+                var _self = this;
+                var item = payload.content;
+                // set the item to be in the "isSavingToBundle" state
+                item.set('isSavingToBundle', false);
+                // check to see if there was success adding the item to the bundle or not
+                if(payload.result == 200) {
+                    var confirmId = item.get('confirmId');
+                    // hide any error/warning alerts
+                    this.send('hideAddBundleConfirm', confirmId);
+                    this.send('hideAddBundleError', confirmId);
+
+                    // else show success message
+                    this.send('showAddBundleSuccess', confirmId);
+
+                    // hide the "Add to Bundle" button
+                    jQuery('.'+confirmId+'.warning').next().addClass('hide');
+
+                    // clear out the success after a few seconds
+                    setTimeout(function() {
+                        _self.send('hideAddBundleSuccess', confirmId);
+                    }, 3000);
+                } else {
+                    var confirmId = item.get('confirmId');
+                    // if the response was 500, we know it's a system error, else it's a bundle limit error
+                    item.set('bundleLimitError', (payload.result != 500));
+                    // display error to the client
+                    this.send('showAddBundleError', confirmId);
+                    this.send('hideAddBundleConfirm', confirmId);
+                }
+            },
+            addItemToBundle: function(item, confirmId) {
+                _self = this;
+                // check to see if bundle has space, if so we can add it to their bundle
+                if(_self.bundleHasSpace(item.contentType)) {
+                    // set the item to be in the "isSavingToBundle" state
+                    item.set('isSavingToBundle', true);
+
+                    // build up the payload to send to the account portlet
+                    var payload = {};
+                    payload.content = item;
+                    payload.sender = 'SearchApp';
+
+                    // add the item to the bundle, by sending the item data to the account portlet
+                    Ember.Instrumentation.instrument('AccountApp.addContentToBundle', payload);
+                } else {
+                    #*
+                      if not, show error and ask user if they would like to increase their bundle size
+                      which will have a button for navigating to the purchase page
+                     *#
+                    item.set('bundleLimitError', true);
+                    this.send('showAddBundleError', confirmId);
+                    this.send('hideAddBundleConfirm', confirmId);
+                }
+            },
+            showAddBundleConfirm: function(confirmId) {
+                jQuery('.'+confirmId+'.warning').addClass("in");
+                jQuery('.'+confirmId+'.warning').removeClass("hide");
+            },
+            hideAddBundleConfirm: function(confirmId) {
+                jQuery('.'+confirmId+'.warning').addClass('hide');
+                jQuery('.'+confirmId+'.warning').removeClass('in');
+            },
+            showAddBundleError: function(confirmId) {
+                jQuery('.'+confirmId+'.error').addClass("in");
+                jQuery('.'+confirmId+'.error').removeClass("hide");
+            },
+            hideAddBundleError: function(confirmId) {
+                jQuery('.'+confirmId+'.error').addClass('hide');
+                jQuery('.'+confirmId+'.error').removeClass('in');
+            },
+            showAddBundleSuccess: function(confirmId) {
+                jQuery('.'+confirmId+'.success').addClass("in");
+                jQuery('.'+confirmId+'.success').removeClass("hide");
+            },
+            hideAddBundleSuccess: function(confirmId) {
+                jQuery('.'+confirmId+'.success').addClass('hide');
+                jQuery('.'+confirmId+'.success').removeClass('in');
+            },
+            disableFilters: function() {
+                this.set('filtersAreEnabled', false);
+                jQuery('#disable-filters-link').hide();
+                jQuery('#enable-filters-link').show();
+                jQuery('.advanced-search-filters-container').hide();
+            },
+            enableFilters: function() {
+                this.set('filtersAreEnabled', true);
+                jQuery('#enable-filters-link').hide();
+                jQuery('#disable-filters-link').show();
+                jQuery('.advanced-search-filters-container').show();
+            },
+            setUpFullSearch: function() {
+                // disable any filters
+                this.send('disableFilters');
+                // remove any old advanced search results
+                this.set('advancedContent', []);
+                // hide the number of results container
+                jQuery('.advanced-result-count-container').hide();
+                // open the advanced search modal
+                jQuery("#advanced-search-modal").modal("show");
+                // set the basic search text as the advanced search text
+                this.set('advancedSearchText', this.get('searchText'));
+                // now perform the search
+                this.send('performAdvancedSearch');
+            },
+            showAdvancedSearchModal: function() {
+                jQuery("#advanced-search-modal").modal("show");
+            },
+            performSearch: function() {
+                // get the search text
+                var sText = this.get('searchText');
+                // only perform the search if there is search text
+                if(sText.trim() != '') {
+                    this.search(false);
+                }
+            },
+            performAdvancedSearch: function() {
+                // get the search text
+                var asText = this.get('advancedSearchText');
+
+                // first validate there is search text
+                if (asText === undefined || asText.trim() === "") {
+                    // add "has-warning" class to the advanced search form container
+                    $('.advanced-search-form').addClass("has-warning");
+                } else {   // only perform the search if there is search text
+                    $('.advanced-search-form').removeClass("has-warning");
+                    this.search(true);
+                }
+            },
+            viewContentItem: function(item) {
+                if(item != undefined) {
+                    if(item.contentType == 'article') {
+                        // navigate to the article page
+                        window.location = '/portal/web/myhome/content?type=article&cid='+item.doi;
+                    } else if (item.contentType == 'webinar') {
+                        // navigate to the article page
+                        window.location = '/portal/web/myhome/content?type=webinar&cid='+item.sku;
+                    }
+                }
+            },
+            goToBundlePurchase: function(item) {
+                var type = item.contentType;
+                if(type == 'article') {
+                    // navigate to the bundle purchase article page
+                    window.location = '/portal/web/myhome/purchase-bundle?t=a';
+                } else if (type == 'webinar') {
+                    // navigate to the bundle purchase webinar page
+                    window.location = '/portal/web/myhome/purchase-bundle?t=w';
+                }
+            }
+        } // end actions
+    });
+
+    // for the initial index view
+    SearchApp.SearchRoute = Ember.Route.extend({
+        setupController: function(controller) {
+            Ember.Instrumentation.subscribe("SearchApp.setUserPurchaseData", {
+                before: function (name, timestamp, payload) {
+                    controller.send('setUserPurchaseData', payload);
+                },
+                after: function () { }
+            });
+            Ember.Instrumentation.subscribe("SearchApp.addItemToBundleConfirmation", {
+                before: function (name, timestamp, payload) {
+                    controller.send('addItemToBundleConfirmation', payload);
+                },
+                after: function () { }
+            });
+            Ember.Instrumentation.subscribe("SearchApp.hideSearchApp", {
+                before: function (name, timestamp, payload) {
+                controller.send('hideSearchApp', payload);
+                },
+                after: function () { }
+            });
+        }
+    });
+
+    SearchApp.SearchPageRoute = Ember.Route.extend({
+        model: function(params) {
+            return Ember.Object.create({id: params.page_id});
+        },
+        setupController: function(controller, model) {
+            this.controllerFor('search').set('selectedPage', model.get('id'));
+        }
+    });
+
+    // Pagination View
+    SearchApp.PaginationView = Ember.View.extend({
+        templateName: 'pagination',
+        tagName: 'li',
+        classNameBindings: ['isCurrentPage:active'],
+        page: function() {
+            return Ember.Object.create({id: this.get('content.page_id')});
+        }.property(),
+        isCurrentPage: function() {
+            return (this.get('controller.currentPage') == this.get('content.page_id'));
+        }.property('controller.currentPage')
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var now = new Date();
+        var currMonth = now.getMonth()+1;
+        currMonth = (currMonth < 10) ? '0'+currMonth : currMonth;
+        var currYear = now.getFullYear();
+        var currDay = now.getDate();
+        currDay = (currDay < 10) ? '0'+currDay : currDay;
+        var start =  ''+currYear-20+'-'+currMonth+'-'+currDay;
+        var end =  ''+currYear+'-'+currMonth+'-'+currDay;
+        $('#advanced-search-start-date').val(start);
+        $('#advanced-search-end-date').val(end);
+    });
+</script>

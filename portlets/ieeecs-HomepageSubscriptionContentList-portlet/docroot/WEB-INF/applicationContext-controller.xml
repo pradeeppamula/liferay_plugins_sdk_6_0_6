@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-3.0.xsd
+        ">				
+				
+	<!-- =============================== -->
+	<!--           CONTROLLERS           -->
+	<!-- =============================== -->
+
+	<bean id="homepageSubscriptionContentListController"
+          class="org.ieeecs.communities.presentation.controller.HomepageSubscriptionContentListController"
+          destroy-method="cleanUp">
+		<property name="velocityConfigurer" ref="velocityConfigurer"/>
+		<property name="commandClass" value="org.ieeecs.communities.formbean.ViewBean"/>
+		<property name="commandName" value="viewBean"/>
+	</bean>	
+	
+	<bean id="configureHomepageSubscriptionContentListController" class="org.ieeecs.communities.presentation.controller.ConfigureHomepageSubscriptionContentListController">
+		<property name="velocityConfigurer" ref="velocityConfigurer"/>
+		<property name="commandClass" value="org.ieeecs.communities.formbean.ViewBean"/>
+		<property name="commandName" value="viewBean"/>
+	</bean>				
+		
+</beans>
+	
+	
