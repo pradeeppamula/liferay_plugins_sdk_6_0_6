@@ -17,14 +17,14 @@
 			-moz-border-bottom-right-radius: ${portletBottomRightRadius}px ${portletBottomRightRadius}px;	
 			position: relative;
 		}	
-		.footer-social-links > a:hover {
+		.about-footer-social-links > a:hover {
 			text-decoration: none;
 		}
-		.footer-links,.footer-social-links {
+		.about-footer-links,.about-footer-social-links {
 			line-height: 40px;
 			text-align:center;
 		}
-		.footer-links > a, .footer-social-links > a {
+		.about-footer-links > a, .about-footer-social-links > a {
 		    color: #ffffff;
 		}
 		.copy-section { padding: 0 5px;}
@@ -120,7 +120,7 @@
                     </p>
                 </div>
             </div>
-             <div class="row footer-links">
+             <div class="row about-footer-links">
                           <a href="/portal/web/myhome/home">Home</a>
                           <a href="/portal/web/myhome/article-bundle">CSDL</a>
                           <a href="/portal/web/myhome/webinar-bundle">Webinars</a>
@@ -128,7 +128,7 @@
                           <a href="http://www.computer.org/portal/web/guest/privacy">Privacy</a>
                           <a href="#top">Top</a>
                         </div>
-                        <div class="row footer-social-links">
+                        <div class="row about-footer-social-links">
                           <a href="mailto:help@computer.org"><i class="icon-envelope icon-2x"></i></a>
                           <a href="https://twitter.com/computersociety" target="_blank"><i class="icon-twitter icon-2x"></i></a>
                           <a href="https://www.facebook.com/ieeecomputersociety?v=wall" target="_blank"><i class="icon-facebook icon-2x"></i></a>
@@ -337,7 +337,7 @@
                     </p>
                 </div>
             </div>
-             <div class="row footer-links">
+             <div class="row about-footer-links">
                           <a href="/portal/web/myhome/home">Home</a>
                           <a href="/portal/web/myhome/article-bundle">CSDL</a>
                           <a href="/portal/web/myhome/webinar-bundle">Webinars</a>
@@ -345,7 +345,7 @@
                           <a href="http://www.computer.org/portal/web/guest/privacy">Privacy</a>
                           <a href="#top">Top</a>
                         </div>
-                        <div class="row footer-social-links">
+                        <div class="row about-footer-social-links">
                           <a href="mailto:help@computer.org"><i class="icon-envelope icon-2x"></i></a>
                           <a href="https://twitter.com/computersociety" target="_blank"><i class="icon-twitter icon-2x"></i></a>
                           <a href="https://www.facebook.com/ieeecomputersociety?v=wall" target="_blank"><i class="icon-facebook icon-2x"></i></a>
