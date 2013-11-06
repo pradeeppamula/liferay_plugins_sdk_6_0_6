@@ -14,11 +14,11 @@
            padding: 5px;
 	}
 	.content-body {
-	    padding: 0 10px 30px 10px;
+	    padding: 0 20px 30px 20px;
 	    text-align: justify;
 	}
 	.header-info {
-	    padding: 0px 10px;
+	    padding: 0px 20px;
 	}
 	.content-loading-container {
 	    display: block;
@@ -74,7 +74,7 @@
                 <h4 class="col-md-3 col-sm-3 content-date label-info">{{publicationDateFormatted}}</h4>
             </div>
             <div class="row header-info">
-                <h1>{{title}}</h1>
+                <h2>{{title}}</h2>
                 <h3>{{publisher}}</h3>
                 {{#if authorList}}
                     <h6>by {{authors}}</h6>
