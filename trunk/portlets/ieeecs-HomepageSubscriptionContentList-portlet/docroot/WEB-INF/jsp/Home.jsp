@@ -158,6 +158,7 @@
 		}
 		.suboptions-social { 
 			padding-top: 3px;
+			margin: 0 0 0 10px;
 		}
 		.suboptions-expand-control {
 			line-height: 30px;
