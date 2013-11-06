@@ -94,18 +94,18 @@ a:hover {
 	font-weight: bold;
 	padding: 0 40px 0 40px;
 }
-.footer-links > a {
+.footer-links > a, .about-footer-links > a {
 	padding: 0 10px 0 10px;
 }
 
-.footer-social-links > a {
+.footer-social-links > a, .about-footer-social-links > a {
 	padding: 0 10px 0 10px;
   	opacity: 0.8;
   	transition: 0.1s linear;
   	-moz-transition: 0.1s linear;
   	-webkit-transition: 0.1s linear;
 }
-.footer-social-links > a:hover {
+.footer-social-links > a:hover, .about-footer-social-links > a:hover {
 	opacity: 1.0;
 }
 
