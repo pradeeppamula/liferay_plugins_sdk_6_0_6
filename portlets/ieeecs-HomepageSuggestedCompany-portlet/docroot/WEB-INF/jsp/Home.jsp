@@ -409,7 +409,7 @@
                 goToURL: function(company) {
                     // if this is a valid company, navigate to the companie's page
                     if(company != undefined && company.url != undefined) {
-                        window.location = company.url;
+                        window.open(company.url,'_blank');
                     }
                 },
                 discardChanges: function() {

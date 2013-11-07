@@ -159,6 +159,7 @@
 		.suboptions-social { 
 			padding-top: 3px;
 			margin: 0 0 0 10px;
+			display: none; /* NOTE: HIDING FOR NOW UNTIL SOCIAL METATAGS */
 		}
 		.suboptions-expand-control {
 			line-height: 30px;
