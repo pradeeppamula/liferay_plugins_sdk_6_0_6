@@ -182,8 +182,15 @@
   	<div id="homepage-subscription-list-container-${id}" class="col-md-12 col-sm-12">
 		<script type="text/x-handlebars" data-template-name="list">
 			<div class="content-list-search-bar">
-				<form class="col-md-3 col-sm-4 pull-right">
-					{{view Ember.TextField valueBinding="filter" classNames="form-control" placeholder="Filter your content"}}
+				<form class="col-md-4 col-sm-4 pull-right">
+				    <div class="input-group">
+                        {{view Ember.TextField valueBinding="filter" classNames="form-control" placeholder="Filter your content"}}
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary myhome-tooltip" type="button" {{action 'clearFilter'}} data-toggle="tooltip" data-placement="top" data-original-title="Reset Filter">
+                                <i class="icon-remove-sign"></i>
+                            </button>
+                        </span>
+				    </div><!-- /.input-group -->
 				</form>
 				<div class="col-md-8 col-sm-8">
 					<span>Your Library Content</span>
@@ -367,6 +374,10 @@
 		  currentUnitIndex: 0,
 		  groupSize: 10,
 		  actions: {
+		      clearFilter: function() {
+		           this.set('isFilterOn', false);
+		           this.set('filter', "");
+		      },
 		      resetState: function(units) {
 		         // reset all of the controller properties, this is for when we need to reload the subscription list
 		         this.set([]);
@@ -555,6 +566,8 @@
 
 	<script>
 		$(document).ready(function() {
+		    // initialize any tooltips
+		    $('.myhome-tooltip').tooltip();
 			// parse entire units list, and build into one JSON array
 			var units = {};
 			units = jQuery.parseJSON('${units}');
