@@ -198,7 +198,12 @@
 	</c:otherwise>
 </c:choose>
 <script>
-    jQuery('.portlet-topper').hide();
-    jQuery('.portlet-msg-error').addClass('alert alert-block alert-danger fade in');
-    jQuery('.alert').removeClass('portlet-msg-error');
+	<!-- Check to see if bootstrap is available, else use default styling -->
+	if (jQuery("link[href='/ieeecs-HomePage-theme/css/bootstrap.min.css']").length) {
+	    jQuery('.portlet-topper').hide();
+	    jQuery('.portlet-msg-error').addClass('alert alert-block alert-danger fade in');
+	    jQuery('.alert').removeClass('portlet-msg-error');
+	} else {
+		jQuery('.login-form ').css('color', '#000');
+	}
 </script>
