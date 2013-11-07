@@ -140,8 +140,15 @@
   	<div id="homepage-content-list-container-${id}" class="col-md-12 col-sm-12">
 		<script type="text/x-handlebars" data-template-name="contentList">
 			<div class="content-list-search-bar">
-				<form class="col-md-3 col-sm-4 pull-right">
-					{{view Ember.TextField valueBinding="filter" classNames="form-control" placeholder="Filter the content"}}
+				<form class="col-md-4 col-sm-4 pull-right">
+					<div class="input-group">
+                        {{view Ember.TextField valueBinding="filter" classNames="form-control" placeholder="Filter your content"}}
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary myhome-tooltip" type="button" {{action 'clearFilter'}} data-toggle="tooltip" data-placement="top" data-original-title="Reset Filter">
+                                <i class="icon-remove-sign"></i>
+                            </button>
+                        </span>
+                    </div><!-- /.input-group -->
 				</form>
 				<div class="col-md-8 col-sm-8">
 					<span>Suggested Content</span>
@@ -252,6 +259,10 @@
 		  groupSize: 10,
 		  totalHits: 0,
 		  actions: {
+		      clearFilter: function() {
+                   this.set('isFilterOn', false);
+                   this.set('filter', "");
+              },
 		      itemClick: function(item) {
 		        if(item != undefined) {
                     var type = this.get('type');
@@ -483,6 +494,8 @@
 
 	<script>
 		$(document).ready(function() {
+		    // initialize any tooltips
+            $('.myhome-tooltip').tooltip();
 			// send the users content list to the Ember controller
 			Ember.Instrumentation.instrument('ContentListApp.setLoadingMetaData', ${loadingMetaData});
 
