@@ -162,7 +162,7 @@
 					      <h4 class="modal-title">Suggested Companies Administration</h4>
 					    </div> <!-- /.modal-header -->
 					    <div class="modal-body">
-					    	<h5>Click on the item that you would like to change.</h5>
+					    	<h5><i class="icon-info-sign icon-fixed-width"></i>Click on the item that you would like to change.</h5>
 					    	<div class="suggested-companies-layout-container">
 					    		<div class="col-md-offset-2 col-sm-offset-2 row">
 									<div id="edit-company-${id}-1" class="company col-md-3 col-sm-3" {{action 'selectCompanyForEdit' company1}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company1.name"}}>
