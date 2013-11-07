@@ -426,6 +426,72 @@
             </div>
 </c:if>
 	    </script>
+
+	            <script type="text/x-handlebars" data-template-name="about/index">
+         <c:if test="${!isSignedIn}">
+                    <div class="about-top-container">
+                         <div class="page-header">
+                            <h1><i class="icon-file-text icon-fixed-width"></i>Computer Society Digital Library</h1>
+                         </div>
+                         <div class="about-top-content">
+                             <p class="lead"> Access to only as many articles as you need</p>
+                             <p>
+                               The Computer Society Digital Library is well known for being the most comprehensive
+                               computing resource in the world. But sometimes, you might not need access to the
+                               entire computing universe.
+                             </p>
+                             <div class="col-md-7 col-sm-7 pull-right">
+                                <img src="/ieeecs-HomepageAbout-portlet/images/bundlearticles-image-3.jpg" alt="bundle-articles" class="img-rounded pull-right col-md-11 col-sm-11">
+                             </div>
+                             <p>
+                                That's why IEEE Computer Society is pleased to introduce CSDL Bundled Article Sales.
+                                Now, your company or organization can purchase access to only as many articles as you
+                                need-whether that's 25, 50, 100, 250, or 500.
+                                <br /><br />
+                                And you can select just the topics you're interested in including areas such as cloud, big
+                                data, mobile, IoT (Internet of Things), embedded systems.
+                                <br /><br />
+                                CSDL Bundled Articles offer a cost-effective way of accessing one of the world's greatest
+                                computing resources. And if you find that your allotment is running out-don't worry;
+                                we will remind you when it's time to reorder.
+                                <br /><br />
+                             </p>
+                             <div>
+                                <button {{ action 'purchaseArticleBundle' }} class="btn btn-block btn-primary btn-lg">Request A Quote</button>
+                             </div>
+                        </div><!- /.about-top-content -->
+                    </div>
+                    <div class="about-top-container">
+                          <div class="page-header">
+                            <h1><i class="icon-youtube-play icon-fixed-width"></i>Webinars</h1>
+                          </div>
+
+                          <div class="about-top-content">
+                               <p class="lead">
+                                   Keep your staff up to date with expert instruction
+                                </p>
+                              <p>
+                                 IEEE Computer Society bundled webinars are now available to let your staff receive
+                                 perpetual access to our collection of more than 100 essential technical webinars
+                                 developed by leaders in the field.
+                              </p>
+                              <em><h3>Bundled webinars let you:</h3></em>
+                              <ul>
+                                <li>
+                                    Purchase one-time or unlimited access for all employees or individual groups
+                                </li>
+                                <li>
+                                   Track employee viewing habits
+                                </li>
+                                <li>
+                                    Come up with a customizable program that works for you.
+                                </li>
+                              </ul>
+                              <p><button {{action 'purchaseWebinarBundle' }} class="btn btn-block btn-primary btn-lg">Try out a webinar now.</button></p>
+                         </div> <!-- /.about-top-content -->
+                    </div>
+        </c:if>
+        	    </script>
 	</div> <!-- /#homepage-about-container-${id} -->
     <script>
         // initialize the article Ember App
