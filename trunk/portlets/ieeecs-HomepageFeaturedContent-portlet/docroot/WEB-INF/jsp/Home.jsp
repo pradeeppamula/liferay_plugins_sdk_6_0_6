@@ -325,7 +325,7 @@
 
 					  <!-- ITEMS TAB PANE -->
 					  <div class="tab-pane" id="items-section-${id}">
-					  	<h5>Click on the item that you would like to change.</h5>
+					  	<h5><i class="icon-info-sign icon-fixed-width"></i>Click on the item that you would like to change.</h5>
 					  	<div class="edit-item-layout-container">
 						  	<div class="layout-1-hero-edit-${id} col-md-8 col-sm-8">
 								<img {{bindAttr src="heroItem.imageURL"}} />
