@@ -88,14 +88,14 @@
       #if ($is_signed_in)
         <script type="text/x-handlebars" data-template-name="search">
             <div class="col-md-5 col-sm-4 search-app">
-                <form class="navbar-form" action="" role="search">
+                {{#view SearchApp.SearchFormView}}
                     <div class="input-group">
                         {{view Ember.TextField id="myhome-search-input" action="performSearch" valueBinding="searchText" classNames="form-control" placeholder="Search for articles, conferences and more..."}}
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" {{action 'setUpFullSearch'}}><i class="icon-search"></i></button>
                         </span>
                     </div>
-                </form>
+                {{/view}}
             </div>
             <div class="col-md-1 col-sm-1 advanced-search search-app">
                 <a href="#"  {{action 'showAdvancedSearchModal'}}>Advanced</a>
@@ -311,6 +311,19 @@
             this.route("page", { path: "/:page_id" });
         });
     });
+
+     ## The Custom view for the search form
+     SearchApp.SearchFormView = Ember.View.extend({
+         tagName: "form",
+         classNames: ['navbar-form'],
+         submit: function(event) {
+            // will be invoked whenever the user triggers
+            // the browser's `submit` method
+            event.preventDefault();
+            // call the controller's search
+            this.get('controller').send('setUpFullSearch');
+         }
+     });
 
     #*
       This is the main model for search results.
