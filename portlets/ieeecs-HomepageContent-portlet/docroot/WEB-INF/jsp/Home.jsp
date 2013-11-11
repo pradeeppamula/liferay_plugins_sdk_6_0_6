@@ -1,7 +1,5 @@
 <%@ include file="/WEB-INF/jsp/inc/includes.jsp" %>
 <portlet:resourceURL var='ajaxHandlerContent' id='ajaxHandlerContent' />
-
- <!-- flowplayer javascript component -->
 <style type="text/css">
 	#homepage-content-container-${id} {
 		font-size: 14px;
@@ -39,6 +37,10 @@
         .flowplayer .fp-timeline { background-color: rgba(204, 204, 204, 1)}
         .flowplayer .fp-progress { background-color: rgba(0, 167, 200, 1)}
         .flowplayer .fp-buffer { background-color: rgba(249, 249, 249, 1)}
+        .flowplayer .fp-fullscreen {
+        	background-color: #aaa;
+        	padding-right: 38px;
+        }
 </style>
 
  	<div id="homepage-content-container-${id}" class="col-md-12 col-sm-12">
@@ -452,6 +454,9 @@
                                      */
                                     setTimeout(function() {
                                        $(".webinar-flowplayer").appendTo($( ".webinar-flowplayer-container"));
+                                       $(".webinar-flowplayer").removeClass("is-mouseout");
+                                       $(".webinar-flowplayer").addClass("is-mouseover");
+                                       $(".webinar-flowplayer").addClass("fixed-controls");
                                        $(".webinar-flowplayer").show();
                                     }, 1000);
                                 }
