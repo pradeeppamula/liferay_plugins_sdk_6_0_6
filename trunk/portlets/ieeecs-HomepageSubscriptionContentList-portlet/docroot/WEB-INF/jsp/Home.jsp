@@ -66,6 +66,17 @@
 			line-height: 30px;
 		}
 
+		.content-list-search-bar {
+            background-color: #ffffff;
+            height: 50px;
+            padding: 7px 15px;
+            color: #2a72b2;
+            line-height: 40px;
+            border-bottom: 1px solid #eeeeee;
+            font-weight: 500;
+            font-size: 1.3em;
+        }
+
         /* Small devices (tablets, 992px and down) */
         @media (max-width: 992px) {
            .content-list-search-bar {
