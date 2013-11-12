@@ -216,7 +216,23 @@
         }
 
     </style>
-
+    <script type="text/javascript" src="/ieeecs-HomePage-theme/js/bowser.min.js"></script>
+    <script type="text/javascript">
+        #*
+         if the browser fails of the following conditions,
+         forward to the browser download page:
+         1. Opera browser
+         2. Chrome < 11
+         3. Firefox < 6
+         4. IE < 9
+        *#
+        if ((bowser.msie && bowser.version < 9)||
+            (bowser.opera)||
+            (bowser.mozilla && bowser.version < 6)||
+            (bowser.chrome && bowser.version < 11)) {
+            window.location = '/portal/web/myhome/br';
+        }
+    </script>
     ## HTML5 shim, for IE6-8 support of HTML5 elements
     <!--[if lt IE 9]>
     	<script type="text/javascript" src="/ieeecs-HomePage-theme/js/html5shiv.js"></script>
