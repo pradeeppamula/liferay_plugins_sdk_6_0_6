@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <h4 class="col-md-3 col-sm-3 content-date label-info">{{publicationDateFormatted}}</h4>
+    </div>
+    <div class="row header-info">
+        <h2>{{title}}</h2>
+        <h3>{{publisher}}</h3>
+        {{#if authorList}}
+        <h6>by {{authors}}</h6>
+        {{/if}}
+    </div>
+</div> <!-- /.container -->
+<hr>
+<div class="content-body">
+    {{#if hasFullAccess}}
+    <p>
+        {{{summary}}}
+    </p>
+    <br />
+    <div class="webinar-flowplayer-container"></div>
+    <div id="webinar-not-found-${id}" class="alert-warning-container alert alert-block alert-warning fade hide warning">
+        <h2>
+            <i class="icon-warning-sign icon-2x icon-fixed-width"></i>
+            Webinar Not Found.
+        </h2>
+        <p>Please verify that you selected the correct item.  If you are still having trouble contact <strong>help@computer.org</strong> for help.</p>
+    </div> <!-- /.warning -->
+    {{else}}
+    <p>
+        {{{summary}}}
+    </p>
+    <br /><br />
+    <a href="/portal/web/myhome/webinar-bundle" class="btn btn-medium btn-block btn-primary">Learn More About Our Webinars</a>
+    {{/if}}
+</div><!-- /.content-body -->

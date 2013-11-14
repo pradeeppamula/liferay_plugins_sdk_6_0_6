@@ -1,0 +1,21 @@
+{{#if isLoading}}
+<div class="content-loading-container container">
+    <i class="icon-spinner icon-spin icon-large"></i> Loading
+</div>
+{{else}}
+{{#if isArticle}}
+{{view ContentApp.ArticleView}}
+{{else}}
+{{#if isWebinar}}
+{{view ContentApp.WebinarView}}
+{{else}}
+<div class="alert-warning-container alert alert-block alert-warning fade in warning">
+    <h2>
+        <i class="icon-warning-sign icon-2x icon-fixed-width"></i>
+        Content Not Found.
+    </h2>
+    <p>Please verify that you selected the correct item.  If you are still having trouble contact <strong>help@computer.org</strong> for help.</p>
+</div> <!-- /.warning -->
+{{/if}}
+{{/if}}
+{{/if}}

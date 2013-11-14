@@ -1,0 +1,71 @@
+<div class="content-list-search-bar">
+    <form class="col-md-4 col-sm-4 pull-right">
+        <div class="input-group">
+            {{view Ember.TextField valueBinding="filter" classNames="form-control" placeholder="Filter your content"}}
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary myhome-tooltip" type="button" {{action "clearFilter"}} data-toggle="tooltip" data-placement="top" data-original-title="Reset Filter">
+                                <i class="icon-remove-sign"></i>
+                            </button>
+                        </span>
+        </div><!-- /.input-group -->
+    </form>
+    <div class="col-md-8 col-sm-8">
+        <span>Suggested Content</span>
+    </div>
+</div>
+<div class="content-list">
+    {{#each item in filteredContent}}
+    <div {{bindAttr class=":col-md-12 :col-sm-12 item.contentTypeCSSClass"}} >
+    {{#if item.isGroup}}
+    <div {{ bindAttr class=":alert :alert-block :alert-success :fade :hide :success item.cid" }}>
+    <button type="button" class="close" aria-hidden="true" {{ action "hideJoinSuccess" item}}>x</button>
+    <h4><i class="icon-check-sign icon-3x icon-fixed-width"></i>Community joined!</h4>
+</div> <!-- /.success -->
+<div {{ bindAttr class=":alert :alert-block :alert-danger :fade :hide :error item.cid" }}>
+<button type="button" class="close" aria-hidden="true" {{ action "hideJoinError" item}}>x</button>
+<h4><i class="icon-exclamation-sign icon-3x icon-fixed-width"></i>There was a problem joining this community, please try again or contact help@computer.org.</h4>
+</div> <!-- /.error -->
+<div {{ bindAttr class=":alert :alert-block :alert-warning :fade :hide :warning item.cid" }}>
+<button type="button" class="close" aria-hidden="true"  {{ action "hideJoinConfirm" item}}>x</button>
+<p>
+    <i class="icon-warning-sign icon-3x icon-fixed-width"></i>
+    Are you sure you would like to join community <strong>{{ item.title }}</strong>?
+    <a class="btn btn-default" href="#" {{ action "joinGroup" }} >Yes</a>
+</p>
+</div> <!-- /.warning -->
+{{/if}}
+<div class="content-item-column">
+    <div class="content-list-item-details" {{ action "itemClick" item }}>
+    <div {{bindAttr class=":content-list-item-type item.contentType"}}>
+    {{item.contentType}}
+</div>
+<!-- this is a spacer that is visible only for the small (tablet) sized devices -->
+<div class="clearfix package-title-sm-spacer visible-sm"></div>
+<p class="package-title"></p>
+<div class="media">
+    <div {{bindAttr class=":pull-left :media-object :content-list-item-media-container"}}>
+    {{#if item.isGroup}}
+    <div class="join-button-container">
+        <button class="btn btn-primary" {{action "joinGroupConfirm" item}}>
+        <i class="icon-plus-sign icon-fixed-width"></i>Join
+        </button>
+    </div>
+    {{else}}
+    <img src="http://lorempixel.com/g/200/200/"/>
+    {{/if}}
+</div>
+<div class="media-body">
+    <h4 class="media-heading">{{item.title}}</h4>
+    {{#unless item.isGroup}}
+    <span class="text-muted">{{item.publisher}} {{#if item.shortSummary}}&middot;{{/if}}</span>
+    {{/unless}}
+    {{item.shortSummary}}
+</div>
+</div> <!-- /.media -->
+</div> <!-- /.content-list-item-details -->
+</div> <!-- /.content-item-column -->
+<div class="content-done-column"><i class="icon-check-sign icon-3x"></i></div>
+<div class="content-loading-column"><i class="icon-spinner icon-spin icon-large"></i> Loading</div>
+</div> <!-- /.contentTypeCSSClass -->
+{{/each}}
+</div><!-- /.content-list -->

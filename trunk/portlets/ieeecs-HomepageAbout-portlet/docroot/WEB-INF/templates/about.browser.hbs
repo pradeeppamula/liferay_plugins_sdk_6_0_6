@@ -1,4 +1,15 @@
-<script type="text/x-handlebars" data-template-name="about/browser">
+<style type="text/css">
+    ul.browser-list {width: 90%; margin: 0 auto; list-style: none; list-style-type:none; }
+    ul ul { list-style-type:none; }
+    ul.browser-list > li {float: left; padding: 30px; width: 25%; }
+    ul.browser-list > li > ul {display: block; width: 100%;list-style-type: none; }
+    ul.browser-list > li > ul > li {display: block; float: none; }
+    ul.browser-list > li > a { color: #ffffff; }
+    .supported-browsers-container {
+        color: #fff;
+        padding: 20px;
+    }
+</style>
 <div class="supported-browsers-container">
     <h1 class="text-center">Supported Browsers</h2>
         <p class="lead">In order to have the best experience we recommend that you use one of the
@@ -9,7 +20,7 @@
                     <a href="https://www.google.com/intl/en/chrome/browser/">
                         <img alt="chrome" src="/ieeecs-HomePage-theme/images/chrome-icon.png"/>
                         <ul>
-                            <li>Version >= 11</li>
+                            <li>Chrome Version >= 11</li>
                         </ul>
                     </a>
                 </li>
@@ -18,7 +29,7 @@
                     <a href="http://www.mozilla.org/en-US/firefox/new/">
                         <img alt="firefox" src="/ieeecs-HomePage-theme/images/firefox-icon.png"/>
                         <ul>
-                            <li>Version >= 6</li>
+                            <li>Firefox Version >= 6</li>
                         </ul>
                     </a>
                 </li>
@@ -26,7 +37,7 @@
                     <a href="http://www.apple.com/safari/">
                         <img alt="safari" src="/ieeecs-HomePage-theme/images/safari-icon.png"/>
                         <ul>
-                            <li>All Versions</li>
+                            <li>Safari All Versions</li>
                         </ul>
                     </a>
                 </li>
@@ -34,15 +45,10 @@
                     <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
                         <img alt="ie" src="/ieeecs-HomePage-theme/images/ie-icon.png"/>
                         <ul>
-                            <li>Version >= 9</li>
+                            <li>IE Version >= 9</li>
                         </ul>
                     </a>
                 </li>
             </ul>
         </div>
 </div> <!-- /.supported-browsers-container -->
-<script>
-    console.log('hide the login button.');
-    $('.login-button-container').hide();
-</script>
-</script>

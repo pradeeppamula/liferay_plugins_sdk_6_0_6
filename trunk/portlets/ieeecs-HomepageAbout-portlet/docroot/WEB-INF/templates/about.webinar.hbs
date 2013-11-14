@@ -24,7 +24,7 @@
                 Come up with a customizable program that works for you.
             </li>
         </ul>
-        <p><button {{action 'purchaseBundle' }} class="btn btn-block btn-primary btn-lg">Try out a webinar now.</button></p>
+        <p><button {{action "purchaseBundle" }} class="btn btn-block btn-primary btn-lg">Try out a webinar now.</button></p>
     </div> <!-- /.about-top-content -->
 </div>
 <div class="about-mid-container well">
@@ -32,7 +32,7 @@
         <img src="/ieeecs-HomepageAbout-portlet/images/bundlewebinars-image-1.jpg" alt="bundle-webinars" class="img-rounded pull-right col-md-11 col-sm-11">
     </div>
     {{#if catelogIsVisible}}
-    <a href="#" {{ action 'toggleCatelog'}}>
+    <a href="#" {{ action "toggleCatelog"}}>
     <h4><i class="icon-info-sign icon-fixed-width"></i>Hide the catalogue <i class="icon-caret-up icon-fixed-width"></i></h4>
     </a>
     <h3>The IEEE Computer Society Technical Webinar Collection meets the needs of your
@@ -40,89 +40,108 @@
         technologies.  The webinars in the collection include:
     </h3>
     <ul>
-        <li> Best Practices in Software Architecture</li>
-        <li> Modeling and Simulation-Driven</li>
-        <li> Development of Complex, Software-Intensive Systems</li>
-        <li> Standards & Practices for the Software and System Engineers/Professionals</li>
-        <li> Introduction to Lean Software Development</li>
-        <li> Concepts and Methods in Systems</li>
-        <li> Architecting</li>
-        <li> Pattern-Oriented Software Architecture</li>
-        <li> Test-driven Development in the Field</li>
-        <li> Four Strategies for Responsive Design</li>
-        <li> Right-Sizing Agile Development</li>
-        <li> Requirements Triage</li>
-        <li> The Collaborative Effort of Software and</li>
-        <li> Hardware Teams in Agile Development -- From Vision to Execution</li>
-        <li> Agile Leadership and Contracting Models</li>
-        <li> Principles, Patterns, Practices, Professionalism</li>
-        <li> Model-Based Engineering of Real-Time and Embedded Systems</li>
-        <li> Agile Model-Driven Development</li>
-        <li> Emergent Design: The Evolutionary</li>
-        <li> Nature of Professional Software Development</li>
-        <li> The Role of the Software Architect</li>
-        <li> Reconciling Strategy, Hardware, and Software Through Architecture: Lessons -- Old and New</li>
-        <li> Your Requirements for Managing Requirements</li>
-        <li> Modeling the Lifecycles of Systems of Systems</li>
-        <li> Fifteen Years of Design Patterns</li>
-        <li> Software Testing as a Quality-Improvement Activity</li>
-        <li> Architecture as Language</li>
-        <li> Combinatorial Test Design Methodology</li>
-        <li> Cloud Computing</li>
-        <li> Leveraging a Service-Oriented and Model-Driven Approach to Architecting</li>
-        <li> Your Enterprise</li>
-        <li> Balancing the Tension between Lean and Agile</li>
-        <li> Building Software for Affordability</li>
-        <li> Systems Engineering Cost Estimation</li>
-        <li> The Innovator's Prescription</li>
-        <li> Value Engineering for Requirements</li>
-        <li> Engineers</li>
-        <li> Innovation Tournaments</li>
-        <li> How to Reduce Costs Throughout the Project Lifecycle</li>
-        <li> Strategy is Innovation</li>
-        <li> Improving Software Economics</li>
-        <li> Achieving Agility at Scale</li>
-        <li> Discovery-Driven Growth</li>
-        <li> Pattern-Oriented Software Architecture</li>
-        <li> Ladar: A Look Forward</li>
-        <li> Medical Device Interoperability</li>
-        <li> Risk-Based Testing</li>
-        <li> Counterinsurgency in Context</li>
-        <li> Business Analytics and Optimization</li>
-        <li> Technology Trends and Innovation Insights</li>
-        <li> Affordable Software Architecture</li>
-        <li> Immerse Yourself in a Discussion on</li>
-        <li> Virtual World Technologies</li>
-        <li> Wired for War: Everything You Wanted to Know About Robots and War</li>
-        <li> 10 Deadly Sins of Software Estimation</li>
-        <li> Software Architecture Using Model-Based Approaches</li>
-        <li> Future of Surgery</li>
-        <li> Human Social Culture Behavior Modeling</li>
-        <li> Systems Engineering Economics-- Using Requirements to do Early Estimation and Prioritization</li>
-        <li> Combinatorial Test-driven Development</li>
-        <li> Systems Engineering as a Literate Behavior</li>
-        <li> DCI</li>
-        <li> Dynamic Construction Uncovered</li>
-        <li> TDD with Application to Embedded Systems</li>
-        <li> Technical Institutions and Technical Autonomy</li>
-        <li> Utilizing Design of Experiments to Reduce Software and System Testing Cost</li>
-        <li> Affordability-Based Engineering</li>
-        <li> Leveraging Social Media for Early Indications and Warnings of Instability and Unrest</li>
-        <li> Best Practices for Transforming and Evolving a Legacy System</li>
-        <li> Service Orientation and Systems of Systems</li>
-        <li> Software Product Lines: What Got Us Here, Won’t Get Us There</li>
-        <li> Gray, the new Black: Gray-Box</li>
-        <li> Vulnerability Testing</li>
-        <li> Why We Need Architects (and Architecture) on Agile Projects</li>
-        <li> Clinical Virtual Reality: A Brief Review of the Future</li>
-        <li> Advances in Requirements Engineering</li>
-        <li> The Software Challenge of Robots</li>
-        <li> Manage your Technical Debt</li>
-        <li> Systems of Systems and Large-Scale Systems Assurance</li>
-        <li> Low Temperature, All Copper Solder-Free Electronic Assembly and Interconnect Technology</li>
+        <li>10 Deadly Sins of Software Estimation</li>
+        <li>A View from the C-Suite: The Future of Information Security</li>
+        <li>Active Defense</li>
+        <li>Advances in Requirements Engineering</li>
+        <li>Affordability Engineering for Requirements Engineers</li>
+        <li>Affordability-Based Engineering</li>
+        <li>Affordable Software Architecture</li>
+        <li>Against the Odds: Managing the Unmanageable in a Time of Crisis</li>
+        <li>Agile Leadership and Contracting Models</li>
+        <li>Agile Model-Driven Development</li>
+        <li>Agile Software Development in the Computer Science Handbook</li>
+        <li>Architecture as Language: Using DSLs to describe Software Architecture</li>
+        <li>Automation Everywhere--Industrial Control Systems in the Cross Hairs</li>
+        <li>Balancing the Tension between Lean and Agile</li>
+        <li>Best Practices for Transforming and Evolving a Legacy System</li>
+        <li>Best Practices in Software Architecture</li>
+        <li>Building Software for Affordability</li>
+        <li>Business Analytics and Optimization</li>
+        <li>Clinical Virtual Reality: A Brief Review of the Future</li>
+        <li>Cloud Computing--An Overview and Introduction from an Enterprise Perspective</li>
+        <li>Cloud Security Challenges</li>
+        <li>Combinatorial Test Design Methodology</li>
+        <li>Complexity Made Simple: Tackling Complexity in Software-Intensive Systems</li>
+        <li>Computer-Assisted Approaches for Identifying and Tracking Technical Debt</li>
+        <li>Concepts and Methods in Systems Architecting</li>
+        <li>Counterinsurgency in Context</li>
+        <li>Deception and Estimation: How We Fool Ourselves</li>
+        <li>Discovery Driven Growth</li>
+        <li>Dynamic Construction - UnCovered</li>
+        <li>Emergent Design: The Evolutionary Nature of Professional Software Development</li>
+        <li>Fifteen Years of Design Patterns</li>
+        <li>Form and Content: Why They Both Matter</li>
+        <li>Four Strategies for Responsive Design</li>
+        <li>From Vision to Execution</li>
+        <li>Future of Surgery</li>
+        <li>Gray, the new Black: Gray-Box Vulnerability Testing</li>
+        <li>How to Reduce Costs Throughout the Project Lifecycle</li>
+        <li>Human Social Culture Behavior Modeling</li>
+        <li>Immerse Yourself - A Discussion on Virtual World Technologies</li>
+        <li>Improving Software Economics, Achieving Agility at Scale</li>
+        <li>Industrial Strength Software Measurement</li>
+        <li>Innovation Tournaments</li>
+        <li>Introduction to Lean Software Development</li>
+        <li>Ladar: A Look Forward</li>
+        <li>Lean Engineering</li>
+        <li>Leveraging a Service Oriented and Model Driven Approach to Architecting Your Enterprise</li>
+        <li>Leveraging Social Media for Early Indications and Warnings of Instability and Unrest</li>
+        <li>Low Temperature, All Copper Solder-Free Electronic Assembly and Interconnect Technology</li>
+        <li>Manage your Technical Debt</li>
+        <li>Managing Complexity: A Panel Discussion Exploring the Challenges of Architecting Complex Systems</li>
+        <li>Medical Device Interoperability</li>
+        <li>Model-Based Engineering of Real-Time and Embedded Systems</li>
+        <li>Modeling and Simulation-Driven Development of Complex, Software-Intensive Systems</li>
+        <li>Modeling the Life-cycles of Systems of Systems</li>
+        <li>Optimizing Optimism: Why Engineers Should Be More Like Las Vegas Bookies</li>
+        <li>Pattern-Oriented Software Architecture: A Pattern Language for Distributed Computing</li>
+        <li>Pattern-Oriented Software Architecture:XA Pattern Language for High Quality and Affordable Distributed Computing Systems</li>
+        <li>Preventing Defects With Test Driven Development</li>
+        <li>Principles, Patterns, Practices, Professionalism</li>
+        <li>Reconciling Strategy, Hardware, and Software Through Architecture: Lessons -- Old and New</li>
+        <li>Requirements Triage</li>
+        <li>Right-Sizing Agile Development</li>
+        <li>Risk-Based Testing</li>
+        <li>Scaling with Design Constraints -- Predicting the Future of Big Chips</li>
+        <li>Secure Programming with Static Analysis</li>
+        <li>Service Orientation and Systems of Systems</li>
+        <li>Seven Unbreakable Rules of Software Leadership</li>
+        <li>Seven Unbreakable Rules of Software Leadership</li>
+        <li>Software Architecture Using Model-Based Approaches</li>
+        <li>Software Product Lines: What Got Us Here, Won’t Get Us There</li>
+        <li>Software Testing as a Quality-Improvement Activity</li>
+        <li>Standards & Practices for Software and System Engineers / Professionals</li>
+        <li>Strategy is Innovation</li>
+        <li>Systems Engineering as a Literate Behavior</li>
+        <li>Systems Engineering Cost Estimation</li>
+        <li>Systems Engineering Economics-- Using Requirements to do Early Estimation and Prioritization</li>
+        <li>Systems of Systems and Large-Scale Systems Assurance</li>
+        <li>Systems-of-Systems Analysis of Ballistic Missile Defense Architecture Effectiveness through Surrogate Modeling and Simulation</li>
+        <li>Technical Institutions and Technical Autonomy</li>
+        <li>Technology Trends and Innovation Insights</li>
+        <li>Test Driven Development in the Field</li>
+        <li>The Collaborative Effort of Software and Hardware Teams in Agile Development</li>
+        <li>The Coming of Age of Platforms</li>
+        <li>The Data-Context-Interaction (DCI) Architecture -- Realizing the Object Vision</li>
+        <li>The Economics of Agility</li>
+        <li>The Economics of Reuse</li>
+        <li>The Future of Software V&V</li>
+        <li>The Innovator&rsquo;s Prescription</li>
+        <li>The Real Skills of An Automated Test Professional</li>
+        <li>The Role of the Software Architect</li>
+        <li>The Science (and Art) of Security Fragility</li>
+        <li>The Software Challenge of Robots</li>
+        <li>Universal Systems Language (USL) and its Automation, the 001 Tool Suite, for Designing and Building Systems and Software</li>
+        <li>Using Measures and Risk Indicators for Early Insight Into Software Product Characteristics such as Software Safety</li>
+        <li>Utilizing Design of Experiments to Reduce Software and System Testing Cost</li>
+        <li>What is in Your Program? Application Security Maturity in 2012</li>
+        <li>Why We Need Architects (and Architecture) on Agile Projects</li>
+        <li>Wired for War: Everything You Wanted to Know About Robots and War</li>
+        <li>Your Requirements for Managing Requirements</li>
     </ul>
     {{else}}
-    <a href="#" {{ action 'toggleCatelog'}}>
+    <a href="#" {{ action "toggleCatelog"}}>
     <h4><i class="icon-info-sign icon-fixed-width"></i>View the full catalogue <i class="icon-caret-down icon-fixed-width"></i></h4>
     </a>
     {{/if}}
@@ -185,7 +204,7 @@
     <div class="alert alert-info">
         <p>
             <i class="icon-info-sign icon-fixed-width icon-2x"></i>
-            <a href="#" {{action 'purchaseBundle'}}><strong>Talk</strong></a>  to an IEEE Computer Society representative today about this unique opportunity to
+            <a href="#" {{action "purchaseBundle"}}><strong>Talk</strong></a>  to an IEEE Computer Society representative today about this unique opportunity to
             receive perpetual access to this exciting collection for a single, affordable price.
         </p>
     </div>

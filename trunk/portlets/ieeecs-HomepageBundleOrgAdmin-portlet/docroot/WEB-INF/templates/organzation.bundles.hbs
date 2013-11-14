@@ -1,0 +1,121 @@
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#article-section-${id}">CSDL Articles</a></li>
+    <li><a data-toggle="tab" href="#webinar-section-${id}">Webinars</a></li>
+</ul>
+<div class="tab-content">
+    <div class="bundle-alerts-container">
+        <div id="saved-bundle-alert-${id}" class="alert alert-block alert-success fade hide">
+            <button type="button" class="close" aria-hidden="true" {{ action "closeSavedAlert" "#saved-bundle-alert-${id}"}}>x</button>
+            <p><i class="icon-check-sign icon-2x icon-fixed-width"></i>Changes Saved!</p>
+        </div><!-- /#saved-bundle-alert-${id} -->
+        <div id="error-bundle-alert-${id}" class="alert alert-block alert-danger fade hide">
+            <button type="button" class="close" aria-hidden="true" {{ action "closeErrorAlert" "#error-bundle-alert-${id}" }}>x</button>
+            <p><i class="icon-exclamation-sign icon-2x icon-fixed-width"></i><span id="error-bundle-message-${id}"></span></p>
+        </div> <!-- /#error-bundle-alert-${id} -->
+        <div id="validation-bundle-alert-${id}" class="alert alert-block alert-danger fade hide validation-bundle-alert-${id}">
+            <button type="button" class="close" aria-hidden="true" {{ action "closeValidationErrorAlert" "validation-bundle-alert-${id}" }}>x</button>
+            <p><i class="icon-exclamation-sign icon-2x icon-fixed-width"></i><span id="validation-bundle-message-${id}"></span></p>
+        </div> <!-- /#validation-bundle-alert-${id} -->
+        <div id="info-bundle-alert-${id}" class="alert alert-block alert-info fade hide info-bundle-alert-${id}">
+            <button type="button" class="close" aria-hidden="true" {{ action "closeAlert" "#info-bundle-alert-${id}" }}>x</button>
+            <p><i class="icon-info-sign icon-2x icon-fixed-width"></i>Please click the <strong>Save Changes</strong> button in order for your changes to take affect.</p>
+        </div> <!-- /#info-bundle-alert-${id} -->
+    </div>
+    <div class="tab-pane active" id="article-section-${id}">
+        <div id="warning-article-alert-${id}" class="alert alert-block alert-warning fade hide">
+            <button type="button" class="close" aria-hidden="true" {{ action "closeWarningAlert" "#warning-article-alert-${id}" }}>x</button>
+            <i class="icon-warning-sign icon-2x icon-fixed-width"></i>
+            Are you sure you would like to remove this bundle?
+            <a class="btn btn-default" href="#" {{action "removeBundle" "article"}}>Yes, Remove Bundle</a></p>
+        </div> <!-- /#warning-article-alert-${id} -->
+        <div class="add-article-form-container">
+            {{#if inAddArticleMode}}
+            {{view BundleOrgAdminApp.AddArticleBundleForm}}
+            {{else}}
+            <a class="btn btn-primary" href="#" {{action "showArticleBundleForm"}}><i class="icon-plus icon-fixed-width"></i>Add Bundle</a>
+            {{/if}}
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Size</th>
+                <th>Created</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each csdl_article}}
+            <tr>
+                <td>{{number_of_items}}</td>
+                <td>{{formattedDate created_date "LL"}}</td>
+                <td><a href="#" class="btn btn-danger" {{action "showArticleWarningAlert" this}}>Remove</a></td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div> <!-- /#article-section-${id} -->
+    <div class="tab-pane" id="webinar-section-${id}">
+        <div id="warning-webinar-alert-${id}" class="alert alert-block alert-warning fade hide">
+            <button type="button" class="close" aria-hidden="true" {{ action "closeWarningAlert" "#warning-webinar-alert-${id}" }}>x</button>
+            <i class="icon-warning-sign icon-2x icon-fixed-width"></i>
+            Are you sure you would like to remove this webinar?
+            <a class="btn btn-default" href="#" {{action "removeBundle" "webinar"}}>Yes, Remove Webinar</a></p>
+        </div> <!-- /#warning-webinar-alert-${id} -->
+        <div>
+            {{#if inAddWebinarMode}}
+            {{view BundleOrgAdminApp.AddWebinarBundleForm}}
+            {{else}}
+            <a class="btn btn-primary" href="#" {{action "showWebinarBundleForm"}}><i class="icon-plus icon-fixed-width"></i>Add Webinar</a>
+            {{/if}}
+        </div>
+        <div class="col-md-10 change-expiration-container">
+            {{#if inChangeExpirationMode}}
+            <div id="webinar-expiration-date-${id}" class="form-group col-md-5 col-sm-5">
+                <label class="control-label" for="webinar-expiration-date-${id}">Webinar Expiration</label>
+                <div class="input-group">
+                    {{view Ember.TextField id="webinar-expiration-field-${id}" valueBinding="webinarExpirationDate" classNames="form-control datepicker input-group" placeholder="YYYY-MM-DD"}}
+                    <span class="input-group-addon"><i class="icon-calendar"></i></span>
+                </div>
+            </div>
+            <div class="pull-right col-md-12 col-sm-12">
+                <a href="#" {{action "hideChangeExpirationForm"}} {{bindAttr class=":btn :btn-default"}}>Cancel</a>
+                <button {{bindAttr class=":btn :btn-primary"}} {{action "changeExpirationDate"}}>
+                Done
+                </button>
+            </div>
+            {{else}}
+            <br />
+            <a class="btn btn-primary" href="#" {{action "showChangeExpirationForm"}}><i class="icon-calendar icon-fixed-width"></i>Change Expiration</a>
+            {{/if}}
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Expiration</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each web in webinar}}
+            {{#each web.selected_items}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{formattedDate web.expiration_date "LL"}}</td>
+                <td><a href="#" class="btn btn-danger" {{action "showWebinarWarningAlert" this}}>Remove</a></td>
+            </tr>
+            {{/each}}
+            {{/each}}
+            </tbody>
+        </table>
+    </div> <!-- /#webinar-section-${id} -->
+    <div class="pull-right col-md-12 col-sm-12">
+        <button {{bindAttr class=":btn :btn-primary isSaving:disabled"}} {{action "saveBundles"}}>
+        {{#if isSaving}}
+        Please Wait...
+        {{else}}
+        Save Changes
+        {{/if}}
+        </button>
+    </div>
+</div> <!-- /.tab-content -->

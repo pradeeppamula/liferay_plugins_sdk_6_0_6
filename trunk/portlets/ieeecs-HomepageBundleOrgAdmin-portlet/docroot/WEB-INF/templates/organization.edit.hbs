@@ -1,0 +1,35 @@
+<div class="organization-edit-container">
+    <div id="saved-organization-alert-${id}" class="alert alert-block alert-success fade hide">
+        <button type="button" class="close" aria-hidden="true" {{ action "closeSavedAlert" }}>x</button>
+        <p><i class="icon-check-sign icon-2x icon-fixed-width"></i>Changes Saved!</p>
+    </div><!-- /#saved-user-alert-${id} -->
+    <div id="error-organization-alert-${id}" class="alert alert-block alert-danger fade hide">
+        <button type="button" class="close" aria-hidden="true" {{ action "closeErrorAlert" }}>x</button>
+        <p><i class="icon-exclamation-sign icon-2x icon-fixed-width"></i><span id="error-organization-message-${id}"></span></p>
+    </div> <!-- /#error-organization-alert-${id} -->
+    <div id="validation-organization-alert-${id}" class="alert alert-block alert-danger fade hide validation-organization-alert-${id}">
+        <button type="button" class="close" aria-hidden="true" {{ action "closeValidationErrorAlert" "validation-organization-alert-${id}" }}>x</button>
+        <p><i class="icon-exclamation-sign icon-2x icon-fixed-width"></i><span id="validation-organization-message-${id}"></span></p>
+    </div> <!-- /#validattion-organization-alert-${id} -->
+
+    <form role="form">
+        <div class="form-group name-${id} col-md-6 col-sm-6">
+            <label class="control-label" for="name-${id}">Name</label>
+            {{view Ember.TextField valueBinding="name" classNames="form-control flat-gray" placeholder="name"}}
+        </div>
+        <div class="form-group description-${id} col-md-8 col-sm-8">
+            <label class="control-label" for="company-${id}">Description</label>
+            {{view Ember.TextArea valueBinding="description" classNames="form-control flat-gray" placeholder="description"}}
+        </div>
+    </form>
+    <div class="pull-right col-md-12 col-sm-12">
+        {{#link-to "admin.index" classNames="btn btn-default"}}Cancel{{/link-to}}
+        <button {{bindAttr class=":btn :btn-primary isSaving:disabled"}} {{action "saveOrganization"}}>
+        {{#if isSaving}}
+        Please Wait...
+        {{else}}
+        Save Changes
+        {{/if}}
+        </button>
+    </div>
+</div><!-- /.organization-edit-container -->

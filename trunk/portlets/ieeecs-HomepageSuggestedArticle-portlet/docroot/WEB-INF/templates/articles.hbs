@@ -1,0 +1,43 @@
+<a class="text-muted pull-right" href="/portal/web/myhome/suggested-content/?type=article&keywords=software%20engineering">View all</a>
+<p class="header">Suggested articles</p>
+<div class="suggested-article-container">
+    <div id="suggested-article-${id}-0" class="media">
+        <a class="pull-left suggested-article-img-container-${id}" href="#">
+            <img {{bindAttr src="article0.imageURL"}}/>
+        </a>
+        <div class="media-body">
+            <a class="btn btn-default btn-sm pull-right" href="#"  {{action "goToArticle" article0}}>View</a>
+            <a class="close-button pull-right" href="#" {{action "removeArticle" article0}}><i class="icon-remove-sign"></i></a>
+            {{article0.shortTitle}}
+        </div>
+    </div> <!-- /.media -->
+</div><!-- /.suggested-article-container -->
+<div class="suggested-article-container">
+    <div id="suggested-article-${id}-1" class="media">
+        <a class="pull-left suggested-article-img-container-${id}" href="#">
+            <img {{bindAttr src="article1.imageURL"}}/>
+        </a>
+        <div class="media-body">
+            <a class="btn btn-default btn-sm pull-right" href="#" {{action "goToArticle" article1}}>View</a>
+            <a class="close-button pull-right" href="#" {{action "removeArticle" article1}}><i class="icon-remove-sign"></i></a>
+            {{article1.shortTitle}}
+        </div>
+    </div> <!-- /.media -->
+</div><!-- /.suggested-article-container -->
+<div class="suggested-article-container">
+    <div id="suggested-article-${id}-2" class="media">
+        <a class="pull-left suggested-article-img-container-${id}" href="#">
+            <img {{bindAttr src="article2.imageURL"}}/>
+        </a>
+        <div class="media-body">
+            <a class="btn btn-default btn-sm pull-right" href="#" {{action "goToArticle" article2}}>View</a>
+            <a class="close-button pull-right" href="#" {{action "removeArticle" article2}}><i class="icon-remove-sign"></i></a>
+            {{article2.shortTitle}}
+        </div>
+    </div> <!-- /.media -->
+</div><!-- /.suggested-article-container -->
+<div class="text-right">
+    <!-- TODO: Create feedback module Phase 2/3?
+    <a href="#"><i class="icon-comment icon-fixed-width"></i>Feedback</a>
+    -->
+</div>

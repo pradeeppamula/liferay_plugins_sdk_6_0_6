@@ -1,0 +1,12 @@
+<form role="form">
+    <div class="form-group article-bundle-size-${id} col-md-6 col-sm-6">
+        <label class="control-label" for="article-bundle-size-${id}">Bundle Size</label>
+        {{view Ember.TextField valueBinding="controller.newArticleBundleSize" classNames="form-control flat-gray" placeholder="size"}}
+    </div>
+</form>
+<div class="pull-right col-md-12 col-sm-12">
+    <a href="#" {{action "hideArticleBundleForm"}} {{bindAttr class=":btn :btn-default"}}>Cancel</a>
+    <button {{bindAttr class=":btn :btn-primary"}} {{action "addArticleBundle"}}>
+    Add
+    </button>
+</div>

@@ -230,7 +230,7 @@
             (bowser.opera)||
             (bowser.mozilla && bowser.version < 6)||
             (bowser.chrome && bowser.version < 11)) {
-            window.location = '/portal/web/myhome/br';
+            window.location = '/portal/web/myhome/browser';
         }
     </script>
     ## HTML5 shim, for IE6-8 support of HTML5 elements
