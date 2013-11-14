@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <h4 class="col-md-3 col-sm-3 content-date label-info">{{publicationDateFormatted}}</h4>
+    </div>
+    <div class="row header-info">
+        <h1>{{title}}</h1>
+        <h3>{{publisher}}</h3>
+        {{#if authors}}
+        <h6>by {{authors}}</h6>
+        {{/if}}
+    </div>
+</div> <!-- /.container -->
+<hr>
+<div class="content-body">
+    <div class="alerts-container container">
+        <div class="alert-success-container alert alert-block alert-success fade hide success">
+            <button type="button" class="close" aria-hidden="true" {{ action "hideAddBundleSuccess" }}>x</button>
+            <h4><i class="icon-check-sign icon-3x icon-fixed-width"></i>Added To Bundle!</h4>
+        </div> <!-- /.success -->
+        <div class="alert-danger-container alert alert-block alert-danger fade hide error">
+            <button type="button" class="close" aria-hidden="true" {{ action "hideAddBundleError" }}>x</button>
+            {{#if bundleLimitError}}
+            <p>
+                <i class="icon-warning-sign icon-3x icon-fixed-width"></i>
+                Your bundle is at its limit, would you like to increase the size?
+                <a class="btn btn-default" href="#" {{ action "goToBundlePurchase" }}>Make it happen</a>
+            </p>
+            {{else}}
+            <h4><i class="icon-exclamation-sign icon-3x icon-fixed-width"></i>There was a problem adding this item to your bundle, please try again or contact help@computer.org.</h4>
+            {{/if}}
+        </div> <!-- /.error -->
+        <div class="alert-warning-container alert alert-block alert-warning fade hide warning">
+            <button type="button" class="close" aria-hidden="true"  {{ action "hideAddBundleConfirm" }}>x</button>
+            <p>
+                <i class="icon-warning-sign icon-3x icon-fixed-width"></i>
+                Are you sure you would like to add this item to your bundle?
+                <button {{bindAttr class=":btn :btn-default isSavingToBundle:disabled"}} {{ action "addItemToBundle" }}>
+                {{#unless isSavingToBundle }}
+                Of Course
+                {{else}}
+                Please Wait
+                {{/unless}}
+                </button>
+            </p>
+        </div> <!-- /.warning -->
+    </div> <!-- /.alerts-container -->
+    {{#if hasFullAccess}}
+    {{{summary}}}
+    {{else}}
+    <div class="add-to-bundle-container">
+        <a href="#" class="btn btn-info btn-xs"  {{ action "showAddBundleConfirm" }}>Add To Bundle</a>
+    </div>
+    {{{summary}}}
+    <br /><br />
+    <a href="/portal/web/myhome/article-bundle" class="btn btn-medium btn-block btn-primary">Learn More About Our Article Bundles</a>
+    {{/if}}
+</div> <!-- /.content-body -->

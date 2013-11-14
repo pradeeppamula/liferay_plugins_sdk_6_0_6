@@ -1,6 +1,6 @@
 {
     "environment": "production",
-    "connectionMode": "cloud",
+    "connectionMode": "local",
     "development": {
         "mongoURI": {
             "local": "mongodb://test:test@localhost:28000,localhost:28001,localhost:28002/",

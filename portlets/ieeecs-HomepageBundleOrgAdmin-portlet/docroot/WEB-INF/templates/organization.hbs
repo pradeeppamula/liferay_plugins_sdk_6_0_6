@@ -1,0 +1,40 @@
+<div class="admin-breadcrumbs-container">
+    {{#link-to "admin"}}<i class="icon-chevron-sign-left"></i> Back To Organizations{{/link-to}}
+</div>
+<div class="admin-content-container">
+    <div class="admin-side-nav col-md-3 col-sm-3">
+        <ul class="admin-side-nav nav nav-pills nav-stacked">
+            <li id="admin-org-nav-${id}" class="active">
+                <a href="#" {{action "showOrganization"}}>
+                <div class="col-md-2 col-sm-2 admin-side-nav-icon org">
+                    <i class="icon-building"></i>
+                </div>
+                <span>{{name}}</span>
+                </a>
+            </li>
+            <li id="admin-user-nav-${id}">
+                <a href="#" {{action "showUsers"}}>
+                <div class="col-md-2 col-sm-2 admin-side-nav-icon users">
+                    <i class="icon-group"></i>
+                </div>
+                <span>Users</span>
+                <!-- NOTE: Add back in on Phase 2 once we get the count working   -->
+                            <span class="num-of-users-badge badge pull-right">
+                                {{numberOfUsers}}
+                            </span>
+                </a>
+            </li>
+            <li id="admin-bundle-nav-${id}">
+                <a href="#" {{action "showBundle"}}>
+                <div class="col-md-2 col-sm-2 admin-side-nav-icon bundles">
+                    <i class="icon-archive"></i>
+                </div>
+                <span>Bundles</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="admin-content col-md-9 col-sm-9">
+        {{outlet content}}
+    </div>
+</div> <!-- /.admin-content-container -->

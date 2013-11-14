@@ -1,0 +1,86 @@
+<div class="purchase-bundle-form-container">
+    <div class="purchase-bundle-header-container">
+        <h3>Request A Quote</h3>
+        <p>
+            <i class="icon-info-sign icon-fixed-width"></i>
+            <small>Please complete the form below to request a bundle.</small>
+        </p>
+    </div>
+    <div id="success-alert-${id}" class="alert alert-block alert-success fade hide">
+        <button type="button" class="close" aria-hidden="true" {{ action "closeSuccessAlert" }}>x</button>
+        <h4><i class="icon-check-sign icon-3x icon-fixed-width"></i>Thank you for requesting a bundle.  A representative will be contacting you shortly to discuss your bundle details.</h4>
+    </div> <!-- /#success-alert-${id} -->
+    <div id="val-error-alert-${id}" class="alert alert-block alert-danger fade hide">
+        <button type="button" class="close" aria-hidden="true" {{ action "closeValErrorAlert" }}>x</button>
+        <h4><i class="icon-exclamation-sign icon-3x icon-fixed-width"></i><span id="error-message-${id}"></span></h4>
+    </div> <!-- /#val-error-alert-${id} -->
+    <div class="purchase-form well">
+        <form role="form">
+            {{#unless hasType}}
+            <div class="form-group item-content-type-${id}">
+                <label class="control-label" for="item-content-type-${id}">
+                    Bundle Type
+                </label>
+                {{view Ember.Select
+                contentBinding="contentTypes"
+                valueBinding="type"
+                classNames="form-control"
+                prompt="select a type"}}
+            </div>
+            {{/unless}}
+            <div class="form-group name-${id}">
+                <label class="control-label" for="name-${id}">Name</label>
+                {{view Ember.TextField valueBinding="name" classNames="form-control flat-gray" placeholder="Name"}}
+            </div>
+            <div class="form-group email-${id}">
+                <label class="control-label" for="company-${id}">Email</label>
+                {{view Ember.TextField valueBinding="email" classNames="form-control flat-gray" placeholder="Email"}}
+            </div>
+            <div class="form-group company-${id}">
+                <label class="control-label" for="company-${id}">Company</label>
+                {{view Ember.TextField valueBinding="company" classNames="form-control flat-gray" placeholder="Company"}}
+            </div>
+            <div class="form-group title-${id}">
+                <label class="control-label" for="title-${id}">Title</label>
+                {{view Ember.TextField valueBinding="title" classNames="form-control flat-gray" placeholder="Title"}}
+                <p class="help-block">Not Required</p>
+            </div>
+            <div class="form-group phone-${id}">
+                <label class="control-label" for="phone-${id}">Phone</label>
+                {{view Ember.TextField valueBinding="phone" classNames="form-control flat-gray" placeholder="Phone Number"}}
+            </div>
+        </form>
+        <div>
+            <button type="button" {{bindAttr class=":btn :btn-primary :btn-block isSaving:disabled"}} {{ action "submitForm" }}>
+            {{#if isSaving}}
+            Please Wait...
+            {{else}}
+            Request Quote
+            {{/if}}
+            </button>
+        </div>
+    </div><!-- /.purchase-form -->
+</div> <!-- /.purchase-bundle-form-container -->
+<div class="row footer-links">
+    <a href="/portal/web/myhome/home">Home</a>
+    <a href="/portal/web/myhome/article-bundle">CSDL</a>
+    <a href="/portal/web/myhome/webinar-bundle">Webinars</a>
+    <a href="http://www.ieee.org/site_terms_conditions.html?WT.mc_id=hpf_terms">Terms</a>
+    <a href="http://www.computer.org/portal/web/guest/privacy">Privacy</a>
+    <a href="#top">Top</a>
+</div>
+<div class="row footer-social-links">
+    <a href="mailto:help@computer.org"><i class="icon-envelope icon-2x"></i></a>
+    <a href="https://twitter.com/computersociety" target="_blank"><i class="icon-twitter icon-2x"></i></a>
+    <a href="https://www.facebook.com/ieeecomputersociety?v=wall" target="_blank"><i class="icon-facebook icon-2x"></i></a>
+    <a href="https://plus.google.com/b/106653716856205029801/#106653716856205029801/posts" target="_blank"><i class="icon-google-plus icon-2x"></i></a>
+    <a href="http://www.linkedin.com/groups?home=&amp;gid=52513&amp;trk=anet_ug_hm" target="_blank"><i class="icon-linkedin icon-2x"></i></a>
+    <a href="http://www.youtube.com/user/ieeeComputerSociety" target="_blank"><i class="icon-youtube icon-2x"></i></a>
+    <a href="http://www.computer.org/portal/web/csdl/dlrss" target="_blank"><i class="icon-rss icon-2x"></i></a>
+</div>
+<div class="row footer-copy-section">
+    <p class="text-muted">
+        <span class="text-primary copy-section"></span>
+        <i class="icon-keyboard"></i> in LA
+    </p>
+</div>

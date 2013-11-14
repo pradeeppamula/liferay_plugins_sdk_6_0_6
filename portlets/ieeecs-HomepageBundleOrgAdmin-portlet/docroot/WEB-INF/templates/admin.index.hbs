@@ -1,0 +1,30 @@
+<div class="admin-content-container">
+    <div class="organization-header-bar">
+        <form class="col-md-3 col-sm-4 pull-right">
+            {{view Ember.TextField valueBinding="filter" classNames="form-control" placeholder="Filter"}}
+        </form>
+        <div class="col-md-8 col-sm-8">
+            <span>Organizations</span>
+            {{#link-to "admin.new" classNames="btn btn-primary"}}<i class="icon-plus icon-fixed-width"></i> Add{{/link-to}}
+        </div>
+    </div> <!-- /.organization-header-bar -->
+
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Organization</th>
+            <th>Created</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each organization in filteredContent}}
+        <tr>
+            <td>{{organization.name}}</td>
+            <td>{{formattedDate organization.createdDate "LL"}}</td>
+            <td>{{#link-to "organization" organization}}Manage{{/link-to}}</td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div><!-- /.admin-content-container -->

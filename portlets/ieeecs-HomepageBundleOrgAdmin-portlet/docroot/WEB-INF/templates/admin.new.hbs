@@ -1,0 +1,40 @@
+<div class="admin-breadcrumbs-container">
+    {{#link-to "admin"}}<i class="icon-chevron-sign-left"></i> Back To Organizations{{/link-to}}
+</div>
+<div class="admin-content-container">
+    <div class="admin-new-org-container">
+        <c:if test="${hasAddOrgSuccess}">
+            <div id="add-organization-success-alert-${id}" class="alert alert-block alert-success fade in">
+                <button type="button" class="close" aria-hidden="true" {{ action "closeAlert" "add-organization-success-alert-${id}"}}>x</button>
+                <p><i class="icon-check-sign icon-2x icon-fixed-width"></i>Organization Added!</p>
+            </div><!-- /#add-organization-success-alert-${id} -->
+        </c:if>
+        <c:if test="${hasAddOrgErrors}">
+            <div id="add-organization-error-alert-${id}" class="alert alert-block alert-danger fade in">
+                <button type="button" class="close" aria-hidden="true" {{ action "closeAlert" "add-organization-error-alert-${id}"}}>x</button>
+                <i class="icon-exclamation-sign icon-2x icon-fixed-width"></i>
+                The following error(s) occurred when adding the new organization:
+                <p><c:out value="${addOrganzationErrors}" escapeXml="false"/></p>
+            </div> <!-- /#add-organization-error-alert-${id} -->
+        </c:if>
+
+        <div class="alert alert-info">
+            <i class="icon-info-sign icon-2x icon-fixed-width"></i>Please use a <strong>csv</strong> or <strong>txt</strong> file with the specified format(per line): <strong><em>GroupName,UserFirstName,UserLastName,UserEmail</em></strong></a>
+        </div>
+        <form id="new-org-form-${id}" name="new-org-form-${id}" role="form" method="POST" enctype="multipart/form-data" action="${viewAction}">
+            <input type="hidden" name="requestType_${id}" id="requestType_${id}" value="ADD_ORGANIZATION" />
+            <div class="form-group orgFile_${id}">
+                <label class="control-label" for="orgFile_${id}">Select Your File</label>
+                <input type="file" id="orgFile_${id}" name="orgFile_${id}" size="75">
+            </div>
+
+            <button {{bindAttr class=":btn :btn-primary isSaving:disabled"}} {{action "addOrganization"}}>
+            {{#if isSaving}}
+            Please Wait...
+            {{else}}
+            Add Organization
+            {{/if}}
+            </button>
+        </form>
+    </div><!-- /.admin-new-org-container -->
+</div><!-- /.admin-content-container -->

@@ -42,6 +42,8 @@ public class HomepageAccountController extends BaseController implements Resourc
 	public static final String CSDL_ROOT_PATH = "http://www.computer.org/digitallibrary/";
 	public static final String CSDL_URL_ENDPOINT_CONTENT_DESCRIPTION = "content/description";
 	public static final String CSDL_URL_ENDPOINT_CONTENT_LIST_PUBLICATIONDATE = "content/list/publicationDate/";
+    public boolean hasArticleBundle = false;
+    public boolean hasWebinarBundle = false;
 
     /**
      * Helper method that will clean up all necessary resources
@@ -191,6 +193,9 @@ public class HomepageAccountController extends BaseController implements Resourc
 			model.put("accountArticles", "-");
 			model.put("availableArticles", "-");		
 			model = this.hydrateModelWithAccountJSON(model, jsonObject);
+
+            // TODO: Get the JOURNAL ARTICLE
+            model.put("accountContent", "");
 		} catch (Exception e) {
 			// gracefully handle exception and put on model
 			model.put("error", "There was a problem loading your account information.  Please reload the page or contact help@computer.org.");
@@ -198,6 +203,8 @@ public class HomepageAccountController extends BaseController implements Resourc
 		}
 
 		// create the model for the View and add the model attributes to it
+        model.put("hasArticleBundle", hasArticleBundle);
+        model.put("hasWebinarBundle", hasWebinarBundle);
 		model.put("isSignedIn", isSignedIn);
 		modelAndView = new ModelAndView("Home", model);
 		return modelAndView;
@@ -267,6 +274,7 @@ public class HomepageAccountController extends BaseController implements Resourc
 	 */
 	private Map<String,Object> hydrateModelWithAccountJSON(Map<String,Object> model, JSONObject jsonObject) throws Exception {
 		try {
+            Date today = new Date();
 			// first determine the user's bundle size
 			JSONObject bundle = (JSONObject)jsonObject.get("bundle");
 			if(bundle != null) {
@@ -277,10 +285,36 @@ public class HomepageAccountController extends BaseController implements Resourc
 					int size = csdlArticles.size();
 				    for (int i = 0; i < size; i++) {
 				        JSONObject articleUnit = (JSONObject) csdlArticles.get(i);
-				        Long numOfItems = (Long)articleUnit.get("number_of_items");
-				        totalBundleSize += numOfItems;
+                        Object articleNumber = articleUnit.get("number_of_items");
+                        if(articleNumber instanceof Double) {
+                            totalBundleSize += ((Double)articleUnit.get("number_of_items")).intValue();
+                        } else {
+                            totalBundleSize += ((Long)articleUnit.get("number_of_items")).intValue();
+                        }
 				    }
+                    hasArticleBundle = (totalBundleSize > 0);
 				}
+
+                // get the number of webinars in the users bundle that are not expired
+                // next get the webinars list
+                JSONArray webinarsBundle = (JSONArray) bundle.get("webinar");
+                int numberOfWebinars = 0;
+                // iterate over each webinar bundle
+                for(Object webinar : webinarsBundle) {
+                    // get the expiration date of the current webinar bundle
+                    String expirationDate = (String)((JSONObject)webinar).get("expiration_date");
+                    Date expiration = DateUtil.toUTCDate(expirationDate);
+                    // check the webinars object for bundles that are not expired
+                    if(today.before(expiration)) {
+                        // if there is a webinars bundle with an expiration before today, build a list of its skus
+                        JSONArray selectedWebinars =  (JSONArray)((JSONObject)webinar).get("selected_items");
+                        numberOfWebinars += selectedWebinars.size();
+                    }
+                }
+                // now set the boolean if they have webinars based on the number of non expired webinars they have
+                hasWebinarBundle = (numberOfWebinars > 0);
+                // set the number of Webinars on the view model
+                model.put("numberOfWebinars", String.valueOf(numberOfWebinars));
 			    
 			    // now determine how many units are used in their bundle
 			    JSONObject units = (JSONObject)jsonObject.get("units");

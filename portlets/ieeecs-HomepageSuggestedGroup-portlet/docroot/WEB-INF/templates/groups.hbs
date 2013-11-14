@@ -1,0 +1,53 @@
+<a class="text-muted pull-right" href="/portal/web/myhome/suggested-content/?type=group">View all</a>
+<p class="header">Suggested communities</p>
+<div id="join-group-success-${id}" {{ bindAttr class=":alert :alert-block :alert-success :fade :hide :success" }}>
+<button type="button" class="close" aria-hidden="true" {{ action "hideJoinSuccess" }}>x</button>
+<h4><i class="icon-check-sign icon-3x icon-fixed-width"></i>Community joined!</h4>
+</div> <!-- /#join-group-success-${id} -->
+<div  id="join-group-error-${id}" {{ bindAttr class=":alert :alert-block :alert-danger :fade :hide  :error" }}>
+<button type="button" class="close" aria-hidden="true" {{ action "hideJoinError"}}>x</button>
+<h4><i class="icon-exclamation-sign icon-3x icon-fixed-width"></i>There was a problem joining this community, please try again or contact help@computer.org.</h4>
+</div> <!-- /#join-group-error-${id} -->
+<div id="join-group-confirm-${id}" {{ bindAttr class=":alert :alert-block :alert-warning :fade :hide :warning" }}>
+<button type="button" class="close" aria-hidden="true"  {{ action "hideJoinConfirm" }}>x</button>
+<p>
+    <i class="icon-warning-sign icon-3x icon-fixed-width"></i>
+    Are you sure you would like to join community <strong>{{ selectedGroup.name }}</strong>?
+    <a class="btn btn-default" href="#" {{ action "joinGroup" }} >Yes</a>
+</p>
+</div> <!-- /#join-group-confirm-${id} -->
+<div class="suggested-group-container">
+    <div id="suggested-group-${id}-0" class="media">
+        <div class="media-body">
+            <h5 class="media-heading suggested-group-header">{{group0.shortName}}</h5>
+            <a class="btn btn-default btn-sm pull-right" href="#"  {{ action "joinGroupConfirm" group0}}>Join</a>
+            <a class="close-button pull-right" href="#" {{action "removeGroup" group0}}><i class="icon-remove-sign"></i></a>
+            {{group0.shortDescription}}
+        </div>
+    </div> <!-- /.media -->
+</div><!-- /.suggested-group-container -->
+<div class="suggested-group-container">
+    <div id="suggested-group-${id}-1" class="media">
+        <div class="media-body">
+            <h5 class="media-heading suggested-group-header">{{group1.shortName}}</h5>
+            <a class="btn btn-default btn-sm pull-right" href="#" {{action "joinGroupConfirm" group1}}>Join</a>
+            <a class="close-button pull-right" href="#" {{action "removeGroup" group1}}><i class="icon-remove-sign"></i></a>
+            {{group1.shortDescription}}
+        </div>
+    </div> <!-- /.media -->
+</div><!-- /.suggested-group-container -->
+<div class="suggested-group-container">
+    <div id="suggested-group-${id}-2" class="media">
+        <div class="media-body">
+            <h5 class="media-heading suggested-group-header">{{group2.shortName}}</h5>
+            <a class="btn btn-default btn-sm pull-right" href="#"  {{ action "joinGroupConfirm" group2}}>Join</a>
+            <a class="close-button pull-right" href="#" {{action "removeGroup" group2}}><i class="icon-remove-sign"></i></a>
+            {{group2.shortDescription}}
+        </div>
+    </div> <!-- /.media -->
+</div><!-- /.suggested-group-container -->
+<div class="text-right">
+    <!-- TODO: Create feedback module Phase 2/3?
+       <a href="#"><i class="icon-comment icon-fixed-width"></i>Feedback</a>
+       -->
+</div>

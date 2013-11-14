@@ -1,0 +1,19 @@
+<form role="form">
+    <div class="form-group expires-${id} col-md-10 col-sm-10">
+        <label class="control-label" for="webinar-bundle-name-${id}">Webinar</label>
+        <div class="input-group">
+            {{view Ember.Select
+            contentBinding="controller.webinars"
+            optionValuePath="content.sku"
+            optionLabelPath="content.name"
+            valueBinding="controller.newWebinarSku"
+            classNames="form-control"}}
+        </div>
+    </div>
+</form>
+<div class="pull-right col-md-12 col-sm-12">
+    <a href="#" {{action "hideWebinarBundleForm"}} {{bindAttr class=":btn :btn-default"}}>Cancel</a>
+    <button {{bindAttr class=":btn :btn-primary"}} {{action "addWebinarBundle"}}>
+    Add
+    </button>
+</div>
