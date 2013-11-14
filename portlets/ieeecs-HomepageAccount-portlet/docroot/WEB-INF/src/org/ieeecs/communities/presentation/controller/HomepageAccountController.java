@@ -9,6 +9,9 @@ package org.ieeecs.communities.presentation.controller;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.theme.ThemeDisplay;
+import com.liferay.portlet.journal.model.JournalArticle;
+import com.liferay.portlet.journal.service.JournalArticleLocalServiceUtil;
+import com.liferay.portlet.journal.service.JournalArticleServiceUtil;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import org.apache.commons.httpclient.HttpClient;
@@ -18,6 +21,7 @@ import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 import org.ieee.common.json.XML;
 import org.ieee.common.presentation.controller.BaseController;
+import org.ieee.common.util.ContentUtil;
 import org.ieeecs.communities.mongo.MongoConfigUtil;
 import org.ieeecs.communities.mongo.MongoException;
 import org.ieeecs.communities.mongo.MongoHandler;
@@ -148,17 +152,21 @@ public class HomepageAccountController extends BaseController implements Resourc
 
 		Map<String,Object> model = new HashMap<String,Object>();
 		String instanceId = "";
+        long groupId = 0;
 		JSONObject jsonObject = null;
 		ModelAndView modelAndView = null;
 		ThemeDisplay themeDisplay = null;
 		PortletPreferences prefs = null;
 		boolean isSignedIn = false;
+        String notSignedInContent = HomepageAccountUtil.DEFAULT_JOURNAL_ARTICLE_CONTENT;
 		
 		try {
 			// first grab the theme display for the portlet			
 			themeDisplay = (ThemeDisplay) renderRequest.getAttribute(WebKeys.THEME_DISPLAY);
 			// set if the user is signed in or not
 			isSignedIn = themeDisplay.isSignedIn();
+            // set the group id
+            groupId = themeDisplay.getScopeGroupId();
 			// grab the preferences from the request
 			prefs = renderRequest.getPreferences();
 			// add the default preferences to the model used in the view
@@ -194,8 +202,19 @@ public class HomepageAccountController extends BaseController implements Resourc
 			model.put("availableArticles", "-");		
 			model = this.hydrateModelWithAccountJSON(model, jsonObject);
 
-            // TODO: Get the JOURNAL ARTICLE
-            model.put("accountContent", "");
+            // Get the JOURNAL ARTICLE if the user is not signed in
+            if(!isSignedIn) {
+                JournalArticle accountContent = JournalArticleLocalServiceUtil.getLatestArticleByUrlTitle(groupId, HomepageAccountUtil.JOURNAL_ARTICLE_CONTENT_NAME, 0);
+                if(accountContent != null) {
+                    String content = HomepageAccountUtil.getArticleContent(accountContent, HomepageAccountUtil.DEFAULT_JOURNAL_ARTICLE_CONTENT);
+                    // remove any endlines from the content
+                    content = content.replaceAll("\n", "");
+                    content = content.replaceAll("\r", "");
+                    content = content.replaceAll("\t", "");
+                    notSignedInContent = content;
+                }
+            }
+
 		} catch (Exception e) {
 			// gracefully handle exception and put on model
 			model.put("error", "There was a problem loading your account information.  Please reload the page or contact help@computer.org.");
@@ -203,6 +222,7 @@ public class HomepageAccountController extends BaseController implements Resourc
 		}
 
 		// create the model for the View and add the model attributes to it
+        model.put("accountContent", notSignedInContent);
         model.put("hasArticleBundle", hasArticleBundle);
         model.put("hasWebinarBundle", hasWebinarBundle);
 		model.put("isSignedIn", isSignedIn);
