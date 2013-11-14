@@ -10,10 +10,23 @@ import org.apache.log4j.Logger;
 
 import java.util.*;
 
+import java.io.StringReader;
+
 import javax.portlet.PortletPreferences;
+
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.input.SAXBuilder;
+import org.jdom.xpath.XPath;
+
+import com.liferay.portlet.journal.model.JournalArticle;
+
 
 public class HomepageAccountUtil {
     static final Logger LOGGER = Logger.getLogger(HomepageAccountUtil.class);
+
+    public static final String DEFAULT_JOURNAL_ARTICLE_CONTENT = "<h2 class=\"text-center\">Welcome to MyHome</h2><p class=\"lead\">Gain access to exclusive webinars only in the topics you care about.</p>";
+    public static final String JOURNAL_ARTICLE_CONTENT_NAME = "homepage-account-content";
 	public static final String REQUEST_TYPE_NUM_OF_ARTICLES = "numOfArticles";
     public static final String REQUEST_TYPE_USER_PURCHASE_DATA = "LOAD_USER_PURCHASE_DATA";
     public static final String REQUEST_TYPE_UPDATE_USER_PURCHASE_DATA = "UPDATE_USER_PURCHASE_DATA";
@@ -74,4 +87,36 @@ public class HomepageAccountUtil {
             LOGGER.error("A problem occurred when putting the portlet preferences on the model.",  e);
 		}
 	}
+
+    public static String getArticleContent(JournalArticle article, String defaultContent) {
+
+        String content = "";
+
+        try {
+
+            Date todaysDate = new Date();
+            Date expirationDate = null == article.getExpirationDate() ?
+                    new Date(System.currentTimeMillis() + 630720000000L) :
+                    article.getExpirationDate();
+
+            if ( todaysDate.after(expirationDate) ) {
+                content = defaultContent;
+            } else {
+                SAXBuilder parser = new SAXBuilder();
+                Document document = parser.build(new StringReader(article.getContent()));
+                XPath contentXPath = XPath.newInstance("/root/static-content");
+                List<?> contentList = contentXPath.selectNodes(document);
+
+                if ((null != contentList) && (contentList.size() > 0)) {
+                    Element contentElement = (Element)contentList.get(0);
+                    content = contentElement.getText();
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return content;
+    }
 }

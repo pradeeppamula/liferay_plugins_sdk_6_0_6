@@ -79,63 +79,21 @@
 </style>
     <%-- Only show this section if user is NOT signed in --%>
     <c:if test="${!isSignedIn}">
-        ${accountContent}
+         <div id="homepage-account-container-${id}">
+            <div id="homepage-account-inner-container-${id}">
+             ${accountContent}
+            </div> <!-- /#homepage-account-inner-container-${id} -->
+        </div>  <!-- /#homepage-account-container-${id} -->
     </c:if>
 
     <%-- Only show this section if user is signed in --%>
     <c:if test="${isSignedIn}">
         <div id="homepage-account-container-${id}">
             <div id="homepage-account-inner-container-${id}">
-                <script type="text/x-handlebars" data-template-name="account">
-                <h5>Welcome Back, ${firstName}.</h5>
-                <div class="row-fluid">
-                    <c:if test="${hasArticleBundle}">
-                        <div class="row">
-                            <div id="used-article-count-${id}" class="header-number-${id} col-md-3 col-sm-3">
-                                {{numberOfArticles}}
-                            </div>
-                            <div class="header-text-${id}">
-                                articles in your library
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div id="available-count-${id}" class="header-number-${id} col-md-3 col-sm-3">
-                                {{remainingBundleSpace}}
-                            </div>
-                            <div class="header-text-${id}">
-                                left in your article bundle
-                            </div>
-                        </div>
-                    </c:if>
-                    <c:if test="${hasWebinarBundle}">
-                        <div class="row">
-                            <div id="used-webinar-count-${id}" class="header-number-${id} col-md-3 col-sm-3">
-                                {{numberOfWebinars}}
-                            </div>
-                            <div class="header-text-${id}">
-                                webinars in your library
-                            </div>
-                        </div>
-                    </c:if>
-
-                    <!--NOTE: 11.13.13 Hiding the article count for now
-                    <div class="row">
-                        <div id="article-timeperiod-count-${id}" class="header-number-${id} col-md-3 col-sm-3">
-                            <i class="icon-spinner icon-spin"></i>
-                        </div>
-                        <div class="header-text-${id}">
-                            articles entered <span id="article-count-month-${id}">this month</span>
-                        </div>
-                    </div>
-                    -->
-                </div>
-                <div class="puchase-button-container">
-                    <button class="btn btn-medium btn-block btn-primary" {{ action 'goToPurchaseBundle' }}>REQUEST A QUOTE</button>
-                </div>
-                </script>
             </div> <!-- /#homepage-account-inner-container-${id} -->
         </div>  <!-- /#homepage-account-container-${id} -->
         <script>
+                Ember.TEMPLATES['account'] = Ember.Handlebars.compile('<h5>Welcome Back, ${firstName}.</h5> <div class="row-fluid"> <c:if test="${hasArticleBundle}"> <div class="row"> <div id="used-article-count-${id}" class="header-number-${id} col-md-3 col-sm-3"> {{numberOfArticles}} </div> <div class="header-text-${id}"> articles in your library </div> </div> <div class="row"> <div id="available-count-${id}" class="header-number-${id} col-md-3 col-sm-3"> {{remainingBundleSpace}} </div> <div class="header-text-${id}"> left in your article bundle </div> </div> </c:if> <c:if test="${hasWebinarBundle}"> <div class="row"> <div id="used-webinar-count-${id}" class="header-number-${id} col-md-3 col-sm-3"> {{numberOfWebinars}} </div> <div class="header-text-${id}"> webinars in your library </div> </div> </c:if> <!--NOTE: 11.13.13 Hiding the article count for now <div class="row"> <div id="article-timeperiod-count-${id}" class="header-number-${id} col-md-3 col-sm-3"> <i class="icon-spinner icon-spin"></i> </div> <div class="header-text-${id}"> articles entered <span id="article-count-month-${id}">this month</span> </div> </div> --> </div> <div class="puchase-button-container"> <button class="btn btn-medium btn-block btn-primary" {{ action "goToPurchaseBundle" }}>REQUEST A QUOTE</button> </div>');
                 // initialize the account Ember App
                 AccountApp = Ember.Application.create({
                      rootElement: '#homepage-account-inner-container-${id}'
