@@ -11,10 +11,8 @@ import com.mongodb.util.JSON;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.UnknownHostException;
 import java.util.List;
 
 public class MongoHandler {
@@ -41,17 +39,23 @@ public class MongoHandler {
             JSONParser jsonParser = new JSONParser();
             InputStream inputStream = this.getClass().getResourceAsStream(MongoConfigUtil.CONFIG_FILE_PATH);
             InputStreamReader reader = new InputStreamReader(inputStream);
+            // create a json object from the config file
             JSONObject jsonConfigObject = (JSONObject) jsonParser.parse(reader);
-            String enviroment = (String) jsonConfigObject.get("environment");
-            String connectionMode =  (String) jsonConfigObject.get("connectionMode");
-            JSONObject envConfig = (JSONObject) jsonConfigObject.get(enviroment);
-            JSONObject mongoURIObject = (JSONObject)envConfig.get("mongoURI");
+            // get the environment
+            String environment = (String) jsonConfigObject.get(MongoConfigUtil.CONFIG_PROP_ENVIRONMENT);
+            // get the connection mode [local,cloud]
+            String connectionMode =  (String) jsonConfigObject.get(MongoConfigUtil.CONFIG_PROP_CONNECTION_MODE);
+            // now we can get the specific environment configuration
+            JSONObject envConfig = (JSONObject) jsonConfigObject.get(environment);
+            // get the URI json object
+            JSONObject mongoURIObject = (JSONObject)envConfig.get(MongoConfigUtil.CONFIG_PROP_MONGOURI);
+            // get the correct URI based on the connection mode
             String mongoURI =  (String)mongoURIObject.get(connectionMode);
+            // now create the mongo client singleton with the URI
             this.mongoClient = new MongoClient(
                     new MongoClientURI(MongoConfigUtil.getConstructedURI(mongoURI, this.collection.getDatabaseName())));
 
         } catch (Exception e) {
-            // TODO: log exception
             System.out.println("{ 'class' : 'MongoHandler', 'method' : 'initializeConnection', 'exception' : " + e + "}");
             throw new MongoException(MongoError.INITIALIZE_ERROR);
         }
@@ -132,7 +136,6 @@ public class MongoHandler {
         } catch (MongoException me) {
             throw me;
         } catch (Exception e) {
-            // TODO: log exception
             System.out.println("{ 'class' : 'MongoHandler', 'method' : 'getCollection', 'exception' : " + e + "}");
             throw new MongoException(MongoError.COLLECTION_ERROR);
         }
@@ -153,7 +156,6 @@ public class MongoHandler {
             // convert the json
             retVal = (BasicDBObject) JSON.parse(json);
         } catch (Exception e) {
-            // TODO: log exception
             System.out.println("{ 'class' : 'MongoHandler', 'method' : 'jsonToDBObject', 'exception' : " + e + "}");
             throw new MongoException(MongoError.JSONTODBOBJECT_ERROR);
         }
@@ -174,8 +176,7 @@ public class MongoHandler {
             // convert the json
             retVal = (BasicDBList) JSON.parse(json);
         } catch (Exception e) {
-            // TODO: log exception
-            System.out.println("{ 'class' : 'MongoHandler', 'method' : 'jsonToDBObject', 'exception' : " + e + "}");
+            System.out.println("{ 'class' : 'MongoHandler', 'method' : 'jsonToDBList', 'exception' : " + e + "}");
             throw new MongoException(MongoError.JSONTODBLIST_ERROR);
         }
         return retVal;
@@ -196,7 +197,6 @@ public class MongoHandler {
             // insert the document
             this.getCollection().insert(document);
         } catch (Exception me) {
-            // TODO: log exception
             System.out.println("{ 'class' : 'MongoHandler', 'method' : 'insert', 'exception' : " + me + "}");
             throw new MongoException(MongoError.INSERT_ERROR);
         } finally {
@@ -221,7 +221,6 @@ public class MongoHandler {
             // update the document
             this.getCollection().update(searchQuery, document);
         } catch (Exception me) {
-            // TODO: log exception
             System.out.println("{ 'class' : 'MongoHandler', 'method' : 'update', 'exception' : " + me + "}");
             throw new MongoException(MongoError.UPDATE_ERROR);
         } finally {
@@ -248,8 +247,7 @@ public class MongoHandler {
             // update the document (will not upsert but will update multiple docs matching the query)
             this.getCollection().update(searchQuery, document, false, true);
         } catch (Exception me) {
-            // TODO: log exception
-            System.out.println("{ 'class' : 'MongoHandler', 'method' : 'update', 'exception' : " + me + "}");
+            System.out.println("{ 'class' : 'MongoHandler', 'method' : 'updateMultiple', 'exception' : " + me + "}");
             throw new MongoException(MongoError.UPDATE_ERROR);
         } finally {
             // free up the connection back to the connection pool

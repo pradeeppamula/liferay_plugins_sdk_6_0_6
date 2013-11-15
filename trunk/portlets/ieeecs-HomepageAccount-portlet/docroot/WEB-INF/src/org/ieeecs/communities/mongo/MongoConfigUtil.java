@@ -8,20 +8,19 @@
 package org.ieeecs.communities.mongo;
 
 public class MongoConfigUtil {
-	// connection configurations
+    // connection configurations
     public final static String CONFIG_FILE_PATH = "config.json";
-
-//	public final static String USERNAME = "test";
-	//public final static String PASSWORD = "test";
-//	public final static String PORT = "35428";
+    public final static String CONFIG_PROP_MONGOURI = "mongoURI";
+    public final static String CONFIG_PROP_ENVIRONMENT = "environment";
+    public final static String CONFIG_PROP_CONNECTION_MODE = "connectionMode";
 
     // database names
-	public final static String DB_NAME_CSDLBUNDLE_DEV = "csdlbundle_dev";
+    public final static String DB_NAME_MYHOME = "cs_myhome";
     public final static String DB_NAME_METRICS = "cs_metrics";
-	
-	// collection names
-	public final static String COLLECTION_PURCHASE = "purchase";
-	public final static String COLLECTION_PORTLET_META_DATA = "portletMetaData";
+
+    // collection names
+    public final static String COLLECTION_PURCHASE = "purchase";
+    public final static String COLLECTION_PORTLET_META_DATA = "portletMetaData";
     public final static String COLLECTION_METRIC = "metric";
     public final static String COLLECTION_METRIC_ACTION = "metricAction";
     public final static String COLLECTION_ORGANIZATION = "organization";
@@ -31,9 +30,9 @@ public class MongoConfigUtil {
      * corresponding databases
      */
     public enum Collection {
-        PURCHASE(COLLECTION_PURCHASE, DB_NAME_CSDLBUNDLE_DEV),
-        ORGANIZATION(COLLECTION_ORGANIZATION, DB_NAME_CSDLBUNDLE_DEV),
-        PORTLET_META_DATA(COLLECTION_PORTLET_META_DATA, DB_NAME_CSDLBUNDLE_DEV),
+        PURCHASE(COLLECTION_PURCHASE, DB_NAME_MYHOME),
+        ORGANIZATION(COLLECTION_ORGANIZATION, DB_NAME_MYHOME),
+        PORTLET_META_DATA(COLLECTION_PORTLET_META_DATA, DB_NAME_MYHOME),
         METRIC(COLLECTION_METRIC,DB_NAME_METRICS),
         METRIC_ACTION(COLLECTION_METRIC_ACTION,DB_NAME_METRICS);
 
@@ -60,9 +59,9 @@ public class MongoConfigUtil {
      * @param database
      * @return  String
      */
-	public static String getConstructedURI(String baseURI, String database) {
-		StringBuilder uri = new StringBuilder(baseURI);
-		uri.append(database);
-		return uri.toString();
-	}
+    public static String getConstructedURI(String baseURI, String database) {
+        StringBuilder uri = new StringBuilder(baseURI);
+        uri.append(database);
+        return uri.toString();
+    }
 }
