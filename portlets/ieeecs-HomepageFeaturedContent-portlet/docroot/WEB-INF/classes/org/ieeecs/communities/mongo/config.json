@@ -4,19 +4,19 @@
     "development": {
         "mongoURI": {
             "local": "mongodb://test:test@localhost:28000,localhost:28001,localhost:28002/",
-            "cloud": "mongodb://test:test@ds035428.mongolab.com:35428/"
+            "cloud": "mongodb://ieeecstest:tEst2013@ds053708.mongolab.com:53708/"
         }
     },
     "test": {
         "mongoURI": {
             "local": "mongodb://test:test@localhost:28000,localhost:28001,localhost:28002/",
-            "cloud": "mongodb://test:test@ds035428.mongolab.com:35428/"
+            "cloud": "mongodb://ieeecstest:tEst2013@ds053708.mongolab.com:53708/"
         }
     },
     "production": {
         "mongoURI": {
-            "local": "mongodb://test:test@localhost:28000,localhost:28001,localhost:28002/",
-            "cloud": "mongodb://test:test@ds035428.mongolab.com:35428/"
+            "local": "mongodb://ieeecs:2013myhomeIeEeCS@10.32.190.50:28000,10.32.190.50:28001,10.32.190.51:28002,140.98.190.125:28003,140.98.190.126:28004/",
+            "cloud": "mongodb://ieeecs:2013myhomeIeEeCS@ds053688.mongolab.com:53688/"
         }
     }
 }

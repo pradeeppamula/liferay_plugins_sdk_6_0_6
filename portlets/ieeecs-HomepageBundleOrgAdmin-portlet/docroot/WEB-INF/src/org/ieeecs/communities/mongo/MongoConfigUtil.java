@@ -15,7 +15,7 @@ public class MongoConfigUtil {
     public final static String CONFIG_PROP_CONNECTION_MODE = "connectionMode";
 
     // database names
-	public final static String DB_NAME_CSDLBUNDLE_DEV = "csdlbundle_dev";
+	public final static String DB_NAME_MYHOME = "cs_myhome";
     public final static String DB_NAME_METRICS = "cs_metrics";
 	
 	// collection names
@@ -30,9 +30,9 @@ public class MongoConfigUtil {
      * corresponding databases
      */
     public enum Collection {
-        PURCHASE(COLLECTION_PURCHASE, DB_NAME_CSDLBUNDLE_DEV),
-        ORGANIZATION(COLLECTION_ORGANIZATION, DB_NAME_CSDLBUNDLE_DEV),
-        PORTLET_META_DATA(COLLECTION_PORTLET_META_DATA, DB_NAME_CSDLBUNDLE_DEV),
+        PURCHASE(COLLECTION_PURCHASE, DB_NAME_MYHOME),
+        ORGANIZATION(COLLECTION_ORGANIZATION, DB_NAME_MYHOME),
+        PORTLET_META_DATA(COLLECTION_PORTLET_META_DATA, DB_NAME_MYHOME),
         METRIC(COLLECTION_METRIC,DB_NAME_METRICS),
         METRIC_ACTION(COLLECTION_METRIC_ACTION,DB_NAME_METRICS);
 
