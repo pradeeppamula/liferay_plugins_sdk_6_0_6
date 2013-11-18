@@ -190,6 +190,9 @@
 		}
 		/* COMMENT STYLES */
 		.comment-list-container {padding: 10px 0px;}
+		.ie-reset-button-align {
+          top: -4px;
+        }
 	</style>
 
   	<div id="homepage-subscription-list-container-${id}" class="col-md-12 col-sm-12">
@@ -440,6 +443,10 @@
 
 	<script>
 		$(document).ready(function() {
+		    // ie hack to position filter reset button properly
+            if (bowser.msie) {
+                $('.content-list-search-bar form div span.input-group-btn').addClass('ie-reset-button-align');
+            }
 		    // initialize any tooltips
 		    $('.myhome-tooltip').tooltip();
 			// parse entire units list, and build into one JSON array

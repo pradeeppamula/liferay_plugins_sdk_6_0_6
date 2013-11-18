@@ -147,6 +147,9 @@
 		.join-button-container {
             padding-left: 28px;
 		}
+        .ie-reset-button-align {
+          top: -4px;
+        }
 	</style>
 
   	<div id="homepage-content-list-container-${id}" class="col-md-12 col-sm-12">
@@ -434,6 +437,10 @@
 
 	<script>
 		$(document).ready(function() {
+		    // ie hack to position filter reset button properly
+		    if (bowser.msie) {
+		        $('.content-list-search-bar form div span.input-group-btn').addClass('ie-reset-button-align');
+		    }
 		    // initialize any tooltips
             $('.myhome-tooltip').tooltip();
 			// send the users content list to the Ember controller

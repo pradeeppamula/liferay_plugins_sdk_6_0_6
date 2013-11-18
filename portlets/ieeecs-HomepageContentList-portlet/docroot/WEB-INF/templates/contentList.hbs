@@ -2,11 +2,11 @@
     <form class="col-md-4 col-sm-4 pull-right">
         <div class="input-group">
             {{view Ember.TextField valueBinding="filter" classNames="form-control" placeholder="Filter your content"}}
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary myhome-tooltip" type="button" {{action "clearFilter"}} data-toggle="tooltip" data-placement="top" data-original-title="Reset Filter">
-                                <i class="icon-remove-sign"></i>
-                            </button>
-                        </span>
+            <span class="input-group-btn">
+                <button class="btn btn-primary myhome-tooltip" type="button" {{action "clearFilter"}} data-toggle="tooltip" data-placement="top" data-original-title="Reset Filter">
+                    <i class="icon-remove-sign"></i>
+                </button>
+            </span>
         </div><!-- /.input-group -->
     </form>
     <div class="col-md-8 col-sm-8">
