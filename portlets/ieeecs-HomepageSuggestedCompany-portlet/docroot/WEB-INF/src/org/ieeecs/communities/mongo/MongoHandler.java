@@ -57,6 +57,8 @@ public class MongoHandler {
 
         } catch (Exception e) {
             System.out.println("{ 'class' : 'MongoHandler', 'method' : 'initializeConnection', 'exception' : " + e + "}");
+            // close any created connections
+            this.close();
             throw new MongoException(MongoError.INITIALIZE_ERROR);
         }
     }
@@ -137,6 +139,8 @@ public class MongoHandler {
             throw me;
         } catch (Exception e) {
             System.out.println("{ 'class' : 'MongoHandler', 'method' : 'getCollection', 'exception' : " + e + "}");
+            // close any created connections
+            this.close();
             throw new MongoException(MongoError.COLLECTION_ERROR);
         }
         return retVal;
@@ -157,6 +161,8 @@ public class MongoHandler {
             retVal = (BasicDBObject) JSON.parse(json);
         } catch (Exception e) {
             System.out.println("{ 'class' : 'MongoHandler', 'method' : 'jsonToDBObject', 'exception' : " + e + "}");
+            // close any created connections
+            this.close();
             throw new MongoException(MongoError.JSONTODBOBJECT_ERROR);
         }
         return retVal;
@@ -177,6 +183,8 @@ public class MongoHandler {
             retVal = (BasicDBList) JSON.parse(json);
         } catch (Exception e) {
             System.out.println("{ 'class' : 'MongoHandler', 'method' : 'jsonToDBList', 'exception' : " + e + "}");
+            // close any created connections
+            this.close();
             throw new MongoException(MongoError.JSONTODBLIST_ERROR);
         }
         return retVal;
