@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+#parse ($init)
+<html class="#language("lang.dir")" dir="#language("lang.dir")" lang="$w3c_language_id">
+<head>
+	<meta charset="utf-8">
+    <title>$the_title | $company_name</title>
+    <meta name="keywords" content="webinar, digital library, computer society digital library, IEEE computer society digital library, ieee digital library subscription">
+    <meta name="description" content="Discover content in the technical subjects that you care about.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="author" content="Bennie Kingwood">
+    <meta property="og:title" content="MyHome">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://www.computer.org/portal/web/myhome/home">
+    <meta property="og:site_name" content="MyHome">
+    <meta property="og:description" content="Discover content in the technical subjects that you care about.">
+
+	## This is required by Liferay, where they import all their junk.
+	$theme.include($top_head_include)
+
+    ## CSS
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/2.0/animate.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    ## CUSTOM STYLES
+    <style type="text/css">
+    html,
+    body {
+        -webkit-font-smoothing: antialiased;
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight: 300;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    h1, h2, h3 {
+        font-weight: 800;
+        color: #FFFFFF;
+        text-transform: uppercase;
+    }
+
+    h3 {
+        font-size: 37px;
+        letter-spacing: 0px;
+        line-height: 32px;
+        text-transform: uppercase;
+    }
+
+    h4 {
+        font-size: 21px;
+        letter-spacing: -0.5px;
+        line-height: 19px;
+        text-transform: uppercase;
+        color: #232527;
+    }
+
+    h5 {
+        font-size: 19px;
+        letter-spacing: 3px;
+        line-height: 18px;
+        text-transform: uppercase;
+    }
+
+
+    p {
+        color: #A5ACAF;
+    }
+
+
+    .section-title {
+        margin-bottom: 70px;
+    }
+
+
+    .section-title img {
+        vertical-align: top;
+    }
+
+
+    a:hover {
+        transition: color 0.35s;
+        -moz-transition: color 0.35s; /* Firefox 4 */
+        -webkit-transition: color 0.35s; /* Safari and Chrome */
+        -o-transition: color 0.35s; /* Opera */
+        text-decoration: none;
+    }
+
+    .scrollToTop, a.scrollToTop {
+        width:35px;
+        height:30px;
+        border-radius: 4px;
+        padding:2px 0 0px 2px;
+        text-align:center;
+        background: rgba(40,40,40,0.85);
+        font-weight: bold;
+        font-size: 19px;
+        color: #FFFFFF;
+        text-decoration: none;
+        position:fixed;
+        bottom:20px;
+        right:20px;
+        display:none;
+    }
+    .scrollToTop:hover{
+        text-decoration:none;
+        color: #ececec;
+    }
+
+    ::selection {
+        background: #F85D5D; /* Safari */
+        color: #FFFFFF;
+    }
+    ::-moz-selection {
+        background: #F85D5D; /* Firefox */
+        color: #FFFFFF;
+    }
+
+    .dropdown-backdrop {
+        position: static;
+    }
+
+    ## Button Styles
+    .btn-grey {
+        letter-spacing: 2px;
+        font-size: 13px;
+        font-weight: 800;
+        text-decoration: none;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+
+    .btn-grey {
+        background: none repeat scroll 0 0 #232527;
+        border: medium none;
+        border-radius: 4px;
+        box-shadow: none;
+        color: #FFFFFF;
+        text-decoration: none;
+        text-shadow: none;
+        padding: 16px 30px;
+    }
+
+    .btn-grey:hover, .btn-grey:active {
+        background: #323639;
+        color: #FFFFFF;
+        transition: all 0.35s ease 0s;
+    }
+
+
+
+    ## Navbar Styles
+
+    .navbar-myhome {
+        background-color: rgba(70, 70, 70, 0.95)!important;
+        border: 0px solid transparent !important;
+    }
+
+    .navbar-header {
+        background-color: #232527;
+    }
+
+    .navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
+        background-color: #232527;
+        color: #FFFFFF;
+    }
+
+    a.login {
+        color: #ffffff !important;
+    }
+
+    a.login:hover, a.login:focus {
+        background-color: #428bca !important;
+    }
+
+    .navbar .nav > li > a {
+        font-weight: 800;
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-shadow: none;
+        color: #232527;
+    }
+
+    .navbar .nav > li > a:hover, .navbar .nav > li > a:focus {
+        background-color: #232527;
+    }
+
+    ## Home Styles
+    #home {
+        background: rgba(44, 62, 80,0.60);
+        height: 1000px;
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+        filter: alpha(opacity=60);
+        zoom: 1;
+    }
+
+    .hero-text {
+        padding-top: 20%;
+    }
+
+    .hero-text h1 {
+        font-size: 80px;
+        letter-spacing: 10px;
+        line-height: 70px;
+        margin-bottom: 30px;
+    }
+
+    .hero-text p {
+        color: #ffffff;
+    }
+
+    .fadeOnLoad { display: none;}
+
+    ## Webinars Styles
+    #webinars {
+        background-color: #004d85;
+        padding: 100px 0px;
+    }
+
+    img.webinars {
+        width: 160px;
+        height: 160px;
+    }
+
+    ## Get Started Styles
+    #get-started {
+        background: #232527;
+        padding: 30px 0px;
+    }
+
+    #get-started h4 {
+        color: #5F6263;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+        font-size: 55px;
+        line-height: 53px;
+    }
+
+    ## Contact Styles
+    #contact {
+        padding: 0px 0px 130px 0px;
+        background: #ecf0f1;
+    }
+
+    #contact h3 {
+        color: #232527;
+    }
+
+    #contact h5 {
+        margin-bottom: 15px;
+    }
+
+    p.tel, p.tel a, p.tel a:hover  {
+        color: #232527;
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    ul.socialize {
+        list-style: none;
+        margin-left: 0px;
+        padding-left: 0px;
+    }
+
+    ul.socialize li {
+        display: inline;
+        line-height: 30px;
+        padding: 0 4px;
+    }
+
+    ul.socialize li a {
+        text-decoration: none;
+    }
+
+    ul.socialize li a:hover {
+        text-decoration: none;
+    }
+
+    ## Footer Styles
+    footer {
+        padding: 40px 0px 130px 0px;
+        background: #FFFFFF;
+    }
+
+    ul.footer-links {
+        list-style: none;
+    }
+
+    ul.footer-links li {
+        display: inline;
+        padding-left: 10px;
+    }
+
+    ul.footer-links a {
+        color: #232527;
+        letter-spacing: -0.5px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    ul.footer-links a:hover {
+        color: #979797;
+        text-decoration: none;
+    }
+
+    footer a {
+        color: #232527;
+    }
+
+    footer a:hover {
+        color: #979797;
+        text-decoration: none;
+    }
+
+    ## Mobile Styles
+    @media (max-width: 768px) {
+        .hero-text {
+            padding-top: 30%;
+        }
+
+        .hero-text h1 {
+            font-size: 40px;
+            letter-spacing: 5px;
+            line-height: 36px;
+            margin-bottom: 20px;
+        }
+
+        .row, .section-title {
+            text-align: center;
+        }
+
+
+        .client {
+            padding-bottom: 20px;
+        }
+
+        #get-started h4 {
+            font-size: 40px;
+            line-height: 36px;
+        }
+
+        .ch-item {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+            cursor: default;
+            box-shadow:inset 0 0 0 0px rgba(255,255,255,0.0), 0 0px 0px rgba(0,0,0,0.0);
+        }
+
+        .ch-item:hover {
+            box-shadow:
+            inset 0 0 0 0px rgba(0,0,0,0.0),
+            0 0px 0px rgba(0,0,0,0.0);
+        }
+        .ch-item:hover .ch-info {
+            -webkit-transform: none;
+            -moz-transform: none;
+            -o-transform: none;
+            -ms-transform: none;
+            transform: none;
+            opacity: 0;
+        }
+
+        .ch-item:hover .ch-info p {
+            opacity: 0;
+        }
+
+
+        #contact .span4 {
+            padding-bottom: 30px;
+        }
+
+        ul.footer-links {
+            margin-top: 50px;
+            text-align: center;
+        }
+    }
+
+    </style>
+
+    ## JS
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+    ## CSS HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>
+    <![endif]-->
+
+    ## CSS Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+</head>
+<body data-spy="scroll" data-target=".navbar">
+    ## Nav Bar
+    <div class="navbar navbar-inverse navbar-fixed-top navbar-myhome animated fadeInDownBig"  role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/portal/web/myhome/home">My<i class="fa fa-home"></i></a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="scroll" href="#home">Home</a></li>
+                <li><a class="scroll" href="#webinars">Webinars</a></li>
+                <li><a class="scroll" href="#get-started">Get Started</a></li>
+                <li><a class="scroll" href="#contact">Contact</a></li>
+                #if (!$is_signed_in)
+                <li>
+                    <a class="login" href="#login">
+                        <i class="fa fa-sign-in fa-fw"></i>Login
+                    </a>
+                </li>
+                #end
+                #if ($is_signed_in)
+                    <script type="text/javascript"> window.location = '/portal/web/myhome/home';</script>
+                #end
+            </ul>
+        </div>
+    </div>
+
+    ## Home Section
+    <section id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 text-center hero-text fadeOnLoad">
+                    <h1>MyHome.</h1>
+                    <p class="lead">Discover content in the technical subjects that you care about.</p>
+                    <a class="btn btn-lg btn-grey scroll" href="#webinars"><i class="fa fa-chevron-down"></i> VIEW OUR PRODUCTS</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    ## Webinars Section
+    <section id="webinars">
+        <div class="blue-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 featured-section-title">
+                        <h3 class="section-title">Webinars</h3>
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <h2 class="text-center">
+                            <img class="img-circle webinars" alt="webinars-image" src="/ieeecs-HomePageSplash-theme/images/bundlewebinars-image-1.jpg">
+                        </h2>
+                        <p class="lead">IEEE Computer Society bundled webinars are now available to let your staff receive perpetual access to our collection of more than 100 essential technical webinars developed by leaders in the field.</p>
+                        <a class="btn btn-primary btn-lg" href="/portal/web/myhome/webinar-bundle">Learn More <i class="fa fa-angle-double-right"></i> </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    ## Get Started Section
+    <section id="get-started">
+        <div class="container">
+            <div class="row get-started">
+                <div class="col-md-8 col-sm-8">
+                    <h4>Ready To Get Started With A New Bundle?</h4>
+                </div>
+                <div class="col-md-4 col-sm-4 text-center"><br><br>
+                    <a class="btn btn-primary btn-lg" href="/portal/web/myhome/purchase-bundle?t=w">Request a Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    ## Contact Section
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 text-left">
+                    <h3 class="section-title">Contact Us</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                ## Contact Info
+                <div class="col-md-4 col-sm-4 text-left">
+                    <h5>Where We are</h5>
+                    <address>
+                        <p>IEEE Computer Society<br />
+                            10662 Los Vaqueros Circle<br />
+                            Los Alamitos, CA 90720-1314<br >
+                        </p>
+                        <p class="tel"><i class="fa fa-phone fa-2x fa-fw"></i>+1 714.821.8380</p>
+                        <p class="tel"><i class="fa fa-print fa-2x fa-fw"></i>+1 714.821.4010</p>
+                        <a class="btn btn-primary btn-lg" href="mailto:help@computer.org"><i class="fa fa-envelope"></i> Contact Us</a>
+                    </address>
+                </div>
+                <div class="col-md-4 col-sm-4 text-left">
+                    <h5>Find Us On</h5>
+                    <ul class="socialize">
+                        <li><a><i class="fa fa-twitter fa-2x"></i></a></li>
+                        <li><a href="https://www.facebook.com/ieeecomputersociety?v=wall" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
+                        <li><a href="https://plus.google.com/b/106653716856205029801/#106653716856205029801/posts" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a></li>
+                        <li><a href="http://www.linkedin.com/groups?home=&amp;gid=52513&amp;trk=anet_ug_hm" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a></li>
+                        <li><a href="http://www.youtube.com/user/ieeeComputerSociety" target="_blank"><i class="fa fa-youtube fa-2x"></i></a></li>
+                        <li><a href="http://www.computer.org/portal/web/csdl/dlrss" target="_blank"><i class="fa fa-rss fa-2x"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    ## Footer
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 text-left">
+                    <p class="text-muted">
+                        <span class="text-primary copy-section">&copy; IEEE. All Rights Reserved.</span> <i class="fa fa-keyboard-o"></i> in LA
+                    </p>
+                </div>
+
+                <div class="col-md-8 col-sm-8 text-right">
+                    <ul class="footer-links">
+                        <li><a href="http://www.ieee.org/site_terms_conditions.html?WT.mc_id=hpf_terms" target="_blank">Terms</a></li>
+                        <li><a href="http://www.computer.org/portal/web/guest/privacy" target="_blank">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    ## Scroll to top link
+    <a href="#" class="scrollToTop hidden-phone" style="display: none;"><i class="fa fa-chevron-up"></i></a>
+
+    ## Sign In Modal Template
+    #parse ("$full_templates_path/login.vm")
+
+    ## Javascript
+    ## ==================================================
+    ##  Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/ieeecs-HomePageSplash-theme/js/bowser.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery.backstretch([
+                    "/ieeecs-HomePageSplash-theme/images/hero-bg-3.jpg",
+                    "/ieeecs-HomePageSplash-theme/images/hero-bg-2.jpg",
+                    "/ieeecs-HomePageSplash-theme/images/hero-bg-1.jpg"
+                ], {
+                fade: 1000,
+                duration: 20000
+            });
+        });
+    </script>
+</body>
+$theme.include($bottom_include)
+</html>
