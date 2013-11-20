@@ -236,6 +236,24 @@
         if (!window.console) window.console = {};
         if (!window.console.log) window.console.log = function () {};
     </script>
+
+    ## IF THE USER IS NOT SIGNED IN CHECK THE PAGE AND FORWARD TO SPLASH IF NECESSARY
+    #if (!$is_signed_in)
+    <script type="text/javascript">
+        var pathArray = window.location.pathname.split( '/' );
+        var pageName = pathArray[pathArray.length-1];
+        if(pageName != "myhome" && (pageName.indexOf("suggested-content") != -1 ||
+           pageName.indexOf("home") != -1)) {
+           window.location = '/portal/web/myhome/splash';
+        }
+        // just in case the url ends with /suggested-content/type?querystring
+        var pageName = pathArray[pathArray.length-2];
+        if(pageName != "myhome" && (pageName.indexOf("suggested-content") != -1 ||
+            pageName.indexOf("home") != -1)) {   console.log("forwarding");
+            window.location = '/portal/web/myhome/splash';
+        }
+    </script>
+    #end
     ## HTML5 shim, for IE6-8 support of HTML5 elements
     <!--[if lt IE 9]>
     	<script type="text/javascript" src="/ieeecs-HomePage-theme/js/html5shiv.js"></script>
