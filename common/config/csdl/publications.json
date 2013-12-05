@@ -1,0 +1,40 @@
+{
+	'mags': {
+		'co': {'startYear':'1970', 'endYear':'0', 'startVolume':'3', 'prePrints':true, 'rapidPosts':false, 'productId':'689', 'display':'Computer', 'listOrder':1}, 
+		'cs': {'startYear':'1999', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'609', 'display':'Computing in Science & Engineering', 'listOrder':2}, 
+		'an': {'startYear':'1979', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'62', 'display':'IEEE Annals of the History of Computing', 'listOrder':3}, 
+		'cg': {'startYear':'1981', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'660', 'display':'IEEE Computer Graphics and Applications', 'listOrder':4}, 
+		'pd': {'startYear':'1993', 'endYear':'2000', 'startVolume':'1', 'prePrints':false, 'rapidPosts':false, 'productId':'162', 'display':'IEEE Concurrency (out of print)', 'listOrder':5}, 
+		'dt': {'startYear':'1984', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'216', 'display':'IEEE Design & Test of Computers', 'listOrder':6}, 		
+		'ds': {'startYear':'2000', 'endYear':'2008', 'startVolume':'1', 'prePrints':false, 'rapidPosts':false, 'productId':'614', 'display':'IEEE Distributed Systems Online', 'listOrder':7}, 
+		'ex': {'startYear':'1988', 'endYear':'0', 'startVolume':'3', 'prePrints':true, 'rapidPosts':false, 'productId':'633', 'display':'IEEE Intelligent Systems', 'listOrder':8}, 
+		'ic': {'startYear':'1997', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'635', 'display':'IEEE Internet Computing', 'listOrder':9}, 
+		'mi': {'startYear':'1981', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'19', 'display':'IEEE Micro', 'listOrder':10}, 
+		'mu': {'startYear':'1994', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'259', 'display':'IEEE MultiMedia', 'listOrder':11}, 
+		'pc': {'startYear':'2002', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'189', 'display':'IEEE Pervasive Computing', 'listOrder':12}, 
+		'sp': {'startYear':'2003', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'455', 'display':'IEEE Security & Privacy', 'listOrder':13}, 
+		'so': {'startYear':'1984', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'663', 'display':'IEEE Software', 'listOrder':14}, 
+		'it': {'startYear':'1999', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'629', 'display':'IT Professional', 'listOrder':15}  									
+	},
+	'trans': {
+		'tb': {'startYear':'2004', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'712', 'display':'IEEE/ACM Transactions on Computational Biology and Bioinformatics', 'listOrder':1}, 
+		'tx': {'startYear':'2014', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'0', 'display':'IEEE Cool New Stuff, Coming Soon', 'listOrder':2, 'url':'http://www.computer.org/portal/web/tnse'}, 
+		'ta': {'startYear':'2010', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'1758', 'display':'IEEE Transactions on Affective Computing', 'listOrder':3}, 
+		'cc': {'startYear':'2014', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'1939', 'display':'IEEE Transactions on Cloud Computing', 'listOrder':4}, 
+		'tc': {'startYear':'1968', 'endYear':'0', 'startVolume':'17', 'prePrints':true, 'rapidPosts':false, 'productId':'344', 'display':'IEEE Transactions on Computers', 'listOrder':5}, 
+		'tq': {'startYear':'2004', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'202', 'display':'IEEE Transactions on Dependable and Secure Computing', 'listOrder':6}, 
+		'ec': {'startYear':'2014', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'1938', 'display':'IEEE Transactions on Emerging Topics in Computing', 'listOrder':7}, 
+		'th': {'startYear':'2008', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'480', 'display':'IEEE Transactions on Haptics', 'listOrder':8}, 
+		'tk': {'startYear':'1989', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'292', 'display':'IEEE Transactions on Knowledge & Data Engineering', 'listOrder':9}, 
+		'lt': {'startYear':'2008', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'539', 'display':'IEEE Transactions on Learning Technologies', 'listOrder':10}, 
+		'tm': {'startYear':'2002', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'356', 'display':'IEEE Transactions on Mobile Computing', 'listOrder':11}, 
+		'td': {'startYear':'1990', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'740', 'display':'IEEE Transactions on Parallel & Distributed Systems', 'listOrder':12}, 
+		'tp': {'startYear':'1979', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'615', 'display':'IEEE Transactions on Pattern Analysis & Machine Intelligence', 'listOrder':13}, 
+		'sc': {'startYear':'2008', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'536', 'display':'IEEE Transactions on Services Computing', 'listOrder':14}, 
+		'ts': {'startYear':'1975', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'602', 'display':'IEEE Transactions on Software Engineering', 'listOrder':15}, 
+		'tg': {'startYear':'1995', 'endYear':'0', 'startVolume':'1', 'prePrints':true, 'rapidPosts':false, 'productId':'155', 'display':'IEEE Transactions on Visualization & Computer Graphics', 'listOrder':16} 
+	},
+	'letters': {
+		'ca': {'startYear':'2002', 'endYear':'0', 'startVolume':'1', 'prePrints':false, 'rapidPosts':true, 'productId':'709', 'display':'IEEE Computer Architecture Letters', 'listOrder':1} 
+	}
+}
