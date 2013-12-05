@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE routes PUBLIC "-//Liferay//DTD Friendly URL Routes 6.0.0//EN" "http://www.liferay.com/dtd/liferay-friendly-url-routes_6_0_0.dtd">
+
+<routes>   
+    
+    <!-- GENERAL Util Controllers --> 
+    <route>
+        <pattern>/initializePropertiesAndCache</pattern>
+        <implicit-parameter name="_DigitalLibrary_WAR_ieeecsDigitalLibraryportlet_action">initializePropertiesAndCacheView</implicit-parameter>
+    </route>             
+    
+    <route>
+        <pattern>/generateJSONStructure</pattern>
+        <implicit-parameter name="_DigitalLibrary_WAR_ieeecsDigitalLibraryportlet_action">generateJSONStructureView</implicit-parameter>
+    </route>         
+    
+    <route>
+        <pattern>/generateJSONStructure/{pubType}</pattern>
+        <implicit-parameter name="_DigitalLibrary_WAR_ieeecsDigitalLibraryportlet_action">generateJSONStructureView</implicit-parameter>
+    </route>         
+    
+	<!-- PATTERN #1: Proceeding Alpha-Numeric Listing -->    
+    <route>
+        <pattern>/proceedings/{idPrefix}/{fileName}/{fileType}</pattern>
+        <implicit-parameter name="_DigitalLibrary_WAR_ieeecsDigitalLibraryportlet_action">csdlPattern1View</implicit-parameter>
+    </route>    
+            
+	<!-- PATTERN #1: Proceeding Volume and Conference (Issue) -->            
+    <route>
+        <pattern>/proceedings/{idPrefix}/{year}/{fileName}/{fileType}</pattern>
+        <implicit-parameter name="_DigitalLibrary_WAR_ieeecsDigitalLibraryportlet_action">csdlPattern1View</implicit-parameter>
+    </route>  
+     
+	<!-- PATTERN #2: Proceeding Table of Contents -->	  
+    <route>
+        <pattern>/proceedings/{idPrefix}/{year}/{catalogNumber}/{volumeNumber}/{fileName}/{fileType}</pattern>
+        <implicit-parameter name="_DigitalLibrary_WAR_ieeecsDigitalLibraryportlet_action">csdlPattern2View</implicit-parameter>
+    </route>          
+
+	<!-- PATTERN #3: Proceeding Abstract -->     
+    <route>
+        <pattern>/proceedings/{idPrefix}/{year}/{catalogNumber}/{volumeNumber}/{fileName}/{fileDetail}/{fileType}</pattern>
+        <implicit-parameter name="_DigitalLibrary_WAR_ieeecsDigitalLibraryportlet_action">csdlPattern3View</implicit-parameter>
+    </route>  
+    
+    <!-- PATTERN #4: Left of Future Usage --> 
+    
+    <!-- PATTERN #5: Left of Future Usage --> 
+
+	<!-- PATTERN #6: Volume and Issue -->
+    <route>
+        <pattern>/{pubType}/{idPrefix}</pattern>
+        <implicit-parameter name="_DigitalLibrary_WAR_ieeecsDigitalLibraryportlet_action">csdlPattern6View</implicit-parameter>
+    </route>  
+
+	<!-- PATTERN #7: Display just the Issue. --> 
+	<!-- PATTERN #7: "RapidPosts" and "PrePrints" Table of Contents. -->
+    <route>
+        <pattern>/{pubType}/{idPrefix}/{year}</pattern>
+        <implicit-parameter name="_DigitalLibrary_WAR_ieeecsDigitalLibraryportlet_action">csdlPattern7View</implicit-parameter>
+    </route>    
+
+	<!-- PATTERN #6: Volume and Issue -->
+    <route>
+        <pattern>/{pubType}/{idPrefix}/{fileName}/{fileType}</pattern>
+        <implicit-parameter name="_DigitalLibrary_WAR_ieeecsDigitalLibraryportlet_action">csdlPattern6View</implicit-parameter>
+    </route>    
+
+	<!-- PATTERN #7: Display just the Issue. --> 
+	<!-- PATTERN #7: "RapidPosts" and "PrePrints" Table of Contents. -->
+    <route>
+        <pattern>/{pubType}/{idPrefix}/{year}/{fileName}/{fileType}</pattern>
+        <implicit-parameter name="_DigitalLibrary_WAR_ieeecsDigitalLibraryportlet_action">csdlPattern7View</implicit-parameter>
+    </route>    
+
+	<!-- PATTERN #8: Table of Contents -->
+	<!-- PATTERN #8: "RapidPosts" and "PrePrints" Abstract -->
+    <route>
+        <pattern>/{pubType}/{idPrefix}/{year}/{issueNumber}/{fileName}/{fileType}</pattern>
+        <implicit-parameter name="_DigitalLibrary_WAR_ieeecsDigitalLibraryportlet_action">csdlPattern8View</implicit-parameter>
+    </route>    
+    
+    <!-- PATTERN #9: Abstract -->
+    <route>
+        <pattern>/{pubType}/{idPrefix}/{year}/{issueNumber}/{fileName}/{fileDetail}/{fileType}</pattern>
+        <implicit-parameter name="_DigitalLibrary_WAR_ieeecsDigitalLibraryportlet_action">csdlPattern9View</implicit-parameter>
+    </route>       
+
+</routes>
