@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+ <display>
+ 	<category name="CS Digital Library">
+ 		<portlet id="DigitalLibrary" />
+ 	</category>
+ </display>

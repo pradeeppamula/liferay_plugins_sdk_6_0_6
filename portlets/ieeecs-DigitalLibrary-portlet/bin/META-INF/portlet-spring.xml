@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="org.ieeecs.csdl.service.MetaTagLocalService" class="org.ieeecs.csdl.service.impl.MetaTagLocalServiceImpl" />
+	<bean id="org.ieeecs.csdl.service.MetaTagLocalServiceUtil" class="org.ieeecs.csdl.service.MetaTagLocalServiceUtil">
+		<property name="service" ref="org.ieeecs.csdl.service.MetaTagLocalService" />
+	</bean>
+	<bean id="org.ieeecs.csdl.service.MetaTagService" class="org.ieeecs.csdl.service.impl.MetaTagServiceImpl" />
+	<bean id="org.ieeecs.csdl.service.MetaTagServiceUtil" class="org.ieeecs.csdl.service.MetaTagServiceUtil">
+		<property name="service" ref="org.ieeecs.csdl.service.MetaTagService" />
+	</bean>
+</beans>
