@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+#parse ($init)
+
+#set ($metaTagLocalService = $serviceLocator.findService('ieeecs-DigitalLibrary-portlet', 'org.ieeecs.csdl.service.MetaTagLocalService')) 
+#set ($metaTagMap = $metaTagLocalService.getMetaTagData($theme_display.getURLCurrent()))
+
+<html class="#language("lang.dir")" dir="#language("lang.dir")" lang="$w3c_language_id">
+
+<head>
+	<title>$the_title - $company_name</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	#foreach( $key in $metaTagMap.keySet() )
+	    <meta name="$key" content="$metaTagMap.get($key)"/>
+	#end	
+
+	$theme.include($top_head_include)
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>		
+	<script type="text/javascript" src="/ieeecs-DigitalLibrary-theme/js/dockbar.customizable.js"></script>
+		
+	<link rel="stylesheet" type="text/css" href="/ieeecs-DigitalLibrary-theme/css/bootstrap.css">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/ieeecs-DigitalLibrary-theme/css/_style_08282013_1720.css" media="screen">	
+
+	<link rel="shortcut icon" href="/ieeecs-DigitalLibrary-theme/images/favicon.ico">
+	<link rel="icon" href="/ieeecs-DigitalLibrary-theme/images/favicon.ico">
+
+</head>
+
+<body class="$css_class">
+
+#if ($is_signed_in)
+	#parse ("$full_templates_path/dockbar.vm")
+#end
+
+<div class="headerWrapper row-fluid">
+
+		<div class="headerInnerBar">
+			<div id="headerInnerBarLeft" class="headerInnerBarLeft">
+				<div id="headerCommunityLogo" class="headerCommunityLogo">
+					<div class="communityLogo">
+						<a href="/portal/web" title="IEEE CS Home">
+							<img src="/ieeecs-DigitalLibrary-theme/images/CSDL_CSLogo-gray-green.png" alt="IEEE CS Home"/>
+						</a>
+					</div>
+				</div>				
+			</div>
+			<div id="headerInnerBarRight" class="headerInnerBarRight">
+				<div class="headerInnerRightIEEELogo">			
+					<a href="http://www.ieee.org" title="IEEE Home">
+						<img src="/ieeecs-DigitalLibrary-theme/images/IEEELogo-gray.png" alt="IEEE Home"/>
+					</a>			
+				</div>				
+			</div>						
+			<div class="clearBoth"></div>
+			<div class="headerCommunityCatchPhrase">The Community for Technology Leaders :</div>			
+		</div>		
+		<div class="headerSlider"></div>
+
+</div>
+
+<div id="wrapper">
+
+	<header id="banner" role="banner">
+		#if ($has_navigation)	
+#*			#parse ("$full_templates_path/navigation.vm")      *# 
+		#end
+	</header>
+
+	<div id="content" class="row-fluid">
+		#if ($selectable)
+			$theme.include($content_include)
+		#else
+			$portletDisplay.recycle()
+
+			$portletDisplay.setTitle($the_title)
+
+			$theme.wrapPortlet("portlet.vm", $content_include)
+		#end
+	</div>
+	
+	<div class="footerBar">
+		<div class="footerCopyright" id="footerCopyright"></div>
+	</div>	
+</div>
+
+<div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+	<div class="loginHeaderBar modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h4 id="loginModalLabel" class="loginHeaderText">Login to the $currentGroupName Community</h4>
+	</div>
+	<div class="modal-body">
+		<form name="loginSignInForm" id="loginSignInForm" action="/portal/web/guest/home?p_p_id=58&amp;p_p_lifecycle=1&amp;p_p_state=maximized&amp;p_p_mode=view&amp;saveLastPath=0&amp;_58_struts_action=%2Flogin%2Flogin&amp;_58_ieee_error=0" method="POST">
+			<input name="redirect" type="hidden" value="$!{currentPageURL}"/>
+			<input name="rememberMe" type="hidden" value="false" />	
+			<div class="loginUserName">Username</div>
+			<div class="loginUserNameInput"><input type="text" name="_58_login" id="_58_login" value=""/></div>
+			<div class="loginPassword">Password</div>
+			<div class="loginPasswordInput"><input type="password" name="_58_password" id="_58_password" value=""/></div>
+			<div class="loginButtonSignInAccount"><input type="submit" value="Sign in"/></div>
+		</form>	
+	</div>
+</div>
+
+<script type="text/javascript" src="/ieeecs-DigitalLibrary-theme/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/ieeecs-DigitalLibrary-theme/js/categorizr.min.js"></script>	
+	
+<script type="text/javascript">
+
+	var ww = document.body.clientWidth;	
+
+	var currentDate = new Date();	
+	$("#footerCopyright").html("This site and all contents (unless otherwise noted) are <a href='/portal/web/publications/copyright' class='copyrightLink'>Copyright &copy; " + currentDate.getFullYear() + " IEEE</a>. All rights reserved.");	
+
+	function loginModal() {
+	    $('#loginModal').modal({
+	    	keyboard: true
+	    })
+	}
+
+	$(document).ready(function() {
+
+		determineMenu();
+		
+		$(window).bind('resize orientationchange', function() {		
+			ww = document.body.clientWidth;
+			determineMenu();
+		});		
+				
+#* --------------------------------------------
+	Determine "span" values for the
+	columns, (bootstrap responsive
+	design purposes).
+------------------------------------------------ *#			
+		var wrapperWidth = $("#wrapper").width();
+		var spanSegment = wrapperWidth / 12;
+
+		for ( var index = 1; index <= 12; index++ ) {
+		
+			var currentColumn = "#column-" + index;
+			var currentObj = $(currentColumn);
+			
+			if ( currentObj.length > 0 ) {
+				var columnWidth = $(currentColumn).width();
+				var spanSizeValue = Math.round(columnWidth/spanSegment);
+				$(currentColumn).addClass("span" + spanSizeValue);
+			}
+		}	
+
+	});	
+	
+	var determineMenu = function() {	
+	
+		var dt = categorizr();
+	
+		if ( dt.toLowerCase() == "desktop" ) {
+			if ( ww >= 910 ) {
+				$("#ddmenu").show();
+				$("#ddMenuList").fadeIn(100);
+				$("#mobileMenu").hide();
+			} else {
+				$("#ddmenu, #ddMenuList").hide();
+				$("#mobileMenu").show();
+			}		
+		} else if ( dt.toLowerCase() == "tablet" ) {
+			if ( ww >= 1024 ) {
+				$("#ddmenu").show();
+				$("#ddMenuList").fadeIn(100);
+				$("#mobileMenu").hide();
+			} else {
+				$("#ddmenu, #ddMenuList").hide();
+				$("#mobileMenu").show();
+			}			
+		} else if ( dt.toLowerCase() == "mobile" ) {
+			$("#ddmenu, #ddMenuList").hide();
+			$("#mobileMenu").show();	
+		} else {
+			$("#ddmenu").show();	
+			$("#ddMenuList").fadeIn(100);
+			$("#mobileMenu").hide();
+		}	
+	}	
+
+</script>
+
+</body>
+
+$theme.include($bottom_include)
+
+</html>

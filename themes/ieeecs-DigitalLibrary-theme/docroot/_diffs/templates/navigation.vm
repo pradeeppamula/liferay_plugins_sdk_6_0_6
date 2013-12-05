@@ -1,0 +1,419 @@
+<nav id="ddmenu">
+    <ul style="display: none;" id="ddMenuList">
+
+        <li><a href="http://www.computer.org/portal/web/about">About</a>
+            <div>
+                <div class="column">
+                      <p><a href="http://www.computer.org/portal/web/publications/advertising/">Advertising</a></p>
+               		  <p><a href="http://www.computer.org/portal/web/awards">Awards and Fellows</a></p>
+                	  <p><a href="http://www.computer.org/portal/web/about/staff">CS Staff</a></p>
+                	  <p><a href="http://www.computer.org/portal/web/about/Executive-Staff">Executive Staff</a></p>
+                	  <p><a href="http://www.computer.org/portal/web/computingnow/multimedia">Multimedia Center</a></p>
+                	  <p><a href="http://www.computer.org/portal/web/pressroom/home">Press Room</a></p>
+                	  <p><a href="http://www.computer.org/portal/web/about/Browser-Policy">Policies</a></p>                	  
+                </div>
+                <div class="column-two" >
+                    
+                <h2><a style="font-size:24px; font-weight:bold; margin-bottom:10px;" href="http://www.computer.org/portal/web/about">About Us</a></h2>
+                <p><img src="http://www.computer.org/cms/Computer.org/CSCommunities/images/navigation/about.jpg" alt="About Us" style="width:146px; height:146px; float:left; margin-right:10px;" />IEEE Computer Society is the computing professional's single, unmatched source for technology information, inspiration, and collaboration.</p>
+                    <div class="view-more"><a href="http://www.computer.org/portal/web/about">View More</a></div>
+                </div>
+
+            </div>
+        </li>
+
+        <li><a href="http://www.computer.org/portal/web/csdl">Digital Library</a>
+            <div class="drop-Column1">
+                <div class="column">
+                    <p><a href="/portal/web/csdl">Digital Library Home</a></p>
+                    <p><a href="/portal/web/search/advanced">Search</a></p>
+                    <p><a href="/portal/web/csdl/subscribe">Subscribe</a></p>
+                    <p><a href="/portal/web/csdl/about">About the Digital Library</a></p>
+                </div>
+                <div class="column-two" >
+                    
+                <h2><a style="font-size:24px; font-weight:bold; margin-bottom:10px;" href="http://www.computer.org/portal/web/csdl">Digital Library</a></h2>
+                <p><img src="http://www.computer.org/cms/Computer.org/CSCommunities/images/navigation/digital_library.jpg" alt="Digital Library" style="width:146px; height:146px; float:left; margin-right:10px;" />Access 29 magazines and journals and more than 4,450 conference publications in the Digital Library, the authoritative source for computing information.</p>
+                    <div class="view-more"><a href="http://www.computer.org/portal/web/csdl">View More</a></div>
+                </div>
+
+            </div>
+        </li>
+        
+        <li><a href="http://www.computer.org/portal/web/publications">Pubs</a>
+			<div class="drop-Column2">
+          		<div class="column">
+               	    <p><a href="http://www.computer.org/portal/web/publications/advertising">Advertising</a></p>
+              	    <p><a href="http://www.computer.org/portal/web/publications/authors">Authors</a></p>
+              	    <p><a href="http://www.computer.org/portal/web/computingnow">Computing Now</a></p>
+              	    <p><a href="http://www.computer.org/portal/web/cscps/home">Conference Publications</a></p>
+              	    <p><a href="http://www.computer.org/portal/web/publications/magazines">Magazines</a></p>
+               	    <p><a href="http://www.computer.org/portal/web/publications/transactions">Transactions</a></p>
+                </div>
+                <div class="column-two" >
+                    
+                <h2><a style="font-size:24px; font-weight:bold; margin-bottom:10px;" href="http://www.computer.org/portal/web/publications">Publications</a></h2>
+                <p><img src="http://www.computer.org/cms/Computer.org/CSCommunities/images/navigation/publications.jpg" alt="Publications" style="width:146px; height:146px; float:left; margin-right:10px;" />Our high-quality journals, magazines, books, and conference publications represent the most up-to-date information in the computing world.</p>
+                    <div class="view-more"><a href="http://www.computer.org/portal/web/publications">View More</a></div>
+                </div>
+
+            </div>
+        </li>
+
+        <li><a href="http://www.computer.org/portal/web/conferences/home">Conferences</a>
+			<div class="drop-Column3">
+          		<div class="column">
+                    <p><a href="http://www.computer.org/portal/web/conferences/calendar">Conference Calendar</a></p>
+                    <p><a href="http://www.computer.org/portal/web/cscps/home">Conferences Publishing Services</a></p>
+                    <p><a href="http://www.ieee.org/web/conferences/search/index.html">IEEE Search</a></p>
+                    <p><a href="http://www.computer.org/portal/web/conferences/organizer-tools">Organizer Tools</a></p>
+                    <p><a href="http://www.computer.org/portal/web/conferences/tcs-information">TCS Information</a></p>
+                </div>
+                <div class="column-two" >
+                    
+                <h2><a style="font-size:24px; font-weight:bold; margin-bottom:10px;" href="http://www.computer.org/portal/web/conferences/home">Conferences</a></h2>
+                <p><img src="http://www.computer.org/cms/Computer.org/CSCommunities/images/navigation/conferences.jpg" alt="Conferences" style="width:146px; height:146px; float:left; margin-right:10px;" />Our technical conferences are a forum for top minds to come together to develop, validate, and disseminate leading-edge information.</p>
+                    <div class="view-more"><a href="http://www.computer.org/portal/web/conferences/home">View More</a></div>
+                </div>
+            </div>
+        </li>
+
+        <li><a href="http://www.computer.org/portal/web/membership/">Membership</a>
+			<div class="drop-Column4">
+         		<div class="column">
+                    <p><a href="http://www.computer.org/portal/web/chapters">Chapter Activities</a></p>
+                    <p><a href="http://www.computer.org/portal/web/sistersociety">Sister Societies</a></p>
+                    <p><a href="http://www.computer.org/portal/web/studentactivities/home">Student Activities</a></p>
+                    <p><a href="http://www.computer.org/portal/web/membership/Women-in-Computing">Women In Computing</a></p>
+                </div>
+                <div class="column-two" >
+                    
+                <h2><a style="font-size:24px; font-weight:bold; margin-bottom:10px;" href="http://www.computer.org/portal/web/membership/">Membership</a></h2>
+                <p><img src="http://www.computer.org/cms/Computer.org/CSCommunities/images/navigation/membership.jpg" alt="Membership" style="width:146px; height:146px; float:left; margin-right:10px;" />Join the community for technology leaders and receive a host of benefits, including access to the e-Learning campus, Computer magazine, conference and other discounts, and much more.</p>
+                    <div class="view-more"><a href="http://www.computer.org/portal/web/membership/">View More</a></div>
+                </div>
+            </div>
+        </li>
+
+        <li><a href="http://www.computer.org/portal/web/careers/home">Jobs Board</a>
+			<div class="drop-Column5">
+          		<div class="column">
+                    <p><a href="/portal/web/careers/careerwatcharchives">Career Watch</a></p>
+                    <p><a href="/portal/web/careers/home">Jobs Board Blog</a></p>
+                </div>
+                <div class="column-two" >
+                    
+                <h2><a style="font-size:24px; font-weight:bold; margin-bottom:10px;" href="http://www.computer.org/portal/web/careers/home">Jobs Board</a></h2>
+                <p><img src="http://www.computer.org/cms/Computer.org/CSCommunities/images/navigation/jobs_board.jpg" alt="Jobs Board" style="width:146px; height:146px; float:left; margin-right:10px;" />The one-stop job listing destination for technology professionals at any stage of their career, whether getting started, advancing, or transitioning.</p>
+                    <div class="view-more"><a href="http://www.computer.org/portal/web/careers/home">View More</a></div>
+                </div>
+            </div>
+        </li>
+
+        <li><a href="http://www.computer.org/portal/web/e-learning/home">Education &amp; Careers</a>
+			<div class="drop-Column6">
+          		<div class="column">
+                    <p><a href="http://www.computer.org/portal/web/e-learning/home">eLearning Campus</a></p>
+                    <p><a href="http://www.computer.org/portal/web/certification">Certification</a></p>
+                    <p><a href="http://www.computer.org/portal/web/certification">Training</a></p>
+                    <p><a href="http://www.computer.org/portal/web/webinars">Webinars</a></p>
+                </div>
+                <div class="column-two" >
+                    
+                <h2><a style="font-size:24px; font-weight:bold; margin-bottom:10px;" href="http://www.computer.org/portal/web/e-learning/home">Education &amp; Careers</a></h2>
+                <p><img src="http://www.computer.org/cms/Computer.org/CSCommunities/images/navigation/education_careers.jpg" alt="Education and Careers" style="width:146px; height:146px; float:left; margin-right:10px;" />Stay up to date with current technologies with professional development courses, e-learning, webinars, and more.</p>
+                    <div class="view-more"><a href="http://www.computer.org/portal/web/e-learning/home">View More</a></div>
+                </div>
+            </div>
+        </li>
+
+        <li><a href="http://www.computer.org/portal/web/certification">Corporate Programs</a>
+			<div class="drop-Column7">
+          		<div class="column">
+                    <p><a href="http://www.computer.org/portal/web/certification">TechLeader Training<br />Partner Program</a></p>
+                </div>
+                <div class="column-two" >
+                    
+                <h2><a style="font-size:24px; font-weight:bold; margin-bottom:10px;" href="http://www.computer.org/portal/web/certification">Corporate Programs</a></h2>
+                <p><img src="http://www.computer.org/cms/Computer.org/CSCommunities/images/navigation/corporate_programs.jpg" alt="Corporate Programs" style="width:146px; height:146px; float:left; margin-right:10px;" />From training webinars and events to courses and certifications, IEEE Computer Society has the tools organizations need to train and retain top technical talent.</p>
+                    <div class="view-more"><a href="http://www.computer.org/portal/web/certification">View More</a></div>
+                </div>
+            </div>
+        </li>
+
+        <li><a href="http://www.computer.org/portal/web/Communities">Volunteers &amp; Governance</a>
+			<div class="drop-Column8">
+          		<div class="column">
+                    <p><a href="http://www.computer.org/portal/web/volunteercenter/bog">Board of Governors</a></p>
+                    <p><a href="http://www.computer.org/portal/web/volunteercenter">Boards and Committes</a></p>
+                    <p><a href="http://www.computer.org/portal/web/education">Education Activities</a></p>
+                    <p><a href="http://www.computer.org/portal/web/pab">Professional Activities</a></p>
+                    <p><a href="http://www.computer.org/portal/web/publicationsboard/home">Publications Board</a></p>
+                    <p><a href="http://www.computer.org/portal/web/standards/home">Standards Activities</a></p>
+                    <p><a href="http://www.computer.org/portal/web/tandc">Technical Activities</a></p>
+                    <p><a href="http://www.computer.org/portal/web/volunteercenter">Volunteer Resource Center</a></p>
+                </div>
+                <div class="column-two">
+                    
+                <h2><a style="font-size:24px; font-weight:bold; margin-bottom:10px;" href="http://www.computer.org/portal/web/Communities">Volunteers &amp; Governance</a></h2>
+                <p><img src="http://www.computer.org/cms/Computer.org/CSCommunities/images/navigation/volunteers_governance.jpg" alt="Volunteers and Governance" style="width:146px; height:146px; float:left; margin-right:10px;" />Get involved in a chapter, join a community, participate in a program board, or make an award nomination.</p>
+                    <div class="view-more"><a href="http://www.computer.org/portal/web/Communities">View More</a></div>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+</nav>
+
+<nav id="mobileMenu">
+    <div class="mobileMenuBar">
+    	<div class="mobileMainMenu">Main Menu</div>
+    </div>
+    
+	<div id="modal_MainMenu" class="modal hide" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-body">
+			<div class="primaryMenuLinks primaryMenuLinksTop" id="m_about">About</div>
+			<div class="primaryMenuLinks" id="m_digital_library">Digital Library</div>
+			<div class="primaryMenuLinks" id="m_publications">Publications</div>
+			<div class="primaryMenuLinks" id="m_conferences">Conferences</div>
+			<div class="primaryMenuLinks" id="m_membership">Membership</div>
+			<div class="primaryMenuLinks" id="m_jobs_board">Jobs Board</div>
+			<div class="primaryMenuLinks" id="m_education_careers">Education & Careers</div>
+			<div class="primaryMenuLinks" id="m_corporate_programs">Corporate Programs</div>
+			<div class="primaryMenuLinks" id="m_volunteers_governance">Volunteers & Governance</div>
+		</div>
+	</div>    
+    
+	<div id="modal_About" class="modal hide" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-body">
+			<div class="secondaryMenuDescription" id="m_about_description">IEEE Computer Society is the computing professional's single, unmatched source for technology information, inspiration, and collaboration.</div>	
+			<div class="secondaryMenuLinks" id="m_about_advertising">Advertising</div>
+			<div class="secondaryMenuLinks" id="m_about_awards_fellows">Awards and Fellows</div>
+			<div class="secondaryMenuLinks" id="m_about_cs_staff">CS Staff</div>
+			<div class="secondaryMenuLinks" id="m_about_executive_staff">Executive Staff</div>
+			<div class="secondaryMenuLinks" id="m_about_multimedia_center">Multimedia Center</div>
+			<div class="secondaryMenuLinks" id="m_about_press_room">Press Room</div>
+			<div class="secondaryMenuLinks" id="m_about_policies">Policies</div>	
+			<div class="backToMainMenu">Back to the Main Menu</div>							
+		</div>
+	</div>   
+	
+	<div id="modal_DigitalLibrary" class="modal hide" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-body">
+			<div class="secondaryMenuDescription" id="m_digital_library_description">Access 29 magazines and journals and more than 4,450 conference publications in the Digital Library, the authoritative source for computing information.</div>			
+			<div class="secondaryMenuLinks" id="m_digital_library_home">Digital Library Home</div>
+			<div class="secondaryMenuLinks" id="m_digital_library_search">Search</div>
+			<div class="secondaryMenuLinks" id="m_digital_library_subscribe">Subscribe</div>
+			<div class="secondaryMenuLinks" id="m_digital_library_about">About the Digital Library</div>		
+			<div class="backToMainMenu">Back to the Main Menu</div>			
+		</div>
+	</div>  
+	
+	<div id="modal_Publications" class="modal hide" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-body">
+			<div class="secondaryMenuDescription" id="m_publications_description">Our high-quality journals, magazines, books, and conference publications represent the most up-to-date information in the computing world.</div>	
+			<div class="secondaryMenuLinks" id="m_publications_advertising">Advertising</div>
+			<div class="secondaryMenuLinks" id="m_publications_authors">Authors</div>
+			<div class="secondaryMenuLinks" id="m_publications_computingnow">ComputingNow</div>
+			<div class="secondaryMenuLinks" id="m_publications_conference_publications">Conference Publications</div>
+			<div class="secondaryMenuLinks" id="m_publications_magazines">Magazines</div>
+			<div class="secondaryMenuLinks" id="m_publications_transactions">Transactions</div>		
+			<div class="backToMainMenu">Back to the Main Menu</div>				
+		</div>
+	</div>  	
+	
+	<div id="modal_Conferences" class="modal hide" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-body">
+			<div class="secondaryMenuDescription" id="m_conferences_description">Our technical conferences are a forum for top minds to come together to develop, validate, and disseminate leading-edge information.</div>
+			<div class="secondaryMenuLinks" id="m_conferences_calendar">Conference Calendar</div>
+			<div class="secondaryMenuLinks" id="m_conferences_publishing_services">Conference Publishing Services</div>
+			<div class="secondaryMenuLinks" id="m_conferences_ieee_search">IEEE Search</div>
+			<div class="secondaryMenuLinks" id="m_conferences_tools">Organizer Tools</div>
+			<div class="secondaryMenuLinks" id="m_conferences_tcs_information">TCS Information</div>			
+			<div class="backToMainMenu">Back to the Main Menu</div>
+		</div>
+	</div>  	
+	
+	<div id="modal_Membership" class="modal hide" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-body">
+			<div class="secondaryMenuDescription" id="m_membership_description">Join the community for technology leaders and receive a host of benefits, including access to the e-Learning campus, Computer magazine, conference and other discounts, and much more.</div>
+			<div class="secondaryMenuLinks" id="m_membership_chapter_activities">Chapter Activities</div>
+			<div class="secondaryMenuLinks" id="m_membership_sister_societies">Sister Societies</div>
+			<div class="secondaryMenuLinks" id="m_membership_student_actvities">Student Activities</div>
+			<div class="secondaryMenuLinks" id="m_membership_women_in_computing">Women in Computing</div>
+			<div class="backToMainMenu">Back to the Main Menu</div>
+		</div>
+	</div>  					     
+    
+	<div id="modal_JobsBoard" class="modal hide" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-body">
+			<div class="secondaryMenuDescription" id="m_jobs_board_description">The one-stop job listing destination for technology professionals at any stage of their career, whether getting started, advancing, or transitioning.</div>
+			<div class="secondaryMenuLinks" id="m_jobs_board_career_watch">Career Watch</div>
+			<div class="secondaryMenuLinks" id="m_jobs_board_blog">Jobs Board Blog</div>
+			<div class="backToMainMenu">Back to the Main Menu</div>			
+		</div>
+	</div>  	
+	
+	<div id="modal_EducationCareers" class="modal hide" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-body">
+			<div class="secondaryMenuDescription" id="m_education_careers_description">Stay up to date with current technologies with professional development courses, e-learning, webinars, and more.</div>
+			<div class="secondaryMenuLinks" id="m_education_careers_elearning_campus">eLearning Campus</div>
+			<div class="secondaryMenuLinks" id="m_education_careers_certification">Certification</div>
+			<div class="secondaryMenuLinks" id="m_education_careers_training">Training</div>
+			<div class="secondaryMenuLinks" id="m_education_careers_webinars">Webinars</div>
+			<div class="backToMainMenu">Back to the Main Menu</div>
+		</div>
+	</div>  	
+	
+	<div id="modal_CorporatePrograms" class="modal hide" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-body">
+			<div class="secondaryMenuDescription" id="m_corporate_programs_description">From training webinars and events to courses and certifications, IEEE Computer Society has the tools organizations need to train and retain top technical talent.</div>
+			<div class="secondaryMenuLinks" id="m_corporate_programs_t2p2">T2P2</div>
+			<div class="backToMainMenu">Back to the Main Menu</div>
+		</div>
+	</div>  	    
+    
+	<div id="modal_VolunteersGovernance" class="modal hide" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-body">
+			<div class="secondaryMenuDescription" id="m_volunteers_governance_description">Get involved in a chapter, join a community, participate in a program board, or make an award nomination.</div>
+			<div class="secondaryMenuLinks" id="m_volunteers_governance_bog">Board of Governors</div>
+			<div class="secondaryMenuLinks" id="m_volunteers_governance_boards_committees">Boards and Committees</div>
+			<div class="secondaryMenuLinks" id="m_volunteers_governance_education">Education Activities</div>
+			<div class="secondaryMenuLinks" id="m_volunteers_governance_professional">Professional Activities</div>
+			<div class="secondaryMenuLinks" id="m_volunteers_governance_publications">Publications Board</div>
+			<div class="secondaryMenuLinks" id="m_volunteers_governance_standards">Standards Activities</div>
+			<div class="secondaryMenuLinks" id="m_volunteers_governance_technical">Technical Activities</div>
+			<div class="secondaryMenuLinks" id="m_volunteers_governance_resource_center">Volunteer Resource Center</div>						
+			<div class="backToMainMenu">Back to the Main Menu</div>
+		</div>
+	</div>  	    
+    
+	<script type="text/javascript">    
+	
+		var linkURLList = {
+			"m_about_advertising":"http://www.computer.org/portal/web/publications/advertising/",
+			"m_about_awards_fellows":"http://www.computer.org/portal/web/awards",
+			"m_about_cs_staff":"http://www.computer.org/portal/web/about/staff",
+			"m_about_executive_staff":"http://www.computer.org/portal/web/about/Executive-Staff",
+			"m_about_multimedia_center":"http://www.computer.org/portal/web/computingnow/multimedia",
+			"m_about_press_room":"http://www.computer.org/portal/web/pressroom/home",
+			"m_about_policies":"http://www.computer.org/portal/web/about/Browser-Policy",			
+			"m_digital_library_home":"/portal/web/csdl",
+			"m_digital_library_search":"/portal/web/search/advanced",
+			"m_digital_library_subscribe":"/portal/web/csdl/subscribe",
+			"m_digital_library_about":"/portal/web/csdl/about",
+			"m_publications_advertising":"http://www.computer.org/portal/web/publications/advertising",
+			"m_publications_authors":"http://www.computer.org/portal/web/publications/authors",
+			"m_publications_computingnow":"http://www.computer.org/portal/web/computingnow",
+			"m_publications_conference_publications":"http://www.computer.org/portal/web/cscps/home",
+			"m_publications_magazines":"http://www.computer.org/portal/web/publications/magazines",
+			"m_publications_transactions":"http://www.computer.org/portal/web/publications/transactions",
+			"m_conferences_calendar":"http://www.computer.org/portal/web/conferences/calendar",
+			"m_conferences_publishing_services":"http://www.computer.org/portal/web/cscps/home",
+			"m_conferences_ieee_search":"http://www.ieee.org/web/conferences/search/index.html",
+			"m_conferences_tools":"http://www.computer.org/portal/web/conferences/organizer-tools",
+			"m_conferences_tcs_information":"http://www.computer.org/portal/web/conferences/tcs-information",
+			"m_membership_chapter_activities":"http://www.computer.org/portal/web/chapters",
+			"m_membership_sister_societies":"http://www.computer.org/portal/web/sistersociety",
+			"m_membership_student_actvities":"http://www.computer.org/portal/web/studentactivities/home",
+			"m_membership_women_in_computing":"http://www.computer.org/portal/web/membership/Women-in-Computing",
+			"m_jobs_board_career_watch":"/portal/web/careers/careerwatcharchives",
+			"m_jobs_board_blog":"http://www.computer.org/portal/web/careers/home",
+			"m_education_careers_elearning_campus":"http://www.computer.org/portal/web/e-learning/home",
+			"m_education_careers_certification":"http://www.computer.org/portal/web/certification",
+			"m_education_careers_training":"http://www.computer.org/portal/web/certification",
+			"m_education_careers_webinars":"http://www.computer.org/portal/web/webinars",
+			"m_corporate_programs_t2p2":"http://www.computer.org/portal/web/certification",
+			"m_volunteers_governance_bog":"http://www.computer.org/portal/web/volunteercenter/bog",									
+			"m_volunteers_governance_boards_committees":"http://www.computer.org/portal/web/volunteercenter",
+			"m_volunteers_governance_education":"http://www.computer.org/portal/web/education",
+			"m_volunteers_governance_professional":"http://www.computer.org/portal/web/pab",
+			"m_volunteers_governance_publications":"http://www.computer.org/portal/web/publicationsboard/home",
+			"m_volunteers_governance_standards":"http://www.computer.org/portal/web/standards/home",
+			"m_volunteers_governance_technical":"http://www.computer.org/portal/web/tandc",
+			"m_volunteers_governance_resource_center":"http://www.computer.org/portal/web/volunteercenter"
+		}
+    
+    	$(".mobileMainMenu").click(function() {
+		    $('#modal_MainMenu').modal({
+		    	keyboard: true
+		    })    	    	
+    	});
+    	
+    	$(".backToMainMenu").click(function() {
+    		$('div[id^=modal_]').modal('hide');
+		    $('#modal_MainMenu').modal({
+		    	keyboard: true
+		    })    	    	
+    	});  
+    	
+    	$(".secondaryMenuLinks").click(function() {
+    		var id = $(this).attr("id");
+    		var url = linkURLList[id];
+			window.location = url;
+    	});         	    	
+    	
+    	$("#m_about").click(function() {
+    		$('#modal_MainMenu').modal('hide');
+		    $('#modal_About').modal({
+		    	keyboard: true
+		    })    	    	
+    	});    	
+    	
+    	$("#m_digital_library").click(function() {
+    		$('#modal_MainMenu').modal('hide');
+		    $('#modal_DigitalLibrary').modal({
+		    	keyboard: true
+		    })    	    	
+    	});     
+    	
+    	$("#m_publications").click(function() {
+    		$('#modal_MainMenu').modal('hide');
+		    $('#modal_Publications').modal({
+		    	keyboard: true
+		    })    	    	
+    	});     
+    	
+    	$("#m_conferences").click(function() {
+    		$('#modal_MainMenu').modal('hide');
+		    $('#modal_Conferences').modal({
+		    	keyboard: true
+		    })    	    	
+    	});     
+    	
+    	$("#m_membership").click(function() {
+    		$('#modal_MainMenu').modal('hide');
+		    $('#modal_Membership').modal({
+		    	keyboard: true
+		    })    	    	
+    	});    
+
+    	$("#m_jobs_board").click(function() {
+    		$('#modal_MainMenu').modal('hide');
+		    $('#modal_JobsBoard').modal({
+		    	keyboard: true
+		    })    	    	
+    	});     
+    	
+    	$("#m_education_careers").click(function() {
+    		$('#modal_MainMenu').modal('hide');
+		    $('#modal_EducationCareers').modal({
+		    	keyboard: true
+		    })    	    	
+    	});     
+    	
+    	$("#m_corporate_programs").click(function() {
+    		$('#modal_MainMenu').modal('hide');
+		    $('#modal_CorporatePrograms').modal({
+		    	keyboard: true
+		    })    	    	
+    	});         	    	    	 	
+    	
+    	$("#m_volunteers_governance").click(function() {
+    		$('#modal_MainMenu').modal('hide');
+		    $('#modal_VolunteersGovernance').modal({
+		    	keyboard: true
+		    })    	    	
+    	});         
+    </script>
+</nav>
