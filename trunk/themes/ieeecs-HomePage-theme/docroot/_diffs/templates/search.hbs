@@ -1,7 +1,7 @@
     <div class="col-md-5 col-sm-4 search-app">
         {{#view SearchApp.SearchFormView}}
         <div class="input-group">
-            {{view Ember.TextField id="myhome-search-input" action="performSearch" valueBinding="searchText" classNames="form-control" placeholder="Search for articles, conferences and more..."}}
+            {{view Ember.TextField id="myhome-search-input" valueBinding="searchText" classNames="form-control" placeholder="Search for articles, conferences and more..."}}
                         <span class="input-group-btn">
                             <button class="btn btn-primary" type="button" {{action "setUpFullSearch"}}><i class="icon-search"></i></button>
                         </span>
@@ -11,7 +11,10 @@
     <div class="col-md-1 col-sm-1 advanced-search search-app">
         <a href="#"  {{action "showAdvancedSearchModal"}}>Advanced</a>
     </div>
-    <div class="search-results col-md-5 col-sm-5">
+
+        <div class="search-results col-md-5 col-sm-5">
+            <!--
+         NOTE: 11.25.13 - Keeping typeahead out until future release.
         <ul>
             {{#each item in content}}
             <li>
@@ -19,8 +22,8 @@
                 <p class="summary">{{{item.summary}}}</p>
             </li>
             {{/each}}
-        </ul>
-    </div>
+        </ul> -->
+        </div>
 
     <div class="modal fade" id="advanced-search-modal">
         <div class="modal-dialog advanced-search-modal">
@@ -79,7 +82,8 @@
                         {{#each item in controller.paginatedContent}}
                         <div class="advanced-search-result">
                             {{#unless item.isNoResult}}
-                            <span {{bindAttr class=":badge item.contentType"}}>{{item.contentType}}</span>
+                            <span {{bindAttr class=":label :label-info item.hasFullAccess::hide"}}>Full Access</span>&nbsp;
+                            <span {{bindAttr class=":label :label-info item.contentType"}}>{{item.contentType}}</span>
                             {{/unless}}
                             <h5><a href="#" {{action "viewContentItem" item}}>{{{item.title}}}</a></h5>
                             <p class="summary">{{{item.summary}}}</p>
@@ -114,7 +118,7 @@
                     </p>
                 </div>
                 {{#unless item.isNoResult}}
-                <a href="#" {{ bindAttr class=":btn :btn-info :btn-xs item.hasFullAccess:hide"}} {{ action "showAddBundleConfirm" item.confirmId }} >Add To Bundle</a>
+                <a href="#" {{ bindAttr class=":btn :btn-info :btn-xs item.hasFullAccess:hide item.canManuallyAddToBundle::hide"}} {{ action "showAddBundleConfirm" item.confirmId }}>Add To Bundle</a>
                 {{/unless}}
             </div>
             {{/each}}
