@@ -1,8 +1,8 @@
-<nav class="navbar navbar-inverse navbar-myhome navbar-fixed-top" role="navigation" data-namespace="_145_" id="dockbar">
+<nav class="navbar navbar-inverse navbar-fixed-top navbar-myhome" role="navigation" data-namespace="_145_" id="dockbar">
   <div class="">
   ## Brand and toggle get grouped for better mobile display
   <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
@@ -12,12 +12,12 @@
   </div>
 
   ## Place everything within .navbar-collapse to hide it until above 768px
-  <div class="navbar-collapse collapse navbar-ex1-collapse">
+  <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav col-md-2 col-sm-2">
         #if ($is_signed_in)
           <li class="dropdown">
             <a href="#" class="dropdown-toggle navbar-icon-dropdown" data-toggle="dropdown">
-              <i class="icon-fixed-width icon-cog icon-2x"></i>
+              <i class="icon-fixed-width icon-cog"></i>
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu aui-toolbar">
@@ -93,12 +93,12 @@
       ## login/logout container
       <ul class="nav navbar-nav navbar-right">
           #if (!$is_signed_in)
-          <div class="login-button-container">
-              <a data-toggle="modal" href="#myModal" class="btn btn-primary navbar-btn">
-                <i class="icon-fixed-width icon-signin icon-large"></i>
+             <li>
+              <a data-toggle="modal" href="#myModal" class="login">
+                <i class="icon-fixed-width icon-signin"></i>
                 Login
               </a>
-          </div>
+             </li>
           #end
           #if ($is_signed_in)
           <li class="dropdown">
@@ -142,7 +142,7 @@
 </script>
 #if ($is_signed_in)
 <script type="text/javascript">
-    Ember.TEMPLATES['search'] = Ember.Handlebars.compile('<div class="col-md-5 col-sm-4 search-app"> {{#view SearchApp.SearchFormView}} <div class="input-group"> {{view Ember.TextField id="myhome-search-input" action="performSearch" valueBinding="searchText" classNames="form-control" placeholder="Search for articles, conferences and more..."}} <span class="input-group-btn"> <button class="btn btn-primary" type="button" {{action "setUpFullSearch"}}><i class="icon-search"></i></button> </span> </div> {{/view}} </div> <div class="col-md-1 col-sm-1 advanced-search search-app"> <a href="#"  {{action "showAdvancedSearchModal"}}>Advanced</a> </div> <div class="search-results col-md-5 col-sm-5"> <ul> {{#each item in content}} <li> <p{{action "viewContentItem" item}} class="title">{{{item.title}}}</p> <p class="summary">{{{item.summary}}}</p> </li> {{/each}} </ul> </div> <div class="modal fade" id="advanced-search-modal"> <div class="modal-dialog advanced-search-modal"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close square-close" data-dismiss="modal" aria-hidden="true"> <i class="icon-remove"></i> </button> <div class="form-group input-group advanced-search-form"> {{view Ember.TextField id="myhome-advanced-search-input" valueBinding="advancedSearchText" classNames="form-control" placeholder="Search for articles, conferences and more..."}} <span class="input-group-btn"> <button class="btn btn-primary" type="button" {{action "performAdvancedSearch"}}>SEARCH</button> </span> </div> <div class="filters-link-container"> <a id="disable-filters-link" href="#" {{ action "disableFilters"}}> Disable Filters <i class="icon-caret-up icon-fixed-width"></i> </a> <a id="enable-filters-link" href="#" {{ action "enableFilters"}}> Enable Filters <i class="icon-caret-down icon-fixed-width"></i> </a> </div> </div> <div class="advanced-search-filters-container"> <div class="form-group col-md-12 col-sm-12"> Content Types: {{view Ember.Checkbox checkedBinding="filterByArticle"}} Article {{view Ember.Checkbox checkedBinding="filterByWebinar"}} Webinar </div> <div class> <div class="col-md-4 col-sm-4"> <div> <label>From:</label> </div> <div id="advanced-search-dp-start-date" class="input-group col-md-8 col-sm-8"> {{view Ember.TextField id="advanced-search-start-date" valueBinding="advancedSearchStartDate" classNames="form-control datepicker" placeholder="YYYY-MM-DD"}} <span class="input-group-addon"><i class="icon-calendar"></i></span> </div> </div> <div class="col-md-4 col-sm-4"> <div> <label>To:</label> </div> <div id="advanced-search-dp-end-date" class="input-group col-md-8 col-sm-8"> {{view Ember.TextField id="advanced-search-end-date" valueBinding="advancedSearchEndDate" classNames="form-control datepicker" placeholder="YYYY-MM-DD"}} <span class="input-group-addon"><i class="icon-calendar"></i></span> </div> </div> </div> </div> <div> <div class="advanced-result-count-container"> <h6>{{numberOfAdvancedResults}} RESULTS FOUND</h6> </div> <div class="advanced-search-results"> {{#each item in controller.paginatedContent}} <div class="advanced-search-result"> {{#unless item.isNoResult}} <span {{bindAttr class=":badge item.contentType"}}>{{item.contentType}}</span> {{/unless}} <h5><a href="#" {{action "viewContentItem" item}}>{{{item.title}}}</a></h5> <p class="summary">{{{item.summary}}}</p> <div {{ bindAttr class=":alert :alert-block :alert-success :fade :hide item.confirmId :success" }}> <button type="button" class="close" aria-hidden="true" {{ action "hideAddBundleSuccess" item.confirmId }}>x</button> <h4><i class="icon-check-sign icon-3x icon-fixed-width"></i>Added To Bundle!</h4> </div> <div {{ bindAttr class=":alert :alert-block :alert-danger :fade :hide item.confirmId :error" }}> <button type="button" class="close" aria-hidden="true" {{ action "hideAddBundleError" item.confirmId}}>x</button> {{#unless bundleLimitError}} <p> <i class="icon-warning-sign icon-3x icon-fixed-width"></i> Your bundle is at its limit, would you like to increase the size? <a class="btn btn-default" href="#" {{ action "goToBundlePurchase" item }}>Make it happen</a> </p> {{else}} <h4><i class="icon-exclamation-sign icon-3x icon-fixed-width"></i>There was a problem adding this item to your bundle, please try again or contact help@computer.org.</h4> {{/unless}} </div> <div {{ bindAttr class=":alert :alert-block :alert-warning :fade :hide item.confirmId :warning" }}> <button type="button" class="close" aria-hidden="true"  {{ action "hideAddBundleConfirm" item.confirmId }}>x</button> <p> <i class="icon-warning-sign icon-3x icon-fixed-width"></i> Are you sure you would like to add this item to your bundle? <button {{bindAttr class=":btn :btn-default item.isSavingToBundle:disabled"}} {{ action "addItemToBundle" item item.confirmId}} > {{#unless item.isSavingToBundle }} Yes {{else}} Please Wait {{/unless}} </button> </p> </div> {{#unless item.isNoResult}} <a href="#" {{ bindAttr class=":btn :btn-info :btn-xs item.hasFullAccess:hide"}} {{ action "showAddBundleConfirm" item.confirmId }} >Add To Bundle</a> {{/unless}} </div> {{/each}} </div> {{#unless noResultsFound}} <div class="advanced-search-pagination"> <ul class="pagination pagination-sm"> {{#unless hasPrevPage}} <li class="disabled"><a href="#">&laquo;</a></li> {{else}} <li>{{#linkTo "search.page" prevPage target="controller"}}&laquo;{{/linkTo}}</li> {{/unless}} {{#each pages}} {{view SearchApp.PaginationView contentBinding="this"}} {{/each}} {{#unless hasNextPage}} <li class="disabled"><a href="#">&raquo;</a></li> {{else}} <li>{{#linkTo "search.page" nextPage target="controller"}}&raquo;{{/linkTo}}</li> {{/unless}} </ul> </div> {{/unless}} </div> </div> </div> </div>');
+    Ember.TEMPLATES['search'] = Ember.Handlebars.compile('<div class="col-md-5 col-sm-4 search-app"> {{#view SearchApp.SearchFormView}} <div class="input-group"> {{view Ember.TextField id="myhome-search-input" valueBinding="searchText" classNames="form-control" placeholder="Search for articles, conferences and more..."}} <span class="input-group-btn"> <button class="btn btn-primary" type="button" {{action "setUpFullSearch"}}><i class="icon-search"></i></button> </span> </div> {{/view}} </div> <div class="col-md-1 col-sm-1 advanced-search search-app"> <a href="#"  {{action "showAdvancedSearchModal"}}>Advanced</a> </div> <div class="search-results col-md-5 col-sm-5"> <!-- NOTE: 11.25.13 - Keeping typeahead out until future release. <ul> {{#each item in content}} <li> <p{{action "viewContentItem" item}} class="title">{{{item.title}}}</p> <p class="summary">{{{item.summary}}}</p> </li> {{/each}} </ul> --> </div> <div class="modal fade" id="advanced-search-modal"> <div class="modal-dialog advanced-search-modal"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close square-close" data-dismiss="modal" aria-hidden="true"> <i class="icon-remove"></i> </button> <div class="form-group input-group advanced-search-form"> {{view Ember.TextField id="myhome-advanced-search-input" valueBinding="advancedSearchText" classNames="form-control" placeholder="Search for articles, conferences and more..."}} <span class="input-group-btn"> <button class="btn btn-primary" type="button" {{action "performAdvancedSearch"}}>SEARCH</button> </span> </div> <div class="filters-link-container"> <a id="disable-filters-link" href="#" {{ action "disableFilters"}}> Disable Filters <i class="icon-caret-up icon-fixed-width"></i> </a> <a id="enable-filters-link" href="#" {{ action "enableFilters"}}> Enable Filters <i class="icon-caret-down icon-fixed-width"></i> </a> </div> </div> <div class="advanced-search-filters-container"> <div class="form-group col-md-12 col-sm-12"> Content Types: {{view Ember.Checkbox checkedBinding="filterByArticle"}} Article {{view Ember.Checkbox checkedBinding="filterByWebinar"}} Webinar </div> <div class> <div class="col-md-4 col-sm-4"> <div> <label>From:</label> </div> <div id="advanced-search-dp-start-date" class="input-group col-md-8 col-sm-8"> {{view Ember.TextField id="advanced-search-start-date" valueBinding="advancedSearchStartDate" classNames="form-control datepicker" placeholder="YYYY-MM-DD"}} <span class="input-group-addon"><i class="icon-calendar"></i></span> </div> </div> <div class="col-md-4 col-sm-4"> <div> <label>To:</label> </div> <div id="advanced-search-dp-end-date" class="input-group col-md-8 col-sm-8"> {{view Ember.TextField id="advanced-search-end-date" valueBinding="advancedSearchEndDate" classNames="form-control datepicker" placeholder="YYYY-MM-DD"}} <span class="input-group-addon"><i class="icon-calendar"></i></span> </div> </div> </div> </div> <div> <div class="advanced-result-count-container"> <h6>{{numberOfAdvancedResults}} RESULTS FOUND</h6> </div> <div class="advanced-search-results"> {{#each item in controller.paginatedContent}} <div class="advanced-search-result"> {{#unless item.isNoResult}} <span {{bindAttr class=":label :label-info item.hasFullAccess::hide"}}>Full Access</span>&nbsp; <span {{bindAttr class=":label :label-info item.contentType"}}>{{item.contentType}}</span> {{/unless}} <h5><a href="#" {{action "viewContentItem" item}}>{{{item.title}}}</a></h5> <p class="summary">{{{item.summary}}}</p> <div {{ bindAttr class=":alert :alert-block :alert-success :fade :hide item.confirmId :success" }}> <button type="button" class="close" aria-hidden="true" {{ action "hideAddBundleSuccess" item.confirmId }}>x</button> <h4><i class="icon-check-sign icon-3x icon-fixed-width"></i>Added To Bundle!</h4> </div> <div {{ bindAttr class=":alert :alert-block :alert-danger :fade :hide item.confirmId :error" }}> <button type="button" class="close" aria-hidden="true" {{ action "hideAddBundleError" item.confirmId}}>x</button> {{#unless bundleLimitError}} <p> <i class="icon-warning-sign icon-3x icon-fixed-width"></i> Your bundle is at its limit, would you like to increase the size? <a class="btn btn-default" href="#" {{ action "goToBundlePurchase" item }}>Make it happen</a> </p> {{else}} <h4><i class="icon-exclamation-sign icon-3x icon-fixed-width"></i>There was a problem adding this item to your bundle, please try again or contact help@computer.org.</h4> {{/unless}} </div> <div {{ bindAttr class=":alert :alert-block :alert-warning :fade :hide item.confirmId :warning" }}> <button type="button" class="close" aria-hidden="true"  {{ action "hideAddBundleConfirm" item.confirmId }}>x</button> <p> <i class="icon-warning-sign icon-3x icon-fixed-width"></i> Are you sure you would like to add this item to your bundle? <button {{bindAttr class=":btn :btn-default item.isSavingToBundle:disabled"}} {{ action "addItemToBundle" item item.confirmId}} > {{#unless item.isSavingToBundle }} Yes {{else}} Please Wait {{/unless}} </button> </p> </div> {{#unless item.isNoResult}} <a href="#" {{ bindAttr class=":btn :btn-info :btn-xs item.hasFullAccess:hide item.canManuallyAddToBundle::hide"}} {{ action "showAddBundleConfirm" item.confirmId }}>Add To Bundle</a> {{/unless}} </div> {{/each}} </div> {{#unless noResultsFound}} <div class="advanced-search-pagination"> <ul class="pagination pagination-sm"> {{#unless hasPrevPage}} <li class="disabled"><a href="#">&laquo;</a></li> {{else}} <li>{{#linkTo "search.page" prevPage target="controller"}}&laquo;{{/linkTo}}</li> {{/unless}} {{#each pages}} {{view SearchApp.PaginationView contentBinding="this"}} {{/each}} {{#unless hasNextPage}} <li class="disabled"><a href="#">&raquo;</a></li> {{else}} <li>{{#linkTo "search.page" nextPage target="controller"}}&raquo;{{/linkTo}}</li> {{/unless}} </ul> </div> {{/unless}} </div> </div> </div> </div>');
     Ember.TEMPLATES['pagination'] = Ember.Handlebars.compile('{{#with view}}{{#linkTo "search.page" page}}{{content.page_id}}{{/linkTo}}{{/with}}');
 
     #*
@@ -183,6 +183,7 @@
     SearchApp.Content = Ember.Object.extend({
         isSavingToBundle: false,
         isNoResult: false,
+        canManuallyAddToBundle: true,
         itemId: null,
         doi: "",
         sku: "",
@@ -283,9 +284,26 @@
         selectedPage: 1,
         maxResultSize: 100,
         noResultsFound: function() {
-            console.log(this.get('numberOfAdvancedResults'));
             return this.get('numberOfAdvancedResults') == 0;
         }.property('numberOfAdvancedResults'),
+        getExpiredSkus: function(userPurchaseData) {
+            var retVal = [];
+            var today = new Date();
+            var xx=0;
+            for(xx=0;xx<userPurchaseData.bundle.webinar.length;xx++) {
+                // get the expired date
+                var expirationDate = new Date(userPurchaseData.bundle.webinar[xx].expiration_date);
+                // check the webinars object for bundles with an expiration date before today
+                if(today.getTime() > expirationDate.getTime()) {
+                    // if there is a webinars bundle with an expiration before today, build a list of its skus
+                    var yy = 0;
+                    for(yy=0;yy<userPurchaseData.bundle.webinar[xx].selected_items.length;yy++){
+                        retVal.push(userPurchaseData.bundle.webinar[xx].selected_items[yy].sku);
+                    }
+                }
+            }
+                return retVal;
+        },
         bundleHasSpace: function(type) {
             _self = this;
             var userPurchaseData = _self.get('userPurchaseData');
@@ -326,14 +344,14 @@
 
             #*
             // get the search text
-            var sText = this.get('searchText');
+            // var sText = this.get('searchText');
             // only perform the search if there is search text
-            if(sText.trim() != '') {
-                this.search();
-            } else {
+            // if(sText.trim() != '') {
+            //     this.search();
+            // } else {
                 // hide the search results list
-                jQuery('#myhome-search-container .search-results').hide();
-            }  *#
+            //     jQuery('#myhome-search-container .search-results').hide();
+            // }  *#
         }.observes('searchText'),
         search: function(isAdvancedSearch) {
             _self = this;
@@ -421,10 +439,11 @@
                 }
             } else { // we are performing the basic search
 
-                // show the search results box if it was hidden
-                if(!jQuery('#myhome-search-container .search-results').is(":visible")) {
-                    jQuery('#myhome-search-container .search-results').show();
-                }
+                  // NOTE: 11.25.13 - basic typeahead search will be in future release
+                  // show the search results box if it was hidden
+                  //  if(!jQuery('#myhome-search-container .search-results').is(":visible")) {
+                  //    jQuery('#myhome-search-container .search-results').show();
+                  //  }
 
                 // get the search text
                 sText = _self.get('searchText');
@@ -446,7 +465,6 @@
                     }
                 }
             }
-
 ##		POST on the ES REST API endpoint
             jQuery.ajax({
                 type: 'post',
@@ -489,7 +507,7 @@
                         }
                         var userPurchaseData = _self.get('userPurchaseData');
                         var count = 0;
-##					iterate over each of the results building content models
+    ##					iterate over each of the results building content models
                         response.hits.hits.forEach(function(item) {
                             count++;
 ##						build the content model object
@@ -518,16 +536,32 @@
                                  }
 
                             } else if(contentItem.contentType == 'webinar') {
-                                #*
-                                  Right now we'll give them access to view any webinar from
-                                  the search results.  They will already have their selected
-                                  webinars based on their agreement with sales, so if they
-                                  wanted to change their webinar bundle items, they would have
-                                  to contact sales again at this point.
-                                 *#
-                                 contentItem.hasFullAccess = true;
-                            }
+                                // set that we cannot add webinars to bundles manually
+                                contentItem.canManuallyAddToBundle = false;
+                                /*
+                                 * Verify that they have full access to the webinar
+                                 * based on their user purchase data
+                                */
+                                if(userPurchaseData !== undefined &&
+                                    userPurchaseData != '' &&
+                                    userPurchaseData.units !== undefined) {
+                                    // get the list of expired webinars
+                                    var expiredWebinars =  _self.getExpiredSkus(userPurchaseData);
 
+                                    // iterate over the webinar skus that the user currently is subscribed to
+                                    var idx=0;
+                                    for(idx=0;idx<userPurchaseData.units.webinars.length;idx++) {
+                                        if(contentItem.sku == userPurchaseData.units.webinars[idx]) {
+                                            // only set full access of the current sku is not in an expired webinar bundle
+                                            if(jQuery.inArray(contentItem.sku, expiredWebinars) < 0) {
+                                                contentItem.hasFullAccess = true;
+                                            }
+                                            break;
+                                        }
+                                    }
+
+                                } // end if
+                            }
                             if(isAdvancedSearch) {
 ##							add the item to the list
                                 _self.get('advancedContent').pushObject(contentItem);
