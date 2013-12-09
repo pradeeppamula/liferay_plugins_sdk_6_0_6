@@ -35,13 +35,6 @@
 			right: 0;
 		}
 
-		/* TODO: MOVE TO CUSTOM.CSS */
-		.article { background-color: #660000;  }
-		.webinar { background-color: #003366; }
-		.readynote { background-color: #66ccff; }
-		.essentialset { background-color: #CC6600; }
-		.group { background-color: #000000 }
-
 		.content-list-item {
 			background-color: #ffffff;
 			position: relative;
