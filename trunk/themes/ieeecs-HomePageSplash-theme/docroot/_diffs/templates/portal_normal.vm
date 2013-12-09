@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 #parse ($init)
-<html class="#language("lang.dir")" dir="#language("lang.dir")" lang="$w3c_language_id">
+<html itemscope itemtype="http://schema.org/Organization" class="#language("lang.dir")" dir="#language("lang.dir")" lang="$w3c_language_id">
 <head>
 	<meta charset="utf-8">
+    ## Title - keep less than 70 chars for better Google placement
     <title>$the_title | $company_name</title>
+    ## Standard Meta Tags
     <meta name="keywords" content="webinar, digital library, computer society digital library, IEEE computer society digital library, ieee digital library subscription">
+    ## Description - keep lesss than 155 chars for better Google placement
     <meta name="description" content="Discover content in the technical subjects that you care about.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="author" content="Bennie Kingwood">
+
+    ## Schema.org markup for Google+
+    <meta itemprop="name" content="$the_title | $company_name">
+    <meta itemprop="description" content="Discover content in the technical subjects that you care about.">
+    <meta itemprop="image" content="http://conferences.computer.org/icebe/2013/images/ICS_black_stacked.gif">
+
+    ## Facebook Open Graph Meta Tags
     <meta property="og:title" content="MyHome">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="http://www.computer.org/portal/web/myhome/home">
+    <meta property="og:url" content="http://myhome.computer.org/portal/web/myhome/splash">
     <meta property="og:site_name" content="MyHome">
     <meta property="og:description" content="Discover content in the technical subjects that you care about.">
+    <meta property=”og:image” content=”http://conferences.computer.org/icebe/2013/images/ICS_black_stacked.gif”/>
+    ## TODO- We need a Facebook Page for MyHome
+    <meta property="fb:app_id" content="">
+
+    ## Twitter Meta Cards
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@ComputerSociety">
+    <meta name="twitter:title" content="$the_title | $company_name">
+    ## Twitter description must be less than 200 characters
+    <meta name="twitter:description" content="Discover content in the technical subjects that you care about.">
+    <meta name="twitter:creator" content="@ComputerSociety">
+    ## Twitter Summary card images must be at least 200x200px
+    <meta name="twitter:image" content="http://conferences.computer.org/icebe/2013/images/ICS_black_stacked.gif">
 
 	## This is required by Liferay, where they import all their junk.
 	$theme.include($top_head_include)
@@ -107,11 +130,11 @@
     }
 
     ::selection {
-        background: #F85D5D; /* Safari */
+        background: #232527; /* Safari */
         color: #FFFFFF;
     }
     ::-moz-selection {
-        background: #F85D5D; /* Firefox */
+        background: #232527; /* Firefox */
         color: #FFFFFF;
     }
 
@@ -120,6 +143,12 @@
     }
 
     ## Button Styles
+    .btn-primary {
+        color: #fff;
+        background-color: #428bca;
+        border-color: #428bca;
+    }
+
     .btn-grey {
         letter-spacing: 2px;
         font-size: 13px;
@@ -145,8 +174,6 @@
         color: #FFFFFF;
         transition: all 0.35s ease 0s;
     }
-
-
 
     ## Navbar Styles
 
@@ -210,6 +237,11 @@
     }
 
     .fadeOnLoad { display: none;}
+
+    ul.social-share-list {list-style: none;}
+    ul.social-share-list li {
+        margin-bottom: 5px !important;
+    }
 
     ## Webinars Styles
     #webinars {
@@ -389,13 +421,23 @@
     <![endif]-->
 
     ## CSS Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="#">
+    <link rel="apple-touch-icon-precomposed" href="#">
+    <link rel="shortcut icon" href="/ieeecs-HomePageSplash-theme/images/favicon.ico">
+    <link rel="icon" href="/ieeecs-HomePageSplash-theme/images/favicon.ico">
 </head>
 <body data-spy="scroll" data-target=".navbar">
+    ## Facebook Javascript SDK
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
     ## Nav Bar
     <div class="navbar navbar-inverse navbar-fixed-top navbar-myhome animated fadeInDownBig"  role="navigation">
         <div class="navbar-header">
@@ -436,6 +478,21 @@
                     <h1>MyHome.</h1>
                     <p class="lead">Discover content in the technical subjects that you care about.</p>
                     <a class="btn btn-lg btn-grey scroll" href="#webinars"><i class="fa fa-chevron-down"></i> VIEW OUR PRODUCTS</a>
+                    <div class="text-left col-md-12 col-sm-12">
+                        <ul class="social-share-list unstyled">
+                            <li>
+                                <a href="https://twitter.com/share" class="twitter-share-button" data-related="ComputerSociety" data-hashtags="digitallibrary">Tweet</a>
+                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                            </li>
+                            <li>
+                                <div class="fb-like" data-href="http://myhome.computer.org" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                            </li>
+                            <li>
+                                <script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
+                                <div class="g-plusone" data-size="medium" data-href="http://www.computer.org/portal/web/myhome/splash"></div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -456,7 +513,6 @@
                         <p class="lead">IEEE Computer Society bundled webinars are now available to let your staff receive perpetual access to our collection of more than 100 essential technical webinars developed by leaders in the field.</p>
                         <a class="btn btn-primary btn-lg" href="/portal/web/myhome/webinar-bundle">Learn More <i class="fa fa-angle-double-right"></i> </a>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -502,7 +558,7 @@
                 <div class="col-md-4 col-sm-4 text-left">
                     <h5>Find Us On</h5>
                     <ul class="socialize">
-                        <li><a><i class="fa fa-twitter fa-2x"></i></a></li>
+                        <li><a href="https://twitter.com/computersociety" target="_blank"><i class="fa fa-twitter fa-2x"></i></a></li>
                         <li><a href="https://www.facebook.com/ieeecomputersociety?v=wall" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
                         <li><a href="https://plus.google.com/b/106653716856205029801/#106653716856205029801/posts" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a></li>
                         <li><a href="http://www.linkedin.com/groups?home=&amp;gid=52513&amp;trk=anet_ug_hm" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a></li>
