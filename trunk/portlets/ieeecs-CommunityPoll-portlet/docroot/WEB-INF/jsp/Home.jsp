@@ -28,7 +28,8 @@
 		border-bottom-left-radius: ${portletBottomLeftRadius}px ${portletBottomLeftRadius}px;		
 		-moz-border-bottom-left-radius: ${portletBottomLeftRadius}px ${portletBottomLeftRadius}px;
 		border-bottom-right-radius: ${portletBottomRightRadius}px ${portletBottomRightRadius}px;
-		-moz-border-bottom-right-radius: ${portletBottomRightRadius}px ${portletBottomRightRadius}px;			
+		-moz-border-bottom-right-radius: ${portletBottomRightRadius}px ${portletBottomRightRadius}px;
+	    color: #${pollFontColor};
 	}	
 	
 	#communityPollContainer${id} {	

@@ -34,6 +34,7 @@ public class CommunityPollUtil {
 	public static final String PORTLETBORDERCOLORRIGHT  = "CCCCCC";
 	public static final String PORTLETBORDERCOLORBOTTOM = "CCCCCC";
 	public static final String PORTLETBORDERCOLORLEFT   = "CCCCCC";
+    public static final String POLL_FONT_COLOR       = "444444";
 	public static final String PORTLETBORDERPIXELTOP    = "1";
 	public static final String PORTLETBORDERPIXELRIGHT  = "1";
 	public static final String PORTLETBORDERPIXELBOTTOM = "1";
@@ -100,6 +101,7 @@ public class CommunityPollUtil {
 			model.put("pollFontSize", prefs.getValue("pollFontSize", POLL_FONT_SIZE));
 			model.put("pollQuestionSize", prefs.getValue("pollQuestionSize", POLL_QUESTION_SIZE));
 			model.put("maxNumberOfChoices", prefs.getValue("maxNumberOfChoices", MAX_NUM_OF_CHOICES));
+            model.put("pollFontColor", prefs.getValue("pollFontColor", POLL_FONT_COLOR));
 		} catch (Exception e) {
 			// TODO: logging?
 			e.printStackTrace();
@@ -152,7 +154,7 @@ public class CommunityPollUtil {
 	/**
 	 * Helper method that will determine if the user
 	 * can vote on the poll referenced by the questionId parameter.
-	 * @param questionId
+	 * @param poll
 	 * @param userId
 	 * @return Boolean
 	 * @throws Exception
@@ -162,18 +164,22 @@ public class CommunityPollUtil {
 		Boolean retVal = false;
 		try {
 			Date expiration = poll.getExpirationDate();
-			// if the poll is expired, the user cannot vote
-			if (expiration != null && expiration.after(new Date())) {
-				// grab the number of votes that the user has for the passed in question
-				DynamicQuery voteQuery = DynamicQueryFactoryUtil.forClass(PollsVote.class, PortalClassLoaderUtil.getClassLoader())
-						.add(PropertyFactoryUtil.forName("questionId").eq( Long.parseLong(poll.getQuestionId()) ))
-						.add(PropertyFactoryUtil.forName("userId").eq( Long.parseLong(userId) ));			
-		
-				List<PollsVote> votes = PollsVoteLocalServiceUtil.dynamicQuery(voteQuery);
-				if(votes != null) {
-					retVal = votes.size() < MAX_NUM_OF_VOTES_PER_USER;
-				}
-			}
+            // grab the number of votes that the user has for the passed in question
+            DynamicQuery voteQuery = DynamicQueryFactoryUtil.forClass(PollsVote.class, PortalClassLoaderUtil.getClassLoader())
+                    .add(PropertyFactoryUtil.forName("questionId").eq( Long.parseLong(poll.getQuestionId()) ))
+                    .add(PropertyFactoryUtil.forName("userId").eq( Long.parseLong(userId) ));
+
+            List<PollsVote> votes = PollsVoteLocalServiceUtil.dynamicQuery(voteQuery);
+            /**
+             *  if the poll is expired, the user cannot vote.
+             *  If the expiration date of the poll is null,
+             *  then that means it does not expire
+             */
+            if (expiration == null || expiration.after(new Date())) {
+                if(votes != null) {
+                    retVal = votes.size() < MAX_NUM_OF_VOTES_PER_USER;
+                }
+            }
 		} catch(Exception e) {
 			throw new Exception("There was an exception when determining if the user can vote: " + e);
 		}

@@ -229,6 +229,18 @@
 		</div>
 		<div class="clearBoth"></div>
 	</div>
+
+	<div class="portletConfigRow${id} portletSection${id}">
+        <div class="communityPollCellTitle">Poll Font Color</div>
+        <div class="communityPollCell">
+
+        <div class="input-prepend">
+                  <span class="add-on">#</span>
+            <input class="color" type="text" id="pollFontColor${id}" name="pollFontColor${id}" value="${pollFontColor}" size="5"/>
+                </div>
+        </div>
+        <div class="clearBoth"></div>
+    </div>
 	
 	<div class="portletConfigRow${id} portletSection${id}">
 		<div class="communityPollCellTitle">Inner Content Margins</div>
