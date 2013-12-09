@@ -141,6 +141,7 @@ public class ConfigureCommunityPollController extends BaseController {
 				String pollBarColor = ParamUtil.getString(actionRequest, "pollBarColor"+instanceId, CommunityPollUtil.POLL_BAR_COLOR);
 				String pollFontSize = ParamUtil.getString(actionRequest, "pollFontSize"+instanceId, CommunityPollUtil.POLL_FONT_SIZE);
 				String pollQuestionSize = ParamUtil.getString(actionRequest, "pollQuestionSize"+instanceId, CommunityPollUtil.POLL_QUESTION_SIZE);
+                String pollFontColor = ParamUtil.getString(actionRequest, "pollFontColor"+instanceId, CommunityPollUtil.POLL_FONT_COLOR);
 				
 				// now update the preferences object with the request data and save to db
 				PortletPreferences prefs = actionRequest.getPreferences();
@@ -166,6 +167,7 @@ public class ConfigureCommunityPollController extends BaseController {
 				prefs.setValue("pollBarColor", pollBarColor);
 				prefs.setValue("pollFontSize", pollFontSize);
 				prefs.setValue("pollQuestionSize", pollQuestionSize);
+                prefs.setValue("pollFontColor", pollFontColor);
 				prefs.store();
 			}
 		} catch (Exception e) {
