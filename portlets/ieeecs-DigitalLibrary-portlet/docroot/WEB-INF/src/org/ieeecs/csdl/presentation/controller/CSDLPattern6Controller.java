@@ -71,7 +71,7 @@ public class CSDLPattern6Controller extends BaseController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
-
+			model.put("searchDatabases",getSearchDatabases(idPrefix));
 			model.put("volumeMap", volumeMap);
 			model.put("prePrints", prePrints);
 			model.put("rapidPosts", rapidPosts);

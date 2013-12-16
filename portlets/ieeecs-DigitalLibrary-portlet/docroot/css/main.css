@@ -852,12 +852,25 @@
  }
  
  .sectionalHeaderVolumeIssueSearch {
- 	width: 200px;
+ 	width: 250px;
  	height: 30px;
  	background-color: #CCCCCC;
  	position: absolute;
  	top: 30px;
  	right: 0px;
+ }
+ 
+   .sectionalHeaderVolumeIssueSearchFRM
+ {
+ 	float: left;
+ }
+ .sectionalHeaderVolumeIssueSearchBtn
+ {
+ 	float: left;
+ }
+ .sectionalHeaderVolumeIssueSearch input[type="image"] {
+ 	width: 28px;
+ 	height: 28px;
  }
  
  .sectionalHeaderVolumeIssueSocial {
@@ -947,13 +960,26 @@
  }
  
  .sectionalHeaderTableOfContentsSearch {
- 	width: 200px;
+ 	width: 250px;
  	height: 30px;
  	background-color: #CCCCCC;
  	position: absolute;
  	top: 30px;
  	right: 0px;
  }
+  .sectionalHeaderTableOfContentsSearchFRM
+ {
+ 	float: left;
+ }
+ .sectionalHeaderTableOfContentsSearchBtn
+ {
+ 	float: left;
+ }
+ .sectionalHeaderTableOfContentsSearch input[type="image"] {
+ 	width: 28px;
+ 	height: 28px;
+ }
+ 
  
  .sectionalHeaderTableOfContentsSocial {
   	float: right;
@@ -1066,14 +1092,25 @@
  }
  
  .sectionalHeaderAbstractSearch {
- 	width: 200px;
+ 	width: 250px;
  	height: 30px;
  	background-color: #CCCCCC;
  	position: absolute;
  	top: 30px;
  	right: 0px;
  }
- 
+   .sectionalHeaderAbstractSearchFRM
+ {
+ 	float: left;
+ }
+ .sectionalHeaderAbstractSearchBtn
+ {
+ 	float: left;
+ }
+ .sectionalHeaderAbstractSearch input[type="image"] {
+ 	width: 28px;
+ 	height: 28px;
+ }
  .sectionalHeaderAbstractSocial {
   	float: right;
   	margin: -25px 5px 0 0;

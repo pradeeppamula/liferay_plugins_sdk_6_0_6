@@ -52,7 +52,27 @@
 		<div class="sectionalHeaderAbstractCreator">${creator.givenName} ${creator.surname}<c:if test="${creator.sponsor != ''}">, ${creator.sponsor}</c:if></div>
 	</c:forEach>
 	<div class="sectionalHeaderAbstractDOI">DOI Bookmark:  <a href="${doiUrlPrefix}${abstractContent.doi}" target="_blank">${doiUrlPrefix}${abstractContent.doi}</a></div>
-	<div class="sectionalHeaderAbstractSearch"><%--SEARCH WILL GO HERE --%></div>
+	<div class="sectionalHeaderAbstractSearch"><%--SEARCH WILL GO HERE --%>
+		<form id="journalSearchForm" target="_blank" action="/portal/web/search/simple" method="get">
+		<div class="sectionalHeaderTableOfContentsSearchFRM">
+			
+					<input type="hidden" value="simplesearch" name="action"/>
+					<input type="hidden" value="7777" name="yearTo"/>
+					<input type="hidden" value="1960" name="yearFrom"/>
+					<input type="hidden" value="12"	name="monthTo"/>
+					<input type="hidden" value="01"	name="monthFrom"/>
+					<input type="hidden" value="DocWeight"	name="sortField"/> 
+					<input type="hidden" value="descending"	name="sortOrder"/>
+					<input type="hidden" value="yes" name="checkAbstract"/>
+					<input type="hidden" value="${searchDatabases}" name="searchDatabases"/>
+					<input type="text" maxlength="256"	 value="" name="queryText1"/>											
+		</div>
+		<div class="sectionalHeaderAbstractSearchBtn">
+			<input type="image" src="/ieeecs-DigitalLibrary-portlet/images/CSDL_SearchIcon.png">
+		</div>
+		</form>
+	</div>
+	</div>
 	<div class="sectionalHeaderAbstractSocial">
 		<div class="sectionalHeaderAbstractSocialRSS"><img src="/ieeecs-DigitalLibrary-portlet/images/CSDL_RSSIcon.png"/></div>
 		<div class="sectionalHeaderAbstractSocialShare">Share</div>

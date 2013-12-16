@@ -2,20 +2,28 @@ package org.ieeecs.csdl.util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.StringReader;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.TreeMap;
 
 import javax.portlet.PortletPreferences;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
-
 import org.ieee.common.json.JSONArray;
+import org.ieee.common.json.JSONException;
 import org.ieee.common.json.JSONObject;
 import org.ieee.common.json.XML;
-
 import org.ieeecs.csdl.action.StartupCSDLAction;
 import org.ieeecs.csdl.bean.AssociatedContentBean;
 import org.ieeecs.csdl.bean.ContentBean;
@@ -24,7 +32,7 @@ import org.ieeecs.csdl.bean.IssueBean;
 import org.ieeecs.csdl.bean.PackageBean;
 import org.ieeecs.csdl.bean.PublicationBean;
 import org.ieeecs.csdl.bean.ReferenceBean;
-
+import org.ieeecs.csdl.bean.SearchDatabaseBean;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
@@ -134,11 +142,14 @@ public class DigitalLibraryUtil {
 	public static final String TRANSACTIONS_KEY = "csdl.cache.transactions.location";
 	public static final String LETTERS_KEY      = "csdl.cache.letters.location";
 	public static final String PROCEEDINGS_KEY  = "csdl.cache.proceedings.location";
-
+	public static final String SEARCH_DBS_KEY   = "csdl.search.databases.location";
+	
 	public static JSONObject magsUICache        = null;
 	public static JSONObject transUICache       = null;
 	public static JSONObject lettersUICache     = null;
 	public static JSONObject proceedingsUICache = null;
+	
+	public static Map<String,SearchDatabaseBean> searchDatbaseCache = null;
 	
 
 	public static void putPortletPreferencesIntoModel(PortletPreferences prefs, Map<String,Object> model) {
@@ -1483,5 +1494,62 @@ public class DigitalLibraryUtil {
 		}
 
 		return content;
+	}
+	public static Map<String,SearchDatabaseBean> getSearchDatabaseMap()
+	{
+		if(searchDatbaseCache!=null)
+		{
+			return searchDatbaseCache;
+		}
+		
+		try
+		{
+			Map <String,SearchDatabaseBean> searchDatabases = new HashMap<String, SearchDatabaseBean>();
+			String json = IOUtils.toString(new FileReader( DigitalLibraryUtil.csdlProperties.getProperty(SEARCH_DBS_KEY) ));
+			JSONObject jsonObject= new JSONObject(json);
+			JSONArray searchDBSJSON = (JSONArray)jsonObject.get("searchDatabases");
+			
+			for(int i = 0; i < searchDBSJSON.length();i++)
+			{
+				JSONObject searchDBJSON = searchDBSJSON.getJSONObject(i);
+				SearchDatabaseBean searchDatabase = new SearchDatabaseBean();
+				searchDatabase.setAbbrev(searchDBJSON.getString("abbrev"));
+				searchDatabase.setIdPrefix(searchDBJSON.getString("idPrefix"));
+				searchDatabase.setSearchDatabase(searchDBJSON.getString("searchDatabase"));
+				searchDatabases.put(searchDatabase.getIdPrefix(), searchDatabase);
+			}
+			searchDatbaseCache = searchDatabases;
+		}
+		catch(IOException e)
+		{
+			throw new RuntimeException(e);
+		} catch (JSONException e) {
+			throw new RuntimeException(e);
+		}
+		
+		return searchDatbaseCache;
+	}
+	
+	public static String getSearchDatabases(String... idPrefix)
+	{
+		Map<String,SearchDatabaseBean> searchDBs = getSearchDatabaseMap();
+		SearchDatabaseBean searchDb = searchDBs.get(idPrefix.length>0?idPrefix[0]:null);
+		String returnVal = "";
+		if(searchDb==null)
+		{
+			StringBuilder searchDBString = new StringBuilder();
+			for(SearchDatabaseBean searchDB:searchDBs.values())
+			{
+				String separator = searchDBString.length()==0?"":"+";
+				searchDBString.append(separator);
+				searchDBString.append(searchDB.getSearchDatabase());
+			}
+			returnVal  = searchDBString.toString();
+		}
+		else
+		{
+			returnVal = searchDb.getSearchDatabase();
+		}
+		return returnVal;
 	}
 }
