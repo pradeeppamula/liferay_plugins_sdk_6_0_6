@@ -1,0 +1,36 @@
+{"searchDatabases":
+[
+	{"abbrev":"annals", "searchDatabase":"annals","idPrefix":"an"},
+	{"abbrev":"cise", "searchDatabase":"cise","idPrefix":"cs"},
+	{"abbrev":"computer", "searchDatabase":"computer","idPrefix":"co"},
+	{"abbrev":"cga", "searchDatabase":"cga","idPrefix":"cg"},
+	{"abbrev":"concurrency", "searchDatabase":"concurrency","idPrefix":"pd"},
+	{"abbrev":"ds", "searchDatabase":"dsonline","idPrefix":"ds"},
+	{"abbrev":"dt", "searchDatabase":"dt","idPrefix":"dt"},
+	{"abbrev":"intelligent", "searchDatabase":"intelligent","idPrefix":"ex"},
+	{"abbrev":"internet", "searchDatabase":"internet","idPrefix":"ic"},
+	{"abbrev":"itpro", "searchDatabase":"micro","idPrefix":"mi"},
+	{"abbrev":"multimedia", "searchDatabase":"multimedia","idPrefix":"mu"},
+	{"abbrev":"security", "searchDatabase":"security","idPrefix":"sp"},
+	{"abbrev":"software", "searchDatabase":"software","idPrefix":"so"},
+	{"abbrev":"pc", "searchDatabase":"pc","idPrefix":"pc"},
+	{"abbrev":"proceedings", "searchDatabase":"proceedings","idPrefix":""},
+	{"abbrev":"tcbb", "searchDatabase":"tcbb","idPrefix":"tb"},
+	{"abbrev":"tac", "searchDatabase":"tac","idPrefix":"ta"},
+	{"abbrev":"tcc", "searchDatabase":"tcc","idPrefix":"cc"},
+	{"abbrev":"tc", "searchDatabase":"tc","idPrefix":"tc"},
+	{"abbrev":"tdsc", "searchDatabase":"tdsc","idPrefix":"tq"},
+	{"abbrev":"tetc", "searchDatabase":"tetc","idPrefix":"ec"},
+	{"abbrev":"toh", "searchDatabase":"toh","idPrefix":"th"},
+	{"abbrev":"tkde", "searchDatabase":"tkde","idPrefix":"tk"},
+	{"abbrev":"tlt", "searchDatabase":"tlt","idPrefix":"lt"},
+	{"abbrev":"tmc", "searchDatabase":"tmc","idPrefix":"tm"},
+	{"abbrev":"tpds", "searchDatabase":"tpds","idPrefix":"td"},
+	{"abbrev":"tpami", "searchDatabase":"tpami","idPrefix":"tp"},
+	{"abbrev":"tsc", "searchDatabase":"tsc","idPrefix":"sc"},
+	{"abbrev":"tse", "searchDatabase":"tse","idPrefix":"ts"},
+	{"abbrev":"tvcg", "searchDatabase":"tvcg","idPrefix":"tg"},
+	{"abbrev":"cal", "searchDatabase":"cal","idPrefix":"ca"}
+]
+}
+
