@@ -35,8 +35,9 @@ public class DigitalLibraryController extends BaseController {
 			long groupId = themeDisplay.getScopeGroupId();
 			JournalArticle article = JournalArticleLocalServiceUtil.getLatestArticle(groupId, prefs.getValue("resourceArticleId", DigitalLibraryUtil.RESOURCEARTICLEID));
 			resourcesSection = getArticleContent(article, prefs.getValue("resourceDefaultText", DigitalLibraryUtil.RESOURCEDEFAULTTEXT));
-	
-			model.put("totalTimeMS", getTotalTime(startTiming) + " ms");		
+			model.put("searchDatabases",getSearchDatabases());
+			model.put("totalTimeMS", getTotalTime(startTiming) + " ms");
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();

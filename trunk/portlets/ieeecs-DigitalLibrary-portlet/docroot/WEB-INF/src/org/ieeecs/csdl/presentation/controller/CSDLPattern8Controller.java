@@ -92,7 +92,7 @@ public class CSDLPattern8Controller extends BaseController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
+			model.put("searchDatabases",getSearchDatabases(idPrefix));
 			model.put("issueBean", issueBean);
 			model.put("tableOfContentsList", tableOfContentsList);
 			model.put("abstractContent", abstractContent);

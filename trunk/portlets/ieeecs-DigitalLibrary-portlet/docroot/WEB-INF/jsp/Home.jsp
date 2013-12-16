@@ -46,15 +46,32 @@
 <div class="mainSearchContainer">
 	<div class="mainSearchLabel">${csdlSearchTitle}</div>	
 	<div class="mainSearch">
+		<form id="journalSearchForm" target="_blank" action="/portal/web/search/simple" method="get">
 		<div class="mainSearchControls">
 		<%--SEARCH WILL GO HERE --%>
+		<div class="sectionalHeaderTableOfContentsSearchFRM">
+			
+					<input type="hidden" value="simplesearch" name="action"/>
+					<input type="hidden" value="7777" name="yearTo"/>
+					<input type="hidden" value="1960" name="yearFrom"/>
+					<input type="hidden" value="12"	name="monthTo"/>
+					<input type="hidden" value="01"	name="monthFrom"/>
+					<input type="hidden" value="DocWeight"	name="sortField"/> 
+					<input type="hidden" value="descending"	name="sortOrder"/>
+					<input type="hidden" value="yes" name="checkAbstract"/>
+					<input type="hidden" value="${searchDatabases}" name="searchDatabases"/>
+					<input type="text" maxlength="256"	 value="" name="queryText1"/>											
+		</div>
+	
+		
 		</div>
 		<div class="mainSearchButtonContainer">
 			<div class="mainSearchButton">
-				<img src="/ieeecs-DigitalLibrary-portlet/images/CSDL_SearchIcon.png"/>
+				<input type="image" src="/ieeecs-DigitalLibrary-portlet/images/CSDL_SearchIcon.png"/>
 			</div>
 		</div>
 		<div class="clearBoth"></div>
+		</form>
 	</div>
 </div>
 

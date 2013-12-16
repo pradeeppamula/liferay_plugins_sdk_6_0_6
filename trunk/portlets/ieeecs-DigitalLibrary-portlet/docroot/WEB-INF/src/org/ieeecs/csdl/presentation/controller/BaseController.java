@@ -162,7 +162,10 @@ public class BaseController extends SimpleFormController  implements ResourceAwa
 		return DigitalLibraryUtil.getArticleContent(article, defaultContent);
 	}
 	
-	@Override
+	public  String getSearchDatabases(String... idPrefix) {
+		return DigitalLibraryUtil.getSearchDatabases(idPrefix);
+	}
+	
 	public ModelAndView handleResourceRequest(ResourceRequest resourceRequest, ResourceResponse resourceResponse) throws Exception {
 		
 		Map<String,Object> model = new HashMap<String,Object>();
