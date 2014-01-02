@@ -17,6 +17,7 @@ import com.mongodb.DBObject;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 import org.ieee.common.json.XML;
@@ -133,7 +134,7 @@ public class HomepageAccountController extends BaseController implements Resourc
 				retVal = "{\"numOfArticles\":\""+metaData.get(HomepageAccountUtil.REQUEST_TYPE_NUM_OF_ARTICLES).toString()+"\"}";
 			}
 		} catch (Exception e) {
-            LOGGER.error("A problem occurred when retrieving the articles count.",  e);
+            LOGGER.error("A problem occurred when retrieving the articles count: "   + ExceptionUtils.getRootCauseMessage(e));
 		} finally {
 			if(method != null) {
 				method.releaseConnection();
@@ -214,11 +215,10 @@ public class HomepageAccountController extends BaseController implements Resourc
                     notSignedInContent = content;
                 }
             }
-
 		} catch (Exception e) {
 			// gracefully handle exception and put on model
 			model.put("error", "There was a problem loading your account information.  Please reload the page or contact help@computer.org.");
-            LOGGER.error("A problem occurred when handling a request",  e);
+            LOGGER.error("A problem occurred when handling a request: "   + ExceptionUtils.getRootCauseMessage(e));
 		}
 
 		// create the model for the View and add the model attributes to it
@@ -276,7 +276,7 @@ public class HomepageAccountController extends BaseController implements Resourc
 			response.setCharacterEncoding("UTF-8");
 	        response.setContentType("text/json");
 		} catch (Exception e) {
-             LOGGER.error("A problem occurred when handling a resource request",  e);
+             LOGGER.error("A problem occurred when handling a resource request: "   + ExceptionUtils.getRootCauseMessage(e));
 		}
 		
 		// specify which JSP to render the response to
@@ -351,7 +351,7 @@ public class HomepageAccountController extends BaseController implements Resourc
 			    }
 			}
 		} catch (Exception e) {
-            LOGGER.error("A problem occurred when hydrating JSON into a map.",  e);
+            LOGGER.error("A problem occurred when hydrating JSON into a map: "   + ExceptionUtils.getRootCauseMessage(e));
 		}
 		return model;
 	}
@@ -409,7 +409,7 @@ public class HomepageAccountController extends BaseController implements Resourc
 		} catch (MongoException me) {
 			throw me;
 		} catch (Exception e) {
-            LOGGER.error("A problem occurred when retrieving the purchase data.",  e);
+            LOGGER.error("A problem occurred when retrieving the purchase data: "   + ExceptionUtils.getRootCauseMessage(e));
 		}
 		return retVal;
 	}
@@ -442,7 +442,7 @@ public class HomepageAccountController extends BaseController implements Resourc
         } catch (MongoException me) {
             throw me;
         } catch (Exception e) {
-            LOGGER.error("A problem occurred when updating the purchase data for user with id: " + userId,  e);
+            LOGGER.error("A problem occurred when updating the purchase data for user with id  " + userId + ": "  + ExceptionUtils.getRootCauseMessage(e));
         }
         return retVal;
     }
@@ -471,7 +471,7 @@ public class HomepageAccountController extends BaseController implements Resourc
 		} catch (MongoException me) {
 			throw me;
 		} catch (Exception e) {
-            LOGGER.error("A problem occurred when retrieving the portlet data.",  e);
+            LOGGER.error("A problem occurred when retrieving the portlet data: "   + ExceptionUtils.getRootCauseMessage(e));
 		}
 		return retVal;
 	}

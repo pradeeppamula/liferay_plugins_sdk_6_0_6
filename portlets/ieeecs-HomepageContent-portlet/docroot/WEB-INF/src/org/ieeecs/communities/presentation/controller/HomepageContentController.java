@@ -14,6 +14,7 @@ import com.mongodb.DBObject;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.ieee.common.json.XML;
 import org.ieee.common.presentation.controller.BaseController;
@@ -70,7 +71,7 @@ public class HomepageContentController extends BaseController implements Resourc
         } catch (MongoException me) {
             throw me;
         } catch (Exception e) {
-            LOGGER.error("A problem occurred when retrieving the purchase data.",  e);
+            LOGGER.error("A problem occurred when retrieving the purchase data: "  + ExceptionUtils.getRootCauseMessage(e));
         }
         return retVal;
     }
@@ -116,7 +117,7 @@ public class HomepageContentController extends BaseController implements Resourc
                 retVal = responseJSON.toString();
             }
         } catch (Exception e) {
-            LOGGER.error("An exception occurred when retrieving the content data.", e);
+            LOGGER.error("An exception occurred when retrieving the content data: "  + ExceptionUtils.getRootCauseMessage(e));
         } finally {
             method.releaseConnection();
         }
@@ -156,7 +157,7 @@ public class HomepageContentController extends BaseController implements Resourc
                 model.put("response", this.loadArticleContent(cid));
             }
         } catch (Exception e) {
-            LOGGER.error("An error occurred when handling the resource request.", e);
+            LOGGER.error("An error occurred when handling the resource request: "  + ExceptionUtils.getRootCauseMessage(e));
         }
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/json");
@@ -230,7 +231,7 @@ public class HomepageContentController extends BaseController implements Resourc
         } catch (Exception e) {
             //  gracefully handle exception and put on model
             model.put("error", "A problem has occurred.  Please reload the page or contact help@computer.org.");
-            LOGGER.error("An error occurred when handling the render request.", e);
+            LOGGER.error("An error occurred when handling the render request: "  + ExceptionUtils.getRootCauseMessage(e));
         }
 
         // create the model for the View and add the model attributes to it

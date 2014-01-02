@@ -19,6 +19,7 @@ import com.liferay.portal.util.PortalUtil;
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.bson.types.ObjectId;
 import org.ieee.common.presentation.controller.BaseController;
@@ -77,7 +78,7 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
         } catch (MongoException me) {
             throw me;
         } catch (Exception e) {
-            LOGGER.error("A problem occurred when retrieving the portlet data.",  e);
+            LOGGER.error("A problem occurred when retrieving the portlet data: "   + ExceptionUtils.getRootCauseMessage(e));
         }
         return retVal;
     }
@@ -149,7 +150,7 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
         } catch (MongoException me) {
             throw me;
         } catch (Exception e) {
-            LOGGER.error("A problem occurred when updating the organization bundle data: ",  e);
+            LOGGER.error("A problem occurred when updating the organization bundle data: "   + ExceptionUtils.getRootCauseMessage(e));
         }
         return retVal;
     }
@@ -178,7 +179,7 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
         } catch (MongoException me) {
             throw me;
         } catch (Exception e) {
-            LOGGER.error("A problem occurred when updating the organization: ",  e);
+            LOGGER.error("A problem occurred when updating the organization: "  + ExceptionUtils.getRootCauseMessage(e));
         }
         return retVal;
     }
@@ -207,7 +208,7 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
         } catch (MongoException me) {
             throw me;
         } catch (Exception e) {
-            LOGGER.error("A problem occurred when retrieving the organizations.",  e);
+            LOGGER.error("A problem occurred when retrieving the organizations: "   + ExceptionUtils.getRootCauseMessage(e));
         }
         return retVal;
     }
@@ -244,7 +245,7 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
         } catch (MongoException me) {
             throw me;
         } catch (Exception e) {
-            LOGGER.error("A problem occurred when attempting to remove the user purchase data.",  e);
+            LOGGER.error("A problem occurred when attempting to remove the user purchase data: "   + ExceptionUtils.getRootCauseMessage(e));
         }
         return retVal;
     }
@@ -301,7 +302,7 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
         } catch (MongoException me) {
             throw me;
         } catch (Exception e) {
-            LOGGER.error("A problem occurred when retrieving the organization users purchase data.",  e);
+            LOGGER.error("A problem occurred when retrieving the organization users purchase data: "   + ExceptionUtils.getRootCauseMessage(e));
         }
         return retVal;
     }
@@ -429,7 +430,7 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
                 retVal = true;
             }
         } catch (Exception e) {
-            LOGGER.error("There was a problem creating the new user ("+ email+") for new org id: " + organizationId, e);
+            LOGGER.error("There was a problem creating the new user ("+ email+") for new org id " + organizationId + ": " + ExceptionUtils.getRootCauseMessage(e));
         }
         return retVal;
     }
@@ -545,7 +546,7 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
             }
             retVal = numberOfUsersCreated > 0;
         } catch(Exception e) {
-            LOGGER.error("There was a problem processing the new organization file with name: " + sourceFileName, e);
+            LOGGER.error("There was a problem processing the new organization file with name  " + sourceFileName + ": "   + ExceptionUtils.getRootCauseMessage(e));
             retVal = numberOfUsersCreated > 0;
         } finally {
             try {
@@ -623,7 +624,7 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
                 }
             }
         } catch (Exception e) {
-            LOGGER.error("An error occurred when handling the resource request.", e);
+            LOGGER.error("An error occurred when handling the resource request: "   + ExceptionUtils.getRootCauseMessage(e));
             model.put("response", 422);
         }
         response.setCharacterEncoding("UTF-8");
@@ -729,7 +730,7 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
 
 		} catch (Exception e) {
 			model.put("error", "A problem has occurred.  Please reload the page or contact help@computer.org.");
-            LOGGER.error("A problem occurred when rendering the portlet",  e);
+            LOGGER.error("A problem occurred when rendering the portlet: " + ExceptionUtils.getRootCauseMessage(e));
 		}
 
 		// create the model for the View and add the model attributes to it
@@ -799,7 +800,7 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
             // redirect back to the new organization view
             actionResponse.sendRedirect("/portal/web/guest/admin#/new");
         } catch (Exception e) {
-            LOGGER.error("A problem occurred when handling the action request.",  e);
+            LOGGER.error("A problem occurred when handling the action request: "  + ExceptionUtils.getRootCauseMessage(e));
             try {
                 SessionMessages.add(actionRequest, "addOrganzationErrors", "Error: There was a problem processing your request.");
             }catch (Exception ee) {}

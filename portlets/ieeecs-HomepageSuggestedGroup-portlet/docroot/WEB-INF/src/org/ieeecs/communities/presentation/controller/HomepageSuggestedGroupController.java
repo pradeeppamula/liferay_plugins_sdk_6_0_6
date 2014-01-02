@@ -16,6 +16,7 @@ import com.liferay.portal.model.Group;
 import com.liferay.portal.model.GroupConstants;
 import com.liferay.portal.service.GroupLocalServiceUtil;
 import com.liferay.portal.theme.ThemeDisplay;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.ieee.common.presentation.controller.BaseController;
 import org.ieeecs.communities.util.HomepageSuggestedGroupUtil;
@@ -75,7 +76,7 @@ public class HomepageSuggestedGroupController extends BaseController implements 
 			}
 		} catch (Exception e) {
 			model.put("error", "A problem has occurred.  Please reload the page or contact help@computer.org.");
-            LOGGER.error("An error occurred when handling the render request.", e);
+            LOGGER.error("An error occurred when handling the render request: "  + ExceptionUtils.getRootCauseMessage(e));
 		}
 
 		// create the model for the View and add the model attributes to it
@@ -125,7 +126,7 @@ public class HomepageSuggestedGroupController extends BaseController implements 
 			response.setCharacterEncoding("UTF-8");
 	        response.setContentType("text/json");
 		} catch (Exception e) {
-             LOGGER.error("An error occurred when handling the resource request.", e);
+             LOGGER.error("An error occurred when handling the resource request: "  + ExceptionUtils.getRootCauseMessage(e));
 		}
 		
 		// specify which JSP to render the response to
@@ -148,7 +149,7 @@ public class HomepageSuggestedGroupController extends BaseController implements 
             GroupLocalServiceUtil.addUserGroups(userId,groupIds);
             retVal = true;
         } catch (Exception e) {
-            LOGGER.error("There was an exception thrown when adding the user with id: " + userId + " to group id: " + groupId, e);
+            LOGGER.error("There was an exception thrown when adding the user with id: " + userId + " to group id: " + groupId + " exception: "  + ExceptionUtils.getRootCauseMessage(e));
         }
         return retVal;
     }
@@ -192,7 +193,7 @@ public class HomepageSuggestedGroupController extends BaseController implements 
 
             retVal.append("]");
         } catch (Exception e) {
-            LOGGER.error("There was a problem retrieving the groups for user: " + userId, e);
+            LOGGER.error("There was a problem retrieving the groups for user id " + userId + ": " + ExceptionUtils.getRootCauseMessage(e));
         }
 		return retVal.toString();
 	}

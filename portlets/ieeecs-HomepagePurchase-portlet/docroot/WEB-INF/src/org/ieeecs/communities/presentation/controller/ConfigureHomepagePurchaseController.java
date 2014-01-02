@@ -9,6 +9,7 @@ package org.ieeecs.communities.presentation.controller;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.theme.ThemeDisplay;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.ieee.common.presentation.controller.BaseController;
 import org.ieeecs.communities.util.HomepagePurchaseUtil;
@@ -42,7 +43,7 @@ public class ConfigureHomepagePurchaseController extends BaseController {
 			// grab the instance id of this portlet
 			instanceId = "_" + themeDisplay.getPortletDisplay().getInstanceId();
 		} catch (Exception e) {
-            LOGGER.error("A problem occurred when rendering the request.", e);
+            LOGGER.error("A problem occurred when rendering the request: "  + ExceptionUtils.getRootCauseMessage(e));
 		}
 
 		model.put("id", instanceId);
@@ -114,7 +115,7 @@ public class ConfigureHomepagePurchaseController extends BaseController {
 			}
 
 		} catch (Exception e) {
-            LOGGER.error("A problem occurred when saving the portlet preferences.",  e);
+            LOGGER.error("A problem occurred when saving the portlet preferences: "  + ExceptionUtils.getRootCauseMessage(e));
 		}
 	}
 }
