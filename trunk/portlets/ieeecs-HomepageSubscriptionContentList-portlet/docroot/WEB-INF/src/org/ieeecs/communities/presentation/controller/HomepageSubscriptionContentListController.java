@@ -17,6 +17,7 @@ import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.ieee.common.json.XML;
 import org.ieee.common.presentation.controller.BaseController;
@@ -76,7 +77,7 @@ public class HomepageSubscriptionContentListController extends BaseController im
             try {
                 retVal = ContentType.valueOf(contentType.toUpperCase());
             } catch (Exception e) {
-                LOGGER.warn("An error occurred when getting the subscription content type.", e);
+                LOGGER.warn("An error occurred when getting the subscription content type: " + ExceptionUtils.getRootCauseMessage(e));
             }
             return retVal;
         }
@@ -141,7 +142,7 @@ public class HomepageSubscriptionContentListController extends BaseController im
                 retVal.put(ContentType.READYNOTE.getType(), readynote);
             }
         } catch (ParseException e) {
-            LOGGER.error("An exception occurred when parsing out the units JSON.",e);
+            LOGGER.error("An exception occurred when parsing out the units JSON: "  + ExceptionUtils.getRootCauseMessage(e));
         }
         return retVal;
     }
@@ -189,7 +190,7 @@ public class HomepageSubscriptionContentListController extends BaseController im
                     break;
             }
         } catch (Exception e) {
-            LOGGER.error("An exception occurred when building the content JSON.", e);
+            LOGGER.error("An exception occurred when building the content JSON:"  + ExceptionUtils.getRootCauseMessage(e));
         }
         return (retVal != null) ? retVal.toString() : json;
     }
@@ -222,7 +223,7 @@ public class HomepageSubscriptionContentListController extends BaseController im
                 retVal = this.buildContentJSON(retVal, contentType, responseJSON, null);
             }
         } catch (Exception e) {
-            LOGGER.error("An exception occurred when retrieving the content data.", e);
+            LOGGER.error("An exception occurred when retrieving the content data: "  + ExceptionUtils.getRootCauseMessage(e));
         } finally {
             method.releaseConnection();
         }
@@ -259,7 +260,7 @@ public class HomepageSubscriptionContentListController extends BaseController im
                 retVal = this.buildContentJSON(retVal, contentType, null, new String(responseBody));
             }
         } catch (Exception e) {
-            LOGGER.error("An exception occurred when retrieving the webinar data.", e);
+            LOGGER.error("An exception occurred when retrieving the webinar data: " + ExceptionUtils.getRootCauseMessage(e));
         } finally {
             try {
                 method.releaseConnection();
@@ -347,7 +348,7 @@ public class HomepageSubscriptionContentListController extends BaseController im
                 }
             }
         } catch (Exception e) {
-            LOGGER.error("An error occurred when retrieving the user subscription content", e);
+            LOGGER.error("An error occurred when retrieving the user subscription content: "  + ExceptionUtils.getRootCauseMessage(e));
         }
         retVal += "]";
         return retVal;
@@ -377,7 +378,7 @@ public class HomepageSubscriptionContentListController extends BaseController im
         } catch (MongoException me) {
             throw me;
         } catch (Exception e) {
-            LOGGER.error("An error occurred when retrieving the user purchase data", e);
+            LOGGER.error("An error occurred when retrieving the user purchase data: "  + ExceptionUtils.getRootCauseMessage(e));
         }
         return retVal;
     }
@@ -415,7 +416,7 @@ public class HomepageSubscriptionContentListController extends BaseController im
                 model.put("response", this.getUserSubscriptionContent(currentUserId, unitsJSON));
             }
         } catch (Exception e) {
-            LOGGER.error("An error occurred when handling the resource request.", e);
+            LOGGER.error("An error occurred when handling the resource request: " + ExceptionUtils.getRootCauseMessage(e));
         }
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/json");
@@ -489,7 +490,7 @@ public class HomepageSubscriptionContentListController extends BaseController im
         } catch (Exception e) {
             //  gracefully handle exception and put on model
             model.put("error", "A problem has occurred.  Please reload the page or contact help@computer.org.");
-            LOGGER.error("An error occurred when handling the render request.", e);
+            LOGGER.error("An error occurred when handling the render request: "  + ExceptionUtils.getRootCauseMessage(e));
         }
 
         // create the model for the View and add the model attributes to it
@@ -542,7 +543,7 @@ public class HomepageSubscriptionContentListController extends BaseController im
                 }
             }
         } catch (Exception e) {
-            LOGGER.error("An error occurred when filtering out the expired webinars.", e);
+            LOGGER.error("An error occurred when filtering out the expired webinars: " + ExceptionUtils.getRootCauseMessage(e));
         }
         return purchaseJSON;
     }

@@ -14,6 +14,7 @@ import javax.portlet.PortletPreferences;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.ieee.common.presentation.controller.BaseController;
 import org.ieeecs.communities.util.HomepageSiteFooterUtil;
@@ -106,7 +107,7 @@ public class HomepageSiteFooterController extends BaseController  {
 			// TODO: gracefully handle exception and put on model
 			model.put("error", "A problem has occurred.  Please reload the page or contact help@computer.org.");
 			// TODO: log stacktrace
-            LOGGER.error("A problem occurred when rendering the portlet",  e);
+            LOGGER.error("A problem occurred when rendering the portlet: "  + ExceptionUtils.getRootCauseMessage(e));
 		}
 
 		// create the model for the View and add the model attributes to it

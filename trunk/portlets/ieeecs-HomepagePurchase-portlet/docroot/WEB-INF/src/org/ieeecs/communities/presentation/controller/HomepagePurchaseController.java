@@ -12,6 +12,7 @@ import com.liferay.portal.model.User;
 import com.liferay.portal.service.RoleLocalServiceUtil;
 import com.liferay.portal.service.UserLocalServiceUtil;
 import com.liferay.portal.theme.ThemeDisplay;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.ieee.common.presentation.controller.BaseController;
 import org.ieee.common.util.ParamUtil;
@@ -47,7 +48,7 @@ public class HomepagePurchaseController extends BaseController implements Resour
             // read in the entire file
             retVal = new Scanner(resource.getFile()).useDelimiter("\\Z").next();
         } catch(FileNotFoundException fe) {
-            LOGGER.error("There was a problem reading in the file with path: " + path, fe);
+            LOGGER.error("There was a problem reading in the file with path ( " + path + "):"  + ExceptionUtils.getRootCauseMessage(fe));
         }
         return retVal;
     }
@@ -112,7 +113,7 @@ public class HomepagePurchaseController extends BaseController implements Resour
                 retVal = body.toString();
             }
         } catch (Exception e) {
-            LOGGER.error("There was a problem building the purchase email: ", e);
+            LOGGER.error("There was a problem building the purchase email: " + ExceptionUtils.getRootCauseMessage(e));
         }
         return retVal;
     }
@@ -205,7 +206,7 @@ public class HomepagePurchaseController extends BaseController implements Resour
                 }
             }
         } catch (Exception e) {
-            LOGGER.error("An error occurred when handling the resource request.", e);
+            LOGGER.error("An error occurred when handling the resource request: "  + ExceptionUtils.getRootCauseMessage(e));
             e.printStackTrace();
             model.put("response", 422);
         }
@@ -302,7 +303,7 @@ public class HomepagePurchaseController extends BaseController implements Resour
             model.put("type", type);
 		} catch (Exception e) {
 			model.put("error", "A problem has occurred.  Please reload the page or contact help@computer.org.");
-            LOGGER.error("A problem occurred when rendering the portlet",  e);
+            LOGGER.error("A problem occurred when rendering the portlet: "  + ExceptionUtils.getRootCauseMessage(e));
 		}
 
 		// create the model for the View and add the model attributes to it

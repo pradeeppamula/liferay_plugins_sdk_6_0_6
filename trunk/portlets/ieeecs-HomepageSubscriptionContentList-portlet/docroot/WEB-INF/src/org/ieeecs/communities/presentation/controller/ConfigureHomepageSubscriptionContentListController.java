@@ -15,6 +15,7 @@ import java.util.*;
 
 import javax.portlet.*;
 
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.ieeecs.communities.util.HomepageSubscriptionContentListUtil;
 import org.ieee.common.presentation.controller.BaseController;
@@ -45,7 +46,7 @@ public class ConfigureHomepageSubscriptionContentListController extends BaseCont
 			// grab the instance id of this portlet
 			instanceId = "_" + themeDisplay.getPortletDisplay().getInstanceId();
 		} catch (Exception e) {
-            LOGGER.error("A problem occurred when rendering the request.",  e);
+            LOGGER.error("A problem occurred when rendering the request: " + ExceptionUtils.getRootCauseMessage(e));
 		}
 
 		model.put("id", instanceId);
@@ -117,7 +118,7 @@ public class ConfigureHomepageSubscriptionContentListController extends BaseCont
 			}
 
 		} catch (Exception e) {
-            LOGGER.error("A problem occurred when saving the portlet preferences.",  e);
+            LOGGER.error("A problem occurred when saving the portlet preferences: "  + ExceptionUtils.getRootCauseMessage(e));
 		}
 	}
 }

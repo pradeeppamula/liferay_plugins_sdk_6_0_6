@@ -27,6 +27,7 @@ import javax.portlet.RenderResponse;
 import javax.portlet.ResourceRequest;
 import javax.portlet.ResourceResponse;
 
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.ieeecs.communities.mongo.MongoConfigUtil;
 import org.ieeecs.communities.mongo.MongoException;
@@ -78,7 +79,7 @@ public class HomepageSuggestedCompanyController extends BaseController implement
 		} catch (MongoException me) {
 			throw me;
 		} catch (Exception e) {
-            LOGGER.error("A problem occurred when retrieving the portlet data",  e);
+            LOGGER.error("A problem occurred when retrieving the portlet data: "  + ExceptionUtils.getRootCauseMessage(e));
 		}
 		return retVal;
 	}
@@ -98,7 +99,7 @@ public class HomepageSuggestedCompanyController extends BaseController implement
 		} catch (MongoException me) {
 			throw me;
 		} catch (Exception e) {
-            LOGGER.error("A problem occurred when handling a request",  e);
+            LOGGER.error("A problem occurred when handling a request: "  + ExceptionUtils.getRootCauseMessage(e));
 		}
 	}
 
@@ -178,7 +179,7 @@ public class HomepageSuggestedCompanyController extends BaseController implement
 		} catch (Exception e) {
 			// gracefully handle exception and put on model
 			model.put("error", "A problem has occurred.  Please reload the page or contact help@computer.org.");
-            LOGGER.error("An error occurred when handling the render request.", e);
+            LOGGER.error("An error occurred when handling the render request: "  + ExceptionUtils.getRootCauseMessage(e));
 		}
 
 		// create the model for the View and add the model attributes to it
@@ -222,7 +223,7 @@ public class HomepageSuggestedCompanyController extends BaseController implement
 			response.setCharacterEncoding("UTF-8");
 	        response.setContentType("text/json");
 		} catch (Exception e) {
-             LOGGER.error("An error occurred when handling the resource request.", e);
+             LOGGER.error("An error occurred when handling the resource request: "  + ExceptionUtils.getRootCauseMessage(e));
 		}
 		
 		// specify which JSP to render the response to
