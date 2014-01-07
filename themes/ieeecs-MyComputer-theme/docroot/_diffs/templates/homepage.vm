@@ -1,0 +1,31 @@
+<div id="home-page">
+    <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-1"></div>
+        <img class="col-md-6 col-sm-6 col-xs-10" src="/ieeecs-MyComputer-theme/images/mycomputer-logo.png"/>
+        <div class="col-md-3 col-sm-3 col-xs-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-1"></div>
+        <p class="col-md-6 col-sm-6 col-xs-10 lead text-center">
+            Punchy descriptive text about myComputer.  Not too much longer than this.
+        </p>
+        <div class="col-md-3 col-sm-3 col-xs-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-3 col-xs-1"></div>
+        <div class="col-md-4 col-sm-6 col-xs-10">
+            <div class="text-center">
+                <button class="btn btn-lg btn-primary btn-wide-hard" type="submit">LEARN MORE</button>
+            </div>
+            <br />
+            <div class="text-center">
+                <button class="btn btn-lg btn-primary btn-wide-hard" type="submit">SIGN UP</button>
+            </div>
+            <br />
+            <div class="text-center">
+                <button class="btn btn-lg btn-primary btn-wide-hard" type="submit">LOG IN</button>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-3 col-xs-1"></div>
+    </div>
+</div>

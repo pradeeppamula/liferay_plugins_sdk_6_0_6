@@ -126,6 +126,7 @@
 		   Button Styles
 		   ========================================================================== */
         button:hover { background: none; }
+        .btn-wide-hard { width: 250px; }
 		.btn {
 			 text-transform: uppercase;
              border-radius: 0px;
@@ -221,7 +222,7 @@
         /* ==========================================================================
         Login Page Styles
         ========================================================================== */
-        #login-page { padding-top: 10%; }
+        #login-page, #home-page { padding-top: 10%; }
     </style>
 		
     ## JS
