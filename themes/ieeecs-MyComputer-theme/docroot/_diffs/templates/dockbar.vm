@@ -1,0 +1,198 @@
+<div class="dockbar" data-namespace="_145_" id="dockbar"> 
+    <ul class="aui-toolbar"> 
+    	#if ( $isMemberOfGroup && ( $isLiferayAdmin || $isCommunityAdministrator || $isCommunityEditor ) )
+	        <li class="add-content has-submenu" id="_145_addContent">
+	            <a class="menu-button" href="javascript:;"><span>Add</span></a>
+	        </li>
+        #end
+    	#if ( $isMemberOfGroup && ( $isLiferayAdmin || $isCommunityAdministrator || $isCommunityEditor || $isCommunityControlPanel ) )        
+	        <li class="manage-content has-submenu" id="_145_manageContent">
+	            <a class="menu-button" href="javascript:;"><span>Manage</span></a>
+	        </li>
+        #end 
+    	#if ( $isMemberOfGroup && ( $isLiferayAdmin || $isCommunityAdministrator || $isCommunityEditor ) )               
+	        <li class="aui-toolbar-separator">
+	            <span></span>
+	        </li>
+	        <li class="toggle-controls" id="_145_toggleControls">
+	            <a href="javascript:;">Toggle Edit Controls</a>
+	        </li>
+	        <li class="aui-toolbar-separator">
+	            <span></span>
+	        </li>    
+			<li class="toggle-dragdrop" id="_145_toggleDragDrop">
+				<a href="javascript:toggleDragDrop();" id="linkDragDrop">Show Drag/Drop Zones</a>
+			</li>  
+	        <li class="aui-toolbar-separator">
+	            <span></span>
+	        </li> 
+		#end 	        
+			<li class="toggle-communityhelp" id="_145_toggleCommunityHelp">
+				<a href="/portal/web/CS-Communities-Help" id="linkCommunityHelp">CS Communities Help</a>
+			</li>  
+    	#if ( $isMemberOfGroup && ( $isLiferayAdmin || $isCommunityAdministrator || $isCommunityEditor ) )  		
+	        <li class="aui-toolbar-separator">
+	            <span></span>
+	        </li> 
+	        <li class="toggle-onscreenhelp">
+	            <a href="javascript:onscreenHelp();"><img alt="Onscreen Help" src="/ieeecs-DigitalLibrary-theme/images/common/help.png"></a>
+	        </li>
+        #end        
+    </ul>
+    <ul class="aui-toolbar user-toolbar">
+        <li class="user-avatar " id="_145_userAvatar">
+            <span class="user-links ">
+                <a class="user-portrait" href="/portal/group/control_panel/manage?p_p_auth=ZYC32jqP&amp;p_p_id=2&amp;p_p_lifecycle=0&amp;p_p_state=maximized&amp;p_p_mode=view&amp;doAsGroupId=$!{scopeGroupId}&amp;refererPlid=$!{plid}&amp;_2_struts_action=%2Fmy_account%2Fedit_user&amp;_2_backURL=%2Fportal%2Fweb%2Fstc1">
+                    <img alt="$!{user_name}" src="/portal/image/user_male_portrait?img_id=0&amp;t=1362534424960">
+                </a>
+                <a class="user-fullname" href="/portal/group/control_panel/manage?p_p_auth=ZYC32jqP&amp;p_p_id=2&amp;p_p_lifecycle=0&amp;p_p_state=maximized&amp;p_p_mode=view&amp;doAsGroupId=$!{scopeGroupId}&amp;refererPlid=$!{plid}&amp;_2_struts_action=%2Fmy_account%2Fedit_user&amp;_2_backURL=%2Fportal%2Fweb%2Fstc1">$!{user_name}</a>
+                <span class="sign-out">(<a href="/portal/c/portal/logout">Sign Out</a>)</span>
+            </span>
+        </li>
+    </ul>    
+    <div class="dockbar-messages aui-widget aui-component aui-overlay aui-underlay aui-widget-positioned aui-widget-stacked aui-underlay-hidden" id="_145_dockbarMessages" style="left: 1662px; top: 162px; z-index: 301;">
+        <div class="aui-header"></div>
+        <div class="aui-body"></div>
+        <div class="aui-footer"></div>
+        <div class="aui-overlay-content aui-underlay-content aui-widget-stdmod" id="aui_3_2_0_1363">
+            <div class="aui-widget-hd">
+                <button class="aui-buttonitem-content aui-widget aui-component aui-buttonitem aui-state-default aui-buttonitem-icon-only aui-underlay-close" id="aui_3_2_0_1400" title="" type="button">
+                    <span class="aui-buttonitem-icon aui-icon aui-icon-close"></span>
+                    <span class="aui-buttonitem-label aui-helper-hidden" id="aui_3_2_0_1464"></span>
+                </button>
+            </div>
+            <div class="aui-widget-bd"></div>
+        </div>
+    </div>
+    <div class="aui-menu add-content-menu aui-overlaycontext-hidden aui-widget aui-component aui-overlay aui-overlaycontext aui-widget-positioned aui-widget-stacked" id="_145_addContentContainer" style="left: 46px; top: 29px; z-index: 101002;">
+        <div class="aui-menu-content aui-overlay-content aui-overlaycontext-content aui-widget-stdmod" id="aui_3_2_0_1528">
+            <ul>
+    		#if ( $isMemberOfGroup && ( $isLiferayAdmin || $isCommunityAdministrator || $isCommunityEditor ) )            
+                <li class="add-application last more-applications aui-menu-item">                
+                    <a href="javascript:; showDragDrop();" id="_145_addApplication" tabindex="-1">Portlets / Widgets</a>
+                </li>
+			#end                
+            </ul>
+        </div>
+    </div>
+    <div class="aui-menu manage-content-menu aui-overlaycontext-hidden aui-widget aui-component aui-overlay aui-overlaycontext aui-widget-positioned aui-widget-stacked" id="_145_manageContentContainer" style="left: 130px; top: 29px; z-index: 101004;">
+        <div class="aui-menu-content aui-overlay-content aui-overlaycontext-content aui-widget-stdmod" id="aui_3_2_0_1696">
+            <ul>
+    		#if ( $isMemberOfGroup && ( $isLiferayAdmin || $isCommunityAdministrator || $isCommunityEditor ) )                   
+                <li class="page-layout aui-menu-item">
+                    <a href="javascript:;" id="pageTemplate" tabindex="-1">Page Layout</a>
+                </li> 
+			#end     
+			#if ( $isMemberOfGroup && ( $isLiferayAdmin || $isCommunityAdministrator || $isCommunityEditor || $isCommunityControlPanel ) )                            
+                <li class="control-panel last aui-menu-item" id="_145_controlPanel">
+                    <a href="/portal/group/control_panel?doAsGroupId=$!{scopeGroupId}&amp;refererPlid=$!{plid}" id="aui_3_2_0_1741" tabindex="-1">Control Panel</a>
+                </li>
+			#end                 
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+	AUI().use("liferay-dockbar-custom",function(a){(function(){Liferay.DockbarCustom.init()})()});
+	
+	function toggleDragDrop() {
+
+		var currentText = $("#linkDragDrop").html();
+		
+		if ( currentText.indexOf("Show") > -1 ) {
+			showDragDrop();
+		} else {
+			hideDragDrop();
+		}
+	}	
+	
+	function hideDragDrop() {
+		$("#linkDragDrop").html("Show Drag/Drop Zones");
+		$(".portlet-dropzone").css("border", "0px solid #FFFFFF");	
+	}
+	
+	function showDragDrop() {
+		$("#linkDragDrop").html("Hide Drag/Drop Zones");
+		$(".portlet-dropzone").css("border", "1px dashed #1589FF");	
+	}
+	
+	function onscreenHelp() {
+		guiders.show("first");
+	}
+	
+    guiders.createGuider({
+		attachTo: "#_145_addContent",
+		offset: { left: -10, top: -3 },
+		buttons: [{name: "Close"},{name: "Next"}],
+		description: "Clicking on the '<b>Portlets / Widgets</b>' option will bring up a list of available Widgets, otherwise known as 'Portlets', which you can then drag and drop onto your page.",
+		id: "first",
+		next: "second",
+		position: 7,
+		closeOnEscape: true,
+		width: 500,
+		title: "Add Components to Your Community Page(s)"
+    });	
+    
+	guiders.createGuider({
+		attachTo: "#_145_manageContent",
+		offset: { left: 0, top: -3 },
+		buttons: [{name: "Close"},{name: "Back"},{name: "Next"}],
+		description: "The '<b>Page Layout</b>' popup window will let you determine the layout that this page will follow.  You can then drag and drop your portlets into this layout.<br/><br/>The '<b>Control Panel</b>' option is where the data entry, article creation, blog post creation, user management, and other administrative tasks take place.  If you are the Community Owner/Administrator, you will see more functionality within these '<b>Control Panel</b>' screens.",
+		id: "second",
+		next: "third",
+		position: 7,
+		closeOnEscape: true,
+		title: "Manage Your Community"
+	});
+	
+	guiders.createGuider({
+		attachTo: "#_145_toggleControls",
+		offset: { left: 30, top: -3 },
+		buttons: [{name: "Close"},{name: "Back"},{name: "Next"}],
+		description: "After dragging and dropping a portlet onto your Community page(s) you will notice a submenu, (top right-hand corner of the portlet), which will allow you to configure that portlet further.  You can change CSS classes, margin values, padding of the text within the portlet, change the title, etc within this submenu.<br/><br/>Sometimes, however, you don't want to have your beautiful work cluttered with these submenus.  You can just click this toggle button to hide or show the portlet submenus.",
+		id: "third",
+		next: "fourth",
+		position: 7,
+		closeOnEscape: true,
+		title: "Toggle the Portlet 'Edit' Controls"
+	});
+	
+	guiders.createGuider({
+		attachTo: "#_145_toggleDragDrop",
+		offset: { left: 30, top: -3 },
+		buttons: [{name: "Close"},{name: "Back"},{name: "Next"}],
+		description: "Liferay themes, out of the box, don't indicate where the 'drop zones' of your layout are.  You're left to guess where to drop your newly minted portlet, hoping that it'll land where you intended it to be.<br/><br/>By clicking on the '<b>Show Drag/Drop Zones</b>' option, you'll see your selected page layout drop zones highlighted in blue.  When you are finished with your portlet placement, you can just 'hide' the drop zone grid.",
+		id: "fourth",
+		next: "fifth",
+		position: 7,
+		closeOnEscape: true,
+		title: "A Guide to Help Determine Where to Place Your Portlets"
+	});
+	
+	guiders.createGuider({
+		attachTo: "#_145_toggleCommunityHelp",
+		offset: { left: 0, top: -3 },
+		buttons: [{name: "Close"},{name: "Back"},{name: "Next"}],
+		description: "A site -- or set of Community pages -- can start off pretty simple.  Standard layout, standard portlet setups, a handful of pages and you're good to go.  But what if you wanted to make your Community a bit more... contemporary.  Add a Social feed.  Try out a 'chat' portlet.  Add a scrolling image viewer.<br/><br/>Or perhaps you just wanted to see how something in particular is configured.<br/><br/>We've created a site that uses this same Community theme that you're using right now, including the same portlets from whi ch you can select. In the case of the <i>CS Communities Wiki</i> however, we'll show you how to not only put together a 'standard' page, but how to put together a more 'advanced' page as well.<br/><br/>And by all means, if you have an idea for a Community portlet, just send an email with your idea(s).  You might be surprised how fast your idea can be implemented...",
+		id: "fifth",
+		next: "finally",
+		position: 6,
+		closeOnEscape: true,
+		width: 700,
+		title: "Have a Look at What Can be Done with an IEEE CS Community Page"
+	});	
+	
+	guiders.createGuider({
+		attachTo: "#_145_userAvatar",
+		offset: { left: -40, top: -3 },
+		buttons: [{name: "Close"},{name: "Back"}],
+		description: "By clicking on either your profile 'avatar', or on your name, you will be taken to the '<b>Control Panel</b>' page that displays your current account information.",
+		id: "finally",
+		position: 5,
+		closeOnEscape: true,
+		title: "Manage Your IEEE CS Account"
+	});    
+	
+</script>
