@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+#parse ($init)
+<html itemscope itemtype="http://schema.org/Organization" class="#language("lang.dir")" dir="#language("lang.dir")" lang="$w3c_language_id">
+<head>
+	<meta charset="utf-8">
+    <title>$the_title - $company_name</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="IEEE Computer Society">
+    <meta name="keywords" content="digital library, computer society digital library, IEEE computer society digital library, ieee digital library subscription">
+    ## Description - keep less than 155 chars for better Google placement
+    <meta name="description" content="">
+    ## This is to ensure using the latest rendering mode for IE
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+    ## Schema.org markup for Google+
+    <meta itemprop="name" content="$the_title | $company_name">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://conferences.computer.org/icebe/2013/images/ICS_black_stacked.gif">
+		
+    ## Open Graph Meta Tags
+    <meta property="og:title" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:site_name" content="">
+    <meta property="og:description" content="">
+    <meta property=”og:image” content=”http://conferences.computer.org/icebe/2013/images/ICS_black_stacked.gif”/>
+
+		## This is required by Liferay, where they import all their junk.
+		$theme.include($top_head_include)
+
+    ## CSS
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+
+		## CUSTOM STYLES - Needs to be here so that Liferay doesn't build it with the other CSS before Bootstrap
+    <style type="text/css">
+		/* ==========================================================================
+		   Global Misc Styles
+		   ========================================================================== */
+        html {
+            background: url(/ieeecs-MyComputer-theme/images/mycomputer-bg.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background-color: #8e44ad;
+        }
+		html,
+		body {
+            -webkit-font-smoothing: antialiased;
+            font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            font-weight: 300;
+            padding-left: 0px;
+            padding-right: 0px;
+            color: #FFFFFF;
+		}
+
+        body {
+            background-color:rgba(255,0,0,0.0);
+        }
+
+        ## Wrapper for page content to push down footer
+        #wrap {
+          min-height: 100%;
+          height: auto !important;
+          height: 100%;
+          /* Negative indent footer by it's height */
+          margin: 0 auto -20px;
+           /* Pad bottom by footer height */
+            padding: 0 0 85px;
+            margin-top: 85px;
+        }
+		
+		.text-primary, .text-primary:hover { color: #378194;}
+		.label-primary { border-radius: 0px; background-color: #378194;}
+
+
+		
+		/* ==========================================================================
+		   Link Styles
+		   ========================================================================== */
+		a:hover {
+		    transition: color 0.35s;
+		    -moz-transition: color 0.35s; /* Firefox 4 */
+		    -webkit-transition: color 0.35s; /* Safari and Chrome */
+		    -o-transition: color 0.35s; /* Opera */
+		    text-decoration: underline;
+		    color: #ecf0f1;
+		}
+
+		a {
+		    color: #ffffff;
+		}
+
+		::selection {
+		    background: #232527; /* Safari */
+		    color: #FFFFFF;
+		}
+		::-moz-selection {
+		    background: #232527; /* Firefox */
+		    color: #FFFFFF;
+		}
+
+		/* ==========================================================================
+		   Button Styles
+		   ========================================================================== */
+		.btn {
+			 text-transform: uppercase;
+             border-radius: 0px;
+             box-shadow: none;
+             color: #FFFFFF;
+             text-decoration: none;
+             text-shadow: none;
+             letter-spacing: 1px;
+		}
+
+        .btn-lg {
+            padding: 10px 45px;
+            font-size: 23px;
+        }
+		
+		.btn-primary {
+		    background-color: #EB7023;
+		    border-color: #EB7023;
+		}
+
+		.btn-primary:hover {
+		    background-color: #d3641f;
+		    border-color: #d3641f;
+		}
+
+		.btn-primary:hover,
+		.btn-primary:focus,
+		.btn-primary:active,
+		.btn-primary.active,
+		.open .dropdown-toggle.btn-primary {
+		  background-color: #d3641f;
+		  border-color: #d3641f;
+		}
+
+		.btn-primary.disabled,
+		.btn-primary[disabled],
+		fieldset[disabled] .btn-primary,
+		.btn-primary.disabled:hover,
+		.btn-primary[disabled]:hover,
+		fieldset[disabled] .btn-primary:hover,
+		.btn-primary.disabled:focus,
+		.btn-primary[disabled]:focus,
+		fieldset[disabled] .btn-primary:focus,
+		.btn-primary.disabled:active,
+		.btn-primary[disabled]:active,
+		fieldset[disabled] .btn-primary:active,
+		.btn-primary.disabled.active,
+		.btn-primary[disabled].active,
+		fieldset[disabled] .btn-primary.active {
+		  background-color: #ef8c4e;
+		  border-color: #ef8c4e;
+		}
+		
+		/* ==========================================================================
+		   General Form Styles
+		   ========================================================================== */
+		.form-control {
+			background-color: #ffffff;
+			background-image: none;
+			border: 0px solid #ffffff;
+			border-radius: 0px;
+			-webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
+			box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
+		}
+		
+		/* ==========================================================================
+		   Media Styles
+		   ========================================================================== */
+      ## Lastly, apply responsive CSS fixes as necessary
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+    </style>
+		
+    ## JS
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+    ## CSS HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    ## CSS Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="#">
+    <link rel="apple-touch-icon-precomposed" href="#">
+    <link rel="shortcut icon" href="/ieeecs-MyComputer-theme/images/favicon.ico">
+    <link rel="icon" href="/ieeecs-MyComputer-theme/images/favicon.ico">
+</head>
+<body>
+	## Wrap all page content here
+  <div id="wrap">
+		## Begin page content
+		<div class="container">
+            #if ($selectable)
+                $theme.include($content_include)
+            #else
+                $portletDisplay.recycle()
+                $portletDisplay.setTitle($the_title)
+                $theme.wrapPortlet("portlet.vm", $content_include)
+            #end
+		</div>
+	</div> ## /wrap
+	
+	## Le javascript
+	##==================================================
+	## Placed at the end of the document so the pages load faster
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+</body>
+$theme.include($bottom_include)
+</html>

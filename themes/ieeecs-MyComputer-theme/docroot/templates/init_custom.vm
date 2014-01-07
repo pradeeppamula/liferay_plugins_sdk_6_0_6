@@ -1,0 +1,6 @@
+#*
+This file allows you to override and define new Velocity variables.
+*#
+#set($currentPageURL = $community_default_url.split("[?]").get(0))
+#set ($the_title = "MyComputer")
+#set ($company_name = "IEEE Computer Society")
