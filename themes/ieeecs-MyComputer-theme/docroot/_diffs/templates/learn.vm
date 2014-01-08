@@ -1,0 +1,67 @@
+<div id="learn-page">
+    <div class="row">
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+        <h1 class="col-md-8 col-sm-10 col-xs-10 text-center">LEARN MORE</h1>
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <div class="col-md-3 col-sm-3 col-xs-3"></div>
+            <div class="col-md-9 col-sm-9 col-xs-9">
+                <div class="row">
+                    <div class="col-md-5 col-sm-5 col-xs-5">
+                        <h4 class="text-muted text-right">
+                            <a href="#" class="help-link pull-right">
+                                <div class="help">
+                                    <span>?</span>
+                                </div>
+                            </a>
+                            MEMBER
+                        </h4>
+                        <span>$25</span>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <h4 class="text-muted text-right">
+                            <a href="#" class="help-link pull-right">
+                                <div class="help">
+                                    <span>?</span>
+                                </div>
+                            </a>
+                            NONMEMBER
+                        </h4>
+                        <span>$45</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <p class="lead">Pricing and info</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6 text-left">
+            <h3 class="text-primary">HOW IT WORKS</h3>
+            <div class="video-container">
+                <p class="text-muted">Video goes here</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6">
+            <h3 class="text-primary">SUBJECTS</h3>
+            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
+            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
+            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
+            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
+            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
+            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
+            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
+            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
+            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
+            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
+            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
+        </div>
+    </div>
+    <br /><br />
+    <div class="row text-center">
+        <a href="#" class="btn btn-lg btn-primary">SIGN UP</a>
+    </div>
+</div>

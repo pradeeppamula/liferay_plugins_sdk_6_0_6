@@ -1,0 +1,36 @@
+<div id="confirmation-page">
+    <div class="row">
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+        <h1 class="col-md-8 col-sm-10 col-xs-10 text-center">THANK YOU</h1>
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-md-4 col-sm-3 col-xs-1"></div>
+        <img class="col-md-4 col-sm-6 col-xs-10" src="/ieeecs-MyComputer-theme/images/mycomputer-logo.png"/>
+        <div class="col-md-4 col-sm-3 col-xs-1"></div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-1"></div>
+        <p class="col-md-6 col-sm-6 col-xs-10 lead text-center">
+            Confirmation Text Here
+        </p>
+        <div class="col-md-3 col-sm-3 col-xs-1"></div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-md-4 col-sm-3 col-xs-1"></div>
+        <div class="col-md-4 col-sm-6 col-xs-10">
+            <div class="text-center">
+                <button class="btn btn-lg btn-primary btn-wide-hard" type="submit">DASHBOARD</button>
+            </div>
+            <br />
+            <div class="text-center">
+                <button class="btn btn-lg btn-primary btn-wide-hard" type="submit">LOG OUT</button>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-3 col-xs-1"></div>
+    </div>
+</div>
+<a id="footer-back-link" href="#">< Back to IEEE Computer Society</a>
