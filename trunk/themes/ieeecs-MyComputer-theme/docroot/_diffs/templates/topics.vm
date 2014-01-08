@@ -1,0 +1,107 @@
+<div id="topics-page">
+    <div class="row">
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+        <h1 class="col-md-8 col-sm-10 col-xs-10 text-center">CHOOSE YOUR TOPICS</h1>
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+        <div class="col-md-8 col-sm-10 col-xs-10">
+            <p class="lead">When you order myComputer, you receive 24 customized,
+            to-the-minute articles or papers in your 3 chosen topics selected
+            from 13 leading peer-reviewed magazines and 200 conferences.</p>
+            <p class="lead">You can access these important articles - along with
+                your monthly digital <i>Computer</i> magazine - via your desktop,
+                tablet, or mobile device.</p>
+        </div>
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 col-sm-1 col-xs-1"></div>
+        <div class="col-md-10 col-sm-10 col-xs-10 text-center">
+            <h3>TO GET STARTED, ENTER YOUR EMAIL AND SELECT YOUR THREE TOPICS</h3>
+            <p class="lead">
+                (Computer Society members please use your IEEE web account email.)
+            </p>
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-1"></div>
+        <form class="col-md-8 col-sm-8 col-xs-10" name="topics-form" id="topics-form"
+              action="#"
+              method="POST">
+            <div class="form-group col-md-6">
+                <label for="email" class="control-label"><h3 class="text-primary">EMAIL ADDRESS</h3></label>
+                <input type="text" class="form-control input-lg" name="email" id="email" placeholder=""
+                       value="">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="confirm-email" class="control-label"><h3 class="text-primary">CONFIRM ADDRESS</h3></label>
+                <input type="text" class="form-control input-lg" name="confirm-email" id="confirm-email" placeholder=""
+                       value="">
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <ul class="unstyled">
+                    <li>
+                        <label>
+                            <input type="checkbox"> 3D Printing
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox"> Android
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox"> Applications
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <ul class="unstyled">
+                    <li>
+                        <label>
+                            <input type="checkbox"> Big Data
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox"> Cloud
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox"> Space
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <ul class="unstyled">
+                    <li>
+                        <label>
+                            <input type="checkbox"> Cluster
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox"> Cybercrime
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox"> Big Bird
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                <button class="btn btn-lg btn-primary" type="submit">CHECK OUT</button>
+            </div>
+        </form>
+        <div class="col-md-2 col-sm-2 col-xs-1"></div>
+    </div>
+</div>
