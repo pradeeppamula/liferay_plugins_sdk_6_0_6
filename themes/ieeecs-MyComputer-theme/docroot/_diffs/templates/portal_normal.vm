@@ -91,6 +91,28 @@
         ul.unstyled {
             list-style-type: none;
         }
+        .gray-circle-container {
+            background-color: rgba(153,153,153,0.6);
+            border-radius: 50%;
+            width: 80px;
+            height: 70px;
+            text-align: center;
+        }
+        .help {
+            background-color: #999999;
+            border-radius: 50%;
+            width: 20px;
+            text-align: center;
+        }
+        .help span
+        {
+            color: #5c3c5b;
+            opacity:0.5;
+            filter:alpha(opacity=50); /* For IE8 and earlier */
+        }
+        .help-link:hover {
+            text-decoration: none;
+        }
         /* ==========================================================================
             Footer Styles
         ========================================================================== */
@@ -255,25 +277,45 @@
             text-align: center;
             padding: 30px 5px;
         }
-        .help {
-            background-color: #999999;
-            border-radius: 50%;
-            width: 20px;
-            text-align: center;
+
+        .dollar-sign {
+            font-size: 25px;
+            font-weight: bold;
         }
-        .help span
-        {
-            color: #5c3c5b;
-            opacity:0.5;
+        .price {
+            font-size: 45px;
+            font-weight: bold;
         }
-        .help-link:hover {
-            text-decoration: none;
+        .subjects-container {
+            font-size: 16px;
+            font-weight: bold;
         }
         /* ==========================================================================
         Confirmation Page Styles
         ========================================================================== */
         #confirmation-page { padding-top: 10%; }
 
+        /* ==========================================================================
+        Dashboard Page Styles
+        ========================================================================== */
+        #dashboard-page { padding-top: 2%; }
+        .number-header {
+            font-size: 95px;
+            font-weight: bold;
+            line-height: 112px;
+        }
+        .divider {
+            border-bottom: #ffffff solid 3px;
+            padding: 15px 0;
+        }
+        .link-container:hover {
+            opacity:0.5;
+            filter:alpha(opacity=50); /* For IE8 and earlier */
+            cursor: pointer;
+        }
+        .link-container a {
+            text-decoration: none;
+        }
     </style>
 		
     ## JS

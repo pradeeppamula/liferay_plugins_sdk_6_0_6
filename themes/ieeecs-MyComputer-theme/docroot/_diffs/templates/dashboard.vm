@@ -1,0 +1,104 @@
+<div id="dashboard-page">
+    <div class="row">
+        <img class="col-md-3 col-sm-3 col-xs-3 pull-left" src="/ieeecs-MyComputer-theme/images/mycomputer-logo.png"/>
+        <div class="pull-right">
+            <button class="btn btn-primary" type="submit">LOG OUT</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+        <div class="col-md-8 col-sm-10 col-xs-10 text-center">
+            <h1>HELLO ADA</h1>
+            <p>Welcome to your dashboard</p>
+        </div>
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+    </div>
+    <div class="row text-center">
+        <h3 class="text-primary">YOUR ARTICLES</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+        <div class="col-md-8 col-sm-10 col-xs-10">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="col-md-5 col-sm-5 col-xs-5 text-right">
+                    <span class="number-header">4</span>
+                </div>
+                <div class="col-md-7 col-sm-7 col-xs-7 text-left">
+                    <h3 class="text-primary">
+                       DOWNLOADED
+                    </h3>
+                    <a href="#" class="btn btn-primary">READ</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="col-md-5 col-sm-5 col-xs-5 text-right">
+                    <span class="number-header">20</span>
+                </div>
+                <div class="col-md-7 col-sm-7 col-xs-7 text-left">
+                    <h3 class="text-primary">
+                        REMAINING
+                    </h3>
+                    <h4>ADD FROM</h4>
+                    <select class="form-control">
+                        <option selected="selected">Select One</option>
+                        <option>DEC 2013</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+    </div>
+    <div class="row">
+       <div class="col-md-2 col-sm-1 col-xs-1"></div>
+       <div class="col-md-8 col-sm-10 col-xs-10 divider"></div>
+       <div class="col-md-2 col-sm-1 col-xs-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+        <div class="col-md-8 col-sm-10 col-xs-10">
+            <div class="col-md-6 col-sm-6 col-xs-6 text-center link-container">
+                <a href="#">
+                    <h3 class="text-primary">BUY MORE ARTICLES</h3>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-md-2 col-sm-1"></div>
+                        <img class="col-md-8 col-sm-10 col-xs-12" src="/ieeecs-MyComputer-theme/images/shopping-cart.png"/>
+                        <div class="col-md-2 col-sm-1"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 text-center link-container">
+                <a href="#">
+                    <h3 class="text-primary">CHANGE TOPICS</h3>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-md-2 col-sm-1"></div>
+                        <img class="col-md-8 col-sm-10 col-xs-12" src="/ieeecs-MyComputer-theme/images/change-topics-icon.png"/>
+                        <div class="col-md-2 col-sm-1"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+        <div class="col-md-8 col-sm-10 col-xs-10">
+            <div class="col-md-6 col-sm-6 col-xs-6 text-center link-container">
+                <a href="#">
+                    <h3 class="text-primary">HELP</h3>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-md-3 col-sm-2 col-xs-1"></div>
+                        <img class="col-md-6 col-sm-8 col-xs-10" src="/ieeecs-MyComputer-theme/images/help-icon.png"/>
+                        <div class="col-md-3 col-sm-2 col-xs-1"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 text-center">
+                <h3 class="text-primary">KEY</h3>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+    </div>
+</div>

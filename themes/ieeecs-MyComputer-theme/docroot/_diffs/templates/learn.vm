@@ -5,9 +5,9 @@
         <div class="col-md-2 col-sm-1 col-xs-1"></div>
     </div>
     <div class="row">
-        <div class="col-md-6 col-sm-6 col-xs-6">
-            <div class="col-md-3 col-sm-3 col-xs-3"></div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="col-md-3"></div>
+            <div class="col-md-9 col-sm-12 col-xs-12">
                 <div class="row">
                     <div class="col-md-5 col-sm-5 col-xs-5">
                         <h4 class="text-muted text-right">
@@ -18,7 +18,10 @@
                             </a>
                             MEMBER
                         </h4>
-                        <span>$25</span>
+                        <div class="gray-circle-container pull-right">
+                            <span class="dollar-sign">$</span>
+                            <span class="price">25</span>
+                        </div>
                     </div>
                     <div class="col-md-7 col-sm-7 col-xs-7">
                         <h4 class="text-muted text-right">
@@ -29,35 +32,56 @@
                             </a>
                             NONMEMBER
                         </h4>
-                        <span>$45</span>
+                        <div class="gray-circle-container pull-right">
+                            <span class="dollar-sign">$</span>
+                            <span class="price">45</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="col-md-6 col-sm-6 col-xs-12">
             <p class="lead">Pricing and info</p>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 col-sm-6 col-xs-6 text-left">
+        <div class="col-md-6 col-sm-6 col-xs-12 text-left">
             <h3 class="text-primary">HOW IT WORKS</h3>
             <div class="video-container">
                 <p class="text-muted">Video goes here</p>
             </div>
         </div>
-        <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="col-md-6 col-sm-6 col-xs-12 subjects-container">
             <h3 class="text-primary">SUBJECTS</h3>
-            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
-            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
-            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
-            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
-            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
-            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
-            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
-            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
-            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
-            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
-            <div class="col-md-4 col-sm-4 col-xs-4">3D Printing</div>
+            <div class="col-md-4 col-sm-6 col-xs-12">3D Printing </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Android </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Big Data </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Bioinformatics </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Cloud </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Cluster </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Cryptography </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Cybercrime </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Data analysis </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Distributed systems </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Education</div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Green Hackers </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Healthcare </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">High performance </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">History </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Intelligent Systems </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Internet of things </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Military </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Mobile </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Nanotechnology </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Networking </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Project management </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Robotics</div>
+            <div class="col-md-4 col-sm-6 col-xs-12">SaaS </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Security </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Smart grid </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Software Defined Networking</div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Sustainable </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">Virtualization</div>
         </div>
     </div>
     <br /><br />
