@@ -113,6 +113,9 @@
         .help-link:hover {
             text-decoration: none;
         }
+        .row-spacing {
+            margin-bottom: 8px;
+        }
         /* ==========================================================================
             Footer Styles
         ========================================================================== */
@@ -315,6 +318,17 @@
         }
         .link-container a {
             text-decoration: none;
+        }
+        .legend-label {
+            width: 30px;
+            height: 30px;
+        }
+        .green { background-color: #56AB32; }
+        .blue { background-color: #29CBf0; }
+        .content-container {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 20px 30px;
         }
     </style>
 		

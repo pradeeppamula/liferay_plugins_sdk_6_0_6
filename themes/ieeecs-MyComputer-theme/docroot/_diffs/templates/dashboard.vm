@@ -17,9 +17,9 @@
         <h3 class="text-primary">YOUR ARTICLES</h3>
     </div>
     <div class="row">
-        <div class="col-md-2 col-sm-1 col-xs-1"></div>
-        <div class="col-md-8 col-sm-10 col-xs-10">
-            <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 col-sm-12 col-xs-12">
+            <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="col-md-5 col-sm-5 col-xs-5 text-right">
                     <span class="number-header">4</span>
                 </div>
@@ -30,11 +30,11 @@
                     <a href="#" class="btn btn-primary">READ</a>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 col-xs-6">
-                <div class="col-md-5 col-sm-5 col-xs-5 text-right">
+            <div class="col-md-6 col-sm-12 col-xs-11">
+                <div class="col-md-5 col-sm-5 col-xs-6 text-right">
                     <span class="number-header">20</span>
                 </div>
-                <div class="col-md-7 col-sm-7 col-xs-7 text-left">
+                <div class="col-md-7 col-sm-7 col-xs-6 text-left">
                     <h3 class="text-primary">
                         REMAINING
                     </h3>
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+        <div class="col-md-2"></div>
     </div>
     <div class="row">
        <div class="col-md-2 col-sm-1 col-xs-1"></div>
@@ -54,9 +54,9 @@
        <div class="col-md-2 col-sm-1 col-xs-1"></div>
     </div>
     <div class="row">
-        <div class="col-md-2 col-sm-1 col-xs-1"></div>
-        <div class="col-md-8 col-sm-10 col-xs-10">
-            <div class="col-md-6 col-sm-6 col-xs-6 text-center link-container">
+        <div class="col-md-2 col-sm-1"></div>
+        <div class="col-md-8 col-sm-10 col-xs-12">
+            <div class="col-md-6 col-sm-6 col-xs-12 text-center link-container">
                 <a href="#">
                     <h3 class="text-primary">BUY MORE ARTICLES</h3>
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -66,7 +66,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col-md-6 col-sm-6 col-xs-6 text-center link-container">
+            <div class="col-md-6 col-sm-6 col-xs-12 text-center link-container">
                 <a href="#">
                     <h3 class="text-primary">CHANGE TOPICS</h3>
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -77,12 +77,12 @@
                 </a>
             </div>
         </div>
-        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+        <div class="col-md-2 col-sm-1"></div>
     </div>
     <div class="row">
-        <div class="col-md-2 col-sm-1 col-xs-1"></div>
-        <div class="col-md-8 col-sm-10 col-xs-10">
-            <div class="col-md-6 col-sm-6 col-xs-6 text-center link-container">
+        <div class="col-md-2 col-sm-1"></div>
+        <div class="col-md-8 col-sm-10 col-xs-12">
+            <div class="col-md-6 col-sm-6 col-xs-12 text-center link-container">
                 <a href="#">
                     <h3 class="text-primary">HELP</h3>
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -92,13 +92,85 @@
                     </div>
                 </a>
             </div>
-            <div class="col-md-6 col-sm-6 col-xs-6 text-center">
+            <div class="col-md-6 col-sm-6 col-xs-11 text-center">
                 <h3 class="text-primary">KEY</h3>
                 <div class="col-md-12 col-sm-12 col-xs-12">
-
+                    <div class="row row-spacing">
+                        <div class="col-md-2 col-sm-2 col-xs-2 text-center">
+                            <div class="legend-label green"></div>
+                        </div>
+                        <div class="col-md-10 col-sm-10 col-xs-10 text-left">
+                            Available article via CS Digital Library
+                        </div>
+                    </div>
+                    <div class="row row-spacing">
+                        <div class="col-md-2 col-sm-2 col-xs-2 text-center">
+                            <div class="legend-label blue"></div>
+                        </div>
+                        <div class="col-md-10 col-sm-10 col-xs-10 text-left">
+                            Accessed article
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-2 col-sm-1 col-xs-1"></div>
+        <div class="col-md-2 col-sm-1"></div>
+    </div>
+    <!-- Available Content Section -->
+    <div id="#available-content" class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <h3 class="text-primary">AVAILABLE CONTENT FOR <span>DECEMBER 2013</span></h3>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <p><strong>Click the blue icon to access articles in the IEEE Computer Society Digital Library.</strong></p>
+            <p><strong>Download via the "Access via myComputer" link.  You'll be redirected to download the pdf.</strong></p>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 content-container">
+            <!-- Begin topic area repeat loop here -->
+            <div class="row text-left">
+                <h5>Topic Area: Education</h5>
+            </div>
+            <div class="row row-spacing">
+                <div class="col-md-2 col-sm-2 col-xs-2">
+                    <div class="legend-label green pull-right"></div>
+                </div>
+                <div class="col-md-10 col-sm-10 col-xs-10 text-left">
+                    Conference Proceedings: This is the title here
+                </div>
+            </div>
+            <div class="row row-spacing">
+                <div class="col-md-2 col-sm-2 col-xs-2">
+                    <div class="legend-label blue pull-right"></div>
+                </div>
+                <div class="col-md-10 col-sm-10 col-xs-10 text-left">
+                    Conference Proceedings: This is the title here
+                </div>
+            </div>
+            <!-- end topic loop -->
+        </div> <!-- /.content-container -->
+    </div>
+
+    <!-- Downloaded Content Section -->
+    <div id="#downloaded-content" class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <h3 class="text-primary">DOWNLOADED myARTICLES</h3>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 content-container">
+            <!-- Begin topic area repeat loop here -->
+            <div class="row text-left">
+                <h5>Topic Area: Education</h5>
+            </div>
+            <div class="row row-spacing">
+                <div class="text-left">
+                    Conference Proceedings: This is the title here
+                </div>
+            </div>
+            <div class="row row-spacing">
+                <div class="text-left">
+                    Conference Proceedings: This is the title here
+                </div>
+            </div>
+            <!-- end downloaded content loop -->
+        </div> <!-- /.content-container -->
     </div>
 </div>
