@@ -30,12 +30,12 @@
     $theme.include($top_head_include)
 
     ## JS
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/ieeecs-MyComputer-theme/lib/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/ieeecs-MyComputer-theme/lib/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/ieeecs-MyComputer-theme/js/dockbar.customizable.js"></script>
 
     ## CSS
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/ieeecs-MyComputer-theme/lib/css/bootstrap.min.css" rel="stylesheet">
 
 	## CUSTOM STYLES - Needs to be here so that Liferay doesn't build it with the other CSS before Bootstrap
     <style type="text/css">
@@ -339,12 +339,12 @@
     </style>
 		
     ## JS
-    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+    <script type="text/javascript" src="/ieeecs-MyComputer-theme/lib/js/modernizr.min.js"></script>
 
     ## CSS HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
     <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script type="text/javascript" src="/ieeecs-MyComputer-theme/lib/js/html5shiv.js"></script>
+    <script type="text/javascript" src="/ieeecs-MyComputer-theme/lib/js/respond.min.js"></script>
     <![endif]-->
 
     ## CSS Fav and touch icons -->
@@ -389,7 +389,7 @@
     ## Le javascript
 	##==================================================
 	## Placed at the end of the document so the pages load faster
-    <script type="text/javascript" src="/ieeecs-MyComputer-theme/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/ieeecs-MyComputer-theme/lib/js/bootstrap.min.js"></script>
 </body>
 $theme.include($bottom_include)
 </html>
