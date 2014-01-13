@@ -37,7 +37,7 @@
     ## CSS
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
 
-		## CUSTOM STYLES - Needs to be here so that Liferay doesn't build it with the other CSS before Bootstrap
+	## CUSTOM STYLES - Needs to be here so that Liferay doesn't build it with the other CSS before Bootstrap
     <style type="text/css">
 		/* ==========================================================================
 		   Global Misc Styles
@@ -126,13 +126,32 @@
             /* .push must be the same height as footer */
             height: 60px;
         }
-        img.footer-logo {width: 80%;}
-        #footer-back-link {
-           position: absolute;
-           bottom:  15px;
-           left: 20px;
-           color: rgba(255, 255, 255, 0.5);
+        @media (max-width: 767px) {
+            #footer {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            #footer-back-link {
+                position: relative;
+                bottom:  -35px;
+                color: rgba(255, 255, 255, 0.5);
+                font-size: 12px;
+                font-weight: 500;
+            }
         }
+        @media (min-width: 768px) {
+            #footer-back-link {
+                position: absolute;
+                bottom:  5px;
+                left: 20px;
+                color: rgba(255, 255, 255, 0.5);
+                font-size: 12px;
+                font-weight: 500;
+            }
+        }
+        img.footer-logo {width: 80%;}
 
 		/* ==========================================================================
 		   Link Styles
@@ -242,19 +261,6 @@
             background:#FFFFFF !important;
             border: 0px solid #ffffff !important;
         }
-		
-		/* ==========================================================================
-		   Media Styles
-		   ========================================================================== */
-      ## Lastly, apply responsive CSS fixes as necessary
-      @media (max-width: 767px) {
-        #footer {
-          margin-left: -20px;
-          margin-right: -20px;
-          padding-left: 20px;
-          padding-right: 20px;
-        }
-      }
 
         /* ==========================================================================
         Login Page Styles
@@ -371,10 +377,10 @@
         <div class="container">
             <div class="col-md-4 col-sm-3 col-xs-1"></div>
             <div class="col-md-2 col-sm-3 col-xs-5 text-center">
-                <a href="#"><img class="footer-logo" src="/ieeecs-MyComputer-theme/images/cs-logo.png"/></a>
+                <a href="http://www.computer.org/"><img class="footer-logo" src="/ieeecs-MyComputer-theme/images/cs-logo.png"/></a>
             </div>
             <div class="col-md-2 col-sm-3 col-xs-5 text-center">
-                <a href="#"><img class="footer-logo" src="/ieeecs-MyComputer-theme/images/ieee-logo.png"/></a>
+                <a href="http://www.ieee.org/"><img class="footer-logo" src="/ieeecs-MyComputer-theme/images/ieee-logo.png"/></a>
             </div>
             <div class="col-md-4 col-sm-3 col-xs-1"></div>
         </div>
@@ -383,7 +389,7 @@
     ## Le javascript
 	##==================================================
 	## Placed at the end of the document so the pages load faster
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/ieeecs-MyComputer-theme/js/bootstrap.min.js"></script>
 </body>
 $theme.include($bottom_include)
 </html>
