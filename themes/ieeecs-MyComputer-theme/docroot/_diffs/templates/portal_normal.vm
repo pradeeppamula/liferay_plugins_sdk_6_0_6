@@ -39,6 +39,13 @@
 
 	## CUSTOM STYLES - Needs to be here so that Liferay doesn't build it with the other CSS before Bootstrap
     <style type="text/css">
+        /* ==========================================================================
+         IE8 Global Misc Styles
+        ========================================================================== */
+        html.ie8, html.ie8 body {
+            background: #573d7d !important;
+        }
+
 		/* ==========================================================================
 		   Global Misc Styles
 		   ========================================================================== */
@@ -50,8 +57,9 @@
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
+            -ms-background-size:cover;
             background-size: cover;
-            background-color: #8e44ad;
+            background-color: #573d7d;
         }
 		html,
 		body {
@@ -257,6 +265,10 @@
             border-color: #ffffff;
         }
 
+        input[type="checkbox"] {
+            background: rgba(255, 255, 255, 0) !important;
+        }
+
         input.focus {
             background:#FFFFFF !important;
             border: 0px solid #ffffff !important;
@@ -276,6 +288,7 @@
         Topics Page Styles
         ========================================================================== */
         #topics-page { padding-top: 2%; }
+        .topics { font-weight: bold; }
 
         /* ==========================================================================
         Learn More Page Styles
