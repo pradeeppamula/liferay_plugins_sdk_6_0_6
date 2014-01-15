@@ -48,7 +48,12 @@
         <div class="col-md-6 col-sm-6 col-xs-12 text-left">
             <h3 class="text-primary">HOW IT WORKS</h3>
             <div class="video-container">
-                <p class="text-muted">Video goes here</p>
+                <iframe allowfullscreen=""
+                        frameborder="0"
+                        height="190"
+                        width="280"
+                        src="//www.youtube.com/embed/Qx4JhSklbJc?list=PLHJB2bhmgB7fTWgLW5tLbXXINRmgs6W67">
+                </iframe>
             </div>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12 subjects-container">
