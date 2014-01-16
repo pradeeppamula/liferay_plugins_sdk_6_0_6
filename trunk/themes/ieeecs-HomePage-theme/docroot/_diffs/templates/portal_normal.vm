@@ -262,9 +262,18 @@
 	<script type="text/javascript" src="/ieeecs-HomePage-theme/js/infinity.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+    <script type="text/javascript" src="/ieeecs-HomePage-theme/js/metrics-capture.js"></script>
     ## Javascript that is needed for the search bar.  It had to be placed here because the javascript is not recognized after the velocity parser parses dockbar.vm.
     <script type="text/javascript">
         jQuery( document ).ready(function() {
+          // Initialize the Metrics SDK then capture any metrics data
+          Metrics.init({debug:true,url:'http://localhost:5557'});
+          var captureData = {};
+          captureData.url = document.URL;
+          captureData.userId = $user_id;
+          Metrics.capture("PageView", captureData);
+
           // NOTE: 11.25.13 Keeping typeahead results out until future release.
           //  jQuery('#myhome-search-input').on("focus", function() {
           // show the search results bar if there is text there
