@@ -40,6 +40,12 @@
 	## CUSTOM STYLES - Needs to be here so that Liferay doesn't build it with the other CSS before Bootstrap
     <style type="text/css">
         /* ==========================================================================
+        Liferay Overridden Styles
+        ========================================================================== */
+        .portlet-borderless-container {
+            min-height: 1.0em !important;
+        }
+        /* ==========================================================================
          IE8 Global Misc Styles
         ========================================================================== */
         html.ie8, html.ie8 body {
@@ -124,6 +130,7 @@
         .row-spacing {
             margin-bottom: 8px;
         }
+
         /* ==========================================================================
             Footer Styles
         ========================================================================== */
