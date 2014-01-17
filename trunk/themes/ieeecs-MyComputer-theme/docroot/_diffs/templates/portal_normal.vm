@@ -281,6 +281,13 @@
             border: 0px solid #ffffff !important;
         }
 
+        .input-normal {
+            height: 34px;
+            padding: 5px 10px !important;
+            font-size: 15px !important;
+            line-height: 1.5 !important;
+        }
+
         /* ==========================================================================
         Login Page Styles
         ========================================================================== */
