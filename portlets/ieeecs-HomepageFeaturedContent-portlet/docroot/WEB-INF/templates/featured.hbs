@@ -3,32 +3,35 @@
     <span id="edit-featured-content-${id}" class="label label-default"><a class="inline-edit" {{action "editFeaturedContent"}}><i class="icon-edit-sign"></i>&nbsp;Edit</a></span>
 </c:if>
 {{#if isLayoutType1}}
-<div class="layout-1-hero-${id} col-md-8 col-sm-8" {{action "goToContent" heroItem}}>
-<img {{bindAttr src="heroItem.imageURL"}} />
-{{#if heroItem.header}}
-<div class="header-container col-md-5 col-sm-5">{{{heroItem.header}}}</div>
-{{/if}}
-<div class="title-container-bg-${id}"></div>
-<span class="featured-content-title-${id}">{{{heroItem.shortTitle}}}</span>
-</div>
-<div class="col-md-4 col-sm-4">
-    <div class="layout-1-featured-1-${id}"  {{action "goToContent" featuredPosition1}}>
-    <img {{bindAttr src="featuredPosition1.imageURL"}} />
-    {{#if featuredPosition1.header}}
-    <div class="header-container col-md-5 col-sm-5">{{{featuredPosition1.header}}}</div>
+<div class="layout-1-hero-${id} col-md-8 col-sm-8 col-xs-12" {{action "goToContent" heroItem}}>
+    <img {{bindAttr src="heroItem.imageURL"}} />
+    {{#if heroItem.header}}
+    <div class="header-container col-md-5 col-sm-5">{{{heroItem.header}}}</div>
     {{/if}}
     <div class="title-container-bg-${id}"></div>
-    <span class="featured-content-title-${id}">{{{featuredPosition1.shortTitle}}}</span>
+    <span class="featured-content-title-${id}">{{{heroItem.shortTitle}}}</span>
 </div>
-<div class="layout-1-featured-2-${id}"  {{action "goToContent" featuredPosition2}}>
-<img {{bindAttr src="featuredPosition2.imageURL"}} />
-{{#if featuredPosition2.header}}
-<div class="header-container col-md-5 col-sm-5">{{{featuredPosition2.header}}}</div>
-{{/if}}
-<div class="title-container-bg-${id}"></div>
-<span class="featured-content-title-${id}">{{{featuredPosition2.shortTitle}}}</span>
+
+<div class="col-md-4 col-sm-4 col-xs-122">
+    <div class="layout-1-featured-1-${id}"  {{action "goToContent" featuredPosition1}}>
+        <img {{bindAttr src="featuredPosition1.imageURL"}} />
+        {{#if featuredPosition1.header}}
+        <div class="header-container col-md-5 col-sm-5">{{{featuredPosition1.header}}}</div>
+        {{/if}}
+        <div class="title-container-bg-${id}"></div>
+        <span class="featured-content-title-${id}">{{{featuredPosition1.shortTitle}}}</span>
+    </div>
+
+    <div class="layout-1-featured-2-${id}"  {{action "goToContent" featuredPosition2}}>
+    <img {{bindAttr src="featuredPosition2.imageURL"}} />
+    {{#if featuredPosition2.header}}
+    <div class="header-container col-md-5 col-sm-5">{{{featuredPosition2.header}}}</div>
+    {{/if}}
+    <div class="title-container-bg-${id}"></div>
+    <span class="featured-content-title-${id}">{{{featuredPosition2.shortTitle}}}</span>
+    </div>
 </div>
-</div>
+
 <div class="layout-1-hero-item-list col-md-8 col-sm-8">
     <div {{action "selectHero" heroItem1}} class="layout-1-hero-item-1 col-md-3 col-sm-3" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Hero item 1">
     <img {{bindAttr src="heroItem1.imageURL"}} />
