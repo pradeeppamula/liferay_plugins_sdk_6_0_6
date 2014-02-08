@@ -56,7 +56,7 @@
   		margin-top: 85px;
       }
 
-        ## Lastly, apply responsive CSS fixes as necessary
+        ## Lastly, apply mobile responsive CSS fixes as necessary
         @media (max-width: 767px) {
             #footer {
                 margin-left: -20px;
@@ -64,6 +64,13 @@
                 padding-left: 20px;
                 padding-right: 20px;
             }
+            ## THIS IS NEEDED FOR MOBILE TO FORCE ONE COLUMN LAYOUT
+            #column-1, #column-2 { width: 100% !important; }
+            .portlet-column {
+                display: block;
+            }
+            .inline-edit { display: none; }
+            .navbar-icon-dropdown { display: none !important;}
         }
 
         ## Bootstrap  overrides
@@ -160,6 +167,7 @@
         .controls-hidden .toggle-controls a > .control-off {
             display: inline-block;
         }
+
     </style>
 
     ## JS
@@ -240,7 +248,7 @@
 					#parse ("$full_templates_path/navigation.vm") 
 				#end
 			</header>
-			<div id="content" class="row-fluid">
+			<div id="content" class="row">
 				#if ($selectable)
 					$theme.include($content_include)
 				#else
