@@ -1,4 +1,7 @@
 <div class="content-list-search-bar">
+    <div class="col-md-8 col-sm-8">
+        <span>Your Library Content</span>
+    </div>
     <form class="col-md-4 col-sm-4 pull-right">
         <div class="input-group">
             {{view Ember.TextField valueBinding="filter" classNames="form-control" placeholder="Filter your content"}}
@@ -9,9 +12,6 @@
                         </span>
         </div><!-- /.input-group -->
     </form>
-    <div class="col-md-8 col-sm-8">
-        <span>Your Library Content</span>
-    </div>
 </div>
 <div class="subscription-content-list">
     {{#each item in filteredContent}}

@@ -12,8 +12,8 @@
     <span class="featured-content-title-${id}">{{{heroItem.shortTitle}}}</span>
 </div>
 
-<div class="col-md-4 col-sm-4 col-xs-122">
-    <div class="layout-1-featured-1-${id}"  {{action "goToContent" featuredPosition1}}>
+<div class="col-md-4 col-sm-4 col-xs-12">
+    <div class="layout-1-featured-1-${id} col-md-12 col-sm-12 col-xs-6"  {{action "goToContent" featuredPosition1}}>
         <img {{bindAttr src="featuredPosition1.imageURL"}} />
         {{#if featuredPosition1.header}}
         <div class="header-container col-md-5 col-sm-5">{{{featuredPosition1.header}}}</div>
@@ -22,7 +22,7 @@
         <span class="featured-content-title-${id}">{{{featuredPosition1.shortTitle}}}</span>
     </div>
 
-    <div class="layout-1-featured-2-${id}"  {{action "goToContent" featuredPosition2}}>
+    <div class="layout-1-featured-2-${id} col-md-12 col-sm-12 col-xs-6"  {{action "goToContent" featuredPosition2}}>
     <img {{bindAttr src="featuredPosition2.imageURL"}} />
     {{#if featuredPosition2.header}}
     <div class="header-container col-md-5 col-sm-5">{{{featuredPosition2.header}}}</div>
@@ -32,17 +32,17 @@
     </div>
 </div>
 
-<div class="layout-1-hero-item-list col-md-8 col-sm-8">
-    <div {{action "selectHero" heroItem1}} class="layout-1-hero-item-1 col-md-3 col-sm-3" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Hero item 1">
+<div class="layout-1-hero-item-list col-md-8 col-sm-8 col-xs-12">
+    <div {{action "selectHero" heroItem1}} class="layout-1-hero-item-1 col-md-3 col-sm-3 col-xs-3" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Hero item 1">
     <img {{bindAttr src="heroItem1.imageURL"}} />
 </div>
-<div {{action "selectHero" heroItem2}} class="layout-1-hero-item-2 col-md-3 col-sm-3">
+<div {{action "selectHero" heroItem2}} class="layout-1-hero-item-2 col-md-3 col-sm-3 col-xs-3">
 <img {{bindAttr src="heroItem2.imageURL"}} />
 </div>
-<div {{action "selectHero" heroItem3}} class="layout-1-hero-item-3 col-md-3 col-sm-3">
+<div {{action "selectHero" heroItem3}} class="layout-1-hero-item-3 col-md-3 col-sm-3 col-xs-3">
 <img {{bindAttr src="heroItem3.imageURL"}} />
 </div>
-<div {{action "selectHero" heroItem4}} class="layout-1-hero-item-4 col-md-3 col-sm-3">
+<div {{action "selectHero" heroItem4}} class="layout-1-hero-item-4 col-md-3 col-sm-3 col-xs-3">
 <img {{bindAttr src="heroItem4.imageURL"}} />
 </div>
 </div>
