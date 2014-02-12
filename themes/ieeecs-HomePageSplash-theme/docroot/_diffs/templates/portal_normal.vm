@@ -412,6 +412,13 @@
     </style>
 
     ## JS
+    <script type="text/javascript">
+        var pathArray = window.location.pathname.split( '/' );
+        var pageName = pathArray[pathArray.length-1];
+        if(pageName != "splash") {
+           window.location = '/portal/web/myhome/splash';
+        }
+    </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 
     ## CSS HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
@@ -558,12 +565,12 @@
                 <div class="col-md-4 col-sm-4 text-left">
                     <h5>Find Us On</h5>
                     <ul class="socialize">
-                        <li><a href="https://twitter.com/computersociety" target="_blank"><i class="fa fa-twitter fa-2x"></i></a></li>
-                        <li><a href="https://www.facebook.com/ieeecomputersociety?v=wall" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
-                        <li><a href="https://plus.google.com/b/106653716856205029801/#106653716856205029801/posts" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a></li>
-                        <li><a href="http://www.linkedin.com/groups?home=&amp;gid=52513&amp;trk=anet_ug_hm" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a></li>
-                        <li><a href="http://www.youtube.com/user/ieeeComputerSociety" target="_blank"><i class="fa fa-youtube fa-2x"></i></a></li>
-                        <li><a href="http://www.computer.org/portal/web/csdl/dlrss" target="_blank"><i class="fa fa-rss fa-2x"></i></a></li>
+                        <li><a class="metrics-capture" href="https://twitter.com/computersociety" target="_blank"><i class="fa fa-twitter fa-2x"></i></a></li>
+                        <li><a class="metrics-capture" href="https://www.facebook.com/ieeecomputersociety?v=wall" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
+                        <li><a class="metrics-capture" href="https://plus.google.com/b/106653716856205029801/#106653716856205029801/posts" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a></li>
+                        <li><a class="metrics-capture" href="http://www.linkedin.com/groups?home=&amp;gid=52513&amp;trk=anet_ug_hm" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a></li>
+                        <li><a class="metrics-capture" href="http://www.youtube.com/user/ieeeComputerSociety" target="_blank"><i class="fa fa-youtube fa-2x"></i></a></li>
+                        <li><a class="metrics-capture" href="http://www.computer.org/portal/web/csdl/dlrss" target="_blank"><i class="fa fa-rss fa-2x"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -602,6 +609,8 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/ieeecs-HomePageSplash-theme/js/bowser.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+    <script type="text/javascript" src="/ieeecs-HomePageSplash-theme/js/metrics-capture.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
@@ -612,6 +621,20 @@
                 ], {
                 fade: 1000,
                 duration: 20000
+            });
+
+             // Initialize the Metrics SDK then capture any metrics data
+            var hostname = document.location.hostname || '127.0.0.1';
+            Metrics.init({debug:true,url:'http://'+hostname+':5557'});
+            var captureData = {};
+            captureData.url = document.URL;
+            Metrics.capture("PageView", captureData);
+
+            $("a.metrics-capture").on("click", function() {
+               var captureData = {};
+               captureData.url = document.URL;
+               captureData.link = this.href;
+               Metrics.capture("ExternalLinkClick", captureData);
             });
         });
     </script>
