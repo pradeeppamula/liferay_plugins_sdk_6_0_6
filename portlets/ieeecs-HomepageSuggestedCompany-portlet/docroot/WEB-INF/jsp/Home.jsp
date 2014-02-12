@@ -261,7 +261,13 @@
                 goToURL: function(company) {
                     // if this is a valid company, navigate to the companie's page
                     if(company != undefined && company.url != undefined) {
-                        window.open(company.url,'_blank');
+                       // capture the metrics on this external link click
+                       var captureData = {};
+                       captureData.url = document.URL;
+                       captureData.link = company.url;
+                       Metrics.capture("ExternalLinkClick", captureData);
+
+                       window.open(company.url,'_blank');
                     }
                 },
                 discardChanges: function() {
