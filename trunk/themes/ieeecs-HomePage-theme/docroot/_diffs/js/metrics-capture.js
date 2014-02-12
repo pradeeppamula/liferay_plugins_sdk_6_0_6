@@ -1,7 +1,6 @@
 /*!
  * IEEECS Metrics JavaScript SDK
- * Version: 0.0.1
- * Built: Wed Nov 13 2013 16:58:16
+ * Version: 0.1.1
  * http://www.computer.org
  *
  * Copyright 2013 IEEE Computer Society
@@ -9,14 +8,19 @@
  */
 (function( window, undefined ) {
 	var Metrics = {};
-  Metrics.VERSION = "0.0.2";
+  Metrics.VERSION = "0.1.1";
 	Metrics.ENDPOINT_URL = '';
 	Metrics.DEBUG_MODE = false;
 	
   // make sure console is available
   if (!window.console) window.console = {};
   if (!window.console.log) window.console.log = function () {};
-
+	if (!window.console.warn) window.console.warn = function () {};
+	if (!window.console.error) window.console.error = function () {};
+	
+	// check for socket io, if not present, throw error and exit
+	if(!window.io) { throw new Error("Socket.io is required to utilize the Metrics capture application."); return; }
+	
   /**
    * Contains functions to deal with capturing metric data
    * @name Metrics.Capture

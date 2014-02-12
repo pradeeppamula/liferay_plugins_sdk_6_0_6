@@ -198,6 +198,8 @@
         // make sure console is available
         if (!window.console) window.console = {};
         if (!window.console.log) window.console.log = function () {};
+        if (!window.console.warn) window.console.warn = function () {};
+        if (!window.console.error) window.console.error = function () {};
     </script>
 
     ## IF THE USER IS NOT SIGNED IN CHECK THE PAGE AND FORWARD TO SPLASH IF NECESSARY
@@ -276,11 +278,20 @@
     <script type="text/javascript">
         jQuery( document ).ready(function() {
           // Initialize the Metrics SDK then capture any metrics data
-          Metrics.init({debug:true,url:'http://localhost:5557'});
+          var hostname = document.location.hostname || '127.0.0.1';
+          Metrics.init({debug:true,url:'http://'+hostname+':5557'});
           var captureData = {};
           captureData.url = document.URL;
           captureData.userId = $user_id;
           Metrics.capture("PageView", captureData);
+
+
+        $("a.metrics-capture").on("click", function() {
+           var captureData = {};
+           captureData.url = document.URL;
+           captureData.link = this.href;
+           Metrics.capture("ExternalLinkClick", captureData);
+        });
 
           // NOTE: 11.25.13 Keeping typeahead results out until future release.
           //  jQuery('#myhome-search-input').on("focus", function() {
