@@ -35,12 +35,12 @@
         </div>
         <div class="row footer-social-links">
           <a href="mailto:help@computer.org"><i class="icon-envelope icon-2x"></i></a>
-          <a href="https://twitter.com/computersociety" target="_blank"><i class="icon-twitter icon-2x"></i></a>
-          <a href="https://www.facebook.com/ieeecomputersociety?v=wall" target="_blank"><i class="icon-facebook icon-2x"></i></a>
-          <a href="https://plus.google.com/b/106653716856205029801/#106653716856205029801/posts" target="_blank"><i class="icon-google-plus icon-2x"></i></a>
-          <a href="http://www.linkedin.com/groups?home=&amp;gid=52513&amp;trk=anet_ug_hm" target="_blank"><i class="icon-linkedin icon-2x"></i></a>
-          <a href="http://www.youtube.com/user/ieeeComputerSociety" target="_blank"><i class="icon-youtube icon-2x"></i></a>
-          <a href="http://www.computer.org/portal/web/csdl/dlrss" target="_blank"><i class="icon-rss icon-2x"></i></a>
+          <a class="metrics-capture" href="https://twitter.com/computersociety" target="_blank"><i class="icon-twitter icon-2x"></i></a>
+          <a class="metrics-capture" href="https://www.facebook.com/ieeecomputersociety?v=wall" target="_blank"><i class="icon-facebook icon-2x"></i></a>
+          <a class="metrics-capture" href="https://plus.google.com/b/106653716856205029801/#106653716856205029801/posts" target="_blank"><i class="icon-google-plus icon-2x"></i></a>
+          <a class="metrics-capture" href="http://www.linkedin.com/groups?home=&amp;gid=52513&amp;trk=anet_ug_hm" target="_blank"><i class="icon-linkedin icon-2x"></i></a>
+          <a class="metrics-capture" href="http://www.youtube.com/user/ieeeComputerSociety" target="_blank"><i class="icon-youtube icon-2x"></i></a>
+          <a class="metrics-capture" href="http://www.computer.org/portal/web/csdl/dlrss" target="_blank"><i class="icon-rss icon-2x"></i></a>
         </div>
 	    <div class="row">
 	        <div class="col-md-9 col-sm-9">
