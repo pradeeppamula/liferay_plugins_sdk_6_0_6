@@ -1,14 +1,14 @@
 <nav class="navbar navbar-inverse navbar-myhome-subnav navbar-fixed-top hidden-xs" role="navigation">
 	<ul class="nav navbar-nav">
         ##<li><a href="#">Network</a></li>
-		<li><a href="http://www.computer.org/portal/web/careers">Jobs</a></li>
+		<li><a class="metrics-capture" href="http://www.computer.org/portal/web/careers">Jobs</a></li>
         ##<li><a href="#">Interests</a></li>
 	</ul>
 	<ul class="nav navbar-nav pull-right">
-		<li><a href="http://www.computer.org/portal/web/guest/solutioncenter">Premium Solutions</a></li>
+		<li><a class="metrics-capture" href="http://www.computer.org/portal/web/guest/solutioncenter">Premium Solutions</a></li>
         ##<li><a href="#">Upgrade</a></li>
 		<li>
-            <a href="https://www.ieee.org/index.html">
+            <a class="metrics-capture" href="https://www.ieee.org/index.html">
                 <img src="/ieeecs-HomePage-theme/images/ieee-logo.jpg" border="0">
 		    </a>
         </li>
