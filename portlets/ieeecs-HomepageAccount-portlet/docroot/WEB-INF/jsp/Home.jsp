@@ -221,7 +221,11 @@
                                             }
                                         })
                                        .fail(function(error) {
-                                           console.log("error loading this purchase data" + error);
+                                           var eMsg = "Account - Error loading this purchase data: " + error.message;
+                                            Ember.Logger.error(eMsg);
+                                             var logData = {};
+                                             logData.message = eMsg;
+                                             Log.error(logData);
                                            payload.result = 500;
                                            // send back the item to the sender with error code
                                            Ember.Instrumentation.instrument(''+payload.sender+'.addItemToBundleConfirmation', payload);
@@ -234,7 +238,11 @@
                                  }
                             })
                             .fail(function(error) {
-                                console.log("error loading the purchase data:" + error);
+                              var eMsg = "Account - Error loading the purchase data: " + error.message;
+                              Ember.Logger.error(eMsg);
+                                 var logData = {};
+                                 logData.message = eMsg;
+                                 Log.error(logData);
                                 payload.result = 500;
                                 // send back the item to the sender with error code
                                 Ember.Instrumentation.instrument(''+payload.sender+'.addItemToBundleConfirmation', payload);
@@ -293,7 +301,13 @@
                         $('#article-timeperiod-count-${id}').show();
                         $('#article-timeperiod-count-${id}').html(response.numOfArticles);
                     })
-                    .fail(function(error) { console.log("error loading article count:" + error); })
+                    .fail(function(error) {
+                        var eMsg = "Account - Error loading article count: " + error.message;
+                        Ember.Logger.error(eMsg);
+                         var logData = {};
+                         logData.message = eMsg;
+                         Log.error(logData);
+                    })
                     .always(function() {});
                 */
 
@@ -307,7 +321,13 @@
                         Ember.Instrumentation.instrument('AccountApp.setUserPurchaseData', response);
                         Ember.Instrumentation.instrument('SearchApp.setUserPurchaseData', response);
                     })
-                    .fail(function(error) { console.log("error loading purchase data:" + error); })
+                    .fail(function(error) {
+                        var eMsg = "Account  - Error on initial load of user purchase data: " + error.message;
+                         Ember.Logger.error(eMsg);
+                         var logData = {};
+                         logData.message = eMsg;
+                         Log.error(logData);
+                    })
                     .always(function() {});
 
             });

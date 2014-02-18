@@ -115,7 +115,8 @@
                  }
               },
 		      setKeywords: function(data) {
-		        console.log('setKeywords: ' + data);
+		         Ember.Logger.info('setKeywords: ' + data);
+
 		        var keywords = this.get('keywords');
 
 		        // if there are keywords already, do nothing, else load the articles
@@ -161,7 +162,11 @@
                            _self.send('setArticleData', response.hits.hits);
                     },
                     error: function(error) {
-                        console.log("An error occurred when searching for suggested articles:" + error);
+                        var eMsg = "SuggestedArticle - An error occurred when searching for suggested articles: " + error.message;
+                         Ember.Logger.error(eMsg);
+                        var logData = {};
+                        logData.message = eMsg;
+                        Log.error(logData);
                     },
                         dataType: 'json'
                   });

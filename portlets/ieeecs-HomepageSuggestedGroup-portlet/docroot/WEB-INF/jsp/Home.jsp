@@ -274,7 +274,13 @@
 			    	// send the suggested groups data list to the Ember controller to be displayed and managed
 					Ember.Instrumentation.instrument('SuggestedGroupApp.setGroupData', response);
 			    })
-			    .fail(function(error) { console.log("Error loading the suggested groups:" + error); })
+			    .fail(function(error) {
+			        var eMsg = "SuggestedGroup - Error loading the suggested groups: " + error.message;
+			        Ember.Logger.error(eMsg);
+                    var logData = {};
+                    logData.message = eMsg;
+                    Log.error(logData);
+			     })
 			    .always(function() {});
 		});	
 	</script>
