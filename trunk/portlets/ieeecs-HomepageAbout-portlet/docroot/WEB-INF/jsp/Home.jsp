@@ -156,7 +156,13 @@
           .done(function(response) {
               Ember.Instrumentation.instrument('SearchApp.setUserPurchaseData', response);
           })
-          .fail(function(error) { console.log("error loading purchase data:" + error); })
+          .fail(function(error) {
+              var eMsg = "About - Error loading purchase data: " + error.message;
+              Ember.Logger.error(eMsg);
+              var logData = {};
+              logData.message = eMsg;
+              Log.error(logData);
+          })
           .always(function() {});
     });
 </script>

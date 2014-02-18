@@ -643,7 +643,13 @@
                     }, 10000);
                     Ember.Instrumentation.instrument('FeaturedContentApp.setAutoScrollIntervalId', id);
 			    })
-			    .fail(function(error) { console.log("Error loading the featured content:" + error); })
+			    .fail(function(error) {
+			        var eMsg = "FeaturedContent - Error loading the featured content: " + error.message;
+			        Ember.Logger.error(eMsg);
+                    var logData = {};
+                    logData.message = eMsg;
+                    Log.error(logData);
+			    })
 			    .always(function() {});
 		});	
 	</script>

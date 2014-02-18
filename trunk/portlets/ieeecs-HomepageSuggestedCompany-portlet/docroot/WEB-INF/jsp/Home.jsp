@@ -376,7 +376,13 @@
 			    	// send the suggested companies data list to the Ember controller to be displayed and managed
 					Ember.Instrumentation.instrument('SuggestedCompanyApp.setCompanyData', response);
 			    })
-			    .fail(function(error) { console.log("Error loading the suggested companies:" + error); })
+			    .fail(function(error) {
+			        var eMsg = "SuggestedCompany - Error loading the suggested companies: " + error.message;
+			        Ember.Logger.error(eMsg);
+                    var logData = {};
+                    logData.message = eMsg;
+                    Log.error(logData);
+			    })
 			    .always(function() {});
 			// enable tooltips for the companies
 			$('.company').tooltip();

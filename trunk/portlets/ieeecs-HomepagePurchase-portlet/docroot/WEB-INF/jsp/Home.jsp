@@ -42,7 +42,6 @@
             color: #ffffff;
         }
 
-        /* TODO: MOVE TO CUSTOM.CSS */
         input .flat-gray {
             background-color: #eee !important;
             border: 0px solid #eee !important;

@@ -402,7 +402,13 @@
                                 _self.pushObject(doneContentItem);
                             }
                          })
-                        .fail(function(error) { console.log("error loading article count:" + error); });
+                        .fail(function(error) {
+                            var eMsg = "SubscriptionContentList - Error loading the user subscribed content: " + error.message;
+                            Ember.Logger.error(eMsg);
+                            var logData = {};
+                            logData.message = eMsg;
+                            Log.error(logData);
+                        });
                 }
               }
 		  },

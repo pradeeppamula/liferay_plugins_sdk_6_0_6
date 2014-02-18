@@ -227,7 +227,11 @@
                            // the the UI that loading is complete
                            _self.set('isLoading', false);
                        }).fail(function(error) {
-                           console.log("Error loading the "+ contentType +" content:" + error);
+                            var eMsg = "Content - Error loading the "+ contentType +" content: " + error.message;
+                            Ember.Logger.error(eMsg);
+                            var logData = {};
+                            logData.message = eMsg;
+                            Log.error(logData);
                             // the the UI that loading is complete
                             _self.set('isLoading', false);
                         })
@@ -365,7 +369,11 @@
                              }
                         },
                         error: function(error) {
-                            console.log("An error occurred when searching for webinar content:" + error);
+                            var eMsg = "Content - An error occurred when searching for webinar content: " + error.message;
+                             Ember.Logger.error(eMsg);
+                             var logData = {};
+                             logData.message = eMsg;
+                             Log.error(logData);
                             // the the UI that loading is complete
                             _self.set('isLoading', false);
                         },

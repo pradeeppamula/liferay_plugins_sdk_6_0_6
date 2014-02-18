@@ -194,7 +194,13 @@
                        organizations.pushObject(BundleOrgAdminApp.Organization.create(organization));
                      });
                   })
-                 .fail(function(error) { console.log("error loading organizations" + error); });
+                 .fail(function(error) {
+                    var eMsg = "BundleOrgAdmin - Error loading organizations: " + error.message;
+                    Ember.Logger.error(eMsg);
+                    var logData = {};
+                    logData.message = eMsg;
+                    Log.error(logData);
+                 });
                  return organizations;
              }
           }
@@ -222,7 +228,13 @@
                      // send out message to Organization Controller to update users/bundles
                      Ember.Instrumentation.instrument('BundleOrgAdminApp.updateOrganizationSubData', response);
                   })
-                 .fail(function(error) { console.log("error loading users" + error); });
+                 .fail(function(error) {
+                    var eMsg = "BundleOrgAdmin - Error loading users: " + error.message);
+                    Ember.Logger.error(eMsg);
+                    var logData = {};
+                    logData.message = eMsg;
+                    Log.error(logData);
+                 });
                  return users;
              } else {
                 return users;
@@ -343,7 +355,11 @@
                       })
                      .fail(function(error) {
                         _self.send('showErrorAlert', "There was a problem removing this user, please try again or contact help@computer.org");
-                        console.log("error loading users" + error);
+                        var eMsg = "BundleOrgAdmin - Error loading users: " + error.message;
+                        Ember.Logger.error(eMsg);
+                        var logData = {};
+                        logData.message = eMsg;
+                        Log.error(logData);
                      });
                 }
             }
@@ -654,7 +670,11 @@
                         // set saving mode to false
                         _self.set('isSaving', false);
                        _self.send('showErrorAlert', "There was a problem saving the bundle information, please try again or contact help@computer.org",  '#error-bundle-alert-${id}');
-                       console.log("error saving bundle for the organization" + error);
+                       var eMsg = "BundleOrgAdmin - Error saving bundle for the organization: " + error.message;
+                       Ember.Logger.error(eMsg);
+                       var logData = {};
+                       logData.message = eMsg;
+                       Log.error(logData);
                     });
                 },
                showValidationErrorMessage: function(alertElementId, messageElementId, message) {
@@ -733,7 +753,11 @@
                             // set saving mode to false
                             _self.set('isSaving', false);
                            _self.send('showErrorAlert', "There was a problem saving this organization, please try again or contact help@computer.org");
-                           console.log("error saving organization" + error);
+                           var eMsg = "BundleOrgAdmin - Error saving organization: " + error.message;
+                           Ember.Logger.error(eMsg);
+                           var logData = {};
+                           logData.message = eMsg;
+                           Log.error(logData);
                         });
 
                     } else {
@@ -842,7 +866,6 @@
                     $('#admin-org-nav-${id}').removeClass('active');
                     $('#admin-user-nav-${id}').removeClass('active');
                     this.render('organization.bundles', {into: 'organization', outlet: 'content'});
-                    console.log( $('#webinar-expiration-field-${id}'));
                     $('#webinar-expiration-field-${id}').datepicker({
                         format: 'yyyy-mm-dd',
                         autoclose: true,

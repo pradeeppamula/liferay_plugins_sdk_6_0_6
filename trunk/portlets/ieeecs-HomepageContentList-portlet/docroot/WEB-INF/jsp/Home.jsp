@@ -315,7 +315,11 @@
                             }
                          },
                       error: function(error) {
-                          console.log("An error occurred when loading the content:" + error);
+                          var eMsg = "ContentList - An error occurred when loading the content: " + error.message;
+                          Ember.Logger.error(eMsg);
+                          var logData = {};
+                          logData.message = eMsg;
+                          Log.error(logData);
                       },
                       dataType: 'json'
                      });
