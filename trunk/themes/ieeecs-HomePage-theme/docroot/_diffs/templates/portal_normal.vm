@@ -274,9 +274,11 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
     <script type="text/javascript" src="/ieeecs-HomePage-theme/js/metrics-capture.js"></script>
+    <script type="text/javascript" src="/ieeecs-HomePage-theme/js/logger.js"></script>
     ## Javascript that is needed for the search bar.  It had to be placed here because the javascript is not recognized after the velocity parser parses dockbar.vm.
     <script type="text/javascript">
         jQuery( document ).ready(function() {
+
           // Initialize the Metrics SDK then capture any metrics data
           var hostname = document.location.hostname || '127.0.0.1';
           Metrics.init({debug:true,url:'http://'+hostname+':5557'});
@@ -285,6 +287,9 @@
           captureData.userId = $user_id;
           Metrics.capture("PageView", captureData);
 
+
+          // Initialize the Logger SDK
+          Log.init({debug:true,url:'http://'+hostname+':5556/services/logger/'});
 
         $("a.metrics-capture").on("click", function() {
            var captureData = {};
