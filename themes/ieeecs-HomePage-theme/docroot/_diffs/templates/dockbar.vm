@@ -145,25 +145,25 @@
     Ember.TEMPLATES['search'] = Ember.Handlebars.compile('<div class="col-md-5 col-sm-4 search-app"> {{#view SearchApp.SearchFormView}} <div class="input-group"> {{view Ember.TextField id="myhome-search-input" valueBinding="searchText" classNames="form-control" placeholder="Search for articles, conferences and more..."}} <span class="input-group-btn"> <button class="btn btn-primary" type="button" {{action "setUpFullSearch"}}><i class="icon-search"></i></button> </span> </div> {{/view}} </div> <div class="col-md-1 col-sm-1 advanced-search search-app"> <a href="#"  {{action "showAdvancedSearchModal"}}>Advanced</a> </div> <div class="search-results col-md-5 col-sm-5"> <!-- NOTE: 11.25.13 - Keeping typeahead out until future release. <ul> {{#each item in content}} <li> <p{{action "viewContentItem" item}} class="title">{{{item.title}}}</p> <p class="summary">{{{item.summary}}}</p> </li> {{/each}} </ul> --> </div> <div class="modal fade" id="advanced-search-modal"> <div class="modal-dialog advanced-search-modal"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close square-close" data-dismiss="modal" aria-hidden="true"> <i class="icon-remove"></i> </button> <div class="form-group input-group advanced-search-form"> {{view Ember.TextField id="myhome-advanced-search-input" valueBinding="advancedSearchText" classNames="form-control" placeholder="Search for articles, conferences and more..."}} <span class="input-group-btn"> <button class="btn btn-primary" type="button" {{action "performAdvancedSearch"}}>SEARCH</button> </span> </div> <div class="filters-link-container"> <a id="disable-filters-link" href="#" {{ action "disableFilters"}}> Disable Filters <i class="icon-caret-up icon-fixed-width"></i> </a> <a id="enable-filters-link" href="#" {{ action "enableFilters"}}> Enable Filters <i class="icon-caret-down icon-fixed-width"></i> </a> </div> </div> <div class="advanced-search-filters-container"> <div class="form-group col-md-12 col-sm-12"> Content Types: {{view Ember.Checkbox checkedBinding="filterByArticle"}} Article {{view Ember.Checkbox checkedBinding="filterByWebinar"}} Webinar </div> <div class> <div class="col-md-4 col-sm-4"> <div> <label>From:</label> </div> <div id="advanced-search-dp-start-date" class="input-group col-md-8 col-sm-8"> {{view Ember.TextField id="advanced-search-start-date" valueBinding="advancedSearchStartDate" classNames="form-control datepicker" placeholder="YYYY-MM-DD"}} <span class="input-group-addon"><i class="icon-calendar"></i></span> </div> </div> <div class="col-md-4 col-sm-4"> <div> <label>To:</label> </div> <div id="advanced-search-dp-end-date" class="input-group col-md-8 col-sm-8"> {{view Ember.TextField id="advanced-search-end-date" valueBinding="advancedSearchEndDate" classNames="form-control datepicker" placeholder="YYYY-MM-DD"}} <span class="input-group-addon"><i class="icon-calendar"></i></span> </div> </div> </div> </div> <div> <div class="advanced-result-count-container"> <h6>{{numberOfAdvancedResults}} RESULTS FOUND</h6> </div> <div class="advanced-search-results"> {{#each item in controller.paginatedContent}} <div class="advanced-search-result"> {{#unless item.isNoResult}} <span {{bindAttr class=":label :label-info item.hasFullAccess::hide"}}>Full Access</span>&nbsp; <span {{bindAttr class=":label :label-info item.contentType"}}>{{item.contentType}}</span> {{/unless}} <h5><a href="#" {{action "viewContentItem" item}}>{{{item.title}}}</a></h5> <p class="summary">{{{item.summary}}}</p> <div {{ bindAttr class=":alert :alert-block :alert-success :fade :hide item.confirmId :success" }}> <button type="button" class="close" aria-hidden="true" {{ action "hideAddBundleSuccess" item.confirmId }}>x</button> <h4><i class="icon-check-sign icon-3x icon-fixed-width"></i>Added To Bundle!</h4> </div> <div {{ bindAttr class=":alert :alert-block :alert-danger :fade :hide item.confirmId :error" }}> <button type="button" class="close" aria-hidden="true" {{ action "hideAddBundleError" item.confirmId}}>x</button> {{#unless bundleLimitError}} <p> <i class="icon-warning-sign icon-3x icon-fixed-width"></i> Your bundle is at its limit, would you like to increase the size? <a class="btn btn-default" href="#" {{ action "goToBundlePurchase" item }}>Make it happen</a> </p> {{else}} <h4><i class="icon-exclamation-sign icon-3x icon-fixed-width"></i>There was a problem adding this item to your bundle, please try again or contact help@computer.org.</h4> {{/unless}} </div> <div {{ bindAttr class=":alert :alert-block :alert-warning :fade :hide item.confirmId :warning" }}> <button type="button" class="close" aria-hidden="true"  {{ action "hideAddBundleConfirm" item.confirmId }}>x</button> <p> <i class="icon-warning-sign icon-3x icon-fixed-width"></i> Are you sure you would like to add this item to your bundle? <button {{bindAttr class=":btn :btn-default item.isSavingToBundle:disabled"}} {{ action "addItemToBundle" item item.confirmId}} > {{#unless item.isSavingToBundle }} Yes {{else}} Please Wait {{/unless}} </button> </p> </div> {{#unless item.isNoResult}} <a href="#" {{ bindAttr class=":btn :btn-info :btn-xs item.hasFullAccess:hide item.canManuallyAddToBundle::hide"}} {{ action "showAddBundleConfirm" item.confirmId }}>Add To Bundle</a> {{/unless}} </div> {{/each}} </div> {{#unless noResultsFound}} <div class="advanced-search-pagination"> <ul class="pagination pagination-sm"> {{#unless hasPrevPage}} <li class="disabled"><a href="#">&laquo;</a></li> {{else}} <li>{{#linkTo "search.page" prevPage target="controller"}}&laquo;{{/linkTo}}</li> {{/unless}} {{#each pages}} {{view SearchApp.PaginationView contentBinding="this"}} {{/each}} {{#unless hasNextPage}} <li class="disabled"><a href="#">&raquo;</a></li> {{else}} <li>{{#linkTo "search.page" nextPage target="controller"}}&raquo;{{/linkTo}}</li> {{/unless}} </ul> </div> {{/unless}} </div> </div> </div> </div>');
     Ember.TEMPLATES['pagination'] = Ember.Handlebars.compile('{{#with view}}{{#linkTo "search.page" page}}{{content.page_id}}{{/linkTo}}{{/with}}');
 
-    #*
-      This is the search application initialization.  We are attaching it
-      to a specific dom element.
-      *#
+    /*
+     * This is the search application initialization.  We are attaching it
+     * to a specific dom element.
+     */
     SearchApp = Ember.Application.create({
         rootElement: '#myhome-search-container'
     });
 
-     #*
-      We specify the root index route for this application.
-      We force the index to use the "search" template.
-     *#
+    /*
+     *  We specify the root index route for this application.
+     *  We force the index to use the "search" template.
+     */
     SearchApp.Router.map(function(match) {
         this.resource("search", { path: "/" }, function() {
             this.route("page", { path: "/:page_id" });
         });
     });
 
-     ## The Custom view for the search form
+     // The Custom view for the search form
      SearchApp.SearchFormView = Ember.View.extend({
          tagName: "form",
          classNames: ['navbar-form'],
@@ -177,9 +177,9 @@
      });
 
 
-    #*
-      This is the main model for search results.
-     *#
+    /*
+     * This is the main model for search results.
+     */
     SearchApp.Content = Ember.Object.extend({
         isSavingToBundle: false,
         isNoResult: false,
@@ -204,12 +204,11 @@
         }.property('itemId')
     });
 
-    #*
-       This is the pagination mixin.  This is needed because Ember doesn't have a
-       pagination module in its core as of today [10.08.12].
-     *#
+    /*
+     * This is the pagination mixin.  This is needed because Ember doesn't have a
+     * pagination module in its core as of today [10.08.13].
+     */
     var get = Ember.get, set = Ember.set;
-
     Ember.PaginationMixin = Ember.Mixin.create({
         pages: function() {
             var availablePages = this.get('availablePages'),
@@ -262,10 +261,10 @@
         }.property('selectedPage', 'advancedContent.@each')
     });
 
-     #*
-      This is the controller for the search app, that will handle
-      all the application's actions.
-     *#
+    /*
+     * This is the controller for the search app, that will handle
+     *  all the application's actions.
+     */
     SearchApp.SearchController = Ember.ArrayController.extend(Ember.PaginationMixin, {
         content: [],
         advancedContent: [],
@@ -286,6 +285,14 @@
         noResultsFound: function() {
             return this.get('numberOfAdvancedResults') == 0;
         }.property('numberOfAdvancedResults'),
+
+        /*
+         * This function will use the user's purchase information to determine
+         * what webinar skus are expired from within their bundle.  This is needed
+         * so that user's do not have access to bundle items that are expired.
+         * @param userPurchaseData
+         * @return list of expired skus
+         */
         getExpiredSkus: function(userPurchaseData) {
             var retVal = [];
             var today = new Date();
@@ -302,19 +309,27 @@
                     }
                 }
             }
-                return retVal;
+            return retVal;
         },
+
+        /*
+         * This function will user the user's purchase information to determine
+         * if they have any free slots in their specific bundle.  Usually this
+         * function will be called when a user is adding items to their bundle.
+         * @param String type -  the type of bundle
+         * @return boolean
+         */
         bundleHasSpace: function(type) {
             _self = this;
             var userPurchaseData = _self.get('userPurchaseData');
             var userContentCount;
             var bundleType;
 
-            #*
-             First check to see if the user has purchase information through
-             their organization, if they don't, return false so that they will
-             have to request a quote.
-            *#
+            /*
+             * First check to see if the user has purchase information through
+             * their organization, if they don't, return false so that they will
+             * have to request a quote.
+             */
             if(userPurchaseData.bundle == undefined ||
                 userPurchaseData.bundle.csdl_article == undefined) {
                 return false;
@@ -325,10 +340,10 @@
                 bundleType =  userPurchaseData.bundle.csdl_article;
             }
 
-            #*
-              now add up the number of items in the bundle, and check that against
-              the number of items that the user has to see if they have available space.
-             *#
+            /*
+             * now add up the number of items in the bundle, and check that against
+             * the number of items that the user has to see if they have available space.
+             */
             var totalBundleCount = 0;
             var idx = 0;
             for(idx;idx<bundleType.length;idx++) {
@@ -336,13 +351,17 @@
             }
             return userContentCount < totalBundleCount;
         },
-        valueDidChange: function() {
-            #*
-              TODO [10.07.13]: include in future release.  For now we are omitting
-              the typeahead search.
-             *#
 
-            #*
+        /*
+         * This function observes the searchText property on this
+         * controller.  Whenever that property changes,
+         * this function is called.  It will then call the search function
+         * if there is an actual search term.  This is needed for the
+         * "typeahead" searching functionality.
+         */
+        valueDidChange: function() {
+            // TODO [10.07.13]: include in future release.  For now we are omitting the typeahead search.
+
             // get the search text
             // var sText = this.get('searchText');
             // only perform the search if there is search text
@@ -351,8 +370,18 @@
             // } else {
                 // hide the search results list
             //     jQuery('#myhome-search-container .search-results').hide();
-            // }  *#
+            // }
         }.observes('searchText'),
+
+        /*
+         * This function will handle the main searching functionality of the application.
+         * It will search the Elastic Search server, and set the results on the controller.
+         * There are two types of search the user can perform, a basic search and an
+         * advanced search.  Basic search just plainly searches against the search term.
+         * An advanced search is the basic search plus filters.  As of now, this
+         * function is a bit larger than we would like, but functions as desired.
+         * @param boolean isAdvancedSearch
+         */
         search: function(isAdvancedSearch) {
             _self = this;
             // reset the selected page to page 1
@@ -465,7 +494,7 @@
                     }
                 }
             }
-##		POST on the ES REST API endpoint
+            // POST on the ES REST API endpoint
             jQuery.ajax({
                 type: 'post',
                 contentType: 'application/json',
@@ -473,44 +502,51 @@
                 data: JSON.stringify(data),
                 success: function(response) {   
                     if(isAdvancedSearch) {
-##					remove the old search results
+                        // remove the old search results
                         _self.set('advancedContent', []);
                     } else {
-##					remove the old search results
+                        // remove the old search results
                         _self.set('content', []);
                     }
-##				loading is over, so we can remove the "loading" item
+                    // loading is over, so we can remove the "loading" item
                     _self.set('isLoading', false);
 
+                    // If there are no results...
                     if(response.hits.total == 0) {
-##					build the "no results" content item
+                        // build the "no results" content item
                         var contentItem = SearchApp.Content.create({
                             isNoResult: true,
                             title: "NO RESULTS FOUND FOR <em>" + sText + "</em>"
                         });
+
+                        // If it was an advanced search...
                         if(isAdvancedSearch) {
-##						hide the number of results container
+                            // hide the number of results container
                             jQuery('.advanced-result-count-container').hide();
-##						add the item to the list
+                            // add the item to the list
                             _self.get('advancedContent').pushObject(contentItem);
-##						reset the number of advanced search results
+                            // reset the number of advanced search results
                             _self.set('numberOfAdvancedResults', 0);
                         } else {
-##						add the item to the list
+                            // add the item to the list
                             _self.pushObject(contentItem);
                         }
-                    } else {
+                    }
+                    // else we do have results! so process them...
+                    else {
+                        // if advanced search, so the advanced search results container
                         if(isAdvancedSearch) {
-##						show the number of results
+                            // show the number of results
                             jQuery('.advanced-result-count-container').show();
                             _self.set('numberOfAdvancedResults', response.hits.hits.length);
                         }
                         var userPurchaseData = _self.get('userPurchaseData');
                         var count = 0;
-    ##					iterate over each of the results building content models
+
+                        // iterate over each of the results building content models
                         response.hits.hits.forEach(function(item) {
                             count++;
-##						build the content model object
+                            // build the content model object for the search result
                             var contentItem = SearchApp.Content.create({
                                 itemId: ''+count+'',
                                 publisher: item._source.publisher,
@@ -522,11 +558,12 @@
                                 sku: (item._source.contentType == 'webinar') ? item._source.sku : ''
                             });
 
-##						check to see if the user has full access to this item
+                            // check to see if the user has full access to this item
                             if(contentItem.contentType == 'article' && userPurchaseData.units !== undefined &&userPurchaseData.units.csdl_article !== undefined ) {
-								 #* iterate over the purchase data's dois and see if we find a match,
-                                   meaning it has already been added to the user's bundle
-                                  *#
+								 /*
+								  * iterate over the purchase data's dois and see if we find a match,
+                                  * meaning it has already been added to the user's bundle
+                                  */
                                  var idx = 0;
                                  for(idx=0;idx<userPurchaseData.units.csdl_article.length;idx++) {
                                     if(contentItem.doi == userPurchaseData.units.csdl_article[idx]) {
@@ -541,7 +578,7 @@
                                 /*
                                  * Verify that they have full access to the webinar
                                  * based on their user purchase data
-                                */
+                                 */
                                 if(userPurchaseData !== undefined &&
                                     userPurchaseData != '' &&
                                     userPurchaseData.units !== undefined) {
@@ -562,11 +599,14 @@
 
                                 } // end if
                             }
+
+                            // Finally add the content search item to the list of results
+                            // depending on the search type.
                             if(isAdvancedSearch) {
-##							add the item to the list
+                                // add the item to the list
                                 _self.get('advancedContent').pushObject(contentItem);
                             } else {
-##							add the item to the list
+                                // add the item to the list
                                 _self.pushObject(contentItem);
                             }
                         });
@@ -582,16 +622,35 @@
                 dataType: 'json'
             });
         },
+
+        /*
+         * This is the required actions object that Ember wants you put
+         * your functions that handle actions from Handlebars templates.
+         */
         actions: {
+
+            /*
+             * Just in case we need to hide the search bar,
+             * this is useful for pages that are public i.e. landing/purchase
+             */
             hideSearchApp: function() {
-               #* just in case we need to hide the search bar,
-                 this is useful for pages that are public i.e. landing/purchase
-                *#
                jQuery('.search-app').hide();
             },
+
+            /*
+             * This function sets the user purchase data on the controller
+             * @param Object data - the user purchase data
+             */
             setUserPurchaseData: function(data) {
                 this.set('userPurchaseData', data);
             },
+
+            /*
+             * This function will serve as the process to display to the
+             * user that their selected item was in fact successfully/unsuccessfully
+             * added to their bundle.
+             * @param Object payload
+             */
             addItemToBundleConfirmation: function(payload) {
                 var _self = this;
                 var item = payload.content;
@@ -623,6 +682,16 @@
                     this.send('hideAddBundleConfirm', confirmId);
                 }
             },
+
+            /*
+             * This function will facilitate the adding of an item to the user's
+             * bundle.  It will take the item and send it off (via Ember's instruments) to the
+             * Account Ember Application, which will then update the user's bundle on the backend.
+             * The Account Application will then send back the confirmation of success/fail to the
+             * addItemToBundleConfirmation function.
+             * @param Object item - the content item to add to the user's bundle
+             * @param String confirmId - the container id needed for showing response messages to the user
+             */
             addItemToBundle: function(item, confirmId) {
                 _self = this;
                 // check to see if bundle has space, if so we can add it to their bundle
@@ -638,10 +707,10 @@
                     // add the item to the bundle, by sending the item data to the account portlet
                     Ember.Instrumentation.instrument('AccountApp.addContentToBundle', payload);
                 } else {
-                    #*
-                      if not, show error and ask user if they would like to increase their bundle size
-                      which will have a button for navigating to the purchase page
-                     *#
+                    /*
+                     * if not, show error and ask user if they would like to increase their bundle size
+                     * which will have a button for navigating to the purchase page
+                     */
                     item.set('bundleLimitError', true);
                     this.send('showAddBundleError', confirmId);
                     this.send('hideAddBundleConfirm', confirmId);
@@ -683,6 +752,11 @@
                 jQuery('#disable-filters-link').show();
                 jQuery('.advanced-search-filters-container').show();
             },
+
+            /*
+             * This function will perform all the necessary initializations/resets
+             * to prepare the UI for a search performed by the user.
+             */
             setUpFullSearch: function() {
                 // disable any filters
                 this.send('disableFilters');
@@ -700,6 +774,10 @@
             showAdvancedSearchModal: function() {
                 jQuery("#advanced-search-modal").modal("show");
             },
+
+            /*
+             * This function will initiate a basic search
+             */
             performSearch: function() {
                 // get the search text
                 var sText = this.get('searchText');
@@ -708,6 +786,10 @@
                     this.search(false);
                 }
             },
+
+            /*
+             * This function will initiate an advanced search
+             */
             performAdvancedSearch: function() {
                 // get the search text
                 var asText = this.get('advancedSearchText');
@@ -721,6 +803,12 @@
                     this.search(true);
                 }
             },
+
+            /*
+             * This function will navigate to the view content page to
+             * display the specific item.
+             * @param Object item - the content item to view
+             */
             viewContentItem: function(item) {
                 if(item != undefined) {
                     if(item.contentType == 'article') {
@@ -732,6 +820,13 @@
                     }
                 }
             },
+
+            /*
+             * This function will navigate the user to the purchase page.
+             * Depending on the type of item they are looking for, the query
+             * string for the purchase page is built.
+             * @param Object item - the content item
+             */
             goToBundlePurchase: function(item) {
                 var type = item.contentType;
                 if(type == 'article') {
@@ -747,6 +842,12 @@
 
     // for the initial index view
     SearchApp.SearchRoute = Ember.Route.extend({
+
+        /*
+         * This is a standard function of Ember to initialize the controller.
+         * Here we are creating the Ember subscriptions to certain channels.
+         * @param Ember.Controller controller
+         */
         setupController: function(controller) {
             Ember.Instrumentation.subscribe("SearchApp.setUserPurchaseData", {
                 before: function (name, timestamp, payload) {
