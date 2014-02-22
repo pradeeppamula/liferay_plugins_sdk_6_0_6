@@ -72,34 +72,66 @@
              LOG_TRANSITIONS: true
         });
 
-        // define the about controllers
+        /**
+         * This controller will handle the article template actions
+         */
         AboutApp.AboutArticleController = Ember.ObjectController.extend({
+            /**
+             * Ember controller actions handlers
+             */
             actions: {
+               /**
+                * This function will navigate to the purchase page for
+                * the articles.
+                */
                purchaseBundle: function() {
                     // navigate to the purchase bundle page
                     window.location =  '/portal/web/myhome/purchase-bundle?t=a';
                }
             }
         });
-        // webinar controller
+
+        /**
+         * This controller will handle all webinar template actions, functionality.
+         */
         AboutApp.AboutWebinarController = Ember.ObjectController.extend({
             catelogIsVisible: false,
             actions: {
+                /**
+                 * This function will navigate to the purchase page for
+                 * the webinars.
+                 */
                 purchaseBundle: function() {
                     // navigate to the purchase bundle page
                     window.location = '/portal/web/myhome/purchase-bundle?t=w';
                },
+                /**
+                 * This function will toggle the visibility of the catelog.
+                 */
                 toggleCatelog: function() {
                     this.toggleProperty('catelogIsVisible');
                 }
             }
-        });    
+        });
+
+        /**
+         * This controller will handle the home route of the about controller.
+         */
         AboutApp.AboutHomeController = Ember.ObjectController.extend({
             actions: {
-                purchaseWebinarBundle: function() {
+                /**
+                 * This function will navigate to the purchase page for
+                 * the webinars.
+                 */
+               purchaseWebinarBundle: function() {
                     // navigate to the purchase bundle page
                     window.location = '/portal/web/myhome/purchase-bundle?t=w';
                },
+
+               /**
+                * This function will navigate to the purchase page for
+                * the webinars.
+                */
                purchaseArticleBundle: function() {
                    // navigate to the purchase bundle page
                    window.location = '/portal/web/myhome/purchase-bundle?t=a';
@@ -107,7 +139,8 @@
             }
         });           
 
-        /* THIS IS THE TEMP HACK FOR I.E. 8/9 WHEN USING LOCATION
+        /*
+         * THIS IS THE TEMP HACK FOR I.E. 8/9 WHEN USING LOCATION
          * HISTORY IN THE ROUTER.  IT HAS BEEN MERGED INTO EMBER CORE,
          * BUT HASN'T BEEN RELEASED YET.
          */
@@ -123,7 +156,13 @@
           });
         }
 
-
+         /*
+          * This allows the ember templates to be accessed similar to
+          * normal pages (i.e url/about) instead of the
+          * default Ember routing (i.e. url#/about).  We need this here
+          * because this About Ember App handles a couple of Liferay pages
+          * and needs the basic url loading of templates.
+          */
          AboutApp.Router.reopen({
            location: 'history',
            rootURL: '/portal/web/myhome/'

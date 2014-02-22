@@ -52,17 +52,22 @@
 </div> <!-- /#homepage-content-container-${id} -->
 <!--<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>-->
 <script>
+    // compile the handlebar templates to be used by Ember
     Ember.TEMPLATES['article'] = Ember.Handlebars.compile('<div> <div class="row"> <h4 class="col-md-3 col-sm-3 col-xs-9 content-date label-info">{{publicationDateFormatted}}</h4> </div> <div class="row header-info"> <h1>{{title}}</h1> <h3>{{publisher}}</h3> {{#if authors}} <h6>by {{authors}}</h6> {{/if}} </div> </div> <!-- /.container --> <hr> <div class="content-body"> <div class="alerts-container"> <div class="alert-success-container alert alert-block alert-success fade hide success"> <button type="button" class="close" aria-hidden="true" {{ action "hideAddBundleSuccess" }}>x</button> <h4><i class="icon-check-sign icon-3x icon-fixed-width"></i>Added To Bundle!</h4> </div> <!-- /.success --> <div class="alert-danger-container alert alert-block alert-danger fade hide error"> <button type="button" class="close" aria-hidden="true" {{ action "hideAddBundleError" }}>x</button> {{#if bundleLimitError}} <p> <i class="icon-warning-sign icon-3x icon-fixed-width"></i> Your bundle is at its limit, would you like to increase the size? <a class="btn btn-default" href="#" {{ action "goToBundlePurchase" }}>Make it happen</a> </p> {{else}} <h4><i class="icon-exclamation-sign icon-3x icon-fixed-width"></i>There was a problem adding this item to your bundle, please try again or contact help@computer.org.</h4> {{/if}} </div> <!-- /.error --> <div class="alert-warning-container alert alert-block alert-warning fade hide warning"> <button type="button" class="close" aria-hidden="true"  {{ action "hideAddBundleConfirm" }}>x</button> <p> <i class="icon-warning-sign icon-3x icon-fixed-width"></i> Are you sure you would like to add this item to your bundle? <button {{bindAttr class=":btn :btn-default isSavingToBundle:disabled"}} {{ action "addItemToBundle" }}> {{#unless isSavingToBundle }} Of Course {{else}} Please Wait {{/unless}} </button> </p> </div> <!-- /.warning --> </div> <!-- /.alerts-container --> {{#if hasFullAccess}} {{{summary}}} {{else}} <div class="add-to-bundle-container"> <a href="#" class="btn btn-info btn-xs"  {{ action "showAddBundleConfirm" }}>Add To Bundle</a> </div> {{{summary}}} <br /><br /> <a href="/portal/web/myhome/article-bundle" class="btn btn-medium btn-block btn-primary">Learn More About Our Article Bundles</a> {{/if}} </div> <!-- /.content-body -->');
     Ember.TEMPLATES['content'] = Ember.Handlebars.compile('{{#if isLoading}} <div class="content-loading-container"> <i class="icon-spinner icon-spin icon-large"></i> Loading </div> {{else}} {{#if isArticle}} {{view ContentApp.ArticleView}} {{else}} {{#if isWebinar}} {{view ContentApp.WebinarView}} {{else}} <div class="alert-warning-container alert alert-block alert-warning fade in warning"> <h2> <i class="icon-warning-sign icon-2x icon-fixed-width"></i> Content Not Found. </h2> <p>Please verify that you selected the correct item.  If you are still having trouble contact <strong>help@computer.org</strong> for help.</p> </div> <!-- /.warning --> {{/if}} {{/if}} {{/if}}');
     Ember.TEMPLATES['webinar'] = Ember.Handlebars.compile('<div> <div class="row"> <h4 class="col-md-3 col-sm-3 col-xs-9 content-date label-info">{{publicationDateFormatted}}</h4> </div> <div class="row header-info"> <h2>{{title}}</h2> <h3>{{publisher}}</h3> {{#if authorList}} <h6>by {{authors}}</h6> {{/if}} </div> </div> <!-- /.container --> <hr> <div class="content-body"> {{#if hasFullAccess}} <p> {{{summary}}} </p> <br /> <div class="webinar-flowplayer-container"></div> <div id="webinar-not-found-${id}" class="alert-warning-container alert alert-block alert-warning fade hide warning"> <h2> <i class="icon-warning-sign icon-2x icon-fixed-width"></i> Webinar Not Found. </h2> <p>Please verify that you selected the correct item.  If you are still having trouble contact <strong>help@computer.org</strong> for help.</p> </div> <!-- /.warning --> {{else}} <p> {{{summary}}} </p> <br /><br /> <a href="/portal/web/myhome/webinar-bundle" class="btn btn-medium btn-block btn-primary">Learn More About Our Webinars</a> {{/if}} </div><!-- /.content-body -->');
+
+	// define the Content Ember App
 	ContentApp = Ember.Application.create({
 		 rootElement: '#homepage-content-container-${id}'
 	});
 
+    // have the root serve up the content template
 	ContentApp.Router.map(function() {
 		this.route("content", { path: "/" });
 	});
 
+    // This is the Content Model for the template
 	ContentApp.Content = Ember.Object.extend({
 	    isSavingToBundle: false,
 	    doi: '',
@@ -99,12 +104,13 @@
 		}.property('publicationDate')
 	});
 
-       ContentApp.ArticleView = Ember.View.extend({
-           templateName: 'article'
-       });
-       ContentApp.WebinarView = Ember.View.extend({
-           templateName: 'webinar'
-       });
+    // The custom views for articles and webinars
+   ContentApp.ArticleView = Ember.View.extend({
+       templateName: 'article'
+   });
+   ContentApp.WebinarView = Ember.View.extend({
+       templateName: 'webinar'
+   });
 	
 	// create Ember.ArrayController
 	ContentApp.ContentController = Ember.ObjectController.extend({
@@ -115,10 +121,20 @@
 	  bundleLimitError: true,
 	  isArticle: false,
 	  isWebinar: false,
+
+	  /**
+       * This function will use the user's purchase information to determine
+       * what webinar skus are expired from within their bundle.  This is needed
+       * so that user's do not have access to bundle items that are expired.
+       * @param Object userPurchaseData
+       * @return Array list of expired skus
+       */
 	  getExpiredSkus: function(userPurchaseData) {
 	     var retVal = [];
 	     var today = new Date();
             var xx=0;
+
+            // iterate over the webinar bundles for the user
             for(xx=0;xx<userPurchaseData.bundle.webinar.length;xx++) {
                 // get the expired date
                 var expirationDate = new Date(userPurchaseData.bundle.webinar[xx].expiration_date);
@@ -133,6 +149,14 @@
             }
 	    return retVal;
 	  },
+
+	  /**
+       * This function will user the user's purchase information to determine
+       * if they have any free slots in their specific bundle.  Usually this
+       * function will be called when a user is adding items to their bundle.
+       * @param String type -  the type of bundle
+       * @return boolean
+       */
 	  bundleHasSpace: function() {
 	      var userPurchaseData = _self.get('userPurchaseData');
              userPurchaseData = (userPurchaseData != '') ? $.parseJSON(userPurchaseData) : '';
@@ -165,7 +189,17 @@
               }
               return userContentCount < totalBundleCount;
 	  },
+	  /**
+       * This is the required actions object that Ember wants you put
+       * your functions that handle actions from Handlebars templates.
+       */
 	  actions: {
+
+	      /**
+	       * This function will reset some of the controller properties to their
+	       * default state.
+	       * @param Object data - the user purchase data
+	       */
 	      resetState: function(data) {
 	          // reset the controller to its default values
 	          this.set('isLoading', true);
@@ -175,17 +209,33 @@
 	          // now re-initialize the page
 	          this.send('init', '');
 	      },
-	      init: function(data) {
+
+	      /**
+	       * This overriden Ember initialization function will retrieve the content
+	       * based on the content type and the id.  It will then set the retrieved
+	       * content data on the controller to be viewed by the user.
+	       * @param Object payload
+	       */
+	      init: function(payload) {
 	        _self = this;
+
+	        // grab the user's purchase data from the controller
 	        var userPurchaseData = _self.get('userPurchaseData');
 	        userPurchaseData = (userPurchaseData != '') ? $.parseJSON(userPurchaseData) : '';
 	        var type = _self.get('type');
 	        var contentId = _self.get('cid');
+
+	        // if the content is an article
 	        if(type == 'article') {
-	            // finally post to the server to retrieve the data
+	               // build the data object to retrieve the article content from the server
                    var postData = {};
                    postData.requestType_${id} = 'LOAD_ARTICLE_CONTENT';
                    postData.cid_${id} = contentId;
+
+
+                   /* NOTE: 02.12.14 - This will change to hit elastic search
+                    * similar to the webinar search below
+                    */
 
                    // post to portlet to retrieve the content
                    $.post("${ajaxHandlerContent}", postData)
@@ -236,22 +286,21 @@
                             _self.set('isLoading', false);
                         })
                        .always(function() {});
-	        } else if (type=='webinar') {
+	        } else if (type=='webinar') { // else we are retrieving webinar data
 	            var _self = this;
 
-	            // load the webinar from Elastic search
-                   // build the json data for the search
-                    var data = {
-                          "query" : {
-                              "multi_match" : {
-                                  "fields" : ["sku"],
-                                  "query" : contentId,
-                                  "type" : "prefix"
-                              }
+               // build the json data for the search
+                var data = {
+                      "query" : {
+                          "multi_match" : {
+                              "fields" : ["sku"],
+                              "query" : contentId,
+                              "type" : "prefix"
                           }
                       }
+                  }
 
-                    // POST on the ES REST API endpoint
+                    // POST on the ES REST API endpoint to load the webinar from Elastic search
                     $.ajax({
                         type: 'post',
                         contentType: 'application/json',
@@ -299,6 +348,7 @@
                                 if(userPurchaseData !== undefined &&
                                    userPurchaseData != '' &&
                                    userPurchaseData.units !== undefined) {
+
                                     // get the list of expired webinars
                                     var expiredWebinars =  _self.getExpiredSkus(userPurchaseData);
 
@@ -318,14 +368,18 @@
 
                              // the the UI that loading is complete
                              _self.set('isLoading', false);
+
+                             // get the video source path off the controller
                              var sourcePath = _self.get('videoSourcePath');
-                             // if there is a video source path load the video, else show error
+
+                             // if there is a video source path load the video, else show error after a second
                              if(sourcePath == '' || sourcePath == undefined) {
                                  setTimeout(function() {
                                      $("#webinar-not-found-${id}").removeClass("hide");
                                      $("#webinar-not-found-${id}").addClass("in");
                                  }, 1000);
                              } else {
+                                 // since there is a source path for the video, we can attempt to load the flowplayer
                                  var flowplayerOptions =  {
                                     playlist: [
                                        // a list of type-url mappings in picking order
@@ -342,7 +396,7 @@
 
                                  /*
                                   * If the user has full access keep the full clip,
-                                  * otherwise have the flowplayer only show a 30 seconds
+                                  * otherwise just show a short description
                                   */
                                  if(!_self.get('hasFullAccess')) {
                                     // TODO: Phase2? set 30secs clip? How?
@@ -384,6 +438,13 @@
 	            _self.set('isLoading', false);
 	        }
 	      },
+
+	       /**
+            * This function will serve as the process to display to the
+            * user that their selected item was in fact successfully/unsuccessfully
+            * added to their bundle.
+            * @param Object payload
+            */
 	       addItemToBundleConfirmation: function(payload) {
                 var _self = this;
 
@@ -416,6 +477,11 @@
                     this.send('hideAddBundleConfirm');
                 }
             },
+
+            /**
+             * This function will add an item to the user's bundle, depending on if they
+             * have the space available to do that.
+             */
             addItemToBundle: function() {
                  _self = this;
                  // check to see if bundle has space, if so we can add it to their bundle
@@ -440,6 +506,12 @@
                     this.send('hideAddBundleConfirm');
                  }
              },
+
+             /**
+              * This function will either notify the authenticated user that they need confirm
+              * that they want to add the item to the bundle.  If they are not authenticated,
+              * the app will just forward the user to the bundle purchase page.
+              */
              showAddBundleConfirm: function() {
                   // if the user is not authenticated, navigate to the bundle purchase page
                   var isAuthenticated = this.get('isAuthenticated');
@@ -470,11 +542,16 @@
                  $('.alert-success-container').addClass('hide');
                  $('.alert-success-container').removeClass('in');
              },
+
+             /**
+              * This function will forward the user to the bundle purchase page for
+              * the specific content type.
+              */
              goToBundlePurchase: function() {
                    var type = this.get('type');
                    if(type == 'article') {
                        // navigate to the bundle purchase article page
-                       window.location = '/portal/web/myhome/purchase-bundle?=t=a';
+                       window.location = '/portal/web/myhome/purchase-bundle?t=a';
                    } else if (type == 'webinar') {
                        // navigate to the bundle purchase webinar page
                        window.location = '/portal/web/myhome/purchase-bundle?t=w';
@@ -483,7 +560,14 @@
 	  }
 	});
 
+    // This is the Route handler for the Content App
 	ContentApp.ContentRoute = Ember.Route.extend({
+
+	 /**
+      * This is a standard function of Ember to initialize the controller.
+      * Here we are creating the Ember subscriptions to certain channels.
+      * @param Ember.Controller controller
+      */
 	  setupController: function(controller) {
 	    controller.set('content', ContentApp.Content.create({}));
 	    Ember.Instrumentation.subscribe("ContentApp.init", {
