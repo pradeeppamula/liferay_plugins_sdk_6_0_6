@@ -109,7 +109,9 @@
 	</div> <!-- /#homepage-suggested-company-container-${id} -->
 
 	<script>
+	    // compile the handlebar templates to be used by Ember
 	    Ember.TEMPLATES['companies'] = Ember.Handlebars.compile('<c:if test="${canInlineEdit}"> <span id="edit-suggested-companies-${id}" class="label label-default"><a class="inline-edit" {{action "editSugggestedCompanies"}}><i class="icon-edit-sign"></i>&nbsp;Edit</a></span> </c:if> <div class="suggested-company-header"> <a class="text-muted pull-right hide" href="#">View all</a> <p class="header">Suggested companies</p> </div> <div class="col-md-offset-2 col-sm-offset-1 col-xs-offset-2 row"> <div class="company col-md-3 col-sm-3 col-xs-3" {{action "goToURL" company1}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company1.name"}}> <img {{bindAttr src="company1.imageURL"}} /> </div> <div class="company col-md-3 col-sm-3 col-xs-3" {{action "goToURL" company2}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company2.name"}}> <img {{bindAttr src="company2.imageURL"}} /> </div> <div class="company col-md-3 col-sm-3 col-xs-3" {{action "goToURL" company3}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company3.name"}}> <img {{bindAttr src="company3.imageURL"}} /> </div> </div> <div class="col-md-offset-2 col-sm-offset-1 col-xs-offset-2 row"> <div class="company col-md-3 col-sm-3 col-xs-3" {{action "goToURL" company4}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company4.name"}}> <img {{bindAttr src="company4.imageURL"}} /> </div> <div class="company col-md-3 col-sm-3 col-xs-3" {{action "goToURL" company5}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company5.name"}}> <img {{bindAttr src="company5.imageURL"}} /> </div> <div class="company col-md-3 col-sm-3 col-xs-3" {{action "goToURL" company6}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company6.name"}}> <img {{bindAttr src="company6.imageURL"}} /> </div> </div> <div class="col-md-offset-2 col-sm-offset-1 col-xs-offset-2 row"> <div class="company col-md-3 col-sm-3 col-xs-3" {{action "goToURL" company7}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company7.name"}}> <img {{bindAttr src="company7.imageURL"}} /> </div> <div class="company col-md-3 col-sm-3 col-xs-3" {{action "goToURL" company8}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company8.name"}}> <img {{bindAttr src="company8.imageURL"}} /> </div> <div class="company col-md-3 col-sm-3 col-xs-3" {{action "goToURL" company9}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company9.name"}}> <img {{bindAttr src="company9.imageURL"}} /> </div> </div> <div class="text-right suggested-company-footer"> <!-- TODO: Create feedback module Phase 2/3? <a href="#"><i class="icon-comment icon-fixed-width"></i>Feedback</a> --> </div> <!-- INLINE EDIT MODAL --> <div class="modal fade" id="suggested-companies-edit-modal-${id}" tabindex="-1" role="dialog" aria-labelledby="suggestedCompaniesPortletAdmin" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" {{action "closeSuggestedCompaniesModal"}} aria-hidden="true">&times;</button> <h4 class="modal-title">Suggested Companies Administration</h4> </div> <!-- /.modal-header --> <div class="modal-body"> <h5><i class="icon-info-sign icon-fixed-width"></i>Click on the item that you would like to change.</h5> <div class="suggested-companies-layout-container"> <div class="col-md-offset-2 col-sm-offset-2 row"> <div id="edit-company-${id}-1" class="company col-md-3 col-sm-3" {{action "selectCompanyForEdit" company1}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company1.name"}}> <img {{bindAttr src="company1.imageURL"}} /> </div> <div id="edit-company-${id}-2" class="company col-md-3 col-sm-3" {{action "selectCompanyForEdit" company2}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company2.name"}}> <img {{bindAttr src="company2.imageURL"}} /> </div> <div id="edit-company-${id}-3" class="company col-md-3 col-sm-3" {{action "selectCompanyForEdit" company3}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company3.name"}}> <img {{bindAttr src="company3.imageURL"}} /> </div> </div> <div class="col-md-offset-2 col-sm-offset-2 row"> <div id="edit-company-${id}-4" class="company col-md-3 col-sm-3" {{action "selectCompanyForEdit" company4}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company4.name"}}> <img {{bindAttr src="company4.imageURL"}} /> </div> <div id="edit-company-${id}-5" class="company col-md-3 col-sm-3" {{action "selectCompanyForEdit" company5}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company5.name"}}> <img {{bindAttr src="company5.imageURL"}} /> </div> <div id="edit-company-${id}-6" class="company col-md-3 col-sm-3" {{action "selectCompanyForEdit" company6}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company6.name"}}> <img {{bindAttr src="company6.imageURL"}} /> </div> </div> <div class="col-md-offset-2 col-sm-offset-2 row"> <div id="edit-company-${id}-7" class="company col-md-3 col-sm-3" {{action "selectCompanyForEdit" company7}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company7.name"}}> <img {{bindAttr src="company7.imageURL"}} /> </div> <div id="edit-company-${id}-8" class="company col-md-3 col-sm-3" {{action "selectCompanyForEdit" company8}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company8.name"}}> <img {{bindAttr src="company8.imageURL"}} /> </div> <div id="edit-company-${id}-9" class="company col-md-3 col-sm-3" {{action "selectCompanyForEdit" company9}} data-toggle="tooltip" data-placement="top" {{bindAttr data-original-title="company9.name"}}> <img {{bindAttr src="company9.imageURL"}} /> </div> </div> </div> <!-- ./suggested-companies-layout-container --> <div class="edit-company-form-container"> <div id="changed-company-alert-${id}" class="alert alert-block alert-warning fade hide"> <button type="button" class="close" aria-hidden="true" {{ action "closeChangeAlert" }}>x</button> <h4><i class="icon-warning-sign icon-3x icon-fixed-width"></i>Whoa!</h4> <p>You will need to click the <strong>"Save Changes"</strong> button in order for your changes to be saved.</p> <a class="btn btn-default" href="#" {{ action "discardChanges"}}>Discard Changes</a> </div> <!-- /#changed-company-alert-${id} --> <div id="saved-company-alert-${id}" class="alert alert-block alert-success fade hide"> <button type="button" class="close" aria-hidden="true" {{ action "closeSavedAlert" }}>x</button> <h4><i class="icon-check-sign icon-3x icon-fixed-width"></i>Changes Saved!</h4> </div> <!-- /#saved-company-alert-${id} --> <div id="val-error-company-alert-${id}" class="alert alert-block alert-danger fade hide"> <button type="button" class="close" aria-hidden="true" {{ action "closeValErrorAlert" }}>x</button> <h4><i class="icon-exclamation-sign icon-3x icon-fixed-width"></i>Please enter all required information.</h4> </div> <!-- /#val-error-company-alert-${id} --> <form role="form"> <div class="form-group company-name-${id}"> <label class="control-label" for="company-name-${id}">Name</label> {{view Ember.TextField valueBinding="activeEditCompany.name" classNames="form-control" placeholder="name"}} </div> <div class="form-group company-url-${id}"> <label class="control-label" for="company-url-${id}">Website URL</label> {{view Ember.TextField valueBinding="activeEditCompany.url" classNames="form-control" placeholder="url"}} </div> <div class="form-group company-imageURL-${id}"> <label class="control-label" for="company-imageURL-${id}">Image URL</label> {{view Ember.TextField valueBinding="activeEditCompany.imageURL" classNames="form-control" placeholder="url"}} <p class="help-block">Please use the full url, i.e http://www.art.com/345.jpg</p> <!-- NOTE: add back in for phase 2 <p class="help-block">Or, you can also simply upload an image.</p> --> </div> <!-- NOTE: add back in for phase 2 <div class="form-group company-file-${id}"> <label class="control-label" for="company-file-${id}">File input</label> <input type="file" id="company-file-${id}"> </div> --> </form> </div> <!-- .edit-company-form-container --> </div> <!-- /.modal-body --> <div class="modal-footer"> <button type="button" class="btn btn-default" {{action "closeSuggestedCompaniesModal"}}>Close</button> <button type="button" {{bindAttr class=":btn :btn-primary activeEditCompany.isDirty::disabled isSaving:disabled"}} {{ action "saveCompanies" }}> {{#if isSaving}} Saving... {{else}} Save changes {{/if}} </button> </div> <!-- /.modal-footer --> </div><!-- /.modal-content --> </div><!-- /.modal-dialog --> </div><!-- /.modal --> <!-- /INLINE EDIT MODAL -->');
+
 		// initialize the suggested company Ember App
 		SuggestedCompanyApp = Ember.Application.create({
 			 rootElement: '#homepage-suggested-company-container-${id}'
@@ -124,6 +126,11 @@
 			isDirty: false
 		});
 
+        /*
+         * Override the content model for this app to have an observer watch
+         * certain properties on the model for changes.  We use this to determine
+         * if there are changes on a model item before enabling the save button.
+         */
 		SuggestedCompanyApp.Company.reopen({
 		  titleChanged: Ember.observer(function() {
 		    this.set('isDirty', true);
@@ -146,9 +153,20 @@
 		  preActiveEditCompany: null,
 		  isSaving: false,
 		  originalData: null,
+
+		   /**
+             * This is the required actions object that Ember wants you put
+             * your functions that handle actions from Handlebars templates.
+             */
 		  actions: {
+		      /**
+		       * This function will display the passed in company on the form
+		       * to be edited by an administrator.
+		       * @param Object company
+		       */
 		      selectCompanyForEdit: function(company) {
                 var currentEditItem = this.get('activeEditCompany');
+                // if there is already a company being edited, show the alert to the user letting them know
                 if(currentEditItem != undefined && currentEditItem.isDirty == true) {
                     $('#changed-company-alert-${id}').addClass("in");
                     $('#changed-company-alert-${id}').removeClass("hide");
@@ -183,6 +201,13 @@
                     $("#suggested-companies-edit-modal-${id}").modal("hide");
                 }
               },
+
+              /**
+               * This function will set the company data passed in
+               * on the controller, and build up the company list to be
+               * displayed to the user.
+               * @param Array data - the list of companies
+               */
               setCompanyData : function(data) {
                 // set the initial data returned from the server
                 this.set('originalData', data);
@@ -198,7 +223,12 @@
                     this.set('company'+contentItem.position, contentItem);
                 };
               },
+
+              /**
+               * This function will save off the companies that are currently on the controller
+               */
               saveCompanies: function() {
+                // first validate the form before attempting to save the companies
                 if(this.isValidForm()) {
                     // clear out any validation errors
                     this.clearValidationErrors();
@@ -258,6 +288,12 @@
                         $('#val-error-company-alert-${id}').removeClass("hide");
                     }
                 },
+
+                /**
+                 * This function will navigate the application to the selected
+                 * company's url.
+                 * @param Object company
+                 */
                 goToURL: function(company) {
                     // if this is a valid company, navigate to the companie's page
                     if(company != undefined && company.url != undefined) {
@@ -270,6 +306,11 @@
                        window.open(company.url,'_blank');
                     }
                 },
+
+                /**
+                 * This function will reset any pending changes on the currently edited
+                 * model.
+                 */
                 discardChanges: function() {
                     // reset the activeEditCompany to its initial state before editing
                     var preEditCompany = this.get('preActiveEditCompany');
@@ -284,6 +325,11 @@
                     this.clearValidationErrors();
                     this.send('closeValErrorAlert');
                 },
+
+                /**
+                 * This function will reset all the models that are in the "dirty" state
+                 * back to their original state.
+                 */
                 cleanModels: function() {
                     // clean the company currently being edited if any
                     this.get('activeEditCompany').set('isDirty',false);
@@ -310,6 +356,10 @@
                     $('#val-error-company-alert-${id}').removeClass('in');
                 }
 		  },
+
+		  /**
+		   * This function will clear up any validation errors and alerts in the UI
+		   */
 		  clearValidationErrors: function() {
 		  	// remove the error classes 
 		  	$('.company-name-${id}').removeClass("has-error");
@@ -318,6 +368,10 @@
 		  	$('#val-error-company-alert-${id}').addClass('hide');
 	        $('#val-error-company-alert-${id}').removeClass('in');
 		  },
+
+		  /**
+		   * This function will validate the form before saving
+		   */
 		  isValidForm: function() {
 		  	var retVal = true;
 		    var company = this.get('activeEditCompany');
@@ -353,7 +407,7 @@
 		  }
 		});
 
-		/*
+		/**
 		 * Helper function that will build a clean company model 
 		 */
 		function buildBaseCompany(item) {

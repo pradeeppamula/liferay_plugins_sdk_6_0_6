@@ -222,7 +222,9 @@
 	</div>
 
 	<script>
+	    // compile the handlebar templates to be used by Ember
 	    Ember.TEMPLATES['featured'] = Ember.Handlebars.compile('<!-- Show the inline edit button only if the user has those privileges --> <c:if test="${canInlineEdit}"> <span id="edit-featured-content-${id}" class="label label-default"><a class="inline-edit" {{action "editFeaturedContent"}}><i class="icon-edit-sign"></i>&nbsp;Edit</a></span> </c:if> {{#if isLayoutType1}} <div class="layout-1-hero-${id} col-md-8 col-sm-8 col-xs-12" {{action "goToContent" heroItem}}> <img {{bindAttr src="heroItem.imageURL"}} /> {{#if heroItem.header}} <div class="header-container col-md-5 col-sm-5">{{{heroItem.header}}}</div> {{/if}} <div class="title-container-bg-${id}"></div> <span class="featured-content-title-${id}">{{{heroItem.shortTitle}}}</span> </div> <div class="col-md-4 col-sm-4 col-xs-12"> <div class="layout-1-featured-1-${id} col-md-12 col-sm-12 col-xs-6"  {{action "goToContent" featuredPosition1}}> <img {{bindAttr src="featuredPosition1.imageURL"}} /> {{#if featuredPosition1.header}} <div class="header-container col-md-5 col-sm-5">{{{featuredPosition1.header}}}</div> {{/if}} <div class="title-container-bg-${id}"></div> <span class="featured-content-title-${id}">{{{featuredPosition1.shortTitle}}}</span> </div> <div class="layout-1-featured-2-${id} col-md-12 col-sm-12 col-xs-6"  {{action "goToContent" featuredPosition2}}> <img {{bindAttr src="featuredPosition2.imageURL"}} /> {{#if featuredPosition2.header}} <div class="header-container col-md-5 col-sm-5">{{{featuredPosition2.header}}}</div> {{/if}} <div class="title-container-bg-${id}"></div> <span class="featured-content-title-${id}">{{{featuredPosition2.shortTitle}}}</span> </div> </div> <div class="layout-1-hero-item-list col-md-8 col-sm-8 col-xs-12"> <div {{action "selectHero" heroItem1}} class="layout-1-hero-item-1 col-md-3 col-sm-3 col-xs-3" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Hero item 1"> <img {{bindAttr src="heroItem1.imageURL"}} /> </div> <div {{action "selectHero" heroItem2}} class="layout-1-hero-item-2 col-md-3 col-sm-3 col-xs-3"> <img {{bindAttr src="heroItem2.imageURL"}} /> </div> <div {{action "selectHero" heroItem3}} class="layout-1-hero-item-3 col-md-3 col-sm-3 col-xs-3"> <img {{bindAttr src="heroItem3.imageURL"}} /> </div> <div {{action "selectHero" heroItem4}} class="layout-1-hero-item-4 col-md-3 col-sm-3 col-xs-3"> <img {{bindAttr src="heroItem4.imageURL"}} /> </div> </div> <!-- NOTE: Phase 2 add this back in <div class="layout-1-hero-more-links col-md-8 col-sm-8"> <a hrer="#">More Influencer Content <i class="icon-double-angle-right"></i> </a> </div>--> {{/if}} <!-- INLINE EDIT MODAL --> <div class="modal fade" id="featured-content-edit-${id}" tabindex="-1" role="dialog" aria-labelledby="featuredContentPortalAdmin" aria-hidden="true"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" {{action closeFeaturedContent}} aria-hidden="true">&times;</button> <h4 class="modal-title">Featured Content Administration</h4> </div> <div class="content-edit-nav-section"> <ul class="nav nav-pills nav-justified"> <li class="active"><a data-toggle="pill" href="#layouts-section-${id}">Layouts</a></li> <li><a data-toggle="pill" href="#items-section-${id}">Content Items</a></li> </ul> </div> <div class="modal-body"> <div class="tab-content"> <!-- LAYOUTS TAB PANE --> <div class="tab-pane active" id="layouts-section-${id}"> <div id="layouts-tab-content-${id}" class="tab-content"> <div class="col-md-12 col-sm-12"> <h5>Active Layout <span class="label label-default">{{#if isLayoutType1 }} Layout 1 {{else}} No Layout Selected {{/if}}</span></h5> <div class="btn-group"> <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Select Layout <span class="caret"></span></button> <ul class="dropdown-menu"> <li {{bindAttr class="isLayoutType1:active"}}><a href="#layout-1-${id}" data-toggle="tab">Layout 1</a></li> </ul> </div> </div> <!-- /.col-md-12 .col-sm-12--> <div {{bindAttr class=":tab-pane :fade :in isLayoutType1:active"}} id="layout-1-${id}"> <div class="edit-layout-1-container col-md-12 col-sm-12"> <div class="layout-1-hero-edit-${id} col-md-8 col-sm-8"> <img src="//placehold.it/500x500&text=Hero+Section" /> <div class="title-container-bg-${id}"></div> <span class="featured-content-title-${id}">Title of content</span> </div> <div class="col-md-4 col-sm-4"> <div class="layout-1-featured-1-edit-${id}"> <img src="//placehold.it/500x500&text=Featured+Section+1" /> <div class="title-container-bg-${id}"></div> <span class="featured-content-title-${id}">Title of content</span> </div> <div class="layout-1-featured-2-edit-${id}"> <img src="//placehold.it/500x500&text=Featured+Section+2" /> <div class="title-container-bg-${id}"></div> <span class="featured-content-title-${id}">Title of content</span> </div> </div> <div class="layout-1-hero-item-list-edit col-md-8 col-sm-8"> <div class="layout-1-hero-item-1-edit col-md-3 col-sm-3"> <img src="//placehold.it/500x500&text=Hero+Item+1" /> </div> <div class="layout-1-hero-item-2-edit col-md-3 col-sm-3"> <img src="//placehold.it/500x500&text=Hero+Item+2" /> </div> <div class="layout-1-hero-item-3-edit col-md-3 col-sm-3"> <img src="//placehold.it/500x500&text=Hero+Item+3" /> </div> <div class="layout-1-hero-item-4-edit col-md-3 col-sm-3"> <img src="//placehold.it/500x500&text=Hero+Item+4" /> </div> </div> <!-- NOTE: Phase 2 add this back in <div class="layout-1-hero-more-links-edit col-md-8 col-sm-8"> <a href="#">More Influencer Content <i class="icon-double-angle-right"></i> </a> </div> --> </div> <!-- /.edit-layout-1-container --> </div> <!-- /#layout1 --> </div> <!-- /#layouts-tab-content --> </div> <!-- /#layouts-section-${id} --> <!-- ITEMS TAB PANE --> <div class="tab-pane" id="items-section-${id}"> <h5><i class="icon-info-sign icon-fixed-width"></i>Click on the item that you would like to change.</h5> <div class="edit-item-layout-container"> <div class="layout-1-hero-edit-${id} col-md-8 col-sm-8"> <img {{bindAttr src="heroItem.imageURL"}} /> {{#if heroItem.header}} <div class="header-container col-md-5 col-sm-5">{{{heroItem.header}}}</div> {{/if}} <div class="title-container-bg-${id}"></div> <span class="featured-content-title-${id}">{{{heroItem.shortTitle}}}</span> </div> <div class="col-md-4 col-sm-4"> <div id="layout-1-featured-1-edit-${id}" {{action "selectItemForEdit" featuredPosition1}} class="layout-1-featured-1-edit-${id}"> <img {{bindAttr src="featuredPosition1.imageURL"}} /> {{#if featuredPosition1.header}} <div class="header-container col-md-5 col-sm-5">{{{featuredPosition1.header}}}</div> {{/if}} <div class="title-container-bg-${id}"></div> <span class="featured-content-title-${id}">{{{featuredPosition1.shortTitle}}}</span> </div> <div id="layout-1-featured-2-edit-${id}" {{action "selectItemForEdit" featuredPosition2}} class="layout-1-featured-2-edit-${id}"> <img {{bindAttr src="featuredPosition2.imageURL"}} /> {{#if featuredPosition2.header}} <div class="header-container col-md-5 col-sm-5">{{{featuredPosition2.header}}}</div> {{/if}} <div class="title-container-bg-${id}"></div> <span class="featured-content-title-${id}">{{{featuredPosition2.shortTitle}}}</span> </div> </div> <div class="layout-1-hero-item-list-edit col-md-8 col-sm-8"> <div id="layout-1-hero-item-1-edit-${id}" {{action "selectItemForEdit" heroItem1}} class="layout-1-hero-item-1-edit col-md-3 col-sm-3"> <img {{bindAttr src="heroItem1.imageURL"}} /> </div> <div id="layout-1-hero-item-2-edit-${id}" {{action "selectItemForEdit" heroItem2}} class="layout-1-hero-item-2-edit col-md-3 col-sm-3"> <img {{bindAttr src="heroItem2.imageURL"}} /> </div> <div id="layout-1-hero-item-3-edit-${id}" {{action "selectItemForEdit" heroItem3}} class="layout-1-hero-item-3-edit col-md-3 col-sm-3"> <img {{bindAttr src="heroItem3.imageURL"}} /> </div> <div id="layout-1-hero-item-4-edit-${id}" {{action "selectItemForEdit" heroItem4}} class="layout-1-hero-item-4-edit col-md-3 col-sm-3"> <img {{bindAttr src="heroItem4.imageURL"}} /> </div> </div> <!-- NOTE: Removing more influential until Phase 2 <div class="layout-1-hero-more-links-edit col-md-8 col-sm-8"><a href="#">More Influencer Content <i class="icon-double-angle-right"></i> </a></div>--> </div><!--/.edit-item-layout-container --> <div class="edit-item-form-container"> <div id="changed-item-alert-${id}" class="alert alert-block alert-warning fade hide"> <button type="button" class="close" aria-hidden="true" {{ action "closeChangeAlert" }}>x</button> <h4><i class="icon-warning-sign icon-3x icon-fixed-width"></i>Whoa!</h4> <p>You will need to click the <strong>"Save Changes"</strong> button in order for your changes to be saved.</p> <a class="btn btn-default" href="#" {{ action "discardChanges"}}>Discard Changes</a> </div> <!-- /#changed-item-alert-${id} --> <div id="saved-item-alert-${id}" class="alert alert-block alert-success fade hide"> <button type="button" class="close" aria-hidden="true" {{ action "closeSavedAlert" }}>x</button> <h4><i class="icon-check-sign icon-3x icon-fixed-width"></i>Changes Saved!</h4> </div><!-- /#saved-item-alert-${id} --> <div id="val-error-item-alert-${id}" class="alert alert-block alert-danger fade hide"> <button type="button" class="close" aria-hidden="true" {{ action "closeValErrorAlert" }}>x</button> <h4><i class="icon-exclamation-sign icon-3x icon-fixed-width"></i>Please enter all required information.</h4> </div> <!-- /#val-error-item-alert-${id} --> <form role="form"> <div class="form-group item-content-type-${id}"> <label class="control-label" for="item-content-type-${id}">Content Type {{#if activeEditItem.type}} <span class="label label-info">{{activeEditItem.type}}</span> {{/if}} </label> {{view Ember.Select contentBinding="contentTypes"valueBinding="activeEditItem.contentType"classNames="form-control"}} </div> <div class="form-group item-header-${id}"> <label class="control-label" for="item-header-${id}">Header</label> {{view Ember.TextField valueBinding="activeEditItem.header" classNames="form-control" placeholder="header"}} <p class="help-block">You can use html for the header.</p> </div> <div class="form-group item-title-${id}"> <label class="control-label" for="item-title-${id}">Title</label> {{view Ember.TextField valueBinding="activeEditItem.title" classNames="form-control" placeholder="title"}} </div> <div class="form-group item-cid-${id}"> <label class="control-label" for="item-cid-${id}">Content Id {{#if activeEditItem.idType}} <span class="label label-default"> {{activeEditItem.idType}}</span> {{/if}} </label> {{view Ember.TextField valueBinding="activeEditItem.cid" classNames="form-control" placeholder="doi or sku"}} </div> <div class="form-group item-imageURL-${id}"> <label class="control-label" for="item-imageURL-${id}">Image URL</label> {{view Ember.TextField valueBinding="activeEditItem.imageURL" classNames="form-control" placeholder="url"}} <p class="help-block">Please use the full url, i.e http://www.art.com/345.jpg</p> <!-- NOTE: Phase 2 add this back in <p class="help-block">Or, you can also simply upload an image.</p> --> </div> <!-- NOTE: Phase 2 add this back in <div class="control-label" class="form-group"> <label for="item-file-${id}">File input</label> <input type="file" id="item-file-${id}"> </div> --> </form> </div> <!-- .edit-item-form-container --> </div> <!-- /#items-section-${id} --> </div> <!-- /.tab-content --> </div> <!-- /.modal-body --> <div class="modal-footer"> <button type="button" class="btn btn-default" {{action "closeFeaturedContent"}}>Close</button> <button type="button" {{bindAttr class=":btn :btn-primary activeEditItem.isDirty::disabled isSaving:disabled"}} {{ action "saveContent" }}> {{#if isSaving}} Saving... {{else}} Save changes {{/if}} </button> </div> </div><!-- /.modal-content --> </div><!-- /.modal-dialog --> </div><!-- /.modal --> <!-- /INLINE EDIT MODAL -->')
+
 		// initialize the featured content Ember App
 		FeaturedContentApp = Ember.Application.create({
 			 rootElement: '#homepage-featured-content-container-${id}'
@@ -266,6 +268,11 @@
 			}.property('contentType')
 		});
 
+        /*
+         * Override the content model for this app to have an observer watch
+         * certain properties on the model for changes.  We use this to determine
+         * if there are changes on a model item before enabling the save button.
+         */
 		FeaturedContentApp.Content.reopen({
 		  titleChanged: Ember.observer(function() {
 		    this.set('isDirty', true);
@@ -293,6 +300,12 @@
 		  originalData: null,
 		  currentHeroPosition: 1,
 		  autoScrollIntervalId: 0,
+
+		  /**
+		   * This helper function will clear out all the
+		   * error alerts by removing the bootstrap "has-error"
+		   * class where necessary.
+		   */
 		  clearValidationErrors: function() {
 		  	// remove the error classes 
 		  	$('.item-title-${id}').removeClass("has-error");
@@ -302,6 +315,12 @@
 		  	$('#val-error-item-alert-${id}').addClass('hide');
 	        $('#val-error-item-alert-${id}').removeClass('in');
 		  },
+
+		  /**
+		   * This helper function will validate the form based on the current
+		   * item that is in view for editing.
+		   * @return boolean
+		   */
 		  isValidForm: function() {
 		  	var retVal = true;
 		    var content = this.get('activeEditItem');
@@ -329,10 +348,30 @@
 
 		    return retVal;
 		  },
+
+		  /**
+           * This is the required actions object that Ember wants you put
+           * your functions that handle actions from Handlebars templates.
+           */
 		  actions: {
+
+		      /**
+		      * This function will simply set the id of the javascript
+		      * interval object that is used to auto scroll through the
+		      * featured items.  We need this on the controller to that we
+		      * can stop/start the auto scrolling as necessary.
+		      * @param int payload - the interval id
+		      */
 		      setAutoScrollIntervalId: function(payload) {
 		         this.set('autoScrollIntervalId', payload);
 		      },
+
+		      /**
+		       * This function will facilitate the auto scrolling of the
+		       * hero items.
+		       * @param String payload - this is not used, but we need it here since this function
+		       *                         is called by a subscriber
+		       */
 		      autoScrollHero: function(payload) {
 		          // get the position of the current hero item
 		          var position = this.get('currentHeroPosition');
@@ -350,12 +389,26 @@
                   // set the new position back on the controller
                   this.set('currentHeroPosition',position);
 		      },
+
+		      /**
+		       * This function will navigate to the content page, so that the user can see
+		       * the selected featured item.
+		       * @param Object item
+		       */
 		      goToContent: function(item) {
 		          // navigate to the item's page
 		          if(item != undefined) {
 		            window.location = item.get('contentURL');
 		          }
 		      },
+
+		      /**
+		       * This function will do exactly as the function name says and
+		       * select the item that will be in the edit form.  It will verify
+		       * that the current selected item doesnn't have any changes that
+		       * need to be saved first befor switching.
+		       * @param Object item - the newly selected item
+		       */
               selectItemForEdit: function(item) {
                 var currentEditItem = this.get('activeEditItem');
                 if(currentEditItem != undefined && currentEditItem.isDirty == true) {
@@ -387,11 +440,21 @@
                     this.set('preActiveEditItem', preEditItem);
                 }
               },
+
+              /**
+               * This function will set the passed in item to be the visible hero item.
+               * @param Object item
+               */
               selectHero: function(item) {
                 this.set('heroItem', item);
                 // reset the hero position based on the item (so auto scroll can iterate to the next item)
                 this.set('currentHeroPosition', item.position);
               },
+
+              /**
+               * This function will handle the action of showing the modal window that will
+               * have the item to be edited.  It will also clear up the auto scrolling interval.
+               */
               editFeaturedContent: function(){
                 $("#featured-content-edit-${id}").modal("show");
                 // get the interval id
@@ -399,6 +462,11 @@
                 // clear the auto scrolling
                 window.clearInterval(intervalId);
               },
+
+              /**
+               * This function will close the featured content edit modal window, but it will first make
+               * sure there are no pending changes on an item, and warn the user if so.
+               */
               closeFeaturedContent: function() {
                 // check to see if there are changes, if so, show this alert
                 var currentEditItem = this.get('activeEditItem');
@@ -409,14 +477,24 @@
                     $("#featured-content-edit-${id}").modal("hide");
                 }
               },
+
+              /**
+               * This function will set the featured data on the controller to be visible
+               * by the user.  It will also set the layout of the featured content items.
+               * @param Object data - the featured content data
+               */
               setFeaturedContent : function(data) {
                 var _self = this;
                 _self.set('originalData', data);
+
+                // set the layout type
                 if(data.layoutType == 1) {
                     _self.set('isLayoutType1', true);
                 } else if(data.layoutType == 2) {
                     _self.set('isLayoutType2', true);
                 }
+
+                // iterate over each of the data items, building the models up
                 data.contentItems.forEach(function(item) {
                     var contentItem = FeaturedContentApp.Content.create({
                         position: item.position,
@@ -427,6 +505,8 @@
                         header: item.header,
                         type: item.type // [hero|featured]
                     });
+
+                    // set the item in the appropriate place , hero, or featured
                     if(contentItem.type == "hero") {
                         switch(contentItem.position) {
                             case 1:
@@ -463,25 +543,39 @@
                     }
                 });
               },
+
+              /**
+               * This function will save the content item that was being edited
+               * by the administrator.
+               */
               saveContent: function() {
+
+                    // first validate the form
                     if(this.isValidForm()) {
                         // clear out any validation errors
                         this.clearValidationErrors();
+
                         // set the save button to be in the loading state
                         this.set('isSaving', true);
+
                         // build the JSON, save it to the server
                         // grab the original data
                         var data = this.get('originalData');
+
                         // set the content layout type
                         if(this.get('isLayoutType1') == 1) {
                             data.layoutType = 1;
                         } else if(this.get('isLayoutType2')) {
                             data.layoutType = 2;
                         }
+
                         // clear the old content items, and set the new ones
                         data.contentItems = [];
+
                         // remove any unnecessary properties
                         delete(data.exception);
+
+                        // add all the updated content items to the list of items
                         var currentItem = this.get('heroItem1');
                         if(currentItem != undefined && currentItem.title != null) {
                             var item = buildBaseItem(currentItem)
@@ -550,6 +644,10 @@
                         $('#val-error-item-alert-${id}').removeClass("hide");
                     }
                 },
+
+                /**
+                 * Helper function that will set all the models as clean
+                 */
                 cleanModels: function() {
                     // clean the item currently being edited if any
                     this.get('activeEditItem').set('isDirty',false);
@@ -572,6 +670,12 @@
                     $('#val-error-item-alert-${id}').addClass('hide');
                     $('#val-error-item-alert-${id}').removeClass('in');
                 },
+
+                /**
+                 * This helper function will clear out all the changes that
+                 * could have been made to a featured content item by an
+                 * administrator.
+                 */
                 discardChanges: function() {
                     // first reset the current changes on the active item
                     var preEditItem = this.get('preActiveEditItem');
@@ -615,6 +719,12 @@
 		  }
 		});
 
+        /**
+         * This helper function will build up the base item object,
+         * excluding any unnecessary properties.
+         * @param Object item
+         * @return Object retVal
+         */
 		function buildBaseItem(item) {
 			var retVal = {};
 			retVal.imageURL = item.imageURL;

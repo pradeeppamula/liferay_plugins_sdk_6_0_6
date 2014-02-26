@@ -115,7 +115,6 @@
             padding: 10px 0;
         }
 
-        /* TODO: MOVE TO CUSTOM.CSS */
         input .flat-gray {
             background-color: #eee !important;
             border: 0px solid #eee !important;
@@ -148,6 +147,7 @@
 	</div> <!-- /#homepage-bundle-org-admin-container-${id} -->
 
     <script>
+        // compile the handlebar templates to be used by Ember
         Ember.TEMPLATES['admin'] = Ember.Handlebars.compile('<div class="bundle-org-admin-bundle-form-container"> <div class="bundle-org-admin-bundle-header-container"> <h3>Bundle Organization Administration</h3> </div> {{outlet}} </div> <!-- /.bundle-org-admin-bundle-form-container --> {{outlet footer}}');
         Ember.TEMPLATES['admin/index'] = Ember.Handlebars.compile('<div class="admin-content-container"> <div class="organization-header-bar"> <form class="col-md-3 col-sm-4 pull-right"> {{view Ember.TextField valueBinding="filter" classNames="form-control" placeholder="Filter"}} </form> <div class="col-md-8 col-sm-8"> <span>Organizations</span> {{#link-to "admin.new" classNames="btn btn-primary"}}<i class="icon-plus icon-fixed-width"></i> Add{{/link-to}} </div> </div> <!-- /.organization-header-bar --> <table class="table table-striped table-hover"> <thead> <tr> <th>Organization</th> <th>Created</th> <th>Actions</th> </tr> </thead> <tbody> {{#each organization in filteredContent}} <tr> <td>{{organization.name}}</td> <td>{{formattedDate organization.createdDate "LL"}}</td> <td>{{#link-to "organization" organization}}Manage{{/link-to}}</td> </tr> {{/each}} </tbody> </table> </div><!-- /.admin-content-container -->');
         Ember.TEMPLATES['admin/new'] = Ember.Handlebars.compile('<div class="admin-breadcrumbs-container"> {{#link-to "admin"}}<i class="icon-chevron-sign-left"></i> Back To Organizations{{/link-to}} </div> <div class="admin-content-container"> <div class="admin-new-org-container"> <c:if test="${hasAddOrgSuccess}"> <div id="add-organization-success-alert-${id}" class="alert alert-block alert-success fade in"> <button type="button" class="close" aria-hidden="true" {{ action "closeAlert" "add-organization-success-alert-${id}"}}>x</button> <p><i class="icon-check-sign icon-2x icon-fixed-width"></i>Organization Added!</p> </div><!-- /#add-organization-success-alert-${id} --> </c:if> <c:if test="${hasAddOrgErrors}"> <div id="add-organization-error-alert-${id}" class="alert alert-block alert-danger fade in"> <button type="button" class="close" aria-hidden="true" {{ action "closeAlert" "add-organization-error-alert-${id}"}}>x</button> <i class="icon-exclamation-sign icon-2x icon-fixed-width"></i> The following error(s) occurred when adding the new organization: <p><c:out value="${addOrganzationErrors}" escapeXml="false"/></p> </div> <!-- /#add-organization-error-alert-${id} --> </c:if> <div class="alert alert-info"> <i class="icon-info-sign icon-2x icon-fixed-width"></i>Please use a <strong>csv</strong> or <strong>txt</strong> file with the specified format(per line): <strong><em>GroupName,UserFirstName,UserLastName,UserEmail</em></strong></a> </div> <form id="new-org-form-${id}" name="new-org-form-${id}" role="form" method="POST" enctype="multipart/form-data" action="${viewAction}"> <input type="hidden" name="requestType_${id}" id="requestType_${id}" value="ADD_ORGANIZATION" /> <div class="form-group orgFile_${id}"> <label class="control-label" for="orgFile_${id}">Select Your File</label> <input type="file" id="orgFile_${id}" name="orgFile_${id}" size="75"> </div> <button {{bindAttr class=":btn :btn-primary isSaving:disabled"}} {{action "addOrganization"}}> {{#if isSaving}} Please Wait... {{else}} Add Organization {{/if}} </button> </form> </div><!-- /.admin-new-org-container --> </div><!-- /.admin-content-container -->');
@@ -177,6 +177,12 @@
 
         // override the find method for the Organization model
         BundleOrgAdminApp.Organization.reopenClass({
+
+          /**
+           * This function will hit the server to find all the organizations, or a specific organization by id.
+           * @param String id - an organization id
+           * @return Object|Array
+           */
           find: function(id) {
             if(id !== undefined) {
                 // TODO: (Phase 2) load single organization by id
@@ -208,9 +214,18 @@
 
         // override the find method for the User model
          BundleOrgAdminApp.User.reopenClass({
+
+          /**
+            * This function will hit the server to find all the users of a specific organization.
+            * @param String id - an organization id
+            * @return Array users
+            */
           find: function(id) {
             var users = [];
+            // if there was an org id passed in, we can search
             if(id !== undefined) {
+
+                // build the post data object
                 var data = {};
                 data.requestType_${id} = 'LOAD_USERS';
                 data.orgId_${id} = id;
@@ -218,11 +233,14 @@
                 // post to the portlet
                 $.post("${ajaxHandlerBundleOrgAdmin}", data)
                  .done(function(response) {
+
+                     // iterate over the list of returned users build
                      response.forEach(function (user) {
-                       // set the number of articles
+                       // set the number of articles that the user has
                        user.numberOfArticles = user.units.csdl_article.length;
-                       // set the number of webinars
+                       // set the number of webinars that the user has
                        user.numberOfWebinars = user.units.webinars.length;
+                       // add the user to the list of users
                        users.pushObject(BundleOrgAdminApp.User.create(user));
                      });
                      // send out message to Organization Controller to update users/bundles
@@ -242,10 +260,22 @@
           }
         });
 
-        // define the admin controller
+        /**
+         * Define the admin new controller for handling the AdminNew route
+         */
         BundleOrgAdminApp.AdminNewController = Ember.ArrayController.extend({
             isSaving: false,
+
+            /**
+             * This is the required actions object that Ember wants you put
+             * your functions that handle actions from Handlebars templates.
+             */
             actions: {
+
+                /**
+                 * This function will submit the form that has the new admin
+                 * information.
+                 */
                 addOrganization: function() {
                     this.set('isSaving', true);
                     $('#new-org-form-${id}').submit();
@@ -257,16 +287,35 @@
             }
         });
 
-        // define the admin index controller
+        /**
+         * Define the admin index controller that will handle the AdminIndex
+         */
         BundleOrgAdminApp.AdminIndexController = Ember.ArrayController.extend({
             filter: '',
+            /**
+             * This is the required actions object that Ember wants you put
+             * your functions that handle actions from Handlebars templates.
+             */
             actions: {
+                /**
+                 * This function will navigate the user to the create organization page
+                 */
                 goToAddOrganization: function() {
                     window.location = "/portal/web/guest/admin#/new";
                 }
             },
+
+            /**
+               * This is the controller computed property that will
+               * serve as the "filtered" data.  It contains the necessary
+               * filter functions that will the content set on the controller
+               * when the user types in the filter input text box.
+               * @return Array - the filtered content data
+               */
             filteredContent: function() {
+                // get the organizations that are on the controller
                 var organizations = this.get('content');
+                // get the filter text value that the user has typed in
                 var filter = this.get('filter').toLowerCase();
                 if(filter == '') {
                    return Ember.ArrayProxy.create({ content: Ember.A(organizations) });
@@ -280,11 +329,18 @@
         });
 
 
-        // define the users controller
+        /**
+         * Define the users controller to handle the user route
+         */
         BundleOrgAdminApp.UsersController = Ember.ArrayController.extend({
             users: [],
             userToBeRemoved: null,
             filter: '',
+
+            /**
+             * This is the required actions object that Ember wants you put
+             * your functions that handle actions from Handlebars templates.
+             */
             actions: {
                removeUserConfirm: function(user) {
                     this.send('showWarningAlert', user);
@@ -320,8 +376,17 @@
                     $('#error-user-alert-${id}').removeClass("hide");
                     $('#error-user-message-${id}').html(message);
                 },
+
+                /**
+                 * This function will remove the User from the organization that the
+                 * user is associated to, and then will update all the necessary
+                 * Ember Apps that are associated with knowing how many users
+                 * are in an organization.
+                 */
                 removeUser: function() {
                     var _self = this;
+
+                    // build the data object to post to the server
                     var data = {};
                     data.requestType_${id} = 'REMOVE_USER';
                     var user = _self.get('userToBeRemoved')
@@ -375,7 +440,9 @@
             templateName: 'webinarbundleform'
         });
 
-        // define the organization controller
+        /**
+         * Define the organization controller to handle the organization route
+         */
         BundleOrgAdminApp.OrganizationController = Ember.ObjectController.extend({
             webinars: ${webinars},
             webinarExpirationDate: null,
@@ -388,6 +455,14 @@
             inAddArticleMode: false,
             inAddWebinarMode: false,
             inChangeExpirationMode: false,
+
+            /**
+             * This function will create the default expiration date for webinars, and update
+             * the first (and only) webinar with the new expiration date.  It will then
+             * remove the old version of that webinar from the controller list, and add back
+             * in the same updated webinar.  We needed to do a removal/add instead of an update
+             * because the update didn't stick for some reason when the model was in a list.
+             */
             setDefaultWebinarExpirationDate: function() {
                   // set the default expiration date on the webinar model
                 // grab the webinars off the model
@@ -399,6 +474,12 @@
                 this.get('model').get('webinar').removeAt(0);
                 this.get('model').get('webinar').pushObject(webinar);
             },
+
+            /**
+             * This function will clear out any validation errors that are currently displayed to the user.
+             * It takes in the element id of the specific error alert in question, and removes that element.
+             * @param String elementId
+             */
              clearValidationErrors: function(elementId) {
                 // remove the error classes
                 $('.name-${id}').removeClass("has-error");
@@ -408,7 +489,16 @@
                 // remove the all validation alert
                 this.send('closeValidationErrorAlert', elementId);
            },
+
+           /**
+              * This is the required actions object that Ember wants you put
+              * your functions that handle actions from Handlebars templates.
+              */
             actions: {
+
+               /**
+                * This function will update the expiration data on the webinar that is actively in context.
+                */
                changeExpirationDate: function() {
                     // TODO: Validate the date
                     // grab the webinars off the model
@@ -423,6 +513,13 @@
                     // show the note to save the changes in order for changes to take affect
                     this.send('showInfoBundleAlert');
                },
+
+               /**
+                * This function will add a specific webinar to a bundle
+                * only if they user does not already have the same webinar already
+                * in their bundle.  It will make the expiration date of the newly added
+                * webinar the same as the other webinars within the bundle it is being added to.
+                */
                addWebinarBundle: function() {
                   // first check to see if a expiration date is set on the webinars, if not set a default one year from today
                   // get the webinar expiration date off the model
@@ -452,6 +549,11 @@
                     this.send('showInfoBundleAlert');
                   }
                },
+
+               /**
+                * This function will add an article to the user's bundle, only if the user
+                * has available space in their bundle.
+                */
                addArticleBundle: function() {
                   // first clear any old validation messages
                   this.clearValidationErrors('validation-bundle-alert-${id}');
@@ -492,6 +594,7 @@
                 hideChangeExpirationForm: function() {
                    this.set('inChangeExpirationMode', false);
                 },
+
                 showChangeExpirationForm: function() {
                     this.set('inAddWebinarMode', false);
                     this.set('inChangeExpirationMode', true);
@@ -542,11 +645,24 @@
                         this.set('bundleToBeRemoved', bundle);
                     }
                 },
+
+                /**
+                 * This helper function will set the number of users, from the payload
+                 * that is received from an Ember.Instruments message.
+                 * @param String payload - the number of users
+                 */
                 setNumberOfUsers: function(payload) {
                     if(payload != undefined) {
                         this.set('numberOfUsers', payload);
                     }
                 },
+
+                /**
+                 * This function will update an organizations's bundle information from the
+                 * payload parameter.  This is called whenever an organization's bundle
+                 * information changes.
+                 * @param Array payload - the users list
+                 */
                 updateOrganizationSubData: function(payload) {
                     // NOTE: payload should be the Users array
                     if(payload != undefined) {
@@ -608,11 +724,20 @@
                         $('#error-organization-message-${id}').html(message);
                     }
                 },
+
+                /**
+                 * This function will remove a bundle from the organization that is
+                 * in context.
+                 * @param String type - the bundle type
+                 */
                 removeBundle: function(type) {
                     // grab the bundle to be removed from the controller
                     var bundle = this.get('bundleToBeRemoved');
+
                     // grab the organization model
                     var org = this.get('model');
+
+                    // remove based on the bundle type
                     if(type == 'article') {
                         // remove the article from the list
                         org.get('csdl_article').removeObject(bundle);
@@ -636,6 +761,10 @@
                     // show the save changes notification
                     this.send('showInfoBundleAlert');
                 },
+
+                /**
+                 * This function will an organization's bundle information to the datastore.
+                 */
                 saveBundles: function() {
                     var _self = this;
                     // set saving mode to true
@@ -696,6 +825,11 @@
                     $('#info-bundle-alert-${id}').addClass("in");
                     $('#info-bundle-alert-${id}').removeClass("hide");
                 },
+
+
+                /**
+                 * This function will save the organization to the datastore.
+                 */
                 saveOrganization: function() {
                     var _self = this;
 
@@ -704,6 +838,7 @@
 
                     // validate the form
                     var isValidOrganization = true;
+
                     // first clear any old validation errors
                     this.clearValidationErrors('validation-organization-alert-${id}');
                     var name = org.get('name');
@@ -724,6 +859,7 @@
                     if(isValidOrganization) {
                         // set saving mode to true
                          _self.set('isSaving', true);
+
                         // create the post data
                         var data = {};
                         data.requestType_${id} = 'UPDATE_ORGANIZATION';
@@ -767,7 +903,7 @@
             }
         });
 
-        // define the app routes
+        // define the app routes for the BundleOrgAdmin Application
         BundleOrgAdminApp.Router.map(function() {
             this.resource('admin', {path: "/"}, function() {
                 this.route("new");
@@ -814,6 +950,13 @@
 
         // define the organization route
         BundleOrgAdminApp.OrganizationRoute = Ember.Route.extend({
+
+            /**
+              * This is a standard function of Ember to initialize the controller.
+              * Here we are creating the Ember subscriptions to certain channels, setting
+              * a default webinar expiration date, and loading the organization in context's users.
+              * @param Ember.Controller controller
+              */
             setupController: function (controller, model) {
                 // first set the organization model on the organization controller
                 controller.set("model", model);
@@ -853,7 +996,19 @@
                 $('#admin-user-nav-${id}').removeClass('active');
                 this.render('organization.edit', {into: 'organization', outlet: 'content'});
             },
+
+            /**
+              * This is the required actions object that Ember wants you put
+              * your functions that handle actions from Handlebars templates.  I typically like
+              * to keep view related navigation actions in the Route actions object not the
+              * Controller actions object as you see here.
+              */
             actions: {
+
+                /**
+                 * This function will show the "users" template in the organization template's
+                 * content outlet.
+                 */
                 showUsers: function(){
                     // remove the active class from all other nav links except this user link
                     $('#admin-bundle-nav-${id}').removeClass('active');
@@ -861,6 +1016,11 @@
                     $('#admin-user-nav-${id}').addClass('active');
                     this.render('users', {into: 'organization', outlet: 'content'});
                 },
+
+                /**
+                 * This function will show the "organization.bundles" template in the organization template's
+                 * content outlet.
+                 */
                 showBundle: function(){
                     $('#admin-bundle-nav-${id}').addClass('active');
                     $('#admin-org-nav-${id}').removeClass('active');
@@ -872,6 +1032,11 @@
                         todayHighlight: true
                     });
                 },
+
+                /**
+                 * This function will show the "organization.edit" template in the organization template's
+                 * content outlet.
+                 */
                 showOrganization: function(){
                     $('#admin-bundle-nav-${id}').removeClass('active');
                     $('#admin-org-nav-${id}').addClass('active');

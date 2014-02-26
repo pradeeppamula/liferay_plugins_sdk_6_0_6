@@ -2,7 +2,6 @@
 <portlet:resourceURL var='suggestedGroupsAjaxHandler' id='suggestedGroupsAjaxHandler' />
 <%-- Only show portlet if user is signed in --%>
 <c:if test="${isSignedIn}">
-
 	<style type="text/css">		
 		#homepage-suggested-group-container-${id} {	
 			border-top: ${portletBorderPixelTop}px solid #${portletBorderColorTop};
@@ -81,8 +80,9 @@
 	</div> <!-- /#homepage-suggested-group-container-${id} -->
 
 	<script>
-
+        // compile the handlebar templates to be used by Ember
 	    Ember.TEMPLATES['groups'] = Ember.Handlebars.compile('<a class="text-muted pull-right" href="/portal/web/myhome/suggested-content/?type=group">View all</a> <p class="header">Suggested communities</p> <div id="join-group-success-${id}" {{ bindAttr class=":alert :alert-block :alert-success :fade :hide :success" }}> <button type="button" class="close" aria-hidden="true" {{ action "hideJoinSuccess" }}>x</button> <h4><i class="icon-check-sign icon-3x icon-fixed-width"></i>Community joined!</h4> </div> <!-- /#join-group-success-${id} --> <div  id="join-group-error-${id}" {{ bindAttr class=":alert :alert-block :alert-danger :fade :hide  :error" }}> <button type="button" class="close" aria-hidden="true" {{ action "hideJoinError"}}>x</button> <h4><i class="icon-exclamation-sign icon-3x icon-fixed-width"></i>There was a problem joining this community, please try again or contact help@computer.org.</h4> </div> <!-- /#join-group-error-${id} --> <div id="join-group-confirm-${id}" {{ bindAttr class=":alert :alert-block :alert-warning :fade :hide :warning" }}> <button type="button" class="close" aria-hidden="true"  {{ action "hideJoinConfirm" }}>x</button> <p> <i class="icon-warning-sign icon-3x icon-fixed-width"></i> Are you sure you would like to join community <strong>{{ selectedGroup.name }}</strong>? <a class="btn btn-default" href="#" {{ action "joinGroup" }} >Yes</a> </p> </div> <!-- /#join-group-confirm-${id} --> <div class="suggested-group-container"> <div id="suggested-group-${id}-0" class="media"> <div class="media-body"> <h5 class="media-heading suggested-group-header">{{group0.shortName}}</h5> <a class="btn btn-default btn-sm pull-right" href="#"  {{ action "joinGroupConfirm" group0}}>Join</a> <a class="close-button pull-right" href="#" {{action "removeGroup" group0}}><i class="icon-remove-sign"></i></a> {{group0.shortDescription}} </div> </div> <!-- /.media --> </div><!-- /.suggested-group-container --> <div class="suggested-group-container"> <div id="suggested-group-${id}-1" class="media"> <div class="media-body"> <h5 class="media-heading suggested-group-header">{{group1.shortName}}</h5> <a class="btn btn-default btn-sm pull-right" href="#" {{action "joinGroupConfirm" group1}}>Join</a> <a class="close-button pull-right" href="#" {{action "removeGroup" group1}}><i class="icon-remove-sign"></i></a> {{group1.shortDescription}} </div> </div> <!-- /.media --> </div><!-- /.suggested-group-container --> <div class="suggested-group-container"> <div id="suggested-group-${id}-2" class="media"> <div class="media-body"> <h5 class="media-heading suggested-group-header">{{group2.shortName}}</h5> <a class="btn btn-default btn-sm pull-right" href="#"  {{ action "joinGroupConfirm" group2}}>Join</a> <a class="close-button pull-right" href="#" {{action "removeGroup" group2}}><i class="icon-remove-sign"></i></a> {{group2.shortDescription}} </div> </div> <!-- /.media --> </div><!-- /.suggested-group-container --> <div class="text-right"> <!-- TODO: Create feedback module Phase 2/3? <a href="#"><i class="icon-comment icon-fixed-width"></i>Feedback</a> --> </div>');
+
 		// initialize the suggested group Ember App
 		SuggestedGroupApp = Ember.Application.create({
 			 rootElement: '#homepage-suggested-group-container-${id}'
@@ -111,6 +111,11 @@
 		  group0: null,
 		  group1: null,
 		  group2: null,
+
+		   /**
+             * This is the required actions object that Ember wants you put
+             * your functions that handle actions from Handlebars templates.
+             */
 		  actions: {
               showJoinConfirm: function() {
                     $('#join-group-confirm-${id}').addClass("in");
@@ -140,15 +145,25 @@
                  this.set('selectedGroup', group);
                  this.send('showJoinConfirm');
 		      },
+
+
+		      /**
+		       * This function will facilitate the user joining a group,community in Liferay.
+		       * It will then notify the user of the result of the join.  If the join is
+		       * successful, we remove the group from the list of available groups.
+		       */
 		      joinGroup: function() {
 		        // first hide the confirmation alert
 		        this.send('hideJoinConfirm');
+
 		        // grab the group that the user wanted to join
 		        var selectedGroup = this.get('selectedGroup');
+
 		        // build the post data for the server
 		        var postData = {};
                 postData.requestType_${id} = 'JOIN_GROUP';
                 postData.groupId_${id} = selectedGroup.groupId;
+
                  // post to portlet to join the group
                 $.post("${suggestedGroupsAjaxHandler}", postData).then(function(response) {
                    if(response == 200) {
@@ -172,10 +187,20 @@
                   this.send('showJoinError');
                 }.bind(this));
 		      },
+
+
+		      /**
+		       * This function will set the group data on the controller.
+		       * This will be the groups that are available for the user
+		       * to join.
+		       * @param Array data - the list of groups
+		       */
               setGroupData : function(data) {
                 // iterate over the groups setting them on the controller
                 var idx = 0;
                 for (idx; idx < data.length; idx++) {
+
+                    // create an Ember Group Model Object
                     var item = SuggestedGroupApp.Group.create({
                         groupId: data[idx].groupId,
                         name: data[idx].name,
@@ -190,8 +215,16 @@
                     }
                 };
               },
+
+              /**
+               * This function will remove the specified group from the list of groups.
+               * This is usually called once the user joins the group, or the explicitly
+               * hit the remove button for the group in the UI.
+               * @param Object group
+               */
               removeGroup: function(group) {
                 var position = group.position;
+
                 // fade out the current container for the group
                 $("#suggested-group-${id}-"+position).hide();
 
@@ -199,6 +232,7 @@
                 var postData = {};
                 postData.requestType_${id} = 'LOAD_SUGGESTED_GROUP_DATA';
                 postData.limit_${id} = 5;
+
                 // if there are any extra items in the content list, use one of those
                 if(this.get('length') > 0) {
                     // first grab the first item off the list
@@ -247,6 +281,12 @@
 
 		// for the initial index view
 		SuggestedGroupApp.GroupsRoute = Ember.Route.extend({
+
+		 /**
+          * This is a standard function of Ember to initialize the controller.
+          * Here we are creating the Ember subscriptions to certain channels.
+          * @param Ember.Controller controller
+          */
 		  setupController: function(controller) {
 		    Ember.Instrumentation.subscribe("SuggestedGroupApp.setGroupData", {
 		      before: function (name, timestamp, payload) {

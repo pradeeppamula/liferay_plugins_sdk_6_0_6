@@ -78,7 +78,9 @@
 	</div> <!-- /#homepage-suggested-article-container-${id} -->
 
 	<script>
+	    // compile the handlebar templates to be used by Ember
 	    Ember.TEMPLATES['articles'] = Ember.Handlebars.compile('<a class="text-muted pull-right" href="/portal/web/myhome/suggested-content/?type=article&keywords=software%20engineering">View all</a> <p class="header">Suggested articles</p> <div class="suggested-article-container"> <div id="suggested-article-${id}-0" class="media"> <a class="pull-left suggested-article-img-container-${id}" href="#"> <img {{bindAttr src="article0.imageURL"}}/> </a> <div class="media-body"> <a class="btn btn-default btn-sm pull-right" href="#"  {{action "goToArticle" article0}}>View</a> <a class="close-button pull-right" href="#" {{action "removeArticle" article0}}><i class="icon-remove-sign"></i></a> {{article0.shortTitle}} </div> </div> <!-- /.media --> </div><!-- /.suggested-article-container --> <div class="suggested-article-container"> <div id="suggested-article-${id}-1" class="media"> <a class="pull-left suggested-article-img-container-${id}" href="#"> <img {{bindAttr src="article1.imageURL"}}/> </a> <div class="media-body"> <a class="btn btn-default btn-sm pull-right" href="#" {{action "goToArticle" article1}}>View</a> <a class="close-button pull-right" href="#" {{action "removeArticle" article1}}><i class="icon-remove-sign"></i></a> {{article1.shortTitle}} </div> </div> <!-- /.media --> </div><!-- /.suggested-article-container --> <div class="suggested-article-container"> <div id="suggested-article-${id}-2" class="media"> <a class="pull-left suggested-article-img-container-${id}" href="#"> <img {{bindAttr src="article2.imageURL"}}/> </a> <div class="media-body"> <a class="btn btn-default btn-sm pull-right" href="#" {{action "goToArticle" article2}}>View</a> <a class="close-button pull-right" href="#" {{action "removeArticle" article2}}><i class="icon-remove-sign"></i></a> {{article2.shortTitle}} </div> </div> <!-- /.media --> </div><!-- /.suggested-article-container --> <div class="text-right"> <!-- TODO: Create feedback module Phase 2/3? <a href="#"><i class="icon-comment icon-fixed-width"></i>Feedback</a> --> </div>');
+
 		// initialize the suggested article Ember App
 		SuggestedArticleApp = Ember.Application.create({
 			 rootElement: '#homepage-suggested-article-container-${id}'
@@ -107,13 +109,27 @@
 		  totalHits: 0,
 		  maxArticleLimit: 50,
 		  searchURL: '${elasticSearchURL}' + '/content/_search',
+
+		  /**
+           * This is the required actions object that Ember wants you put
+           * your functions that handle actions from Handlebars templates.
+           */
 		  actions: {
+		      /**
+		       * This function will navigate to the content page to show the article
+		       * @param Object item
+		       */
 		      goToArticle: function(item) {
                   //  View the item based on the type
                  if(item != undefined) {
                     window.location = '/portal/web/myhome/content?type=article&cid='+item.cid;
                  }
               },
+              /**
+               * This function will set the keywords on the controller, that will serve as what
+               * the controller uses to search against in the Elasticsearch database.
+               * @param String data - the keywords
+               */
 		      setKeywords: function(data) {
 		         Ember.Logger.info('setKeywords: ' + data);
 
@@ -126,6 +142,11 @@
                    this.send('loadArticleData', '');
 		        }
 		      },
+
+		      /**
+		       * This function will load up the articles from the ES server.
+		       * @param Object data - not used as of now
+		       */
 		      loadArticleData: function(data) {
 		        _self = this;
                  // build the  json data for the search
@@ -171,6 +192,12 @@
                         dataType: 'json'
                   });
 		      },
+
+		      /**
+		       * This function will build up and set the articles on the controller
+		       * that will be displayed in the portlet.
+		       * @param Array data - the articles
+		       */
               setArticleData : function(data) {
                 var currentArticleIndex = this.get('currentArticleIndex');
                 // iterate over the articles setting them on the controller
@@ -179,6 +206,8 @@
                 if(data.length > 0) {
                     this.set('content', []);
                 }
+
+                // iterate over the article data, creating article models to be displayed
                 for (idx; idx < data.length; idx++) {
                     var item = SuggestedArticleApp.Article.create({
                       //  imageURL: data[idx].imageURL,
@@ -196,6 +225,12 @@
                 };
                  _self.set('currentArticleIndex', currentArticleIndex);
               },
+
+              /**
+               * This function will remove the passed in article from the list
+               * of articles in the portlet.
+               * @param Object article
+               */
               removeArticle: function(article) {
                     var currentArticleIndex = this.get('currentArticleIndex');
                     var totalHits = this.get('totalHits');
@@ -232,6 +267,12 @@
 
 		// for the initial index view
 		SuggestedArticleApp.ArticlesRoute = Ember.Route.extend({
+
+		 /**
+          * This is a standard function of Ember to initialize the controller.
+          * Here we are creating the Ember subscriptions to certain channels.
+          * @param Ember.Controller controller
+          */
 		  setupController: function(controller) {
 		    Ember.Instrumentation.subscribe("SuggestedArticleApp.loadArticleData", {
 		      before: function (name, timestamp, payload) {
