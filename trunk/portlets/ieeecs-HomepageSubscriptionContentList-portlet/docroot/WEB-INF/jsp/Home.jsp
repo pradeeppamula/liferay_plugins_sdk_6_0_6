@@ -202,15 +202,20 @@
 	</div>
 
 	<script>
+	    // compile the handlebar templates to be used by Ember
 	    Ember.TEMPLATES['list'] = Ember.Handlebars.compile('<div class="content-list-search-bar"> <div class="col-md-8 col-sm-8"> <span>Your Library Content</span> </div> <form class="col-md-4 col-sm-4 pull-right"> <div class="input-group"> {{view Ember.TextField valueBinding="filter" classNames="form-control" placeholder="Filter your content"}} <span class="input-group-btn"> <button class="btn btn-primary myhome-tooltip" type="button" {{action "clearFilter"}} data-toggle="tooltip" data-placement="top" data-original-title="Reset Filter"> <i class="icon-remove-sign"></i> </button> </span> </div><!-- /.input-group --> </form> </div> <div class="subscription-content-list"> {{#each item in filteredContent}} <div {{bindAttr class=":col-md-12 :col-sm-12 item.contentTypeCSSClass"}} > <div class="content-list-item-contracted"> <div class="content-item-column"> <div class="content-list-item-details" {{ action "goToItem" item }}> <div {{bindAttr class=":content-list-item-type item.contentType"}}> {{item.contentType}} </div> <!-- this is a spacer that is visible only for the small (tablet) sized devices --> <div class="clearfix package-title-sm-spacer visible-sm"></div> <p class="package-title">{{item.packageTitle}}</p> <div class="media"> <img src="/ieeecs-HomepageSubscriptionContentList-portlet/images/default-content.jpg" class="pull-left media-object content-list-item-media-container" /> <div class="media-body"> <h4 class="media-heading">{{item.title}}</h4> <span class="text-muted">{{item.publisher}} {{#if item.shortSummary}}&middot;{{/if}}</span> {{item.shortSummary}} </div> </div> </div> <!-- /.content-list-item-details --> <div class="content-list-item-suboptions"> <div class="suboptions-links col-md-4 col-sm-5 hide"> <ul> <li> <a href="#"> Like <!-- TODO: if there are likes, show the amount here --> <span class="badge">3</span> </a> </li> <li> <a href="#" {{ action "expandItem" item}}> Comments <!-- TODO: if there are comments, show the amount here --> <span class="badge">26</span> </a> </li> </ul> </div> <div class="suboptions-social col-md-2 col-sm-2"> <a {{bindAttr href="item.shareTwitterLink"}} target="_blank"><i class="icon-twitter icon-fixed-width icon-2x"></i></a> <a {{bindAttr href="item.shareFacebookLink"}} target="_blank"><i class="icon-facebook icon-fixed-width icon-2x"></i></a> </div> <div class="suboptions-time col-md-1 col-sm-2 pull-right"> <!-- TODO: have time this was added to bundle? 1d ago --> </div> <div class="pull-right col-md-1 col-sm-2 suboptions-expand-control hide"> {{#if item.isExpanded}} <a href="#" {{ action "toggleItemExpand" item }}>Collapse</a> {{else}} <a href="#" {{ action "toggleItemExpand" item }}>Expand</a> {{/if}} </div> </div> <!-- /.content-list-item-suboptions --> </div> <!-- /.content-list-item-contracted --> {{#if item.isExpanded}} <div class="content-item-expanded"> <div class="comment-list-container"> {{#if item.isCommentsVisible}} <a href="#" {{ action "toggleComments" item}}> Hide comments <i class="icon-caret-up icon-fixed-width"></i> </a> <ul class="list-unstyled"> <li class="col-md-offset-1 col-sm-offset-1 col-md-11 col-md-11"> <div class="col-md-1 col-sm-2 profile-img-container"> <img src="http://i.annihil.us/u/prod/marvel//universe3zx/images/3/33/Gambit442.jpg" class="profile-img-small"/> </div> <div class="col-md-10 col-sm-10"> <h6>Christoper Jones&nbsp;<span class="text-muted">12:04 PM</span></h6> <p>This is the best article ever.  I really enjoy reading from the greats.</p> </div> </li> <li class="col-md-offset-1 col-sm-offset-1 col-md-11 col-sm-11"> <div class="col-md-1 col-sm-2 profile-img-container"> <img src="http://1.images.comedycentral.com/images/show_images/600x400_chappellesshow.jpg?width=600&height=400&crop=true" class="profile-img-small"/> </div> <div class="col-md-10 col-sm-10"> <h6>Ricky Hatton&nbsp;<span class="text-muted">12:04 PM</span></h6> <p>Aoccdrnig to a rscheearch at Cmabrigde Uinervtisy, it deosnt mttaer in waht oredr the ltteers in a wrod are, the olny iprmoatnt tihng is taht the frist and lsat ltteers be at the rghit pclae. The rset can be a toatl mses and you can sitll raed it wouthit porbelm. Tihs is bcuseae the huamn mnid deos not raed ervey lteter by istlef, but the wrod as a wlohe.</p> </div> </li> </ul> {{else}} <a href="#" {{ action "toggleComments" item}}> 26 comments <i class="icon-caret-down icon-fixed-width"></i> </a> {{/if}} </div> {{#if item.isInPreCommentMode}} <div class="pre-add-comment-form-${id}"> <input type="text" class="form-control" placeholder="Add a comment..." {{action "showAddCommentForm" item}} /> </div> {{else}} <div class="add-comment-form-container"> <div class="add-comment-form"> <form class="form-horizontal" role="form"> <div class="form-group"> <div class="col-md-1 col-sm-1 profile-img-container"> <img class="profile-img-small" alt="$!{user_name}" src="/portal/image/user_male_portrait?img_id=$user.portraitId&t=1375672866971"/> </div> <div class="col-md-10 col-sm-10"> <textarea class="form-control" rows="3"></textarea> </div> </div> <div class="form-group"> <div class="col-md-offset-1 col-sm-offset-1 col-md-10 col-sm-10"> <button type="submit" class="btn btn-primary" disabled>Post Comment</button> <button class="btn btn-default" {{action "hideAddCommentForm" item}}>Cancel</button> </div> </div> </form> </div> <!-- /.add-comment-form --> </div> <!-- /.add-comment-form-container --> {{/if}} </div> <!-- /.content-item-expanded --> {{/if}} </div> <!-- /.content-item-column --> <div class="content-done-column"><i class="icon-check-sign icon-3x"></i></div> <div class="content-loading-column"><i class="icon-spinner icon-spin icon-large"></i> Loading</div> </div> <!-- /.contentTypeCSSClass --> {{/each}} </div><!-- /.subscription-content-list -->');
+
+		// initialize the subscription content Ember App
 		SubscriptionContent = Ember.Application.create({
 			 rootElement: '#homepage-subscription-list-container-${id}'
 		});
 
+        // Define the template that will be used for the root
 		SubscriptionContent.Router.map(function() {
 			this.route("list", { path: "/" });
 		});
 
+        // Define the model for the App
 		SubscriptionContent.Content = Ember.Object.extend({
 		    cid: "",
 			publisher: "",
@@ -253,22 +258,36 @@
 		  totalSubscriptionContentCount: 0,
 		  currentUnitIndex: 0,
 		  groupSize: 10,
+
+          /**
+           * This is the required actions object that Ember wants you put
+           * your functions that handle actions from Handlebars templates.
+           */
 		  actions: {
+		      /**
+		       * This function will reset the filter for the app
+		       */
 		      clearFilter: function() {
 		           this.set('isFilterOn', false);
 		           this.set('filter', "");
 		      },
+
+		      /**
+		       * This function will reset the state of the controller back to
+		       * the original state of the initial load.
+		       * @param Array units - the user's subscribed content list
+		       */
 		      resetState: function(units) {
 		         // reset all of the controller properties, this is for when we need to reload the subscription list
 		         this.set([]);
                  this.set('subscriptionList',null);
-                 this.set('filter', "");
                  this.set('isLoading', false);
                  this.set('isDoneLoadingAllContent', false);
-                 this.set('isFilterOn', false);
                  this.set('totalSubscriptionContentCount', 0);
                  this.set('currentUnitIndex', 0);
+                 this.send('clearFilter');
 
+                 // if there are units for the user, build up the collection, removing unnecessary properties
                  if(units != undefined) {
                     var unitsCollection = [];
                     for(var i in units){
@@ -296,6 +315,11 @@
                     this.send('loadMoreContent', 'reloading suscription list.');
                  }
 		      },
+
+		      /**
+		       * This function will navigate the application to the selected item
+		       * @param Object item
+		       */
 		      goToItem: function(item) {
 		          //  View the item based on the type
                   if(item != undefined) {
@@ -321,15 +345,30 @@
               toggleItemExpand: function(item) {
                 item.set('isExpanded', !item.isExpanded);
               },
+
+              /**
+               * Helper function that will set the subscription content list on the controller
+               * based on the passed in data.  It will also set the count, which is used for
+               * the infiniscroll.
+               * @param Array data
+               */
               setSubscriptionList : function(data) {
                 var _self = this;
                 _self.set('subscriptionList', data);
                 _self.set('totalSubscriptionContentCount', data.length);
               },
+
+              /**
+               * This function will load up the subscription content once the user has scrolled
+               * down enough on the page to initiate the infinscroll.
+               * @param Array args - currently not used in this function
+               */
               loadMoreContent: function(args) {
                 var _self = this;
                 var isLoading = _self.get('isLoading');
                 var isFilterOn = _self.get('isFilterOn');
+
+                // if we are not already loading, and the filter is off we can continue with loading more data
                 if(!isLoading && !isFilterOn) {
                     // create the temp model that will represent the "loading" view
                     var loadingContentItem = SubscriptionContent.Content.create({
@@ -337,11 +376,16 @@
                     });
                     // add it to the content for the client to see
                     _self.pushObject(loadingContentItem);
+
+                    // set the loading to true to show the loading indicator
                     _self.set('isLoading', true);
+
+                    // grab any necessary properties for loading the data
                     var currentUnitIndex = _self.get('currentUnitIndex');
                     var totalSubscriptionContentCount = _self.get('totalSubscriptionContentCount');
                     var groupSize = _self.get('groupSize');
                     var subscriptionList = _self.get('subscriptionList');
+
                     // build the data list and
                     var data = {};
                     data.units_${id} = [];
@@ -412,6 +456,14 @@
                 }
               }
 		  },
+
+		  /**
+           * This is the controller computed property that will
+           * serve as the "filtered" data.  It contains the necessary
+           * filter functions that will the content set on the controller
+           * when the user types in the filter input text box.
+           * @return Array - the filtered content data
+           */
 		  filteredContent: function() {
 		  	var _self = this;
 		    var filter = _self.get('filter');
@@ -425,7 +477,13 @@
 		  }.property('filter', 'content.@each').cacheable()
 		});
 
+        // This is the Route handler for the SubscriptionContent List App
 		SubscriptionContent.ListRoute = Ember.Route.extend({
+		 /**
+          * This is a standard function of Ember to initialize the controller.
+          * Here we are creating the Ember subscriptions to certain channels.
+          * @param Ember.Controller controller
+          */
 		  setupController: function(controller) {
 		    Ember.Instrumentation.subscribe("SubscriptionContent.loadMoreContent", {
 		      before: function (name, timestamp, payload) {
