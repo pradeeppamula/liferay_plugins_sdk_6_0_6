@@ -2,6 +2,49 @@
 <portlet:resourceURL var='ajaxHandlerBundleOrgAdmin' id='ajaxHandlerBundleOrgAdmin' />
 <portlet:actionURL var="viewAction" windowState="normal" portletMode="view"/>
 <%-- Only show portlet if user is signed in and has admin rights --%>
+<c:if test="${!isAuthenticated}">
+    <style type="text/css">
+        #bundle-org-admin-splash-container {
+              color: #ffffff;
+              display: block;
+              position: relative;
+              height: 1000px;
+        }
+
+        #bundle-org-admin-splash-bg-container {
+              background: url(/ieeecs-HomepageBundleOrgAdmin-portlet/images/admin-bg.jpg);
+              opacity: 0.25;
+              width: 100%;
+              height: 100%;
+              top: 0;
+              left: 0;
+              position: absolute;
+         }
+
+        #bundle-org-admin-hero-section {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            padding-top: 10%;
+        }
+         #bundle-org-admin-hero-section h1 {
+            font-size: 55px;
+            letter-spacing: 10px;
+            line-height: 70px;
+            margin-bottom: 30px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+    </style>
+    <div id="bundle-org-admin-splash-container" class="text-center col-md-12 col-sm-12 col-xs-12">
+        <div id="bundle-org-admin-splash-bg-container"></div>
+        <div id="bundle-org-admin-hero-section">
+            <h1>Organization Administration.</h1>
+            <p class="lead">Please login to manage your organizations.</p>
+        </div>
+    </div>
+</c:if>
 <c:if test="${isAuthenticated}">
 <c:if test="${canInlineEdit}">
 
@@ -247,7 +290,7 @@
                      Ember.Instrumentation.instrument('BundleOrgAdminApp.updateOrganizationSubData', response);
                   })
                  .fail(function(error) {
-                    var eMsg = "BundleOrgAdmin - Error loading users: " + error.message);
+                    var eMsg = "BundleOrgAdmin - Error loading users: " + error.message;
                     Ember.Logger.error(eMsg);
                     var logData = {};
                     logData.message = eMsg;
@@ -1059,3 +1102,4 @@
     </script>
 </c:if>
 </c:if>
+
