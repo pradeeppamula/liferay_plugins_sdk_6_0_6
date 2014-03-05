@@ -36,7 +36,8 @@
     <meta name="twitter:description" content="Discover content in the technical subjects that you care about.">
     <meta name="twitter:creator" content="@ComputerSociety">
     ## Twitter Summary card images must be at least 200x200px
-    <meta name="twitter:image" content="http://conferences.computer.org/icebe/2013/images/ICS_black_stacked.gif">
+    <meta name="twitter:image:src" content="http://conferences.computer.org/icebe/2013/images/ICS_black_stacked.gif">
+    <meta name="twitter:domain" content="Computer.org">
 
 	## This is required by Liferay, where they import all their junk.
 	$theme.include($top_head_include)
@@ -175,8 +176,9 @@
         transition: all 0.35s ease 0s;
     }
 
+    #########################
     ## Navbar Styles
-
+    #########################
     .navbar-myhome {
         background-color: rgba(70, 70, 70, 0.95)!important;
         border: 0px solid transparent !important;
@@ -212,7 +214,9 @@
         background-color: #232527;
     }
 
+    #########################
     ## Home Styles
+    #########################
     #home {
         background: rgba(44, 62, 80,0.60);
         height: 1000px;
@@ -243,18 +247,38 @@
         margin-bottom: 5px !important;
     }
 
-    ## Webinars Styles
-    #webinars {
+
+    #########################
+    ## Articles Styles
+    #########################
+    #articles {
         background-color: #004d85;
         padding: 100px 0px;
     }
+
+    img.articles {
+        width: 160px;
+        height: 160px;
+    }
+
+    #########################
+    ## Webinars Styles
+    #########################
+    #webinars {
+        background-color: #16a085;
+        padding: 100px 0px;
+    }
+
+    #webinars p { color: #ffffff;}
 
     img.webinars {
         width: 160px;
         height: 160px;
     }
 
+    #########################
     ## Get Started Styles
+    #########################
     #get-started {
         background: #232527;
         padding: 30px 0px;
@@ -268,7 +292,9 @@
         line-height: 53px;
     }
 
+    #########################
     ## Contact Styles
+    #########################
     #contact {
         padding: 0px 0px 130px 0px;
         background: #ecf0f1;
@@ -308,7 +334,9 @@
         text-decoration: none;
     }
 
+    #########################
     ## Footer Styles
+    #########################
     footer {
         padding: 40px 0px 130px 0px;
         background: #FFFFFF;
@@ -344,7 +372,9 @@
         text-decoration: none;
     }
 
+    #########################
     ## Mobile Styles
+    #########################
     @media (max-width: 768px) {
         .hero-text {
             padding-top: 30%;
@@ -460,6 +490,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a class="scroll" href="#home">Home</a></li>
+                <li><a class="scroll" href="#articles">Articles</a></li>
                 <li><a class="scroll" href="#webinars">Webinars</a></li>
                 <li><a class="scroll" href="#get-started">Get Started</a></li>
                 <li><a class="scroll" href="#contact">Contact</a></li>
@@ -486,7 +517,7 @@
                     <p class="lead">Discover content in the technical subjects that you care about.</p>
                     <a class="btn btn-lg btn-grey scroll" href="#webinars"><i class="fa fa-chevron-down"></i> VIEW OUR PRODUCTS</a>
                     <div class="text-left col-md-12 col-sm-12">
-                        <ul class="social-share-list unstyled hide">
+                        <ul class="social-share-list unstyled">
                             <li>
                                 <a href="https://twitter.com/share" class="twitter-share-button" data-related="ComputerSociety" data-hashtags="digitallibrary">Tweet</a>
                                 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
@@ -499,6 +530,26 @@
                                 <div class="g-plusone" data-size="medium" data-href="http://www.computer.org/portal/web/myhome/splash"></div>
                             </li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    ## Articles Section
+    <section id="articles">
+        <div class="blue-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 featured-section-title">
+                        <h3 class="section-title">Articles</h3>
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <h2 class="text-center">
+                            <img class="img-circle articles" alt="articles-image" src="/ieeecs-HomePageSplash-theme/images/bundlearticles-image-3.jpg">
+                        </h2>
+                        <p class="lead">IEEE Computer Society bundled articles offer a cost-effective way of accessing one of the world's greatest computing resources.</p>
+                        <a class="btn btn-primary btn-lg" href="/portal/web/myhome/article-bundle">Learn More <i class="fa fa-angle-double-right"></i> </a>
                     </div>
                 </div>
             </div>
@@ -518,7 +569,7 @@
                             <img class="img-circle webinars" alt="webinars-image" src="/ieeecs-HomePageSplash-theme/images/bundlewebinars-image-1.jpg">
                         </h2>
                         <p class="lead">IEEE Computer Society bundled webinars are now available to let your staff receive perpetual access to our collection of more than 100 essential technical webinars developed by leaders in the field.</p>
-                        <a class="btn btn-primary btn-lg" href="/portal/web/myhome/webinar-bundle">Learn More <i class="fa fa-angle-double-right"></i> </a>
+                        <a class="btn btn-default btn-lg" href="/portal/web/myhome/webinar-bundle">Learn More <i class="fa fa-angle-double-right"></i> </a>
                     </div>
                 </div>
             </div>
