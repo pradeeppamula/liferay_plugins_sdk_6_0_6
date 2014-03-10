@@ -15,33 +15,41 @@
   <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav col-md-2 col-sm-2">
         #if ($is_signed_in)
+          #if ( $isMemberOfGroup && ( $isLiferayAdmin || $isCommunityAdministrator || $isCommunityEditor ) )
           <li class="dropdown">
             <a href="#" class="dropdown-toggle navbar-icon-dropdown" data-toggle="dropdown">
               <i class="icon-fixed-width icon-cog"></i>
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu aui-toolbar">
-              <li class="add-content has-submenu" id="_145_addContent">
-                <a class="menu-button" href="javascript:;">
-                  <i class="icon-plus icon-fixed-width icon-large"></i>
-                  Add
-                </a>
-              </li>        
-              <li class="manage-content has-submenu" id="_145_manageContent">
-                <a class="menu-button" href="javascript:;">
-                  <i class="icon-sitemap icon-fixed-width icon-large"></i>
-                  Manage
-                </a>
-              </li>    
-              <li class="toggle-controls" id="_145_toggleControls">
-                <a href="javascript:;">
-                  <i class="control-on icon-check icon-fixed-width icon-large"></i>
-                  <i class="control-off icon-check-empty icon-fixed-width icon-large"></i>
-                  Toggle Edit Controls
-                </a>
-              </li>
+                #if ( $isMemberOfGroup && ( $isLiferayAdmin || $isCommunityAdministrator || $isCommunityEditor ) )
+                  <li class="add-content has-submenu" id="_145_addContent">
+                    <a class="menu-button" href="javascript:;">
+                      <i class="icon-plus icon-fixed-width icon-large"></i>
+                      Add
+                    </a>
+                  </li>
+                #end
+                #if ( $isMemberOfGroup && ( $isLiferayAdmin || $isCommunityAdministrator || $isCommunityEditor || $isCommunityControlPanel ) )
+                    <li class="manage-content has-submenu" id="_145_manageContent">
+                        <a class="menu-button" href="javascript:;">
+                          <i class="icon-sitemap icon-fixed-width icon-large"></i>
+                          Manage
+                        </a>
+                    </li>
+                #end
+                #if ( $isMemberOfGroup && ( $isLiferayAdmin || $isCommunityAdministrator || $isCommunityEditor ) )
+                    <li class="toggle-controls" id="_145_toggleControls">
+                        <a href="javascript:;">
+                          <i class="control-on icon-check icon-fixed-width icon-large"></i>
+                          <i class="control-off icon-check-empty icon-fixed-width icon-large"></i>
+                          Toggle Edit Controls
+                        </a>
+                    </li>
+                #end
             </ul>
           </li>
+          #end
         #end 
       </ul> ## /.nav .navbar-nav .col-md-2 .col-sm-2
 
@@ -139,6 +147,27 @@
 -------------------------------------------------------------- 
 *#
   AUI().use("liferay-dockbar-custom",function(a){(function(){Liferay.DockbarCustom.init()})()});
+  	function toggleDragDrop() {
+
+		var currentText = $("#linkDragDrop").html();
+
+		if ( currentText.indexOf("Show") > -1 ) {
+			showDragDrop();
+		} else {
+			hideDragDrop();
+		}
+	}
+
+	function hideDragDrop() {
+		$("#linkDragDrop").html("Show Drag/Drop Zones");
+		$(".portlet-dropzone").css("border", "0px solid #FFFFFF");
+	}
+
+	function showDragDrop() {
+		$("#linkDragDrop").html("Hide Drag/Drop Zones");
+		$(".portlet-dropzone").css("border", "1px dashed #1589FF");
+	}
+
 </script>
 #if ($is_signed_in)
 <script type="text/javascript">
