@@ -205,7 +205,6 @@
     ## IF THE USER IS NOT SIGNED IN CHECK THE PAGE AND FORWARD TO SPLASH IF NECESSARY
     #if (!$is_signed_in)
     <script type="text/javascript">
-        console.log( document.URL);
         // first check to see if it is a login error, if not, then we can continue
         // additional checks.  Reason we do this is that login errors use the
         // homepage theme.  We will not redirect the users back to the splash page in the
@@ -219,13 +218,13 @@
 
         var pathArray = window.location.pathname.split( '/' );
         var pageName = pathArray[pathArray.length-1];
-        if(!loginError && !pageName != "myhome" && (pageName.indexOf("suggested-content") != -1 ||
+        if(!loginError && pageName != "myhome" && (pageName.indexOf("suggested-content") != -1 ||
            pageName.indexOf("home") != -1)) {
            window.location = '/portal/web/myhome/splash';
         }
         // just in case the url ends with /suggested-content/type?querystring
         var pageName = pathArray[pathArray.length-2];
-        if(!loginError && !pageName != "myhome" && (pageName.indexOf("suggested-content") != -1 ||
+        if(!loginError && pageName != "myhome" && (pageName.indexOf("suggested-content") != -1 ||
             pageName.indexOf("home") != -1)) {
             window.location = '/portal/web/myhome/splash';
         }
