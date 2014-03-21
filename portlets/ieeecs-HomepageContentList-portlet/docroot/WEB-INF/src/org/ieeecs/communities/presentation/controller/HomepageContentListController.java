@@ -10,6 +10,7 @@ import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQueryFactoryUtil;
 import com.liferay.portal.kernel.dao.orm.PropertyFactoryUtil;
 import com.liferay.portal.kernel.util.PortalClassLoaderUtil;
+import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.model.Group;
 import com.liferay.portal.model.GroupConstants;
@@ -132,7 +133,9 @@ public class HomepageContentListController extends BaseController implements Res
                     currentMode.trim().equalsIgnoreCase(HomepageContentListUtil.MODE)) {
                 model.put("portletMode", "PREVIEW");
             }
-
+            // add the url for Elastic Search
+            String esURL = PropsUtil.get(HomepageContentListUtil.PROPERTY_ES_URL);
+            model.put("elasticSearchURL", esURL);
         } catch (Exception e) {
             //  gracefully handle exception and put on model
             model.put("error", "A problem has occurred.  Please reload the page or contact help@computer.org.");
