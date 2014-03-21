@@ -48,9 +48,27 @@
     }
 
 
-    /****************************/
-    /**     Full Content Styles */
-    /****************************
+    /********************************/
+    /**     Full Content Styles     */
+    /********************************/
+    .abs-content-large { margin-bottom: 10px; }
+    .section-title {
+        font-weight: bold;
+        margin: 20px 0 10px 0;
+        font-size: 1.4em;
+        text-decoration: underline;
+        color: #2a72b2;
+    }
+    .ss1-heading {
+        margin: 15px 0px 5px 0px;
+        font-weight: bold;
+    }
+    .captionText {
+        font-style: italic;
+        font-size: 0.9em;
+    }
+    #maincontent img { max-width: 100%; }
+
 </style>
 <div id="homepage-content-container-${id}" class="col-md-12 col-sm-12">
     <div class="webinar-flowplayer"></div>
