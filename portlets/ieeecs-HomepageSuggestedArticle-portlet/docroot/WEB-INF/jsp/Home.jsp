@@ -153,7 +153,7 @@
                  var data = {
                      "query" : {
                          "multi_match" : {
-                             "fields" : ["keywords"],
+                             "fields" : ["keywords", "title"],
                              "query" : this.get('keywords'),
                              "type" : "prefix"
                          }
