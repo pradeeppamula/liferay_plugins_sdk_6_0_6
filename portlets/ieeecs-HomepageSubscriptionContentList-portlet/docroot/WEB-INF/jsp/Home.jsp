@@ -279,7 +279,7 @@
 		       */
 		      resetState: function(units) {
 		         // reset all of the controller properties, this is for when we need to reload the subscription list
-		         this.set([]);
+		         this.set('content',[]);
                  this.set('subscriptionList',null);
                  this.set('isLoading', false);
                  this.set('isDoneLoadingAllContent', false);
@@ -310,6 +310,17 @@
 
                     // now set the updated subscription list
                     this.send('setSubscriptionList',unitsCollection);
+
+                    // re-initialize the subscription list for infinite scrolling
+                    $('#homepage-subscription-list-container-${id} div.subscription-content-list').
+                     infiniteScrollHelper({
+                        loadMore: function(page) {
+                            Ember.Instrumentation.instrument('SubscriptionContent.loadMoreContent', 'loading more..');
+                        },
+                        doneLoading: function() {
+                           return true;
+                        }
+                    });
 
                     // reload the content based on the updated subscription list
                     this.send('loadMoreContent', 'reloading suscription list.');
