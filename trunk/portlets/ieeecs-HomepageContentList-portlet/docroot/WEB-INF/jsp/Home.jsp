@@ -283,18 +283,18 @@
 
                     // if the content type is an article we build the request data for article types
                     if(type == 'article') {
-                        url = '${$elasticSearchURL}/content/_search';
+                        url = '${elasticSearchURL}/content/_search';
                         // build the  json data for the search
                         data = {
                             "query" : {
                                 "multi_match" : {
-                                    "fields" : ["keywords"],
+                                    "fields" : ["keywords", "title"],
                                     "query" : keywords,
                                     "type" : "prefix"
                                 }
                             },
                             "from" : currentUnitIndex,
-                            "size" : groupSize,
+                            "size" : groupSize
                         }
 
                          data.filter = {"bool":{"must":[]}};
@@ -316,6 +316,7 @@
                     // load the data based on the type from the data source
                     jQuery.ajax({
                         type: 'post',
+                        contentType: 'application/json',
                         url: url,
                         data: data,
                         success: function(response) {

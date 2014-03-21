@@ -14,6 +14,7 @@ import javax.portlet.PortletPreferences;
 
 public class HomepageContentListUtil {
     static final Logger LOGGER = Logger.getLogger(HomepageContentListUtil.class);
+    public static final String PROPERTY_ES_URL = "ieee.cs.elastic.search.url";
     public static final String REQUEST_TYPE_LOAD_SUGGESTED_GROUP_DATA = "LOAD_SUGGESTED_GROUP_DATA";
     public static final String REQUEST_TYPE_JOIN_GROUP = "JOIN_GROUP";
     public static final String SUGGESTED_GROUP_DEFAULT_LIMIT = "50";

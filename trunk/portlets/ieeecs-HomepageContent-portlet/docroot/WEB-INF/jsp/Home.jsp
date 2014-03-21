@@ -115,7 +115,7 @@
                    if(idx>0) {
                        retVal += ', ';
                    }
-                   retVal += authorList[idx].givenname+' '+authorList[idx].surname;
+                   retVal += authorList[idx].firstname+' '+authorList[idx].surname;
                   }
 		    }
 		    return retVal;
@@ -212,6 +212,40 @@
               }
               return userContentCount < totalBundleCount;
 	  },
+
+        /**
+         * Helper function that will build up the content path
+         * for the abstract article based on the properties of the
+         * abstract.  The formula is the following:
+         *
+         * For Periodicals (mags, trans, letters):
+         *  <pubType>/<idPrefix>/<year>/<issueNumber>/<fno>.<extension>
+         *
+         * Proceedings (aka Conferences):
+         *  <pubType>/<idPrefix>/<year>/<catalogNumber>/<volumeNumber>/<fno>.<extension>
+         *
+         * @param Object abstract
+         * @return String contentPath
+         */
+        getArticleContentPath: function(abstract) {
+            var retVal = '';
+            if(abstract == undefined) return retVal;
+            retVal = abstract.pubType + '/' + abstract.issueId + '/' + abstract.fno + '.';
+            // next determine the file extension format "html or pdf"
+            if(abstract.show.html > 0) {
+                  retVal += 'xml';
+            } else if(abstract.show.pdf > 0) {
+                  retVal += 'pdf';
+              }
+              Ember.Logger.info("dynamic content path: " + retVal);
+
+            // TODO: right now for the demo we are forcing everything to xml, and a hard
+            // force to use a specific article
+            retVal = 'mags/co/2013/12/mco2013120068.xml';
+            Ember.Logger.info("but using content path: " + retVal);
+            return retVal;
+        },
+
 	  /**
        * This is the required actions object that Ember wants you put
        * your functions that handle actions from Handlebars templates.
@@ -227,9 +261,7 @@
           // First refresh the user purchase data
           var data = {};
           data.requestType_${id} = 'LOAD_ARTICLE_CONTENT';
-          // TODO: build dynamic path later
-          data.contentPath_${id} = 'mags/co/2013/12/mco2013120068.xml';
-
+          data.contentPath_${id} = _self.getArticleContentPath(abstract);
             // post to portlet to retrieve the  user purchase data
             $.post("${ajaxHandlerContent}", data)
                 .done(function(response) {
@@ -238,9 +270,6 @@
                     * the "no content found" view will be displayed
                     */
                     _self.set('isArticle', true);
-
-                    // TODO: set the full article content on the UI
-                    console.log(response);
                     _self.set("summary", response);
                 })
                .fail(function(error) {
