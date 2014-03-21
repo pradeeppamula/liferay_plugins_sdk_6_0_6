@@ -195,6 +195,7 @@
                    * @param Object payload
                    */
                   addContentToBundle: function(payload) {
+
                       var _self = this;
                       var item = payload.content;
 
@@ -212,6 +213,7 @@
 
                              // check to see if there is space in the bundle for this item
                              if(_self.bundleHasSpace(item.get('contentType'), userPurchaseData)) {
+
                                   // add the item to the bundle
                                   if(item.get('contentType') == 'article') {
                                       item.set('hasFullAccess', true);

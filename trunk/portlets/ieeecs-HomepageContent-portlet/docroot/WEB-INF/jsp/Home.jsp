@@ -46,6 +46,11 @@
          padding: 5px 5px 5px 20px;
       }
     }
+
+
+    /****************************/
+    /**     Full Content Styles */
+    /****************************
 </style>
 <div id="homepage-content-container-${id}" class="col-md-12 col-sm-12">
     <div class="webinar-flowplayer"></div>
@@ -194,6 +199,44 @@
        * your functions that handle actions from Handlebars templates.
        */
 	  actions: {
+	    /**
+	     * This function will load the full article based on the
+	     * passed in abstract
+	     * @param Object abstract
+	     */
+	    loadFullArticle: function(abstract) {
+	      _self = this;
+          // First refresh the user purchase data
+          var data = {};
+          data.requestType_${id} = 'LOAD_ARTICLE_CONTENT';
+          // TODO: build dynamic path later
+          data.contentPath_${id} = 'mags/co/2013/12/mco2013120068.xml';
+
+            // post to portlet to retrieve the  user purchase data
+            $.post("${ajaxHandlerContent}", data)
+                .done(function(response) {
+                   /*
+                    * If the data is found, we can set that it is in fact an article, otherwise
+                    * the "no content found" view will be displayed
+                    */
+                    _self.set('isArticle', true);
+
+                    // TODO: set the full article content on the UI
+                    console.log(response);
+                    _self.set("summary", response);
+                })
+               .fail(function(error) {
+                 var eMsg = "Content - Error loading the content at path: " + data.contentPath_${id} + ".  Error: " + error;
+                 Ember.Logger.error(eMsg);
+                 var logData = {};
+                 logData.message = eMsg;
+                 Log.error(logData);
+               })
+               .always(function() {
+                   // the the UI that loading is complete
+                   _self.set('isLoading', false);
+               });
+	    },
 
 	      /**
 	       * This function will reset some of the controller properties to their
@@ -227,65 +270,78 @@
 
 	        // if the content is an article
 	        if(type == 'article') {
-	               // build the data object to retrieve the article content from the server
-                   var postData = {};
-                   postData.requestType_${id} = 'LOAD_ARTICLE_CONTENT';
-                   postData.cid_${id} = contentId;
+                var _self = this;
 
+                // build the json data for the search
+                var data = {
+                       "query" : {
+                           "multi_match" : {
+                               "fields" : ["doi"],
+                               "query" : contentId,
+                               "type" : "prefix"
+                           }
+                       }
+                }
+                // POST on the ES REST API endpoint to load the article from Elastic search
+                $.ajax({
+                    type: 'post',
+                    contentType: 'application/json',
+                    url: '${elasticSearchURL}' + '/content/_search',
+                    data: JSON.stringify(data),
+                    success: function(response) {
+                        if(response != undefined && response.hits.total > 0) {
+                            // set the content model data
+                            _self.set('publisher', response.hits.hits[0]._source.publisher);
+                            _self.set('publicationDate', response.hits.hits[0]._source.publicationdate);
+                            _self.set('summary', response.hits.hits[0]._source.summary);
+                            _self.set('title', response.hits.hits[0]._source.title);
+                            _self.set('contentType', 'article');
+                            _self.set('cid', contentId);
+                            _self.set('authorList', response.hits.hits[0]._source.articleMetadata.article.articleinfo.authorgroup.author);
+                            _self.set('doi', contentId);
 
-                   /* NOTE: 02.12.14 - This will change to hit elastic search
-                    * similar to the webinar search below
-                    */
-
-                   // post to portlet to retrieve the content
-                   $.post("${ajaxHandlerContent}", postData)
-                       .done(function(response) {
-                           if(response != undefined && response.csdlresponse != undefined &&
-                              response.csdlresponse.contentlist != undefined) {
-                               /*
-                                * If the data is found, we can set that it is in fact a webinar, otherwise
-                                * the "no content found" view will be displayed
-                                */
-                                _self.set('isArticle', true);
-
-                                var item = response.csdlresponse.contentlist;
-                                var plist = item.packagelist;
-                                var pack = plist['package'];
-
-                                // set the content model data
-                                _self.set('publisher', pack.publisher);
-                                _self.set('publicationDate', pack.publicationdate);
-                                _self.set('summary', item.summary);
-                                _self.set('title', item.title);
-                                _self.set('contentType', 'article');
-                                _self.set('cid', contentId);
-                                _self.set('authorList', item.creatorlist.creator);
-                                _self.set('doi', contentId);
-
-                                // now check the purchase data to see if the user has access
-                                if(userPurchaseData !== undefined && userPurchaseData != '' && userPurchaseData.units !== undefined) {
-                                    // iterate over the article dois that the user currently is subscribed to
-                                    var idx=0;
-                                    for(idx=0;idx<userPurchaseData.units.csdl_article.length;idx++) {
-                                        if(contentId == userPurchaseData.units.csdl_article[idx]) {
-                                            _self.set('hasFullAccess', true);
-                                            break;
-                                        }
+                            // now check the purchase data to see if the user has access
+                            if(userPurchaseData !== undefined && userPurchaseData != '' && userPurchaseData.units !== undefined) {
+                                // iterate over the article dois that the user currently is subscribed to
+                                var idx=0;
+                                for(idx=0;idx<userPurchaseData.units.csdl_article.length;idx++) {
+                                    if(contentId == userPurchaseData.units.csdl_article[idx]) {
+                                        _self.set('hasFullAccess', true);
+                                        break;
                                     }
                                 }
                             }
+                        }
+
+                         // if they are NOT authenticated, remove their full access
+                        <c:if test="${!isAuthenticated}">
+                            _self.set('hasFullAccess', false);
+                        </c:if>
+
+                       // if they have full access, load the article content
+                       if(_self.get('hasFullAccess')) {
+                         _self.send('loadFullArticle', response.hits.hits[0]._source);
+                       } else {
+                           /*
+                            * If the data is found, we can set that it is in fact an article, otherwise
+                            * the "no content found" view will be displayed
+                            */
+                            _self.set('isArticle', true);
                            // the the UI that loading is complete
                            _self.set('isLoading', false);
-                       }).fail(function(error) {
-                            var eMsg = "Content - Error loading the "+ contentType +" content: " + error.message;
-                            Ember.Logger.error(eMsg);
-                            var logData = {};
-                            logData.message = eMsg;
-                            Log.error(logData);
-                            // the the UI that loading is complete
-                            _self.set('isLoading', false);
-                        })
-                       .always(function() {});
+                       }
+                    },
+                    error: function(error) {
+                     var eMsg = "Content - Error loading the "+ contentType +" content: " + error.message;
+                     Ember.Logger.error(eMsg);
+                     var logData = {};
+                     logData.message = eMsg;
+                     Log.error(logData);
+                     // the the UI that loading is complete
+                     _self.set('isLoading', false);
+                 },
+                 dataType: 'json'
+             });
 	        } else if (type=='webinar') { // else we are retrieving webinar data
 	            var _self = this;
 
@@ -365,6 +421,11 @@
                                     }
                                 } // end if
                             } // end if
+
+                            // if they are NOT authenticated, remove their full access
+                            <c:if test="${!isAuthenticated}">
+                                _self.set('hasFullAccess', false);
+                            </c:if>
 
                              // the the UI that loading is complete
                              _self.set('isLoading', false);

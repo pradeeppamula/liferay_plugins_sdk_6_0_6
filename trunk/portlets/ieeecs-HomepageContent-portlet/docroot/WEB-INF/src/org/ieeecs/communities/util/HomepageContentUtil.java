@@ -8,9 +8,8 @@ package org.ieeecs.communities.util;
 
 import org.apache.log4j.Logger;
 
-import java.util.*;
-
 import javax.portlet.PortletPreferences;
+import java.util.Map;
 
 public class HomepageContentUtil {
     static final Logger LOGGER = Logger.getLogger(HomepageContentUtil.class);
@@ -63,5 +62,4 @@ public class HomepageContentUtil {
             LOGGER.error("A problem occurred when putting the portlet preferences on the model.",  e);
 		}
 	}
-	
 }
