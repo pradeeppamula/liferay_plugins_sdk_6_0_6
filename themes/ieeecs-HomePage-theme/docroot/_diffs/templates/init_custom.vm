@@ -23,19 +23,19 @@ for this user.
 
 #if ( $is_signed_in && $isMemberOfGroup )
 
-#set ($roleLocalService = $serviceLocator.findService("com.liferay.portal.service.RoleLocalService"))
-#set ($userGroupRoles = $roleLocalService.getUserGroupRoles( $user_id, $group_id ))
+    #set ($roleLocalService = $serviceLocator.findService("com.liferay.portal.service.RoleLocalService"))
+    #set ($userGroupRoles = $roleLocalService.getUserGroupRoles( $user_id, $group_id ))
 
-#foreach( $userGroupRole in $userGroupRoles )
-#if ( $userGroupRole.getName() == "Community Owner" )
-#set($isCommunityOwner = true)
-#elseif ( $userGroupRole.getName() == "Community Administrator" )
-#set($isCommunityAdministrator = true)
-#elseif ( $userGroupRole.getName() == "Community ControlPanel" )
-#set($isCommunityControlPanel = true)
-#elseif ( $userGroupRole.getName() == "Community Editor" )
-#set($isCommunityEditor = true)
-#end
-#end
+    #foreach( $userGroupRole in $userGroupRoles )
+        #if ( $userGroupRole.getName() == "Community Owner" )
+            #set($isCommunityOwner = true)
+        #elseif ( $userGroupRole.getName() == "Community Administrator" )
+            #set($isCommunityAdministrator = true)
+        #elseif ( $userGroupRole.getName() == "Community ControlPanel" )
+            #set($isCommunityControlPanel = true)
+        #elseif ( $userGroupRole.getName() == "Community Editor" )
+            #set($isCommunityEditor = true)
+    #end
+    #end
 #end
 
