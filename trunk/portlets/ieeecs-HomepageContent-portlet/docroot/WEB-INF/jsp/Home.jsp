@@ -263,7 +263,7 @@
           data.requestType_${id} = 'LOAD_ARTICLE_CONTENT';
           data.contentPath_${id} = _self.getArticleContentPath(abstract);
             // post to portlet to retrieve the  user purchase data
-            $.post("${ajaxHandlerContent}", data)
+            jQuery.post("${ajaxHandlerContent}", data)
                 .done(function(response) {
                    /*
                     * If the data is found, we can set that it is in fact an article, otherwise
@@ -330,7 +330,7 @@
                        }
                 }
                 // POST on the ES REST API endpoint to load the article from Elastic search
-                $.ajax({
+                jQuery.ajax({
                     type: 'post',
                     contentType: 'application/json',
                     url: '${elasticSearchURL}' + '/content/_search',
@@ -404,7 +404,7 @@
                   }
 
                     // POST on the ES REST API endpoint to load the webinar from Elastic search
-                    $.ajax({
+                    jQuery.ajax({
                         type: 'post',
                         contentType: 'application/json',
                         url: '${elasticSearchURL}' + '/content/_search',
