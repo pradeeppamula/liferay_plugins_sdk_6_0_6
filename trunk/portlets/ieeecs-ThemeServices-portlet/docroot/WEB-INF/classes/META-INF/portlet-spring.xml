@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="org.ieeecs.theme.service.MetaTagLocalService" class="org.ieeecs.theme.service.impl.MetaTagLocalServiceImpl" />
+	<bean id="org.ieeecs.theme.service.MetaTagLocalServiceUtil" class="org.ieeecs.theme.service.MetaTagLocalServiceUtil">
+		<property name="service" ref="org.ieeecs.theme.service.MetaTagLocalService" />
+	</bean>
+	<bean id="org.ieeecs.theme.service.MetaTagService" class="org.ieeecs.theme.service.impl.MetaTagServiceImpl" />
+	<bean id="org.ieeecs.theme.service.MetaTagServiceUtil" class="org.ieeecs.theme.service.MetaTagServiceUtil">
+		<property name="service" ref="org.ieeecs.theme.service.MetaTagService" />
+	</bean>
+	<bean id="org.ieeecs.theme.service.ThemeStructureLocalService" class="org.ieeecs.theme.service.impl.ThemeStructureLocalServiceImpl" />
+	<bean id="org.ieeecs.theme.service.ThemeStructureLocalServiceUtil" class="org.ieeecs.theme.service.ThemeStructureLocalServiceUtil">
+		<property name="service" ref="org.ieeecs.theme.service.ThemeStructureLocalService" />
+	</bean>
+	<bean id="org.ieeecs.theme.service.ThemeStructureService" class="org.ieeecs.theme.service.impl.ThemeStructureServiceImpl" />
+	<bean id="org.ieeecs.theme.service.ThemeStructureServiceUtil" class="org.ieeecs.theme.service.ThemeStructureServiceUtil">
+		<property name="service" ref="org.ieeecs.theme.service.ThemeStructureService" />
+	</bean>
+</beans>
