@@ -1,0 +1,11 @@
+#*
+This file allows you to override and define new Velocity variables.
+*#
+
+#set ($metaTagLocalService = $serviceLocator.findService('ieeecs-ThemeServices-portlet', 'org.ieeecs.theme.service.MetaTagLocalService')) 
+#set ($metaTagMap = $metaTagLocalService.getMetaTagData($theme_display.getURLCurrent()))
+#set ($metaTagGeneration = '')
+#set ($metaTagShowInfo = '0')
+
+#set ($themeStructureLocalService = $serviceLocator.findService('ieeecs-ThemeServices-portlet', 'org.ieeecs.theme.service.ThemeStructureLocalService')) 
+#set ($structureMap = $themeStructureLocalService.getThemeStructureSections($community_name, $theme_display.getURLCurrent()))
