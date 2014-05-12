@@ -1,0 +1,24 @@
+{
+    "_id" : ObjectId("536d4e66fd42062662040175"),
+    "url" : "/portal/web/computingnow",
+    "tags" : {
+        "pageTitle" : {
+            "value" : "This is the Page Title for that Thing"
+        },
+        "showInfo" : {
+            "value" : "1"
+        },
+        "tag01" : {
+            "link" : "rel='canonical' href='http://www.computer.org/csdl/mags/co/2013/12/mco2013120024.html'"
+        },
+        "tag02" : {
+            "meta" : "name='citation_test1' content='This iss the content for citation 1'"
+        },
+        "tag03" : {
+            "meta" : "name='citation_test2' content='This iss the content for citation 2'"
+        },
+        "tag04" : {
+            "meta" : "name='citation_test3' content='This iss the content for citation 3'"
+        }
+    }
+}
