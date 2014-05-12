@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+#parse ($init)
+
+<html class="#language("lang.dir")" dir="#language("lang.dir")" lang="$w3c_language_id">
+
+<head>
+
+#foreach( $key in $metaTagMap.keySet() )
+	#if ($key == 'pageTitle')
+		<title>$metaTagMap.get($key).value</title>
+	#elseif ($key == 'showInfo')
+		#if ($metaTagMap.get($key).value == '1')
+			#set ($metaTagShowInfo = '1')
+		#end	
+	#elseif ($key == 'time')	
+		#set ($metaTagGeneration = $metaTagMap.get($key).value)
+	#elseif ($key == 'currentUrl')
+		## Future use	
+	#else		
+		#foreach( $htmlTag in $metaTagMap.get($key).keySet() )
+			<$htmlTag $metaTagMap.get($key).get($htmlTag) />
+		#end
+	#end
+#end
+
+	$theme.include($top_head_include)		
+	$structureMap.get('libraries')
+</head>
+
+<body class="$css_class">
+
+$theme.include($body_top_include)
+
+#if ($is_signed_in)
+	#dockbar()
+#end
+
+$structureMap.get('header')
+
+<div id="wrapper">
+
+	$structureMap.get('navigation')
+	$structureMap.get('preBody')
+
+	<div id="content">
+		#if ($selectable)
+			$theme.include($content_include)
+		#else
+			$portletDisplay.recycle()
+			$portletDisplay.setTitle($the_title)
+			$theme.wrapPortlet("portlet.vm", $content_include)
+		#end
+	</div>
+	
+	$structureMap.get('postBody')
+
+</div>
+
+$structureMap.get('footer')
+$theme.include($body_bottom_include)
+
+<div id="themeDiagnostic" class="themeDiagnostic">.</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+	
+		$("#themeDiagnostic").click(function() {
+	
+			console.log("Theme generated from data in: " + $structureMap.get('showInfo') + " ms.");
+			
+			#if ($metaTagShowInfo == '1')		
+				console.log("Meta Tags List ------");
+				$("meta").each(function(index) {
+					var name = $(this).attr("name");
+					var property = $(this).attr("property");
+					var content = $(this).attr("content");
+					if ( name === undefined && property !== undefined ) {
+						console.log(property + " = " + content );
+					} else if ( name !== undefined && property === undefined ) {
+						console.log(name + " = " + content );
+					} else {
+						console.log("key = " + content );
+					}				
+				});
+				console.log("Meta Tags generated from data in: $metaTagGeneration.");
+			#end			
+			
+		});
+	});
+</script>
+</body>
+
+$theme.include($bottom_include)
+
+</html>
