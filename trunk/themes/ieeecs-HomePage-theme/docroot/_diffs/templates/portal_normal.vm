@@ -91,6 +91,15 @@
             background-color: #428bca;
             border-color: #428bca;
         }
+        .popover {
+            z-index: 999999;
+            background-color: #f1c40f;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .popover.bottom .arrow:after {  border-bottom-color: #f1c40f; }
+        .popover.top .arrow:after {  border-top-color: #f1c40f; }
 
         ## Navbar Styles
         a.login {
@@ -168,6 +177,10 @@
             display: inline-block;
         }
 
+        a#onboarding-help {
+            font-size: 1.5em;
+            color: #f1c40f;
+        }
     </style>
 
     ## JS
