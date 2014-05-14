@@ -2,15 +2,37 @@
 	<ul class="nav navbar-nav">
         ##<li><a href="#">Network</a></li>
 		<li><a class="metrics-capture" href="http://www.computer.org/portal/web/careers">Jobs</a></li>
+        <li><a class="metrics-capture" href="/portal/web/myhome/help">Help</a></li>
         ##<li><a href="#">Interests</a></li>
 	</ul>
 	<ul class="nav navbar-nav pull-right">
 		<li><a class="metrics-capture" href="http://www.computer.org/portal/web/guest/solutioncenter">Premium Solutions</a></li>
         ##<li><a href="#">Upgrade</a></li>
+        <li>
+            <a class="metrics-capture text-center" href="https://www.computer.org">
+                <img src="/ieeecs-HomePage-theme/images/CSLogo.png" border="0" style="width:65%">
+            </a>
+        </li>
 		<li>
             <a class="metrics-capture" href="https://www.ieee.org/index.html">
                 <img src="/ieeecs-HomePage-theme/images/ieee-logo.jpg" border="0">
 		    </a>
         </li>
+        <li>
+            <a id="onboarding-help" href="#">
+                <i class="icon-question"></i>
+            </a>
+        </li>
 	</ul>
 </nav>
+<script type="text/javascript">
+     $(document).ready(function() {
+        window.showOnboarding = (window.showOnboarding == undefined) ? true : window.showOnboarding;
+
+        $('#onboarding-help').on('click', function() {
+            var action = window.showOnboarding ? 'show' : 'hide';
+            $('.onboarding-help:visible').popover(action);
+            window.showOnboarding = !window.showOnboarding;
+        });
+     });
+</script>
