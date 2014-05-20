@@ -84,7 +84,7 @@ public class ThemeStructureLocalServiceImpl extends ThemeStructureLocalServiceBa
 				
 				BasicDBObject queryByCommunity = new BasicDBObject();
 				queryByCommunity.put("community", communityName);
-				queryByCommunity.put("type", "site");
+				queryByCommunity.put("type", "community");
 				
 				List<DBObject> communityStructureList = ThemeServicesUtil.find(mongoClient, databaseName, collectionName, queryByCommunity);
 				
