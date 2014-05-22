@@ -1,0 +1,33 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+}
+
+#ace-ide-container { position: relative; }
+#editor {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+}
+#segment-info { font-size: 20px; line-height:43px;}
+#theme-segments {min-width: 200px;}
+.alert-success, .alert-danger, .alert-warning { display: none; }
+.sub-header-section {
+  padding-bottom: 10px;
+  border-bottom: #2ecc71 2px solid;
+}
+
+/*
+ * Bootstrap overrides
+ */
+.navbar-brand {
+  font-size: 22px;
+}
+.navbar-midnight { background-color: #656D78; border-color: #656D78; }
+.bootstrap-select { margin-bottom: 0px !important;}
