@@ -1,30 +1,26 @@
 <!DOCTYPE html>
-
 #parse ($init)
-
-<html class="#language("lang.dir")" dir="#language("lang.dir")" lang="$w3c_language_id">
-
+<html itemscope itemtype="http://schema.org/Organization" class="#language("lang.dir")" dir="#language("lang.dir")" lang="$w3c_language_id">
 <head>
+    #foreach( $key in $metaTagMap.keySet() )
+        #if ($key == 'pageTitle')
+            <title>$metaTagMap.get($key).value</title>
+        #elseif ($key == 'showInfo')
+            #if ($metaTagMap.get($key).value == '1')
+                #set ($metaTagShowInfo = '1')
+            #end
+        #elseif ($key == 'time')
+            #set ($metaTagGeneration = $metaTagMap.get($key).value)
+        #elseif ($key == 'currentUrl')
+            ## Future use
+        #else
+            #foreach( $htmlTag in $metaTagMap.get($key).keySet() )
+                <$htmlTag $metaTagMap.get($key).get($htmlTag) />
+            #end
+        #end
+    #end
 
-#foreach( $key in $metaTagMap.keySet() )
-	#if ($key == 'pageTitle')
-		<title>$metaTagMap.get($key).value</title>
-	#elseif ($key == 'showInfo')
-		#if ($metaTagMap.get($key).value == '1')
-			#set ($metaTagShowInfo = '1')
-		#end	
-	#elseif ($key == 'time')	
-		#set ($metaTagGeneration = $metaTagMap.get($key).value)
-	#elseif ($key == 'currentUrl')
-		## Future use	
-	#else		
-		#foreach( $htmlTag in $metaTagMap.get($key).keySet() )
-			<$htmlTag $metaTagMap.get($key).get($htmlTag) />
-		#end
-	#end
-#end
-
-	$theme.include($top_head_include)		
+	$theme.include($top_head_include)
 	$structureMap.get('libraries')
 </head>
 
@@ -52,7 +48,7 @@ $structureMap.get('header')
 			$theme.wrapPortlet("portlet.vm", $content_include)
 		#end
 	</div>
-	
+
 	$structureMap.get('postBody')
 
 </div>
@@ -63,12 +59,12 @@ $theme.include($body_bottom_include)
 <div id="themeDiagnostic" class="themeDiagnostic">.</div>
 <script type="text/javascript">
 	$(document).ready(function() {
-	
+
 		$("#themeDiagnostic").click(function() {
-	
+
 			console.log("Theme generated from data in: " + $structureMap.get('showInfo') + " ms.");
-			
-			#if ($metaTagShowInfo == '1')		
+
+			#if ($metaTagShowInfo == '1')
 				console.log("Meta Tags List ------");
 				$("meta").each(function(index) {
 					var name = $(this).attr("name");
@@ -80,16 +76,14 @@ $theme.include($body_bottom_include)
 						console.log(name + " = " + content );
 					} else {
 						console.log("key = " + content );
-					}				
+					}
 				});
 				console.log("Meta Tags generated from data in: $metaTagGeneration.");
-			#end			
-			
+			#end
+
 		});
 	});
 </script>
 </body>
-
 $theme.include($bottom_include)
-
 </html>
