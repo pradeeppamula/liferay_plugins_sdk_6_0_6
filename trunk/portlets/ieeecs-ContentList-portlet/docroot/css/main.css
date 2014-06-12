@@ -1,0 +1,712 @@
+
+/* ---------- Common ---------- */
+
+.clearBoth {
+	clear: both;
+}
+
+.floatLeft {
+	float: left;
+}
+
+.floatRight {
+	float: right;
+}
+
+.supplementTextArea {
+	width: 500px;
+	height: 500px;
+	font: 12px arial,sans-serif;
+	margin: 10px 0 0 0;
+	overflow: auto;	
+}
+
+.supplementConfigCell {
+    float: left;
+    margin: 0;
+    padding: 10px 0 10px 10px;
+    width: 400px;
+}
+
+.containerItemTextArea {
+	width: 95%;
+	font: 12px arial,sans-serif;
+	margin: 10px 0 0 0;
+	overflow: auto;	
+}
+
+.topNavOptions {
+	width: 98%;
+	margin: 0 0 10px 10px;
+}
+
+.topNavOption {
+	float: left;
+	padding: 0 0 0 10px;
+	height: 24px;
+	width: 90%;
+	background-color: #EEEEEE;	
+	border: 1px solid #CCCCCC;	
+}
+
+.configurationOptions {
+	font: 12px arial, helvetica, sans-serif;
+	border: 1px solid #CCCCCC;
+	padding: 0;
+	margin: 2px 0 0 0;
+}
+
+.topNavBackButton {
+	float: right;
+	padding: 4px 5px 0 5px;
+	font: bold 12px arial,sans-serif;
+	cursor: pointer;
+	background-color: #EEEEEE;	
+	border: 1px solid #CCCCCC;
+	height: 20px;
+}
+
+.cornerRadiusCell {
+	float: left; 
+	width: 50%; 
+	margin: 8px 0 8px 10px;
+	padding: 5px 5px 5px 50px;
+}
+
+.cornerRadiusLabel {
+	float: left; 
+	width: 80px; 
+	margin: 2px 0 2px 0;
+	padding: 5px 0 0 0;
+}
+
+.cornerRadiusInput {
+	float: left; 
+	width: 40px; 
+	margin: 2px 0 2px 0;
+}
+
+.showIntroExplanation {
+	font: 12px arial, helvetica, sans-serif;
+	padding: 10px 0 10px 15px;
+	width: 100%;
+	border: 1px solid #CCCCCC;
+	margin: 0 0 10px 10px;		
+}
+
+/* **************************** */
+/*      Navigation Buttons      */
+/* **************************** */
+.navHolder {
+	position: relative;
+	width: 99%;
+	height: 60px;
+	margin: 10px auto;
+	text-align: center;
+	display: none;
+	line-height: 1.0em;
+}
+
+/* **************************** */
+/*        Filter Area           */
+/* **************************** */
+.filterInputContainer {
+	float: right;
+	display: none;	
+}
+.filterInput {
+	margin: 0px 0px 0px 15px;	
+	color: #999999;
+	border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;
+	-moz-border-top-left-radius: 5px 5px;
+	-moz-border-top-right-radius: 5px 5px;		
+	border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	-moz-border-bottom-left-radius: 5px 5px;
+	-moz-border-bottom-right-radius: 5px 5px;	
+}
+
+.filterReset {
+	float: right;
+	font: 10px arial,sans-serif;
+	cursor: pointer;
+	margin: 7px 10px 3px 5px;
+	display: none;	
+}
+
+.filterResultsMessage {
+	position: absolute;
+	top: 40px;
+	right: 0;
+	font: bold 12px arial, helvetica, sans-serif;
+	width: 160px;
+	height: 20px;
+	border: 1px solid #CCCCCC;
+	background-color: #EEEEEE;	
+	padding: 3px 0 0 10px;
+	border-top-left-radius: 5px 5px;
+	-moz-border-top-left-radius: 5px 5px;		
+	border-bottom-left-radius: 5px 5px;
+	-moz-border-bottom-left-radius: 5px 5px;
+	display: none;	
+}
+
+
+/* ---------- Portlet ---------- */
+
+.contentListTitle {
+	margin: 10px 0 20px 10px;	
+	font: 14px arial,sans-serif;
+}
+
+.contentListMode {
+	margin: 0 0 20px 10px;
+	font: 12px arial,sans-serif;	
+}
+
+.contentListInstanceID {
+	margin: 0 0 20px 10px;
+	font: 12px arial,sans-serif;	
+}
+
+.contentListCustomConfigRow {
+	width: 320px;
+	height: 350px;
+	display: none;	
+	padding: 10px 0 0 0;
+	margin: 0 0 0 10px;
+}
+
+.contentListCustomConfigInstructionRow {
+	width: 98%;
+	background-color: #E8E8E8;
+	font: 12px arial,sans-serif;
+	display: none;
+	margin: 0 0 0 10px;
+}
+
+.contentListCustomBlock {
+	position: absolute;
+	width: 95%;
+	height: 300px;	
+	margin: 15px 0 30px 15px;
+}
+
+.contentListCustomConfigCellTitle {
+	float: left;
+	width: 180px;
+	padding: 20px 0 0 10px;
+	background-color: #E8E8E8;
+}
+
+.contentListCustomConfigCellInstructions {
+    float: left;
+    margin: 0;
+    padding: 20px 0 10px 10px;
+    width: 440px;	
+    background-color: #E8E8E8;
+}
+
+
+.addButton {
+	width: 200px;
+	height: 24px;
+	padding: 8px 0 2px 0;
+	margin: 5px 0 0 20px;
+	cursor: pointer;	
+	background-color: #CCCCCC;
+	border: 1px solid #CCCCCC;
+	text-align: center;
+	border-top-left-radius: 5px 5px;
+	-moz-border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;		
+	-moz-border-top-right-radius: 5px 5px;		
+	border-bottom-left-radius: 5px 5px;		
+	-moz-border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	-moz-border-bottom-right-radius: 5px 5px;	
+	font: bold 12px arial,sans-serif;	
+}
+
+.contentListMoreLess {
+	width: 40px;
+	height: 20px;
+	padding: 4px 0 2px 0;
+	margin: -20px 0 0 200px;
+	cursor: pointer;	
+	text-align: right;	
+	font: bold 12px arial,sans-serif;	
+}
+
+.contentListConfigRow {
+	width: 98%;
+	border-top: 1px solid #CCCCCC;
+	background-color: #E8E8E8;
+	font: 12px arial,sans-serif;
+	display: none;
+	margin: 0 0 0 10px;
+}
+
+.contentListConfigRowButtons {
+	width: 98%;
+	border-top: 1px solid #CCCCCC;
+	background-color: #E8E8E8;
+	margin: 0 0 0 10px;
+}
+
+.contentListConfigCellTitle {
+	font: 12px arial,sans-serif;
+	float: left; 
+	width: 180px; 
+	padding: 10px 0 0 10px;	
+}
+
+.contentListSummaryTitle {
+	width: 500px; 
+	padding: 10px 0 10px 10px;	
+}
+
+.contentListSummaryList {
+	width: 95%; 
+	padding: 10px 0 10px 10px;	
+    background-color: #FFFFFF;		
+}
+
+.contentListSummaryListItem { 
+	float: left;
+	width: 80%;
+	paddding: 0 0 10px 0;
+	margin: 0 0 5px 0;
+}
+
+.contentListSummaryListItemRemove {
+	float: right;
+	font: 9px arial,sans-serif;
+	cursor: pointer;
+	width: 40px;
+	text-align: center;
+	margin: 0 10px 0 0;
+}
+
+.contentListConfigCell {
+    background-color: #FFFFFF;
+    float: left;
+    margin: 0;
+    padding: 10px 0 10px 10px;
+    width: 50%;
+    font: 12px arial,sans-serif;	
+}
+
+.contentListConfigTypesCell {
+    background-color: #FFFFFF;
+    float: left;
+    margin: 10px 0 0 10px;
+    padding: 10px 0 10px 10px;
+    width: 90%;	
+    overflow: auto;
+}
+
+.contentListConfigTypesSelection {
+	width: 800px;	
+}
+
+.contentListConfigTypes {
+    background-color: #FFFFFF;
+    float: left;
+    margin: 0;
+    padding: 10px 0 10px 10px;
+    width: 100px;
+}
+
+.contentListConfigVocabularyName {
+	margin: 0 0 10px 5px;
+	font: bold 12px arial,sans-serif;
+}
+
+.contentListConfigDescription {
+	float: left; 
+	width: 10px; 
+	margin: 8px 0 8px 0;
+}
+
+.contentToDisplayLabel {
+	float: left; 
+	width: 80px; 
+	margin: 2px 0 2px 0;
+}
+
+.contentToDisplayCheckbox {
+	float: left; 
+	width: 40px; 
+	margin: 2px 0 2px 0;
+}
+
+.contentListConfigMessage {
+	float: left; 
+	width: 600px; 
+	margin: 10px 0 3px 0; 
+	color: blue; 
+	font: 16px arial,sans-serif;	
+}
+
+.contentListConfigSave {
+	float: right; 
+	width: 50px; 
+	margin: 10px 0 3px 0;
+}
+
+.contentListChannelSelection {
+	overflow-x: hidden; 
+	overflow-y: auto; 
+	height: 200px;
+}
+
+.contentListChannelSelectionBox {
+	float: left;
+	margin: 3px 0 3px 0;
+}
+
+.contentListChannelSelectionLabel {
+	float: left;
+	padding: 3px 0 0 5px;
+}
+
+.paginationTextLabel {
+	float: left; 
+	width: 100px; 
+	margin: 2px 0 2px 0;
+	padding: 5px 0 0 0;
+}
+
+.paginationTextInput {
+	float: left; 
+	width: 140px; 
+	margin: 2px 0 2px 0;
+}
+
+.paginationExampleLabel {
+	float: left; 
+	width: 90px; 
+	margin: 2px 0 2px 0;
+	padding: 5px 0 0 0;
+}
+
+.paginationExampleInput {
+	float: left; 
+	width: 90px; 
+	margin: 2px 0 2px 0;
+}
+
+.paginationDimensionsContainer {
+    background-color: #FFFFFF;
+    float: left;
+    margin: 0;
+    padding: 10px 0 10px 10px;
+    width: 50%;
+}
+
+.paginationDimensionsSettings {
+	float: left; 
+	width: 200px;
+}
+
+.paginationDimensionsExample {
+	float: left; 	
+	padding: 30px 0 0 0;
+}
+
+.numberedDimensionsExample {
+	float: left; 	
+	padding: 30px 0 0 0;
+}
+
+.pageModeLabel {
+	float: left;
+	margin: 10px 5px 0 5px; 
+	display: none;
+}
+
+.pageModeInput {
+	float: left;
+	margin: 5px 0 0 5px;
+	display: none;
+}
+
+.channelBasic,
+.channelAdvanced {
+	width: 100px;
+	height: 24px;
+	background-color: #CCCCCC;
+	border-top-left-radius: 5px 5px;
+	-moz-border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;		
+	-moz-border-top-right-radius: 5px 5px;		
+	border-bottom-left-radius: 5px 5px;		
+	-moz-border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	-moz-border-bottom-right-radius: 5px 5px;	
+	padding: 4px 0 0 0;
+	margin: 8px 5px 8px 5px;
+	text-align: center;
+	cursor: pointer;
+}
+
+
+/* ------------------------------ */
+/* TEMPLATES                      */
+/* ------------------------------ */
+
+.listItemThumbImage {
+	float: left;
+	width: 110px;
+	height: 110px;	
+	margin: 20px 20px 0 10px;
+}
+
+.listItemThumbImage img {
+	width: 100px;
+	height: 100px;	
+}
+
+.listItemSmallThumbImage {
+	float: left;
+	width: 45px;
+	height: 45px;	
+	margin: 15px 10px 0 10px;
+}
+
+.listItemSmallThumbImage img {
+	width: 40px;
+	height: 40px;	
+}
+
+.peerReviewedIcon_LargeRight {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: url("http://www.computer.org/cms/Computer.org/ComputingNow/homepage/blog/icons/CNPeerReviewedIcon-45x46.png") no-repeat;
+	width: 45px;
+	height: 46px;
+}
+
+.peerReviewedIcon_SmallRight {
+	position: absolute;
+	top: 0;
+	right: -15px;
+	background: url("http://www.computer.org/cms/Computer.org/ComputingNow/homepage/blog/icons/CNPeerReviewedIconNoWords-45x46.png") no-repeat;
+	width: 45px;
+	height: 46px;
+}
+
+
+/* ------------------------------ */
+/* Standard - Full Image, Title,  */
+/* Date, Description              */
+/* ------------------------------ */
+
+.standardContentItemBody {
+	float: left;
+	width: 75%;
+	margin: 0 0 10px 0;
+}
+
+.standardContentItemText h1 {
+	font: 16px arial,sans-serif;
+	width: 90%;
+}
+
+.standardContentItemText h1 a {
+	text-decoration: none;
+}
+
+.standardContentItemText h1 span {
+	font: bold 16px arial,sans-serif;
+	color: #000000;
+	margin: 0 5px 0 0;
+}
+
+.standardContentItemText h2 {
+	font: 14px arial,sans-serif;
+}
+
+.standardContentItemText p {
+	font: 12px arial,sans-serif;
+}
+
+.standardContentItemText p span {
+	font: bold 12px arial,sans-serif;
+	color: #555555;
+	margin: 0 5px 0 0;
+}
+
+
+/* ------------------------------ */
+/* Description - Link             */
+/* ------------------------------ */
+
+.descLinkContentItemBody {
+	float: left;
+	width: 90%;
+	margin: 10px 0 10px 0;
+}
+
+.descLinkContentItemText a {
+	font: 12px arial,sans-serif;
+	text-decoration: none;
+}
+
+
+/* ------------------------------ */
+/* Description - Text             */
+/* ------------------------------ */
+
+.descTextContentItemBody {
+	float: left;
+	width: 90%;
+	margin: 10px 0 15px 0;
+}
+
+.descTextContentItemText p {
+	font: 12px arial,sans-serif;
+}
+
+
+/* ------------------------------ */
+/* Minimal 1 - Small Image,       */
+/* Title, Date, Description       */
+/* ------------------------------ */
+
+.minimal1ContentItemBody {
+	float: left;
+	width: 70%;
+	margin: 0 0 10px 0;
+}
+
+.minimal1ContentItemText h1 {
+	font: 14px arial,sans-serif;
+	width: 90%;
+}
+
+.minimal1ContentItemText h1 a {
+	text-decoration: none;
+}
+
+.minimal1ContentItemText h2 {
+	font: 12px arial,sans-serif;
+}
+
+.minimal1ContentItemText p {
+	font: 12px arial,sans-serif;
+}
+
+
+/* ------------------------------ */
+/* Minimal 2 - Title, Date,       */
+/* Description                    */
+/* ------------------------------ */
+
+.minimal2ContentItemBody {
+	float: left;
+	width: 95%;
+	margin: 0 0 10px 0;
+}
+
+.minimal2ContentItemText h1 {
+	font: 14px arial,sans-serif;
+	width: 90%;
+}
+
+.minimal2ContentItemText h1 a {
+	text-decoration: none;
+}
+
+.minimal2ContentItemText h2 {
+	font: 12px arial,sans-serif;
+}
+
+.minimal2ContentItemText p {
+	font: 12px arial,sans-serif;
+}
+
+
+/* ------------------------------ */
+/* Title, Date - Link             */
+/* ------------------------------ */
+
+.titleDateLinkContentItemBody {
+	float: left;
+	width: 90%;
+	margin: 0 0 10px 0;
+}
+
+.titleDateLinkContentItemText h1 {
+	font: 14px arial,sans-serif;
+	width: 90%;
+}
+
+.titleDateLinkContentItemText h1 a {
+	text-decoration: none;
+}
+
+.titleDateLinkContentItemText h2 {
+	font: 12px arial,sans-serif;
+}
+
+
+/* ------------------------------ */
+/* Title - Link                   */
+/* ------------------------------ */
+
+.titleLinkContentItemBody {
+	float: left;
+	width: 90%;
+	margin: 0 0 10px 0;
+}
+
+.titleLinkContentItemText h1 {
+	font: 14px arial,sans-serif;
+	width: 90%;
+}
+
+.titleLinkContentItemText h1 a {
+	text-decoration: none;
+}
+
+
+/* ------------------------------ */
+/* Empty Results                  */
+/* ------------------------------ */
+
+.emptyResultsItemWrapper {
+	position: relative;
+	width: 400px;
+}
+
+.emptyResultsItemBody {
+	float: left;
+	width: 100%;
+	margin: 0 0 10px 0;
+}
+
+.emptyResultsItemText h1 {
+	font: 16px arial,sans-serif;
+	width: 90%;
+}
+
+
+/* ------------------------------ */
+/* Intro Section                  */
+/* ------------------------------ */
+
+.contentListConfigExplanation {
+	font: 12px arial, helvetica, sans-serif;
+	padding: 5px 0 10px 15px;
+	width: 100%;
+	border: 1px solid #CCCCCC;
+	margin: 0 0 10px 10px;	
+}
+
+.contentListConfigExplanation li {
+	margin: 5px 0 5px 0;	
+}

@@ -1,0 +1,6 @@
+<ul>
+<li>After the "initial" database query, the page will continue to pull records from the database, but asynchronously and in "chunks" in the background.</li>
+<li>This "chunk" value will tell the page how many records to pull for each hit to the database.</li>
+<li>When the "chunk" queries all add up to the "total" # of records configured, the asynchronous queries will stop.</li>
+<li>Typical, safe values are between 20 and 500 records.</li>
+</ul>
