@@ -1,0 +1,467 @@
+
+/* ---------- Common ---------- */
+
+.clearBoth {
+	clear: both;
+}
+
+.floatLeft {
+	float: left;
+}
+
+.floatRight {
+	float: right;
+}
+
+.eventHighlighted {
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  /* IE 5-7 */
+  filter: alpha(opacity=80);
+  /* Netscape */
+  -moz-opacity: 0.8;
+  /* Safari 1.x */
+  -khtml-opacity: 0.8;
+  /* Good browsers */
+  opacity: 0.8;
+}
+
+.noResults {
+	font: 14px arial,sans-serif;
+	margin: 30px 0 0 30px;
+}
+
+.listView {
+	display: none;
+	height: 500px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.containerItemTextArea {
+	width: 95%;
+	font: 12px arial,sans-serif;
+	margin: 10px 0 0 0;
+	overflow: auto;	
+}
+
+.communityCalendarMessages {
+	font: bold 12px arial,helvetica,sans-serif;
+	color: blue;
+	line-height: 2;
+	margin: 10px 0 10px 25px;
+	width: 80%;
+}
+
+.communityCalendarModeViews {
+	float: right;
+	margin: 10px 25px 5px 5px;
+}
+
+.communityCalendarModeButtonLeft {
+	float: left;
+	cursor: pointer;	
+	background-color: #EEEEEE;
+	border: 1px solid #DDDDDD;
+	text-align: center;
+	border-top-left-radius: 3px 3px;
+	-moz-border-top-left-radius: 3px 3px;
+	border-top-right-radius: 0 0;		
+	-moz-border-top-right-radius: 0 0;		
+	border-bottom-left-radius: 3px 3px;		
+	-moz-border-bottom-left-radius: 3px 3px;
+	border-bottom-right-radius: 0 0;
+	-moz-border-bottom-right-radius: 0 0;	
+	font: 12px arial,sans-serif;	
+	padding: 4px 13px 4px 13px;
+}
+
+.communityCalendarModeButtonRight {
+	float: left;
+	cursor: pointer;	
+	background-color: #EEEEEE;
+	border: 1px solid #DDDDDD;
+	text-align: center;
+	border-top-left-radius: 0 0;
+	-moz-border-top-left-radius: 0 0;
+	border-top-right-radius: 3px 3px;		
+	-moz-border-top-right-radius: 3px 3px;		
+	border-bottom-left-radius: 0 0;		
+	-moz-border-bottom-left-radius: 0 0;
+	border-bottom-right-radius: 3px 3px;
+	-moz-border-bottom-right-radius: 3px 3px;	
+	font: 12px arial,sans-serif;	
+	padding: 4px 13px 4px 13px;
+}
+
+.headerYear {
+	font: bold 14px arial,sans-serif;
+	margin: 30px 0 10px 20px;
+}
+
+.headerMonth {
+	font: 12px arial,sans-serif;
+	margin: 0 0 10px 40px;
+}
+
+.listItemEntry {
+	font: 12px arial,sans-serif;
+	margin: 0 0 10px 70px;	
+}
+
+.listItemEntryDate {
+	width: 200px;
+	float: left;
+	font: 12px arial,sans-serif;
+}
+
+.listItemEntryTitle {
+	float: left;
+	font: 12px arial,sans-serif;
+	white-space: nowrap;
+    width: 70%;
+	overflow: hidden;
+	text-overflow: ellipsis;    
+}
+
+.listItemEntryTitle a {
+	text-decoration: none;
+}
+
+.topNavOptions {
+	width: 98%;
+	margin: 0 0 10px 10px;
+}
+
+.topNavOption {
+	float: left;
+	padding: 0 0 0 10px;
+	height: 24px;
+	width: 90%;
+	background-color: #EEEEEE;	
+	border: 1px solid #CCCCCC;	
+}
+
+.configurationOptions {
+	font: 12px arial, helvetica, sans-serif;
+	border: 1px solid #CCCCCC;
+}
+
+.topNavBackButton {
+	float: right;
+	padding: 4px 5px 0 5px;
+	font: bold 12px arial,sans-serif;
+	cursor: pointer;
+	background-color: #EEEEEE;	
+	border: 1px solid #CCCCCC;
+	height: 20px;
+}
+
+.cornerRadiusCell {
+	float: left; 
+	width: 50%; 
+	margin: 8px 0 8px 10px;
+	padding: 5px 5px 5px 50px;
+}
+
+.cornerRadiusLabel {
+	float: left; 
+	width: 80px; 
+	margin: 2px 0 2px 0;
+	padding: 5px 0 0 0;
+}
+
+.cornerRadiusInput {
+	float: left; 
+	width: 40px; 
+	margin: 2px 0 2px 0;
+}
+
+.showIntroExplanation {
+	font: 12px arial, helvetica, sans-serif;
+	padding: 10px 0 10px 15px;
+	width: 100%;
+	border: 1px solid #CCCCCC;
+	margin: 0 0 10px 10px;		
+}
+
+/* ---------- Modal ---------- */
+
+.eventInformationModal {
+	display: none;
+	padding: 10px 10px 10px 10px;
+}
+
+.eventInformationTitle {
+	font: bold 14px arial,helvetica,sans-serif;
+	margin: 15px 20px 25px 20px;
+}
+
+.eventInformationDescription {
+	font: 12px arial,helvetica,sans-serif;
+	margin: 5px 20px 20px 20px;
+}
+
+.eventInformationLocation {
+	font: 12px arial,helvetica,sans-serif;
+	margin: 5px 20px 10px 40px;
+}
+
+.eventInformationTimes {
+	font: 12px arial,helvetica,sans-serif;
+	margin: 10px 0 10px 40px;
+}
+
+.eventInformationUrl {
+	margin: 30px 0 5px 40px;
+}
+
+.eventInformationUrl a {
+	font: 12px arial,helvetica,sans-serif;
+	text-decoration: none;
+}
+
+.closeEventHomePageWindow {
+	position: absolute;
+	top: -24px;
+	right: 55px;
+	font: 14px arial,helvetica,sans-serif;
+	color: #000000;
+	border: 1px solid #000000;
+	cursor: pointer;
+	background-color: #FFFFFF;
+	padding: 10px 15px 10px 15px;
+	border-top-left-radius: 5px 5px;
+	-moz-border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;		
+	-moz-border-top-right-radius: 5px 5px;		
+	border-bottom-left-radius: 5px 5px;		
+	-moz-border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	-moz-border-bottom-right-radius: 5px 5px;		
+}
+
+.eventHomePageWindow iframe {
+	width: 100%;
+	height: 100%;
+}
+
+/* ---------- Portlet ---------- */
+
+.communityCalendarTitle {
+	margin: 10px 0 20px 10px;	
+	font: 14px arial,sans-serif;
+}
+
+.communityCalendarMode {
+	margin: 0 0 20px 10px;
+	font: 12px arial,sans-serif;	
+}
+
+.communityCalendarInstanceID {
+	margin: 0 0 20px 10px;
+	font: 12px arial,sans-serif;	
+}
+
+.addButton {
+	width: 200px;
+	height: 24px;
+	padding: 8px 0 2px 0;
+	margin: 5px 0 0 20px;
+	cursor: pointer;	
+	background-color: #CCCCCC;
+	border: 1px solid #CCCCCC;
+	text-align: center;
+	border-top-left-radius: 5px 5px;
+	-moz-border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;		
+	-moz-border-top-right-radius: 5px 5px;		
+	border-bottom-left-radius: 5px 5px;		
+	-moz-border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	-moz-border-bottom-right-radius: 5px 5px;	
+	font: bold 12px arial,sans-serif;	
+}
+
+.communityCalendarMoreLess {
+	width: 40px;
+	height: 20px;
+	padding: 4px 0 2px 0;
+	margin: -22px 0 0 280px;
+	cursor: pointer;	
+	text-align: left;	
+	font: bold 12px arial,sans-serif;	
+}
+
+.communityCalendarConfigRow {
+	width: 98%;
+	border-top: 1px solid #CCCCCC;
+	background-color: #E8E8E8;
+	font: 12px arial,sans-serif;
+	display: none;
+	margin: 0 0 0 10px;
+}
+
+.communityCalendarConfigRowButtons {
+	width: 98%;
+	border-top: 1px solid #CCCCCC;
+	background-color: #E8E8E8;
+	margin: 0 0 0 10px;
+}
+
+.communityCalendarConfigCellTitle {
+	font: 12px arial,sans-serif;
+	float: left; 
+	width: 180px; 
+	padding: 10px 0 0 10px;	
+}
+
+.communityCalendarSummaryTitle {
+	width: 500px; 
+	padding: 10px 0 10px 10px;	
+}
+
+.communityCalendarSummaryList {
+	width: 95%; 
+	padding: 10px 0 10px 10px;	
+    background-color: #FFFFFF;		
+}
+
+.communityCalendarSummaryListItem { 
+	float: left;
+	width: 500px;
+	paddding: 0 0 10px 0;
+}
+
+.communityCalendarSummaryListItem div {
+	margin: 5px 0 10px 15px;
+}
+
+.communityCalendarSummaryListItemRemove {
+	float: right;
+	font: 9px arial,sans-serif;
+	cursor: pointer;
+	width: 40px;
+	text-align: center;
+	margin: 0 10px 0 0;
+}
+
+.communityCalendarConfigCell {
+    background-color: #FFFFFF;
+    float: left;
+    margin: 0;
+    padding: 10px 0 10px 10px;
+    width: 50%;
+    font: 12px arial,sans-serif;	
+}
+
+.communityCalendarConfigTypesCell {
+    background-color: #FFFFFF;
+    float: left;
+    margin: 0;
+    padding: 10px 0 10px 10px;
+    width: 50%;	
+    overflow: auto;
+}
+
+.communityCalendarConfigTypesSelection {
+	width: 90%;	
+}
+
+.communityCalendarConfigTypes {
+    background-color: #FFFFFF;
+    float: left;
+    margin: 0;
+    padding: 10px 0 10px 10px;
+    width: 50%;
+}
+
+.communityCalendarConfigVocabularyName {
+	margin: 0 0 10px 5px;
+	font: bold 12px arial,sans-serif;
+}
+
+.communityCalendarConfigMessage {
+	float: left; 
+	width: 600px; 
+	margin: 10px 0 3px 0; 
+	color: blue; 
+	font: 16px arial,sans-serif;	
+}
+
+.communityCalendarConfigSave {
+	float: right; 
+	width: 50px; 
+	margin: 10px 0 3px 0;
+}
+
+.communityCalendarChannelSelection {
+	overflow-x: hidden; 
+	overflow-y: auto; 
+	height: 200px;
+}
+
+.communityCalendarChannelSelectionBox {
+	float: left;
+	margin: 3px 0 3px 0;
+}
+
+.communityCalendarChannelSelectionLabel {
+	float: left;
+	padding: 3px 0 0 5px;
+}
+
+.eventCSSTextArea {
+	width: 95%;
+	font: 12px arial,sans-serif;
+	margin: 10px 0 0 0;
+	overflow: auto;	
+}
+
+
+/* ---------- Filter Area ---------- */
+
+.filterInputContainer {
+	float: right;
+	display: none;	
+}
+.filterInput {
+	margin: 0px 0px 0px 15px;	
+	color: #999999;
+	border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;
+	-moz-border-top-left-radius: 5px 5px;
+	-moz-border-top-right-radius: 5px 5px;		
+	border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	-moz-border-bottom-left-radius: 5px 5px;
+	-moz-border-bottom-right-radius: 5px 5px;	
+}
+
+.filterReset {
+	float: right;
+	font: 10px arial,sans-serif;
+	cursor: pointer;
+	margin: 7px 15px 3px 5px;
+	display: none;	
+}
+
+
+/* ---------- Intro Area ---------- */
+
+.configCalendarExplanationRow {
+	width: 95%;
+	display: none;		
+}
+
+.communityCalendarConfigExplanation {
+	font: 12px arial, helvetica, sans-serif;
+	padding: 5px 0 10px 15px;
+	width: 100%;
+	border: 1px solid #CCCCCC;
+	margin: 0 0 10px 10px;	
+}
+
+.communityCalendarConfigExplanation li {
+	margin: 5px 0 5px 0;	
+}
