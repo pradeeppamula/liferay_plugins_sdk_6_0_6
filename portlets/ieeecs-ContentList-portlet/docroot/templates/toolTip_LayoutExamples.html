@@ -1,0 +1,104 @@
+<b>Example #1</b>:
+<br/>
+<pre>
+.clearBoth {
+	clear: both;
+}
+.contentTitle {
+	font: 14px arial,sans-serif;
+	margin: 20px 0 10px 10px;
+}
+.containerDIV {
+	font: 12px arial,sans-serif;
+}
+.contentInfo {
+	float: left; 
+	width: 300px; 
+	margin: 0 0 0 20px;
+}
+.contentInfoItem {
+	margin: 2px 0 2px 0;
+}
+.contentInfoButtonContainer {
+	float: right; 
+	width: 200px; 
+	margin: 0 20px 0 0;
+}
+.contentInfoBuyButton {
+	padding: 12px 5px 3px 5px; 
+	border: 1px solid DarkBlue; 
+	background-color: DarkBlue; 
+	cursor: pointer; 
+	width: 150px; 
+	height: 22px; 
+	text-align: center; 
+	border-top-left-radius: 5px 5px; 
+	-moz-border-top-left-radius: 5px 5px; 
+	border-top-right-radius: 5px 5px; 
+	-moz-border-top-right-radius: 5px 5px; 
+	border-bottom-left-radius: 5px 5px; 
+	-moz-border-bottom-left-radius: 5px 5px; 
+	border-bottom-right-radius: 5px 5px; 
+	-moz-border-bottom-right-radius: 5px 5px;
+}
+.contentInfoBuyLink {
+	text-decoration: none; 
+	color: #EEEEEE;
+}
+
+&lt;div class="containerDIV"&gt;
+	&lt;div class="contentTitle"&gt;[%=title%]&lt;/div&gt;
+	&lt;div class="contentInfo"&gt;
+		&lt;div class="contentInfoItem"&gt;Type: [%=type%]&lt;/div&gt;
+		&lt;div class="contentInfoItem"&gt;Created On: [%=dateTime%]&lt;/div&gt;	
+	&lt;/div&gt;
+	&lt;div class="contentInfoButtonContainer"&gt;
+		&lt;div class="contentInfoBuyButton"&gt;
+			&lt;a href="[%=url%]" target="_blank" class="contentInfoBuyLink"&gt;Buy&lt;/a&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;	
+	&lt;div class="clearBoth"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<br/>
+<br/>
+<b>Example #2</b>:
+<br/>
+<pre>
+.clearBoth {
+    clear: both;
+}
+.contentTitle {
+	font: 14px arial,sans-serif;
+	margin: 20px 0 10px 10px;
+}
+.containerDIV {
+	font: 12px arial,sans-serif;
+}
+.contentInfo {
+	float: left; 
+	width: 300px; 
+	margin: 0 0 0 20px;
+}
+.contentInfoItem {
+	margin: 2px 0 2px 0;
+}
+.contentImage {
+	float: right;
+	height: 40px;
+	width: 40px;
+    margin: 0 0 20px 0;
+}
+
+&lt;div class="containerDIV"&gt;
+    &lt;div class="contentTitle"&gt;[%=title%]&lt;/div&gt;
+	&lt;div class="contentInfo"&gt;
+		&lt;div class="contentInfoItem"&gt;Type: [%=type%]&lt;/div&gt;
+		&lt;div class="contentInfoItem"&gt;Created On: [%=dateTime%]&lt;/div&gt;	
+	&lt;/div&gt;
+	&lt;div class="contentImage"&gt;
+		&lt;a href="[%=url%]" target="[%=target%]"&gt;&lt;img src="[%=imagePath%]"/&gt;&lt;/a&gt;
+	&lt;/div&gt;
+	&lt;div class="clearBoth"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
