@@ -133,7 +133,7 @@
 	visibility: hidden;
 }
 
-.aui-portal-layout-drag-target-indicator  {
+.aui-portal-layout-drag-target-indicator {
 	margin: 2px 0;
 }
 
@@ -192,7 +192,7 @@
 
 /* ---------- Tag cloud and tag list ---------- */
 
-.tag-cloud, .tag-list {
+.tag-items {
 	list-style: none;
 	margin: 0 1em 0 0;
 	padding: 0 1em 0.5em 1em;
@@ -203,13 +203,18 @@
 	line-height: 2.5em;
 }
 
-.tag-cloud li, .tag-list li {
+.tag-selected {
+	color: #000;
+	text-decoration: none;
+}
+
+.tag-items li {
 	display: inline;
 	float: left;
 	margin: 0 1em 0 0;
 }
 
-.tag-cloud a, .tag-list a {
+.tag-items a {
 	white-space: nowrap;
 }
 
@@ -415,20 +420,20 @@
 	border-bottom-width: 0;
 }
 
-.aui-menu-content li a, .lfr-menu-list ul li a {
+.aui-menu-content li a, .lfr-menu-list ul li .taglib-icon {
 	color: #2C2F34;
 	display: block;
 	padding: 4px 5px;
 	text-decoration: none;
 }
 
-.aui-menu-content li a.aui-focus, .lfr-menu-list ul a.aui-focus, .lfr-menu-expanded li a:focus  {
+.aui-menu-content li a.aui-focus, .lfr-menu-list ul .taglib-icon.aui-focus, .lfr-menu-expanded li a:focus {
 	background-color: #5B677D;
 	color: #FFF;
 	text-shadow: -1px -1px #2C2F34;
 }
 
-.aui-menu-content a, .lfr-menu-list li a, .lfr-actions .lfr-trigger, .lfr-actions .lfr-trigger strong {
+.aui-menu-content a, .lfr-menu-list li .taglib-icon, .lfr-actions .lfr-trigger, .lfr-actions .lfr-trigger strong {
 	font-weight: bold;
 	text-shadow: 1px 1px #FFF;
 }
