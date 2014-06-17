@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 #parse ($init)
-<html class="#language("lang.dir")" dir="#language("lang.dir")" lang="$w3c_language_id">
+<html itemscope itemtype="http://schema.org/Article" class="#language("lang.dir")" dir="#language("lang.dir")" lang="$w3c_language_id">
 <head>
 	<meta charset="utf-8">
-    <title>$the_title - $company_name</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    ## Title - keep less than 70 chars for better Google placement
+    <title>MyHome | $the_title</title>
+    ## Standard Meta Tags
+    <meta name="keywords" content="webinar, digital library, computer society digital library, IEEE computer society digital library, ieee digital library subscription">
+    ## Description - keep less than 155 chars for better Google placement
+    <meta name="description" content="Discover content in the technical subjects that you care about.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="author" content="Bennie Kingwood">
+
+    ## Schema.org markup for Google+
+    <meta itemprop="name" content="MyHome | $the_title">
+    <meta itemprop="description" content="Discover content in the technical subjects that you care about.">
+    <meta itemprop="image" content="http://conferences.computer.org/icebe/2013/images/ICS_black_stacked.gif">
+
+    ## Facebook Open Graph Meta Tags
+    <meta property="og:title" content="MyHome | IEEE Computer Society">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://www.computer.org/portal/web/myhome/splash">
+    <meta property="og:site_name" content="MyHome | IEEE Computer Society">
+    <meta property="og:description" content="Discover content in the technical subjects that you care about.">
+    <meta property=”og:image” content=”http://conferences.computer.org/icebe/2013/images/ICS_black_stacked.gif”/>
+    ## TODO- We need a Facebook Page for MyHome
+    <meta property="fb:app_id" content="">
 
 	## This is required by Liferay, where they import all their junk.
 	$theme.include($top_head_include)
 
     ## CSS
-    <link rel="stylesheet" href="/ieeecs-HomePage-theme/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/ieeecs-HomePage-theme/css/font-awesome.min.css">
-    <!--[if IE 7]>
-    <link rel="stylesheet" href="/ieeecs-HomePage-theme/css/font-awesome-ie7.min.css">
-    <![endif]-->
-
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
       html,
       body {
@@ -40,185 +56,193 @@
   		margin-top: 85px;
       }
 
-      ## Lastly, apply responsive CSS fixes as necessary
-      @media (max-width: 767px) {
-        #footer {
-          margin-left: -20px;
-          margin-right: -20px;
-          padding-left: 20px;
-          padding-right: 20px;
+        ## Lastly, apply mobile responsive CSS fixes as necessary
+        @media (max-width: 767px) {
+            #footer {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            ## THIS IS NEEDED FOR MOBILE TO FORCE ONE COLUMN LAYOUT
+            #column-1, #column-2 { width: 100% !important; }
+            .portlet-column {
+                display: block;
+            }
+            .inline-edit { display: none; }
+            .navbar-icon-dropdown { display: none !important;}
         }
-      }
 
-      ## REMOVE BOOTSTRAP GUTTER PADDING
-      [class*='col-'] { padding-left: 0; padding-right: 0; }
-
-
-        ## NAVBAR STYLES MOVE TO CUSTOM.css
+        ## Bootstrap  overrides
+        [class*='col-'] { padding-left: 0; padding-right: 0; }
         body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
-        margin-right: 0px;
+            margin-right: 0px;
         }
         .modal-backdrop {
-        z-index: 1029;
+            z-index: 1029;
         }
 
         .square-close {
             padding: 7px !important;
         }
 
-        em { font-weight: bold; }
-        .portlet-borderless-container { min-height: 0 !important;}
-
-      ## SEARCH RELATED STYLES TODO: MOVE TO CUSTOM.CSS
-        #myhome-search-container .search-results {
-            background-color: #fff;
-            display: none;
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
-            -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
-            box-shadow: 0 1px 2px rgba(0,0,0,0.5);
-            position: absolute;
-            -webkit-border-radius: 3px;
-            -moz-border-radius: 3px;
-            -ms-border-radius: 3px;
-            -o-border-radius: 3px;
-            border-radius: 3px;
-            text-align: left;
-            position:absolute;
-            top:42px;
-            left: 24%;
-        }
-
-        #myhome-search-container .search-results ul {
-            background-color: #fff;
-            display: block;
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            -webkit-border-radius: 3px;
-            -moz-border-radius: 3px;
-            -ms-border-radius: 3px;
-            -o-border-radius: 3px;
-            border-radius: 3px;
-            text-align: left;
-        }
-
-
-        #myhome-search-container .search-results ul > li {
-            border-top: 1px solid #e5e5e5;
-            border-bottom: 1px solid #fff;
-            cursor: pointer;
-            padding: 10px 8px;
-            font-size: 13px;
-            list-style-type: none;
-            background-image: none;
-            margin: 0;
-        }
-        #myhome-search-container .search-results ul li:last-of-type {
-            -webkit-border-radius: 0 0 3px 3px;
-            -moz-border-radius: 0 0 3px 3px;
-            -ms-border-radius: 0 0 3px 3px;
-            -o-border-radius: 0 0 3px 3px;
-            border-radius: 0 0 3px 3px;
-        }
-        #myhome-search-container .search-results ul li:first-of-type {
-            border-top: 1px solid #fff;
-            -webkit-border-radius: 3px 3px 0 0;
-            -moz-border-radius: 3px 3px 0 0;
-            -ms-border-radius: 3px 3px 0 0;
-            -o-border-radius: 3px 3px 0 0;
-            border-radius: 3px 3px 0 0;
-        }
-        #myhome-search-container .search-results ul li:hover {
-            background-color: #428bca;
-            border-top: 1px solid #357ebd;
-            border-bottom: 1px solid #357ebd;
-            -webkit-box-shadow: 0 1px 0 #2F73AD inset;
-        }
-        #myhome-search-container .search-results ul li:hover p.title {
-            color: #ffffff;
-            font-weight: bold;
-        }
-        #myhome-search-container .search-results li:hover p.summary {
-            color: #ffffff;
-            font-size: 11px;
-        }
-        #myhome-search-container .search-results ul li p.title {
-            color: #004d85;
-            font-weight: bold;
-        }
-        #myhome-search-container .search-results li > p > em {
-            color: #000000;
-            font-style: normal;
-        }
-        #myhome-search-container .search-results li p.summary {
-            color: #999;
-            font-size: 11px;
-        }
-
-        .advanced-result-count-container {
-            display:none;
-            border-bottom: 1px solid #f1f1f1;
-            margin: 0 auto 10px;
-            padding: 0 15px;
-            text-transform: uppercase;
-        }
-
-        .advanced-search-filters-container {
-            background-color: #D1D1D1;
-            min-height: 110px;
-            padding: 10px 15px;
-        }
-
-        .advanced-search-results {
-            margin: 0 auto;
-            font-size: 12px;
-            padding: 0 15px;
-        }
-        .advanced-search-result {
-            border-bottom: 1px solid #f1f1f1;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-            overflow: hidden;
-        }
-
-        .advanced-search-result span {
-            float:right;
-        }
-
-        .advanced-search-pagination {
-            text-align: center;
-        }
-
-        .advanced-search-pagination > .pagination li a.active {
-            color: #ffffff;
-            cursor: default;
+        .btn-primary {
+            color: #fff;
             background-color: #428bca;
             border-color: #428bca;
         }
-
-        .article { background-color: #660000;  }
-        .webinar { background-color: #003366; }
-        .readynote { background-color: #66ccff; }
-        .essentialset { background-color: #CC6600; }
-
-        #enable-filters-link { display: none; }
-        .filters-link-container {margin-top:10px;}
-
-        @media (min-width: 768px) {
-            .advanced-search-modal {
-                width: 800px !important;
-            }
+        .popover {
+            z-index: 999999;
+            background-color: #f1c40f;
+            font-size: 0.9em;
+            font-weight: 600;
         }
 
+        .popover.bottom .arrow:after {  border-bottom-color: #f1c40f; }
+        .popover.top .arrow:after {  border-top-color: #f1c40f; }
+
+        ## Navbar Styles
+        a.login {
+            color: #ffffff !important;
+        }
+
+        a.login:hover, a.login:focus {
+            background-color: #428bca !important;
+        }
+
+        .navbar .nav > li > a:hover, .navbar .nav > li > a:focus {
+            background-color: #232527;
+        }
+        .navbar-header {
+            background-color: #232527;
+        }
+        .navbar-myhome {
+            background-color: rgba(70, 70, 70, 0.95)!important;
+            border: 0px solid transparent !important;
+        }
+        .navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
+            background-color: #232527;
+            color: #FFFFFF;
+        }
+        .navbar-myhome-subnav {
+            border: 0px solid transparent !important;
+            top: 50px !important;
+            min-height: 30px !important;
+            height: 30px !important;
+            z-index: 1029 !important;
+            background-color: rgba(44, 44, 44, 0.95)!important;
+        }
+        .navbar-myhome-subnav .nav>li>a {
+            position: relative;
+            display: block;
+            padding: 5px 15px;
+            text-transform: uppercase;
+        }
+        .navbar-myhome-subnav .navbar-nav>li>a {
+            padding-top: 0px;
+            padding-bottom: 0px;
+            line-height: 30px;
+        }
+        .profile-img-container {
+            padding: 4px;
+        }
+        .profile-img-small {
+            border-radius: 17px;
+            -webkit-border-radius: 17px;
+            -moz-border-radius: 17px;
+            width: 34px;
+            height: 34px;
+        }
+        .navbar-profile-dropdown {
+            padding-top: 8px !important;
+            padding-bottom: 8px !important;
+        }
+        .navbar-icon-dropdown {
+            font-size: 19px;
+        }
+        .advanced-search { line-height: 50px; }
+
+        .toggle-controls a > .control-off {
+            display: none;
+        }
+
+        .toggle-controls a > .control-on {
+            display: inline-block;
+        }
+        .controls-hidden .toggle-controls a > .control-on {
+            display: none;
+        }
+
+        .controls-hidden .toggle-controls a > .control-off {
+            display: inline-block;
+        }
+
+        a#onboarding-help {
+            font-size: 1.5em;
+            color: #f1c40f;
+        }
     </style>
 
-    ## HTML5 shim, for IE6-8 support of HTML5 elements
+    ## JS
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+    ## CSS HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
     <!--[if lt IE 9]>
-    	<script type="text/javascript" src="/ieeecs-HomePage-theme/js/html5shiv.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>
     <![endif]-->
+
+    <script type="text/javascript" src="/ieeecs-HomePage-theme/js/bowser.min.js"></script>
+    <script type="text/javascript">
+        #*
+         if the browser fails of the following conditions,
+         forward to the browser download page:
+         1. Opera browser
+         2. Chrome < 11
+         3. Firefox < 6
+         4. IE < 9
+        *#
+        if ((bowser.msie && bowser.version < 9)||
+            (bowser.opera)||
+            (bowser.mozilla && bowser.version < 6)||
+            (bowser.chrome && bowser.version < 11)) {
+            window.location = '/portal/web/myhome/browser';
+        }
+        // make sure console is available
+        if (!window.console) window.console = {};
+        if (!window.console.log) window.console.log = function () {};
+        if (!window.console.warn) window.console.warn = function () {};
+        if (!window.console.error) window.console.error = function () {};
+    </script>
+
+    ## IF THE USER IS NOT SIGNED IN CHECK THE PAGE AND FORWARD TO SPLASH IF NECESSARY
+    #if (!$is_signed_in)
+    <script type="text/javascript">
+        // first check to see if it is a login error, if not, then we can continue
+        // additional checks.  Reason we do this is that login errors use the
+        // homepage theme.  We will not redirect the users back to the splash page in the
+        // case of login errors.
+        var queryString = document.URL.split('?');
+        var loginError = false;
+        if (queryString.length > 1) {
+            queryString = queryString[queryString.length-1];
+            loginError = (queryString.indexOf("_58_struts_action=%2Flogin%2Flogin") != -1);
+        }
+
+        var pathArray = window.location.pathname.split( '/' );
+        var pageName = pathArray[pathArray.length-1];
+        if(!loginError && pageName != "myhome" && (pageName.indexOf("suggested-content") != -1 ||
+           pageName.indexOf("home") != -1)) {
+           window.location = '/portal/web/myhome/splash';
+        }
+        // just in case the url ends with /suggested-content/type?querystring
+        var pageName = pathArray[pathArray.length-2];
+        if(!loginError && pageName != "myhome" && (pageName.indexOf("suggested-content") != -1 ||
+            pageName.indexOf("home") != -1)) {
+            window.location = '/portal/web/myhome/splash';
+        }
+    </script>
+    #end
 
     ## Fav and touch icons
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
@@ -229,11 +253,10 @@
 	<link rel="icon" href="/ieeecs-HomePage-theme/images/favicon.ico">
 	
 	## Required JS Files
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    ## flowplayer javascript component
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="/ieeecs-HomePage-theme/js/flowplayer.min.js"></script>
-	<script type="text/javascript" src="/ieeecs-HomePage-theme/js/handlebars-1.0.0.js"></script>
-    <script type="text/javascript" src="/ieeecs-HomePage-theme/js/ember-1.0.0.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ember.js/1.0.0/ember.min.js"></script>
 	<script type="text/javascript" src="/ieeecs-HomePage-theme/js/dockbar.customizable.js"></script>
 </head>
 <body>
@@ -251,7 +274,7 @@
 					#parse ("$full_templates_path/navigation.vm") 
 				#end
 			</header>
-			<div id="content" class="row-fluid">
+			<div id="content" class="row">
 				#if ($selectable)
 					$theme.include($content_include)
 				#else
@@ -269,22 +292,46 @@
 	## Le javascript
 	##==================================================
 	## Placed at the end of the document so the pages load faster
-	<script type="text/javascript" src="/ieeecs-HomePage-theme/js/bootstrap.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/ieeecs-HomePage-theme/js/infinity.min.js"></script>
-    <script type="text/javascript" src="/ieeecs-HomePage-theme/js/bootstrap-datepicker.js"></script>
-    <script type="text/javascript" src="/ieeecs-HomePage-theme/js/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+    <script type="text/javascript" src="/ieeecs-HomePage-theme/js/metrics-capture.js"></script>
+    <script type="text/javascript" src="/ieeecs-HomePage-theme/js/logger.js"></script>
     ## Javascript that is needed for the search bar.  It had to be placed here because the javascript is not recognized after the velocity parser parses dockbar.vm.
     <script type="text/javascript">
         jQuery( document ).ready(function() {
-            jQuery('#myhome-search-input').on("focus", function() {
-                // show the search results bar if there is text there
-                if(jQuery('#myhome-search-input').val().trim() != '') {
-                    jQuery('#myhome-search-container .search-results').show();
-                }
-            });
-            jQuery('#myhome-search-input').on("focusout", function() {
-                jQuery('#myhome-search-container .search-results').hide();
-            });
+
+          // Initialize the Metrics SDK then capture any metrics data
+          var hostname = document.location.hostname || '127.0.0.1';
+          Metrics.init({debug:true,url:'http://'+hostname+':5557'});
+          var captureData = {};
+          captureData.url = document.URL;
+          captureData.userId = $user_id;
+          Metrics.capture("PageView", captureData);
+
+
+          // Initialize the Logger SDK
+          Log.init({debug:true,url:'http://'+hostname+':5556/services/logger/'});
+
+        $("a.metrics-capture").on("click", function() {
+           var captureData = {};
+           captureData.url = document.URL;
+           captureData.link = this.href;
+           Metrics.capture("ExternalLinkClick", captureData);
+        });
+
+          // NOTE: 11.25.13 Keeping typeahead results out until future release.
+          //  jQuery('#myhome-search-input').on("focus", function() {
+          // show the search results bar if there is text there
+          //      if(jQuery('#myhome-search-input').val().trim() != '') {
+          //          jQuery('#myhome-search-container .search-results').show();
+          //      }
+          //  });
+          //   jQuery('#myhome-search-input').on("focusout", function() {
+          //      jQuery('#myhome-search-container .search-results').hide();
+          //  });
             jQuery('.datepicker').datepicker({
                 format: 'yyyy-mm-dd',
                 autoclose: true,

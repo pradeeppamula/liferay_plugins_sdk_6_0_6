@@ -1,19 +1,43 @@
 <!DOCTYPE html>
 #parse ($init)
-<html class="#language("lang.dir")" dir="#language("lang.dir")" lang="$w3c_language_id">
+<html itemscope itemtype="http://schema.org/Organization" class="#language("lang.dir")" dir="#language("lang.dir")" lang="$w3c_language_id">
 <head>
 	<meta charset="utf-8">
+    ## Title - keep less than 70 chars for better Google placement
     <title>$the_title | $company_name</title>
+    ## Standard Meta Tags
     <meta name="keywords" content="webinar, digital library, computer society digital library, IEEE computer society digital library, ieee digital library subscription">
+    ## Description - keep lesss than 155 chars for better Google placement
     <meta name="description" content="Discover content in the technical subjects that you care about.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="author" content="Bennie Kingwood">
+
+    ## Schema.org markup for Google+
+    <meta itemprop="name" content="$the_title | $company_name">
+    <meta itemprop="description" content="Discover content in the technical subjects that you care about.">
+    <meta itemprop="image" content="http://conferences.computer.org/icebe/2013/images/ICS_black_stacked.gif">
+
+    ## Facebook Open Graph Meta Tags
     <meta property="og:title" content="MyHome">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="http://www.computer.org/portal/web/myhome/home">
+    <meta property="og:url" content="http://myhome.computer.org/portal/web/myhome/splash">
     <meta property="og:site_name" content="MyHome">
     <meta property="og:description" content="Discover content in the technical subjects that you care about.">
+    <meta property=”og:image” content=”http://conferences.computer.org/icebe/2013/images/ICS_black_stacked.gif”/>
+    ## TODO- We need a Facebook Page for MyHome
+    <meta property="fb:app_id" content="">
+
+    ## Twitter Meta Cards
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@ComputerSociety">
+    <meta name="twitter:title" content="$the_title | $company_name">
+    ## Twitter description must be less than 200 characters
+    <meta name="twitter:description" content="Discover content in the technical subjects that you care about.">
+    <meta name="twitter:creator" content="@ComputerSociety">
+    ## Twitter Summary card images must be at least 200x200px
+    <meta name="twitter:image:src" content="http://conferences.computer.org/icebe/2013/images/ICS_black_stacked.gif">
+    <meta name="twitter:domain" content="Computer.org">
 
 	## This is required by Liferay, where they import all their junk.
 	$theme.include($top_head_include)
@@ -107,11 +131,11 @@
     }
 
     ::selection {
-        background: #F85D5D; /* Safari */
+        background: #232527; /* Safari */
         color: #FFFFFF;
     }
     ::-moz-selection {
-        background: #F85D5D; /* Firefox */
+        background: #232527; /* Firefox */
         color: #FFFFFF;
     }
 
@@ -120,6 +144,12 @@
     }
 
     ## Button Styles
+    .btn-primary {
+        color: #fff;
+        background-color: #428bca;
+        border-color: #428bca;
+    }
+
     .btn-grey {
         letter-spacing: 2px;
         font-size: 13px;
@@ -146,10 +176,9 @@
         transition: all 0.35s ease 0s;
     }
 
-
-
+    #########################
     ## Navbar Styles
-
+    #########################
     .navbar-myhome {
         background-color: rgba(70, 70, 70, 0.95)!important;
         border: 0px solid transparent !important;
@@ -185,7 +214,9 @@
         background-color: #232527;
     }
 
+    #########################
     ## Home Styles
+    #########################
     #home {
         background: rgba(44, 62, 80,0.60);
         height: 1000px;
@@ -211,18 +242,43 @@
 
     .fadeOnLoad { display: none;}
 
-    ## Webinars Styles
-    #webinars {
+    ul.social-share-list {list-style: none;}
+    ul.social-share-list li {
+        margin-bottom: 5px !important;
+    }
+
+
+    #########################
+    ## Articles Styles
+    #########################
+    #articles {
         background-color: #004d85;
         padding: 100px 0px;
     }
+
+    img.articles {
+        width: 160px;
+        height: 160px;
+    }
+
+    #########################
+    ## Webinars Styles
+    #########################
+    #webinars {
+        background-color: #16a085;
+        padding: 100px 0px;
+    }
+
+    #webinars p { color: #ffffff;}
 
     img.webinars {
         width: 160px;
         height: 160px;
     }
 
+    #########################
     ## Get Started Styles
+    #########################
     #get-started {
         background: #232527;
         padding: 30px 0px;
@@ -236,7 +292,9 @@
         line-height: 53px;
     }
 
+    #########################
     ## Contact Styles
+    #########################
     #contact {
         padding: 0px 0px 130px 0px;
         background: #ecf0f1;
@@ -276,7 +334,9 @@
         text-decoration: none;
     }
 
+    #########################
     ## Footer Styles
+    #########################
     footer {
         padding: 40px 0px 130px 0px;
         background: #FFFFFF;
@@ -312,7 +372,9 @@
         text-decoration: none;
     }
 
+    #########################
     ## Mobile Styles
+    #########################
     @media (max-width: 768px) {
         .hero-text {
             padding-top: 30%;
@@ -380,6 +442,13 @@
     </style>
 
     ## JS
+    <script type="text/javascript">
+        var pathArray = window.location.pathname.split( '/' );
+        var pageName = pathArray[pathArray.length-1];
+        if(pageName != "splash") {
+           window.location = '/portal/web/myhome/splash';
+        }
+    </script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 
     ## CSS HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
@@ -389,13 +458,23 @@
     <![endif]-->
 
     ## CSS Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="#">
+    <link rel="apple-touch-icon-precomposed" href="#">
+    <link rel="shortcut icon" href="/ieeecs-HomePageSplash-theme/images/favicon.ico">
+    <link rel="icon" href="/ieeecs-HomePageSplash-theme/images/favicon.ico">
 </head>
 <body data-spy="scroll" data-target=".navbar">
+    ## Facebook Javascript SDK
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
     ## Nav Bar
     <div class="navbar navbar-inverse navbar-fixed-top navbar-myhome animated fadeInDownBig"  role="navigation">
         <div class="navbar-header">
@@ -411,6 +490,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a class="scroll" href="#home">Home</a></li>
+                <li><a class="scroll" href="#articles">Articles</a></li>
                 <li><a class="scroll" href="#webinars">Webinars</a></li>
                 <li><a class="scroll" href="#get-started">Get Started</a></li>
                 <li><a class="scroll" href="#contact">Contact</a></li>
@@ -436,6 +516,41 @@
                     <h1>MyHome.</h1>
                     <p class="lead">Discover content in the technical subjects that you care about.</p>
                     <a class="btn btn-lg btn-grey scroll" href="#webinars"><i class="fa fa-chevron-down"></i> VIEW OUR PRODUCTS</a>
+                    <div class="text-left col-md-12 col-sm-12">
+                        <ul class="social-share-list unstyled">
+                            <li>
+                                <a href="https://twitter.com/share" class="twitter-share-button" data-related="ComputerSociety" data-hashtags="digitallibrary">Tweet</a>
+                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                            </li>
+                            <li class="hide">
+                                <div class="fb-like" data-href="http://myhome.computer.org/portal/web/myhome/splash" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                            </li>
+                            <li>
+                                <script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
+                                <div class="g-plusone" data-size="medium" data-href="http://myhome.computer.org/portal/web/myhome/splash"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    ## Articles Section
+    <section id="articles">
+        <div class="blue-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 featured-section-title">
+                        <h3 class="section-title">Articles</h3>
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <h2 class="text-center">
+                            <img class="img-circle articles" alt="articles-image" src="/ieeecs-HomePageSplash-theme/images/bundlearticles-image-3.jpg">
+                        </h2>
+                        <p class="lead">IEEE Computer Society bundled articles offer a cost-effective way of accessing one of the world's greatest computing resources.</p>
+                        <a class="btn btn-primary btn-lg" href="/portal/web/myhome/article-bundle">Learn More <i class="fa fa-angle-double-right"></i> </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -454,9 +569,8 @@
                             <img class="img-circle webinars" alt="webinars-image" src="/ieeecs-HomePageSplash-theme/images/bundlewebinars-image-1.jpg">
                         </h2>
                         <p class="lead">IEEE Computer Society bundled webinars are now available to let your staff receive perpetual access to our collection of more than 100 essential technical webinars developed by leaders in the field.</p>
-                        <a class="btn btn-primary btn-lg" href="/portal/web/myhome/webinar-bundle">Learn More <i class="fa fa-angle-double-right"></i> </a>
+                        <a class="btn btn-default btn-lg" href="/portal/web/myhome/webinar-bundle">Learn More <i class="fa fa-angle-double-right"></i> </a>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -502,12 +616,12 @@
                 <div class="col-md-4 col-sm-4 text-left">
                     <h5>Find Us On</h5>
                     <ul class="socialize">
-                        <li><a><i class="fa fa-twitter fa-2x"></i></a></li>
-                        <li><a href="https://www.facebook.com/ieeecomputersociety?v=wall" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
-                        <li><a href="https://plus.google.com/b/106653716856205029801/#106653716856205029801/posts" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a></li>
-                        <li><a href="http://www.linkedin.com/groups?home=&amp;gid=52513&amp;trk=anet_ug_hm" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a></li>
-                        <li><a href="http://www.youtube.com/user/ieeeComputerSociety" target="_blank"><i class="fa fa-youtube fa-2x"></i></a></li>
-                        <li><a href="http://www.computer.org/portal/web/csdl/dlrss" target="_blank"><i class="fa fa-rss fa-2x"></i></a></li>
+                        <li><a class="metrics-capture" href="https://twitter.com/computersociety" target="_blank"><i class="fa fa-twitter fa-2x"></i></a></li>
+                        <li><a class="metrics-capture" href="https://www.facebook.com/ieeecomputersociety?v=wall" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
+                        <li><a class="metrics-capture" href="https://plus.google.com/b/106653716856205029801/#106653716856205029801/posts" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a></li>
+                        <li><a class="metrics-capture" href="http://www.linkedin.com/groups?home=&amp;gid=52513&amp;trk=anet_ug_hm" target="_blank"><i class="fa fa-linkedin fa-2x"></i></a></li>
+                        <li><a class="metrics-capture" href="http://www.youtube.com/user/ieeeComputerSociety" target="_blank"><i class="fa fa-youtube fa-2x"></i></a></li>
+                        <li><a class="metrics-capture" href="http://www.computer.org/portal/web/csdl/dlrss" target="_blank"><i class="fa fa-rss fa-2x"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -546,6 +660,8 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/ieeecs-HomePageSplash-theme/js/bowser.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+    <script type="text/javascript" src="/ieeecs-HomePageSplash-theme/js/metrics-capture.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
@@ -556,6 +672,20 @@
                 ], {
                 fade: 1000,
                 duration: 20000
+            });
+
+             // Initialize the Metrics SDK then capture any metrics data
+            var hostname = document.location.hostname || '127.0.0.1';
+            Metrics.init({debug:true,url:'http://'+hostname+':5557'});
+            var captureData = {};
+            captureData.url = document.URL;
+            Metrics.capture("PageView", captureData);
+
+            $("a.metrics-capture").on("click", function() {
+               var captureData = {};
+               captureData.url = document.URL;
+               captureData.link = this.href;
+               Metrics.capture("ExternalLinkClick", captureData);
             });
         });
     </script>
