@@ -2,7 +2,7 @@
  <display>
  	<category name="IEEE CS">
  		<category name="Destination">
- 			<portlet id="ContentAdvanced" />
+ 			<portlet id="CSContentAdvanced" />
  		</category>
  	</category>
  </display>

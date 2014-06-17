@@ -29,12 +29,12 @@
 			<map>
 				<entry key="view">
 					<map>
-						<entry key="contentAdvancedView"><ref bean="contentAdvancedController"/></entry>						
+						<entry key="contentAdvancedView"><ref bean="cscontentAdvancedController"/></entry>
 					</map>
 				</entry>
 				<entry key="edit">
 					<map>
-						<entry key="contentAdvancedConfigure"><ref bean="configureContentAdvancedController"/></entry>						
+						<entry key="contentAdvancedConfigure"><ref bean="csconfigureContentAdvancedController"/></entry>
 					</map>
 				</entry>								
 			</map>
@@ -51,8 +51,8 @@
 		<property name="order" value="2" />
 		<property name="portletModeMap">
 			<map>
-				<entry key="view"><ref bean="contentAdvancedController"/></entry>
-				<entry key="edit"><ref bean="configureContentAdvancedController"/></entry>
+				<entry key="view"><ref bean="cscontentAdvancedController"/></entry>
+				<entry key="edit"><ref bean="csconfigureContentAdvancedController"/></entry>
 			</map>
 		</property>
 	</bean>	
