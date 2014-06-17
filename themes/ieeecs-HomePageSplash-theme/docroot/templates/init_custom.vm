@@ -4,4 +4,4 @@ This file allows you to override and define new Velocity variables.
 #set ($elasticSearchURL = $propsUtil.get("ieee.cs.elastic.search.url"))
 #set($currentPageURL = $community_default_url.split("[?]").get(0))
 #set ($the_title = "MyHome")
-#set ($company_name = "IEEE")
+#set ($company_name = "IEEE Computer Society")

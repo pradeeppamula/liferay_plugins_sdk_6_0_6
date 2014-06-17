@@ -1,75 +1,71 @@
-/* This will contain any bootstrap overrides and custom css.  This will be the last css file included in the layout */
+/*!
+ * MyHome v1.0
+ *
+ * Copyright 2013 IEEE Computer Society
+ */
 
-/* GLOBAL ANCHOR STYLING */
+/* =========================================================
+    Global Styles
+=========================================================*/
 a:hover {
-	text-decoration: none;
+    transition: color 0.35s;
+    -moz-transition: color 0.35s; /* Firefox 4 */
+    -webkit-transition: color 0.35s; /* Safari and Chrome */
+    -o-transition: color 0.35s; /* Opera */
+    text-decoration: none;
+}
+em { font-weight: bold; }
+
+::selection {
+    background: #232527; /* Safari */
+    color: #FFFFFF;
+}
+::-moz-selection {
+    background: #232527; /* Firefox */
+    color: #FFFFFF;
 }
 
-/* NAVBAR STYLING */
-.login-button-container {
-    margin-right: 10px;
-}
-.navbar-header {
-    background-color: #272525;
-}
-.navbar-myhome {
-	background-color: rgba(70, 70, 70, 0.95)!important;
-	border: 0px solid transparent !important;
-}
-.navbar-myhome-subnav {
-    border: 0px solid transparent !important;
-	top: 50px!important;
-	min-height: 30px !important;
-	height: 30px !important;
-	z-index: 1029 !important;
-	background-color: rgba(44, 44, 44, 0.95)!important;
-}
-.navbar-myhome-subnav .nav>li>a {
-	position: relative;
-	display: block;
-	padding: 5px 15px;
-}
-.navbar-myhome-subnav .navbar-nav>li>a {
-	padding-top: 0px;
-	padding-bottom: 0px;
-	line-height: 30px;
-}
-.profile-img-container {
-	padding: 4px;
-}
-.profile-img-small {
-	border-radius: 18px;
-	-webkit-border-radius: 18px;
-	-moz-border-radius: 18px;
-	width: 35px;
-	height: 35px;
-}
-.navbar-profile-dropdown {
-	padding-top: 8px !important;
-	padding-bottom: 6px !important;
-}
-.navbar-icon-dropdown { 
-	padding-top: 10px !important;
-	padding-bottom: 10px !important; 
-}
-.advanced-search { line-height: 50px; }
-
-.toggle-controls a > .control-off {
-	display: none;
+/* =========================================================
+    Button Styles
+=========================================================*/
+.btn-grey {
+    letter-spacing: 2px;
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+    margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
-.toggle-controls a > .control-on {
-	display: inline-block;
-}
-.controls-hidden .toggle-controls a > .control-on {
-	display: none;
+.btn-grey {
+    background: none repeat scroll 0 0 #232527;
+    border: medium none;
+    border-radius: 4px;
+    box-shadow: none;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-shadow: none;
+    padding: 16px 30px;
 }
 
-.controls-hidden .toggle-controls a > .control-off {
-	display: inline-block;
+.btn-grey:hover, .btn-grey:active {
+    background: #323639;
+    color: #FFFFFF;
+    transition: all 0.35s ease 0s;
 }
 
-/* FOOTER STYLING */
+/* =========================================================
+    Content Type Styles
+=========================================================*/
+.article { background-color: #2980b9 !important;  }
+.webinar { background-color: #27ae60 !important; }
+.readynote { background-color: #9b59b6 !important; }
+.essentialset { background-color: #7f8c8d !important; }
+.group { background-color: #34495e !important; }
+
+/* =========================================================
+    Footer Styles
+=========================================================*/
 #footer {
 	background-color: #000000;
 	color: #ffffff;
@@ -94,22 +90,168 @@ a:hover {
 	font-weight: bold;
 	padding: 0 40px 0 40px;
 }
-.footer-links > a {
+.footer-links > a, .about-footer-links > a {
 	padding: 0 10px 0 10px;
 }
 
-.footer-social-links > a {
+.footer-social-links > a, .about-footer-social-links > a {
 	padding: 0 10px 0 10px;
   	opacity: 0.8;
   	transition: 0.1s linear;
   	-moz-transition: 0.1s linear;
   	-webkit-transition: 0.1s linear;
 }
-.footer-social-links > a:hover {
+.footer-social-links > a:hover, .about-footer-social-links > a:hover {
 	opacity: 1.0;
 }
 
-/* BELOW ARE THE NON-BOOTSTRAP STYLES THAT HAVE BEEN OVERRIDEN FOR THIS THEME - dockbar.css */
+.portlet-borderless-container { min-height: 0 !important;}
+
+/* =========================================================
+    Search Styles
+=========================================================*/
+#myhome-search-container .search-results {
+    background-color: #fff;
+    display: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    position: absolute;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    text-align: left;
+    position:absolute;
+    top:42px;
+    left: 24%;
+}
+
+#myhome-search-container .search-results ul {
+    background-color: #fff;
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    text-align: left;
+}
+
+
+#myhome-search-container .search-results ul > li {
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #fff;
+    cursor: pointer;
+    padding: 10px 8px;
+    font-size: 13px;
+    list-style-type: none;
+    background-image: none;
+    margin: 0;
+}
+#myhome-search-container .search-results ul li:last-of-type {
+    -webkit-border-radius: 0 0 3px 3px;
+    -moz-border-radius: 0 0 3px 3px;
+    -ms-border-radius: 0 0 3px 3px;
+    -o-border-radius: 0 0 3px 3px;
+    border-radius: 0 0 3px 3px;
+}
+#myhome-search-container .search-results ul li:first-of-type {
+    border-top: 1px solid #fff;
+    -webkit-border-radius: 3px 3px 0 0;
+    -moz-border-radius: 3px 3px 0 0;
+    -ms-border-radius: 3px 3px 0 0;
+    -o-border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
+}
+#myhome-search-container .search-results ul li:hover {
+    background-color: #428bca;
+    border-top: 1px solid #357ebd;
+    border-bottom: 1px solid #357ebd;
+    -webkit-box-shadow: 0 1px 0 #2F73AD inset;
+}
+#myhome-search-container .search-results ul li:hover p.title {
+    color: #ffffff;
+    font-weight: bold;
+}
+#myhome-search-container .search-results li:hover p.summary {
+    color: #ffffff;
+    font-size: 11px;
+}
+#myhome-search-container .search-results ul li p.title {
+    color: #004d85;
+    font-weight: bold;
+}
+#myhome-search-container .search-results li > p > em {
+    color: #000000;
+    font-style: normal;
+}
+#myhome-search-container .search-results li p.summary {
+    color: #999;
+    font-size: 11px;
+}
+
+.advanced-result-count-container {
+    display:none;
+    border-bottom: 1px solid #f1f1f1;
+    margin: 0 auto 10px;
+    padding: 0 15px;
+    text-transform: uppercase;
+}
+
+.advanced-search-filters-container {
+    background-color: #D1D1D1;
+    min-height: 110px;
+    padding: 10px 15px;
+}
+
+.advanced-search-results {
+    margin: 0 auto;
+    font-size: 12px;
+    padding: 0 15px;
+}
+.advanced-search-result {
+    border-bottom: 1px solid #f1f1f1;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.advanced-search-result span {
+    float:right;
+    margin: 0 1px;
+    font-size: 0.8em;
+}
+
+.advanced-search-pagination {
+    text-align: center;
+}
+
+.advanced-search-pagination > .pagination li a.active {
+    color: #ffffff;
+    cursor: default;
+    background-color: #428bca;
+    border-color: #428bca;
+}
+
+#enable-filters-link { display: none; }
+.filters-link-container {margin-top:10px;}
+
+@media (min-width: 768px) {
+    .advanced-search-modal {
+        width: 800px !important;
+    }
+}
+/* =========================================================
+    BELOW ARE THE NON-BOOTSTRAP STYLES THAT HAVE BEEN OVERRIDEN FOR THIS THEME - dockbar.css
+=========================================================*/
 .dockbar .toggle-controls a {
 }
 
@@ -119,7 +261,9 @@ a:hover {
     -webkit-opacity: 0.7;
     -khtml-opacity: 0.7;
 }
-/* BELOW ARE THE NON-BOOTSTRAP STYLES THAT HAVE BEEN OVERRIDEN FOR THIS THEME - application.css */
+/* =========================================================
+   BELOW ARE THE NON-BOOTSTRAP STYLES THAT HAVE BEEN OVERRIDEN FOR THIS THEME - application.css, base.css
+=========================================================*/
 .aui-menu-content, .lfr-menu-list ul {
 	border: 1px solid;
 	border-color: #AEAFB1 #777879 #777879 #AEAFB1;
@@ -135,9 +279,24 @@ a:hover {
 .aui-menu-content li {
 	display: block;
 }
-/* BELOW ARE THE NON-BOOTSTRAP STYLES THAT HAVE BEEN OVERRIDEN FOR THIS THEME - css.jsp [I dislike that file] */
+
+.aui-underlay-content {
+    background-color: #c4c4c4;
+    color: #444444;
+    font-size: 11px;
+}
+
 ul {
 	margin: 0em;
 	margin-left: 0em;
 }
-/* END LEGACY STYLE MODIFICATIONS */
+
+.portlet-msg-error {
+    background: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}

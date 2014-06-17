@@ -1,5 +1,5 @@
 /* ---------- Browser normalization ---------- */
-/* Deprecated
+
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
 	display: block;
 }
@@ -64,6 +64,14 @@ body.portal-iframe {
 	padding: 0;
 }
 
+blockquote, ul, ol, dl {
+	margin: 1em;
+}
+
+ol, ul, dl {
+	margin-left: 2em;
+}
+
 ol {
 	list-style: decimal outside;
 }
@@ -96,7 +104,7 @@ caption {
 p {
 	margin-bottom: 1em;
 }
-*/
+
 /* ---------- Links ---------- */
 
 a {
