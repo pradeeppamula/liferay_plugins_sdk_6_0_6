@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
  <display>
  	<category name="CS Communities">
- 		<portlet id="Theme Admin" />
+ 		<portlet id="ThemeAdmin" />
  	</category>
  </display>
