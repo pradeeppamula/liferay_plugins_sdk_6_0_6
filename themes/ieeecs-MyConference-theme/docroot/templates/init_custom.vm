@@ -1,0 +1,64 @@
+#*
+This file allows you to override and define new Velocity variables.
+*#
+#set($currentPageURL = $community_default_url.split("[?]").get(0))
+#set ($the_title = "myConference")
+#set ($company_name = "IEEE Computer Society")
+
+#*
+This file allows you to override and define new Velocity variables.
+*#
+
+#set($currentGroup = $layout.getGroup())
+#set($currentGroupName = $currentGroup.getName())
+#set($currentGroupURLSegment = $currentGroup.getFriendlyURL().substring(1))
+
+#if ( $currentGroupURLSegment.indexOf("@") > -1 )
+#set($currentGroupFileNameArray = $currentGroupURLSegment.split("@"))
+#set($currentGroupFileName = $currentGroupFileNameArray.get(0))
+#else
+#set($currentGroupFileName = $currentGroupURLSegment)
+#end
+
+#* --------------------------------------------
+Determine if this user is a member
+of the current Group.
+------------------------------------------------ *#
+#set($userLocalService = $serviceLocator.findService("com.liferay.portal.service.UserLocalService"))
+#set($isMemberOfGroup = $userLocalService.hasGroupUser($group_id, $user_id) )
+
+#* --------------------------------------------
+Determine the "community" roles
+for this user.
+------------------------------------------------ *#
+#set($isLiferayAdmin = $permissionChecker.isCompanyAdmin($company_id))
+#set($isCommunityOwner = false)
+#set($isCommunityAdministrator = false)
+#set($isCommunityControlPanel = false)
+#set($isCommunityEditor = false)
+
+#if ( $is_signed_in && $isMemberOfGroup )
+
+#set ($roleLocalService = $serviceLocator.findService("com.liferay.portal.service.RoleLocalService"))
+#set ($userGroupRoles = $roleLocalService.getUserGroupRoles( $user_id, $group_id ))
+
+#foreach( $userGroupRole in $userGroupRoles )
+#if ( $userGroupRole.getName() == "Community Owner" )
+#set($isCommunityOwner = true)
+#elseif ( $userGroupRole.getName() == "Community Administrator" )
+#set($isCommunityAdministrator = true)
+#elseif ( $userGroupRole.getName() == "Community ControlPanel" )
+#set($isCommunityControlPanel = true)
+#elseif ( $userGroupRole.getName() == "Community Editor" )
+#set($isCommunityEditor = true)
+#end
+#end
+#end
+
+#* --------------------------------------------
+Hide / Disable based on Role
+------------------------------------------------ *#
+#if ( ($isCommunityOwner || $isCommunityControlPanel) && !$isLiferayAdmin && !$isCommunityAdministrator && !$isCommunityEditor )
+#set ($liferay_toggle_controls = "hidden")
+#set ($css_class = $theme_display.getColorScheme().getCssClass() + " controls-hidden")
+#end
