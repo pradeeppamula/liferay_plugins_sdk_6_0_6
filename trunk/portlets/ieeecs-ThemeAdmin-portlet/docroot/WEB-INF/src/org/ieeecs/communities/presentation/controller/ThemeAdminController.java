@@ -61,7 +61,7 @@ public class ThemeAdminController extends BaseController {
             boolean isMemberOfGroup = UserLocalServiceUtil.hasGroupUser(new Long(groupId), currentUser.getUserId());
             boolean isLiferayAdmin = renderRequest.isUserInRole("Administrator") ? true : false;
 
-            if (hasAccess && isMemberOfGroup && !isLiferayAdmin) {
+            if (themeDisplay.isSignedIn() && isMemberOfGroup && !isLiferayAdmin) {
                 List<Role> userGroupRoles = RoleLocalServiceUtil.getUserGroupRoles(currentUser.getUserId(), new Long(groupId));
                 if (null != userGroupRoles && userGroupRoles.size() > 0) {
                     for (int index = 0; index < userGroupRoles.size(); index++) {
