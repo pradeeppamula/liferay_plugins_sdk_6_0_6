@@ -1,13 +1,14 @@
 <div>
     <div class="row">
-        <h4 class="col-md-3 col-sm-3 col-xs-9 content-date label-info">{{publicationDateFormatted}}</h4>
+        <h4 class="col-md-3 col-sm-3 col-xs-9 content-banner label-info webinar text-center">webinar</h4>
     </div>
     <div class="row header-info">
         <h2>{{title}}</h2>
         <h3>{{publisher}}</h3>
         {{#if authorList}}
-        <h6>by {{authors}}</h6>
+        <h5>by {{authors}}</h5>
         {{/if}}
+        <h6>{{publicationDateFormatted}}</h6>
     </div>
 </div> <!-- /.container -->
 <hr>

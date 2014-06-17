@@ -310,13 +310,16 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
     /**
      * Atomic helper method that will build the organization JSON
      * @param organizationName
+     * @param orgPOCEmail
      * @return String
      * @throws Exception
      */
-    private String buildOrganizationJSON(String organizationName) throws Exception {
+    private String buildOrganizationJSON(String organizationName, String orgPOCEmail) throws Exception {
         StringBuilder json = new StringBuilder();
         json.append("{\"name\":\"");
         json.append(organizationName);
+        json.append("\",\"pocEmail\":\"");
+        json.append(orgPOCEmail);
         json.append("\",\"description\": \"\",\"modifiedDate\": \"\",\"createdDate\": \"");
         json.append(DateUtil.now());
         json.append("\",\"csdl_article\":[],\"webinar\": [{\"selected_items\": []}]}");
@@ -347,10 +350,11 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
      * first check to see if an organization with the same name already exists,
      * if so it will simply return that organization's id.
      * @param organizationName
+     * @param orgPOCEmail
      * @return String the organization id
      * @throws Exception
      */
-    private String getOrganizationId(String organizationName) throws Exception {
+    private String getOrganizationId(String organizationName, String orgPOCEmail) throws Exception {
         String retVal = null;
         // first check to see if the organization already exists
         BasicDBObject query = new BasicDBObject();
@@ -366,7 +370,7 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
             retVal = id.toString();
         } else {
             // if not, build the new organization json
-            String orgJSON = this.buildOrganizationJSON(organizationName);
+            String orgJSON = this.buildOrganizationJSON(organizationName, orgPOCEmail);
             // create the new organization in the mongo datasource
 
             // convert the json to a DBobject so we can save in mongo
@@ -463,7 +467,7 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
                 String[] ar=str.split(",");
 
                 // Validation 1. Current Line Hard Fail - Tokens != 4
-                if(ar.length != 4) {
+                if(ar.length != 5) {
                     errors.append("Line ");
                     errors.append(lineNumber);
                     errors.append(": Could not process, line was malformed. <br />");
@@ -477,6 +481,7 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
                 String firstName = ar[1];
                 String lastName = ar[2];
                 String email = ar[3];
+                String orgPOCEmail = ar[4];
 
                 // Validation 2. Current Line Hard Fail - Any of the tokens cannot equal the empty string after trim()
                 if(organizationName == null || "".equalsIgnoreCase(organizationName)) {
@@ -489,6 +494,9 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
                     isMalformedLine = true;
                 }
                 if(email == null || "".equalsIgnoreCase(email)) {
+                    isMalformedLine = true;
+                }
+                if(orgPOCEmail == null || "".equalsIgnoreCase(orgPOCEmail)) {
                     isMalformedLine = true;
                 }
 
@@ -504,13 +512,14 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
                 }
 
                 // trim any whitespace from the data
-                organizationName = organizationName.trim();
+                organizationName = organizationName.trim().toLowerCase();
                 firstName = firstName.trim();
                 lastName = lastName.trim();
                 email = email.trim();
+                orgPOCEmail = orgPOCEmail.trim().toLowerCase();
 
                 // if all initial validations pass, get the organization id
-                String orgId = this.getOrganizationId(organizationName);
+                String orgId = this.getOrganizationId(organizationName, orgPOCEmail);
 
                 // Validation 3. Current Line Hard Fail - Organization id equals null or empty string
                 if(orgId == null || "".equalsIgnoreCase(orgId)) {
@@ -798,7 +807,7 @@ public class HomepageBundleOrgAdminController extends BaseController implements 
             }
 
             // redirect back to the new organization view
-            actionResponse.sendRedirect("/portal/web/guest/admin#/new");
+            actionResponse.sendRedirect("/portal/web/myhome/admin#/new");
         } catch (Exception e) {
             LOGGER.error("A problem occurred when handling the action request: "  + ExceptionUtils.getRootCauseMessage(e));
             try {

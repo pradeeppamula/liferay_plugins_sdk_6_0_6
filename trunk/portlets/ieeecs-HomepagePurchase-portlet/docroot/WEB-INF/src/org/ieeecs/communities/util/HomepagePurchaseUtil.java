@@ -19,6 +19,7 @@ public class HomepagePurchaseUtil {
     public static final String EMAIL_TO                 = "jcruz@computer.org";
     //public static final String EMAIL_TO                 = "trainingpartners@computer.org";
     public static final String EMAIL_FROM               = "noreply.ieeecs@gmail.com";
+    public static final String EMAIL_FROM_NAME          = "IEEE Computer Society";
 //    public static final String EMAIL_USER               = "demo1.ieeecs@gmail.com";
     public static final String EMAIL_USER               = "itcore.ieeecs@gmail.com";
 //    public static final String EMAIL_PASSWORD           = "Pa55word123";

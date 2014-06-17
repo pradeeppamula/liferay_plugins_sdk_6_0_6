@@ -1,5 +1,5 @@
 <h5>Welcome Back, ${firstName}.</h5>
-<div class="row-fluid">
+<div class="row-fluid onboarding-help" data-trigger="manual" data-container="body" data-toggle="popover" data-placement="top" data-content="This section displays your current bundle status, and allows you to request more bundle space.">
     <c:if test="${hasArticleBundle}">
         <div class="row">
             <div id="used-article-count-${id}" class="header-number-${id} col-md-3 col-sm-3 col-xs-3">
@@ -41,5 +41,5 @@
     -->
 </div>
 <div class="purchase-button-container">
-    <button class="btn btn-medium btn-block btn-primary" {{ action "goToPurchaseBundle" }}>REQUEST A QUOTE</button>
+    <button class="btn btn-medium btn-block btn-primary" {{ action "goToPurchaseBundle" }}>GET MORE CONTENT</button>
 </div>

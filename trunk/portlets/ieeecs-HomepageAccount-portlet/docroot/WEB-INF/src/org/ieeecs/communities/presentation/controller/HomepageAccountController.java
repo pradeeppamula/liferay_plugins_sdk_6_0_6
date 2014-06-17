@@ -49,6 +49,7 @@ public class HomepageAccountController extends BaseController implements Resourc
 	public static final String CSDL_URL_ENDPOINT_CONTENT_LIST_PUBLICATIONDATE = "content/list/publicationDate/";
     public boolean hasArticleBundle = false;
     public boolean hasWebinarBundle = false;
+    public boolean showOnboarding = false;
 
     /**
      * Helper method that will clean up all necessary resources
@@ -160,6 +161,7 @@ public class HomepageAccountController extends BaseController implements Resourc
 		PortletPreferences prefs = null;
 		boolean isSignedIn = false;
         String notSignedInContent = HomepageAccountUtil.DEFAULT_JOURNAL_ARTICLE_CONTENT;
+        showOnboarding = false;
 		
 		try {
 			// first grab the theme display for the portlet			
@@ -226,6 +228,7 @@ public class HomepageAccountController extends BaseController implements Resourc
         model.put("hasArticleBundle", hasArticleBundle);
         model.put("hasWebinarBundle", hasWebinarBundle);
 		model.put("isSignedIn", isSignedIn);
+        model.put("showOnboarding", showOnboarding);
 		modelAndView = new ModelAndView("Home", model);
 		return modelAndView;
 	}
@@ -404,6 +407,8 @@ public class HomepageAccountController extends BaseController implements Resourc
                     // update the purchase data in mongo
                     this.updatePurchaseData(purchaseData.toString(), userId, email);
                     retVal = purchaseData.toString();
+                    // we know it's a new user so show the onboarding
+                    showOnboarding = true;
                 }
             }
 		} catch (MongoException me) {

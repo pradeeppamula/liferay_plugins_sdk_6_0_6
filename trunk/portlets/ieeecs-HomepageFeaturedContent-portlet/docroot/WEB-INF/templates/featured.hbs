@@ -1,6 +1,6 @@
 <!-- Show the inline edit button only if the user has those privileges -->
 <c:if test="${canInlineEdit}">
-    <span id="edit-featured-content-${id}" class="label label-default"><a class="inline-edit" {{action "editFeaturedContent"}}><i class="icon-edit-sign"></i>&nbsp;Edit</a></span>
+    <span id="edit-featured-content-${id}" class="label label-danger"><a class="inline-edit" {{action "editFeaturedContent"}}><i class="icon-edit-sign"></i>&nbsp;Edit</a></span>
 </c:if>
 {{#if isLayoutType1}}
 <div class="layout-1-hero-${id} col-md-8 col-sm-8 col-xs-12" {{action "goToContent" heroItem}}>

@@ -6,10 +6,11 @@
 		min-height: 430px;
 		background-color: #ffffff;
 	}
-	.content-date {
+	.content-banner {
 	    color: #ffffff;
-           line-height: 20px;
-           padding: 5px;
+        line-height: 20px;
+        padding: 5px;
+        text-transform: uppercase;
 	}
 	.content-body {
 	    padding: 0 20px 30px 20px;
@@ -76,9 +77,9 @@
 <!--<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>-->
 <script>
     // compile the handlebar templates to be used by Ember
-    Ember.TEMPLATES['article'] = Ember.Handlebars.compile('<div> <div class="row"> <h4 class="col-md-3 col-sm-3 col-xs-9 content-date label-info">{{publicationDateFormatted}}</h4> </div> <div class="row header-info"> <h1>{{title}}</h1> <h3>{{publisher}}</h3> {{#if authors}} <h6>by {{authors}}</h6> {{/if}} </div> </div> <!-- /.container --> <hr> <div class="content-body"> <div class="alerts-container"> <div class="alert-success-container alert alert-block alert-success fade hide success"> <button type="button" class="close" aria-hidden="true" {{ action "hideAddBundleSuccess" }}>x</button> <h4><i class="icon-check-sign icon-3x icon-fixed-width"></i>Added To Bundle!</h4> </div> <!-- /.success --> <div class="alert-danger-container alert alert-block alert-danger fade hide error"> <button type="button" class="close" aria-hidden="true" {{ action "hideAddBundleError" }}>x</button> {{#if bundleLimitError}} <p> <i class="icon-warning-sign icon-3x icon-fixed-width"></i> Your bundle is at its limit, would you like to increase the size? <a class="btn btn-default" href="#" {{ action "goToBundlePurchase" }}>Make it happen</a> </p> {{else}} <h4><i class="icon-exclamation-sign icon-3x icon-fixed-width"></i>There was a problem adding this item to your bundle, please try again or contact help@computer.org.</h4> {{/if}} </div> <!-- /.error --> <div class="alert-warning-container alert alert-block alert-warning fade hide warning"> <button type="button" class="close" aria-hidden="true"  {{ action "hideAddBundleConfirm" }}>x</button> <p> <i class="icon-warning-sign icon-3x icon-fixed-width"></i> Are you sure you would like to add this item to your bundle? <button {{bindAttr class=":btn :btn-default isSavingToBundle:disabled"}} {{ action "addItemToBundle" }}> {{#unless isSavingToBundle }} Of Course {{else}} Please Wait {{/unless}} </button> </p> </div> <!-- /.warning --> </div> <!-- /.alerts-container --> {{#if hasFullAccess}} {{{summary}}} {{else}} <div class="add-to-bundle-container"> <a href="#" class="btn btn-info btn-xs"  {{ action "showAddBundleConfirm" }}>Add To Bundle</a> </div> {{{summary}}} <br /><br /> <a href="/portal/web/myhome/article-bundle" class="btn btn-medium btn-block btn-primary">Learn More About Our Article Bundles</a> {{/if}} </div> <!-- /.content-body -->');
+    Ember.TEMPLATES['article'] = Ember.Handlebars.compile('<div> <div class="row"> <h4 class="col-md-3 col-sm-3 col-xs-9 content-banner label-info text-center article">article</h4> </div> <div class="row header-info"> <h1>{{title}}</h1> <h3>{{publisher}}</h3> {{#if authors}} <h5>by {{authors}}</h5> {{/if}} <h6>{{publicationDateFormatted}}</h6> </div> </div> <!-- /.container --> <hr> <div class="content-body"> <div class="alerts-container"> <div class="alert-success-container alert alert-block alert-success fade hide success"> <button type="button" class="close" aria-hidden="true" {{ action "hideAddBundleSuccess" }}>x</button> <h4><i class="icon-check-sign icon-3x icon-fixed-width"></i>Added To Bundle!</h4> </div> <!-- /.success --> <div class="alert-danger-container alert alert-block alert-danger fade hide error"> <button type="button" class="close" aria-hidden="true" {{ action "hideAddBundleError" }}>x</button> {{#if bundleLimitError}} <p> <i class="icon-warning-sign icon-3x icon-fixed-width"></i> Your bundle is at its limit, would you like to increase the size? <a class="btn btn-default" href="#" {{ action "goToBundlePurchase" }}>Make it happen</a> </p> {{else}} <h4><i class="icon-exclamation-sign icon-3x icon-fixed-width"></i>There was a problem adding this item to your bundle, please try again or contact help@computer.org.</h4> {{/if}} </div> <!-- /.error --> <div class="alert-warning-container alert alert-block alert-warning fade hide warning"> <button type="button" class="close" aria-hidden="true"  {{ action "hideAddBundleConfirm" }}>x</button> <p> <i class="icon-warning-sign icon-3x icon-fixed-width"></i> Are you sure you would like to add this item to your bundle? <button {{bindAttr class=":btn :btn-default isSavingToBundle:disabled"}} {{ action "addItemToBundle" }}> {{#unless isSavingToBundle }} Of Course {{else}} Please Wait {{/unless}} </button> </p> </div> <!-- /.warning --> </div> <!-- /.alerts-container --> {{#if hasFullAccess}} {{{summary}}} {{else}} <div class="add-to-bundle-container"> <a href="#" class="btn btn-info btn-xs"  {{ action "showAddBundleConfirm" }}>Add To Bundle</a> </div> {{{summary}}} <br /><br /> <a href="/portal/web/myhome/article-bundle" class="btn btn-medium btn-block btn-primary">Learn More About Our Article Bundles</a> {{/if}} </div> <!-- /.content-body -->');
     Ember.TEMPLATES['content'] = Ember.Handlebars.compile('{{#if isLoading}} <div class="content-loading-container"> <i class="icon-spinner icon-spin icon-large"></i> Loading </div> {{else}} {{#if isArticle}} {{view ContentApp.ArticleView}} {{else}} {{#if isWebinar}} {{view ContentApp.WebinarView}} {{else}} <div class="alert-warning-container alert alert-block alert-warning fade in warning"> <h2> <i class="icon-warning-sign icon-2x icon-fixed-width"></i> Content Not Found. </h2> <p>Please verify that you selected the correct item.  If you are still having trouble contact <strong>help@computer.org</strong> for help.</p> </div> <!-- /.warning --> {{/if}} {{/if}} {{/if}}');
-    Ember.TEMPLATES['webinar'] = Ember.Handlebars.compile('<div> <div class="row"> <h4 class="col-md-3 col-sm-3 col-xs-9 content-date label-info">{{publicationDateFormatted}}</h4> </div> <div class="row header-info"> <h2>{{title}}</h2> <h3>{{publisher}}</h3> {{#if authorList}} <h6>by {{authors}}</h6> {{/if}} </div> </div> <!-- /.container --> <hr> <div class="content-body"> {{#if hasFullAccess}} <p> {{{summary}}} </p> <br /> <div class="webinar-flowplayer-container"></div> <div id="webinar-not-found-${id}" class="alert-warning-container alert alert-block alert-warning fade hide warning"> <h2> <i class="icon-warning-sign icon-2x icon-fixed-width"></i> Webinar Not Found. </h2> <p>Please verify that you selected the correct item.  If you are still having trouble contact <strong>help@computer.org</strong> for help.</p> </div> <!-- /.warning --> {{else}} <p> {{{summary}}} </p> <br /><br /> <a href="/portal/web/myhome/webinar-bundle" class="btn btn-medium btn-block btn-primary">Learn More About Our Webinars</a> {{/if}} </div><!-- /.content-body -->');
+    Ember.TEMPLATES['webinar'] = Ember.Handlebars.compile('<div> <div class="row"> <h4 class="col-md-3 col-sm-3 col-xs-9 content-banner label-info webinar text-center">webinar</h4> </div> <div class="row header-info"> <h2>{{title}}</h2> <h3>{{publisher}}</h3> {{#if authorList}} <h5>by {{authors}}</h5> {{/if}} <h6>{{publicationDateFormatted}}</h6> </div> </div> <!-- /.container --> <hr> <div class="content-body"> {{#if hasFullAccess}} <p> {{{summary}}} </p> <br /> <div class="webinar-flowplayer-container"></div> <div id="webinar-not-found-${id}" class="alert-warning-container alert alert-block alert-warning fade hide warning"> <h2> <i class="icon-warning-sign icon-2x icon-fixed-width"></i> Webinar Not Found. </h2> <p>Please verify that you selected the correct item.  If you are still having trouble contact <strong>help@computer.org</strong> for help.</p> </div> <!-- /.warning --> {{else}} <p> {{{summary}}} </p> <br /><br /> <a href="/portal/web/myhome/webinar-bundle" class="btn btn-medium btn-block btn-primary">Learn More About Our Webinars</a> {{/if}} </div><!-- /.content-body -->');
 
 	// define the Content Ember App
 	ContentApp = Ember.Application.create({
@@ -108,6 +109,7 @@
 		authors: function() {
 		    var retVal = null;
 		    var authorList = this.get('authorList');
+		    var type = this.get('contentType');
 		    if(authorList != undefined && authorList != '' && authorList.length > 0) {
 		       retVal = '';
                   var idx=0;
@@ -115,11 +117,15 @@
                    if(idx>0) {
                        retVal += ', ';
                    }
-                   retVal += authorList[idx].firstname+' '+authorList[idx].surname;
+                   if(type == 'article') {
+                    retVal += authorList[idx].firstname+' '+authorList[idx].surname;
+                   } else if(type == 'webinar') {
+                     retVal += authorList[idx].givenname+' '+authorList[idx].surname;
+                   }
                   }
 		    }
 		    return retVal;
-		}.property('authorList'),
+		}.property('authorList', 'contentType'),
 		publicationDateFormatted: function() {
    			var publicationDate = new Date(this.get('publicationDate'));
    			var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
