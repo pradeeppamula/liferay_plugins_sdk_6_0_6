@@ -12,10 +12,17 @@ import com.liferay.portal.model.User;
 import com.liferay.portal.service.RoleLocalServiceUtil;
 import com.liferay.portal.service.UserLocalServiceUtil;
 import com.liferay.portal.theme.ThemeDisplay;
+import com.mongodb.BasicDBList;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
+import com.mongodb.MongoException;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
+import org.bson.types.ObjectId;
 import org.ieee.common.presentation.controller.BaseController;
 import org.ieee.common.util.ParamUtil;
+import org.ieeecs.communities.mongo.MongoConfigUtil;
+import org.ieeecs.communities.mongo.MongoHandler;
 import org.ieeecs.communities.util.HomepagePurchaseUtil;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.web.portlet.ModelAndView;
@@ -34,6 +41,16 @@ import java.util.*;
 
 public class HomepagePurchaseController extends BaseController implements ResourceAwareController {
     static final Logger LOGGER = Logger.getLogger(HomepagePurchaseController.class);
+
+    /**
+     * Helper method that will clean up all necessary resources
+     * when the bean is destroyed.
+     * @throws Exception
+     */
+    public void cleanUp() throws Exception {
+        // close all mongo connections
+        MongoHandler.getInstance().close();
+    }
 
     /**
      * Atomic helper method that will read in the a file from the
@@ -144,19 +161,28 @@ public class HomepagePurchaseController extends BaseController implements Resour
         // Get the default Session object.
         Session session = Session.getInstance(properties, authentication);
 
+        // first grab the theme display for the portlet
+        ThemeDisplay themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
+
         try {
             Message message = new MimeMessage(session);
             // first build the email body
             String body = this.buildPurchaseEmail(request, instanceId);
 
             // Set From: header field of the header.
-            message.setFrom(new InternetAddress(HomepagePurchaseUtil.EMAIL_FROM));
+            message.setFrom(new InternetAddress(HomepagePurchaseUtil.EMAIL_FROM, HomepagePurchaseUtil.EMAIL_FROM_NAME));
 
             // Set Subject: header field
             message.setSubject("Bundle Request");
 
             // Set To: the recipient
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(HomepagePurchaseUtil.EMAIL_TO, false));
+
+            // if the user is authenticated, grab their organization's POC Email to add to the CC line
+            if (themeDisplay.isSignedIn()) {
+               message = this.addCCOrganizationPOCEmail(themeDisplay, message);
+            }
+
             // Set Body: the html/text
             message.setContent(body, "text/html; charset=utf-8");
             message.setSentDate(new Date());
@@ -170,6 +196,7 @@ public class HomepagePurchaseController extends BaseController implements Resour
         }
         return retVal;
     }
+
     /**
      * This method will handle all ajax requests from the portlet.  As of now it will
      * simply read the data passed in based on the request type, and send an
@@ -313,4 +340,157 @@ public class HomepagePurchaseController extends BaseController implements Resour
 		modelAndView = new ModelAndView("Home", model);
 		return modelAndView;
 	}
+
+    /**
+     * Atomic helper method that will query the mongo db for
+     * organizations based on the query parameter.  If no
+     * parameter is passed in it will just retrieve all organizations.
+     * @return String
+     * @throws Exception
+     */
+    private String getOrganizations(BasicDBObject query) throws Exception {
+        String retVal = "{}";
+        try {
+            // build up the query document
+            if(query == null) {
+                query = new BasicDBObject();
+            }
+
+            // execute the query against the collection
+            List<DBObject> results = MongoHandler.getInstance().find(MongoConfigUtil.Collection.ORGANIZATION, query);
+            // if there are results convert them to jSON
+            if(results != null && results.size() > 0) {
+                retVal = results.toString();
+            }
+        } catch (MongoException me) {
+            throw me;
+        } catch (Exception e) {
+            LOGGER.error("A problem occurred when retrieving the organizations: "   + ExceptionUtils.getRootCauseMessage(e));
+        }
+        return retVal;
+    }
+
+    /**
+     * Atomic helper method that will add the user's organization's POC Email to the
+     * CC list of the bundle request email.
+     * @param themeDisplay
+     * @param message
+     * @return Message message
+     * @throws Exception
+     */
+    private Message addCCOrganizationPOCEmail(ThemeDisplay themeDisplay, Message message) throws Exception {
+        // retrieve the user's purchase data so get can get their org id
+        String json = this.getPurchaseData(themeDisplay.getUserId(), themeDisplay.getUser().getEmailAddress());
+
+        // convert the json string to a MongoDBObject
+        BasicDBObject userPurchaseData = MongoHandler.getInstance().jsonToDBObject(json);
+
+        // retrieve the organization of the user
+        BasicDBObject query = new BasicDBObject();
+        query.put("_id", new ObjectId(userPurchaseData.get("organization_id").toString()));
+        String organization = this.getOrganizations(query);
+
+        // convert the json to a DBobject so we can get the id
+        BasicDBList orgData = MongoHandler.getInstance().jsonToDBList(organization);
+        BasicDBObject email = (BasicDBObject)orgData.get(0);
+        if(email != null && email.get("pocEmail") != null) {
+            // Set CC: the user organization's POC
+            message.setRecipient(Message.RecipientType.CC, new InternetAddress((String)email.get("pocEmail"), false));
+        }
+        return message;
+    }
+
+    /**
+     * This atomic helper method will retrieve the purchase data based on
+     * the user's credentials.
+     * TODO: Move this to common CSDL Handler
+     *
+     * @param userId
+     * @param email
+     * @return String
+     * @throws Exception
+     */
+    private String getPurchaseData(long userId, String email) throws Exception {
+        String retVal = "{}";
+        try {
+            // build up the query document
+            BasicDBObject query = new BasicDBObject("user_id", userId);
+
+            // execute the query against the collection
+            List<DBObject> results = MongoHandler.getInstance().find(MongoConfigUtil.Collection.PURCHASE, query);
+
+            /**
+             * If the user does not have any bundle purchase information based on their id, this
+             * means that they are a new user.  Since a new organization's users are added to
+             * the system by the unique email addresses, we need to search against their Liferay
+             * email for their purchase data.
+             *
+             * If the user is then found, we will then update their purchase data with their userid
+             * to be used in the future.
+             *
+             * If the user is NOT found.  At this point they will NOT have any purchase data.  Is
+             * this what we want?
+             */
+            // if there is a result, grab the first one
+            if(results != null && results.size() > 0) {
+                retVal = results.get(0).toString();
+            } else {
+                // now grab the purchase data by the email address
+                query = new BasicDBObject("email", email);
+
+                // execute the query against the collection
+                results = MongoHandler.getInstance().find(MongoConfigUtil.Collection.PURCHASE, query);
+                if(results != null && results.size() > 0) {
+
+                    // put the user's user id on the purchase object for future logins
+                    DBObject purchaseData = results.get(0);
+                    purchaseData.put("user_id", userId);
+                    // update the purchase data in mongo
+                    this.updatePurchaseData(purchaseData.toString(), userId, email);
+                    retVal = purchaseData.toString();
+                }
+            }
+        } catch (org.ieeecs.communities.mongo.MongoException me) {
+            throw me;
+        } catch (Exception e) {
+            LOGGER.error("A problem occurred when retrieving the purchase data: "   + ExceptionUtils.getRootCauseMessage(e));
+        }
+        return retVal;
+    }
+
+    /**
+     * This method will update the user's purchase data in the datasource based
+     * on the passed in user id
+     *
+     * TODO: Move this to common CSDL Handler
+     *
+     * @param purchaseJSON
+     * @param userId
+     * @param email
+     * @return  boolean
+     * @throws Exception
+     */
+    private boolean updatePurchaseData(String purchaseJSON, long userId, String email) throws Exception {
+        boolean retVal = false;
+        try {
+            // build up the query document
+            BasicDBObject query = null;
+            if(email != null) {
+                query = new BasicDBObject("email", email);
+            } else {
+                query = new BasicDBObject("user_id", userId);
+            }
+            // convert the json to a DBobject so we can save in mongo
+            BasicDBObject purchaseData = MongoHandler.getInstance().jsonToDBObject(purchaseJSON);
+
+            // execute the query against the collection
+            MongoHandler.getInstance().update(MongoConfigUtil.Collection.PURCHASE, query, purchaseData);
+            retVal = true;
+        } catch (org.ieeecs.communities.mongo.MongoException me) {
+            throw me;
+        } catch (Exception e) {
+            LOGGER.error("A problem occurred when updating the purchase data for user with id  " + userId + ": "  + ExceptionUtils.getRootCauseMessage(e));
+        }
+        return retVal;
+    }
 }

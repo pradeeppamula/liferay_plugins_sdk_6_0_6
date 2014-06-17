@@ -31,6 +31,7 @@
       <a href="/portal/web/myhome/webinar-bundle">Webinars</a>
       <a href="http://www.ieee.org/site_terms_conditions.html?WT.mc_id=hpf_terms">Terms</a>
       <a href="http://www.computer.org/portal/web/guest/privacy">Privacy</a>
+      <a href="/portal/web/myhome/help">Help</a>
     </div>
     <div class="row footer-social-links">
       <a href="mailto:help@computer.org"><i class="icon-envelope icon-2x"></i></a>
