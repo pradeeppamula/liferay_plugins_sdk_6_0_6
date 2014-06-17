@@ -41,6 +41,11 @@ body.portlet {
 	padding: 1px;
 }
 
+.ie6 .portlet-topper-toolbar .icon {
+	height: 16px;
+	width: 16px;
+}
+
 .portlet-content, .portlet-minimized .portlet-content-container {
 	padding: 12px 10px 10px;
 }
@@ -131,7 +136,6 @@ body.portlet {
 	background: url() no-repeat 0 50%;
 	color: #3AF;
 	display: inline-block;
-	font-size: 0;
 	height: 16px;
 	margin-left: 5px;
 	text-indent: -9999px;
@@ -161,7 +165,6 @@ body.portlet {
 }
 
 .portlet-borderless-bar .portlet-back a {
-	background-image: url(../images/portlet/return_borderless.png);
 	height: auto;
 	text-indent: 0;
 	width: auto;
@@ -266,6 +269,34 @@ body.portlet {
 	margin: 2px auto 14px;
 	padding: 6px 6px 6px 30px;
 	text-align: left;
+}
+
+/* ---------- Message labels ---------- */
+
+.portlet-msg-info-label, .portlet-msg-error-label, .portlet-msg-alert-label, .portlet-msg-success-label {
+	background: none no-repeat 0 50%;
+	padding: 3px 3px 3px 20px;
+	font-weight: bold;
+}
+
+.portlet-msg-info-label {
+	background-image: url(../images/messages/info.png);
+	color: #34404F;
+}
+
+.portlet-msg-error-label {
+	background-image: url(../images/messages/error.png);
+	color: #900;
+}
+
+.portlet-msg-alert-label {
+	background-image: url(../images/messages/alert.png);
+	color: #663;
+}
+
+.portlet-msg-success-label {
+	background-image: url(../images/messages/success.png);
+	color: #384F34;
 }
 
 /* ---------- Sections ---------- */
@@ -483,7 +514,7 @@ body.portlet {
 .lfr-actions {
 }
 
-.lfr-actions, .lfr-actions ul {
+.lfr-actions.lfr-extended, .lfr-actions.lfr-extended ul {
 	background: #FFF url(../images/forms/button.png) repeat-x 0 100%;
 	border: 1px solid;
 	border-color: #DEDEDE #BFBFBF #BFBFBF #DEDEDE;
@@ -543,7 +574,7 @@ body.portlet {
 	font-size: 0;
 	height: 16px;
 	padding: 0;
-	text-indent: -9999em;
+	text-indent: -9999px;
 	width: 16px;
 }
 
