@@ -4,14 +4,13 @@
  <liferay-portlet-app>
 
  	<portlet> 	
-		<portlet-name>ContentAdvanced</portlet-name>
+		<portlet-name>CSContentAdvanced</portlet-name>
 		<maximize-edit>true</maximize-edit>
  		<instanceable>true</instanceable> 		
  		<header-portlet-css>/css/main.css</header-portlet-css>
- 		<header-portlet-css>/css/tooltips.css</header-portlet-css>  		
  	</portlet>
   	<portlet>
-		<portlet-name>ContentAdvanced</portlet-name>	
+		<portlet-name>CSContentAdvanced</portlet-name>
 		<private-session-attributes>false</private-session-attributes>
  	</portlet>  	
     <role-mapper>
