@@ -4,7 +4,12 @@
 	font-size: 13px;
 	padding: 1px 5px;
 	position: relative;
+	visibility: hidden;
 	z-index: 300;
+}
+
+.dockbar-ready .dockbar {
+	visibility: visible;
 }
 
 .dockbar:after {
@@ -294,6 +299,11 @@ html > .lfr-dockbar-pinned {
 .add-content-menu .add-application a {
 	background: url(../images/common/portlet.png) no-repeat 3px 50%;
 	padding-left: 25px;
+}
+
+.add-content-menu a.lfr-portlet-used {
+	color: #999;
+	cursor: auto;
 }
 
 .manage-content-menu li a {
