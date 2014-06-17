@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+#parse ($init)
+<html itemscope itemtype="http://schema.org/Organization" class="#language("lang.dir")" dir="#language("lang.dir")" lang="$w3c_language_id">
+<head>
+	<meta charset="utf-8">
+    <title>$the_title - $company_name</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The solution for information overload">
+    <meta name="author" content="IEEE Computer Society">
+    <meta name="keywords" content="digital library, computer society digital library, IEEE computer society digital library, ieee digital library subscription">
+    ## Description - keep less than 155 chars for better Google placement
+    <meta name="description" content="The solution for information overload">
+    ## This is to ensure using the latest rendering mode for IE
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    ## Schema.org markup for Google+
+    <meta itemprop="name" content="$the_title | $company_name">
+    <meta itemprop="description" content="The solution for information overload">
+    <meta itemprop="image" content="http://conferences.computer.org/icebe/2013/images/ICS_black_stacked.gif">
+
+    ## Open Graph Meta Tags
+    <meta property="og:title" content="myConference">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://www.computer.org/portal/web/myConference">
+    <meta property="og:site_name" content="myConference">
+    <meta property="og:description" content="The solution for information overload">
+    <meta property=”og:image” content=”http://conferences.computer.org/icebe/2013/images/ICS_black_stacked.gif”/>
+
+    ## This is required by Liferay, where they import all their junk.
+    $theme.include($top_head_include)
+
+    ## JS
+    <script type="text/javascript" src="/ieeecs-MyConference-theme/lib/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/ieeecs-MyConference-theme/lib/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/ieeecs-MyConference-theme/js/dockbar.customizable.js"></script>
+
+    ## CSS
+    <link href="/ieeecs-MyConference-theme/lib/css/bootstrap.min.css" rel="stylesheet">
+
+	## CUSTOM STYLES - Needs to be here so that Liferay doesn't build it with the other CSS before Bootstrap
+    <style type="text/css">
+        /* ==========================================================================
+        Liferay Overridden Styles
+        ========================================================================== */
+        .portlet-borderless-container {
+            min-height: 1.0em !important;
+        }
+        .portlet-msg-error { background: none; }
+        .dockbar a {
+            color: #ffffff;
+            text-shadow:none;
+        }
+        /* ==========================================================================
+         IE8 Global Misc Styles
+        ========================================================================== */
+        html.ie8, html.ie8 body {
+            background: #1E3E71 !important;
+        }
+
+		/* ==========================================================================
+		   Global Misc Styles
+		   ========================================================================== */
+        * {
+            margin: 0;
+        }
+        html {
+            background: url(/ieeecs-MyConference-theme/images/myconference-bg.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            -ms-background-size:cover;
+            background-size: cover;
+            background-color: #274478;
+        }
+		html,
+		body {
+            -webkit-font-smoothing: antialiased;
+            font-family: Arial, sans-serif;
+            font-weight: 300;
+            padding-left: 0px;
+            padding-right: 0px;
+            height: 100%;
+            color: #FFFFFF;
+		}
+
+        body {
+            background-color:rgba(255,0,0,0.0);
+        }
+
+        ## Wrapper for page content to push down footer
+        #wrap {
+            min-height: 100%;
+            height: auto !important;
+            /* Negative indent footer by its height */
+            margin: 0 auto -60px;
+            /* Pad bottom by footer height */
+            padding: 0 0 60px;
+        }
+        #wrap:after {
+            content: "";
+            display: block;
+        }
+
+		.text-primary, .text-primary:hover { color: #008305;}
+		.label-primary { border-radius: 0px; background-color: #008305;}
+        .text-muted {color: #d6d4d8;}
+
+        h1 {
+            font-size: 50px;
+        }
+        h2,h3 { font-weight: 800; }
+        ul.unstyled {
+            list-style-type: none;
+        }
+        .gray-circle-container {
+            background-color: #816C6B;
+            border-radius: 50%;
+            width: 72px;
+            height: 72px;
+            text-align: center;
+            position: relative;
+        }
+        .help {
+            background-color: #d6d4d8;
+            border-radius: 50%;
+            width: 20px;
+            text-align: center;
+            margin-left: 4px;
+        }
+        .help span
+        {
+            color: #274478;
+            opacity:0.5;
+            filter:alpha(opacity=50); /* For IE8 and earlier */
+        }
+        .help-link:hover {
+            text-decoration: none;
+        }
+        .row-spacing {
+            margin-bottom: 8px;
+        }
+        .row-tight-margin {
+        	margin-left: -7px !important;
+        	margin-right: -7px !important;
+        }
+        .modal { color: #000000 !important;}
+
+        .popover {
+        	color: #000000;
+        	font-size: 12px;
+        	width: 230px;
+        }
+        .popover-content a {
+        	color: #000099;
+        	font-weight: bold;
+        }
+        .popover-content a:hover {
+        	color: #000099;
+        }
+
+        @media (min-width: 768px) {
+            .member-column { margin-left: -13px; }
+            .member-column, .nonmember-column { padding: 0px; }
+        }
+        @media (min-width: 992px) {
+            .member-column { margin-left: -20px; }
+        }
+        @media (max-width: 767px) {
+            .help { position: absolute; }
+            #nonmember-help-link .help { margin-left: 6px; }
+        }
+
+        /* ==========================================================================
+            Footer Styles
+        ========================================================================== */
+        #footer {
+            height: 60px;
+        }
+        #footer, #wrap:after {
+            /* .push must be the same height as footer */
+            height: 60px;
+        }
+        @media (max-width: 767px) {
+            #footer {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            #footer-back-link {
+                position: relative;
+                bottom:  -35px;
+                color: rgba(255, 255, 255, 0.5);
+                font-size: 12px;
+                font-weight: 500;
+            }
+        }
+        @media (min-width: 768px) {
+            #footer-back-link {
+                position: absolute;
+                bottom:  5px;
+                left: 20px;
+                color: rgba(255, 255, 255, 0.5);
+                font-size: 12px;
+                font-weight: 500;
+            }
+        }
+        img.footer-logo {width: 80%;}
+
+		/* ==========================================================================
+		   Link Styles
+		   ========================================================================== */
+		a:hover {
+		    transition: color 0.35s;
+		    -moz-transition: color 0.35s; /* Firefox 4 */
+		    -webkit-transition: color 0.35s; /* Safari and Chrome */
+		    -o-transition: color 0.35s; /* Opera */
+		    text-decoration: underline;
+		    color: #ecf0f1;
+		}
+
+		a {
+		    color: #ffffff;
+		}
+
+		::selection {
+		    background: #232527; /* Safari */
+		    color: #FFFFFF;
+		}
+		::-moz-selection {
+		    background: #232527; /* Firefox */
+		    color: #FFFFFF;
+		}
+
+		/* ==========================================================================
+		   Button Styles
+		   ========================================================================== */
+        button:hover { background: none; }
+        .btn-wide-hard { width: 240px; }
+		.btn {
+			 text-transform: uppercase;
+             border-radius: 0px;
+             box-shadow: none;
+             color: #FFFFFF;
+             text-decoration: none;
+             text-shadow: none;
+             letter-spacing: 1px;
+		}
+
+        .btn-lg {
+            padding: 10px 45px;
+            font-size: 23px;
+        }
+
+		.btn-primary {
+		    background-color: #009206;
+		    border-color: #009206;
+		}
+
+		.btn-primary:hover {
+		    background-color: #008305;
+		    border-color: #008305 !important;
+		}
+
+		.btn-primary:hover,
+		.btn-primary:focus,
+		.btn-primary:active,
+		.btn-primary.active,
+		.open .dropdown-toggle.btn-primary {
+		  background-color: #008305;
+		  border-color: #008305 !important;
+		}
+
+		.btn-primary.disabled,
+		.btn-primary[disabled],
+		fieldset[disabled] .btn-primary,
+		.btn-primary.disabled:hover,
+		.btn-primary[disabled]:hover,
+		fieldset[disabled] .btn-primary:hover,
+		.btn-primary.disabled:focus,
+		.btn-primary[disabled]:focus,
+		fieldset[disabled] .btn-primary:focus,
+		.btn-primary.disabled:active,
+		.btn-primary[disabled]:active,
+		fieldset[disabled] .btn-primary:active,
+		.btn-primary.disabled.active,
+		.btn-primary[disabled].active,
+		fieldset[disabled] .btn-primary.active {
+		  background-color: #32a737;
+		  border-color: #32a737 !important;
+		}
+
+		/* ==========================================================================
+		   General Form Styles
+		   ========================================================================== */
+		.form-control {
+			background-color: #ffffff !important;
+			background-image: none !important;
+			border: 0px solid #ffffff !important;
+			border-radius: 0px;
+			-webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
+			box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
+		}
+
+        input[type="text"], input[type="password"],input[type="checkbox"], input[type="file"], input[type="submit"], input[type="button"], input[type="reset"], select, textarea, .textarea, button {
+            background-image: none !important;
+            background-repeat: no-repeat;
+            font: 18px Arial,sans-serif;
+            font-family:  Arial, sans-serif !important;
+            padding: 10px 16px;
+            border-color: #ffffff;
+        }
+
+        input[type="checkbox"] {
+            background: rgba(255, 255, 255, 0) !important;
+        }
+
+        input.focus {
+            background:#FFFFFF !important;
+            border: 0px solid #ffffff !important;
+        }
+
+        .input-normal {
+            height: 34px;
+            padding: 5px 10px !important;
+            font-size: 15px !important;
+            line-height: 1.5 !important;
+        }
+
+        /* ==========================================================================
+        Login Page Styles
+        ========================================================================== */
+        #login-page { padding-top: 10%; }
+
+        /* ==========================================================================
+        Home Page Styles
+        ========================================================================== */
+        #home-page { padding-top: 10%; }
+
+        /* ==========================================================================
+        Topics Page Styles
+        ========================================================================== */
+        #topics-page { padding-top: 2%; }
+        .topics { font-weight: bold; }
+        .pubtype {
+        	font-weight: bold;
+        	padding-bottom:15px;
+        }
+
+        /* ==========================================================================
+        Learn More Page Styles
+        ========================================================================== */
+        #learn-page { padding-top: 2%; }
+        .video-container {
+            text-align: center;
+            padding: 5px 5px;
+        }
+
+        .dollar-sign {
+            font-size: 30px;
+            font-weight: 800;
+            font-family: Arial, sans-serif;
+            position: absolute;
+            top: 18px;
+            right: 49px;
+        }
+        .price {
+            font-size: 42px;
+            font-weight: bold;
+            letter-spacing: -3px;
+            font-family: Arial, sans-serif;
+            position: absolute;
+            top: 6px;
+            right: 11px;
+        }
+        .subjects-container {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        /* ==========================================================================
+        Confirmation Page Styles
+        ========================================================================== */
+        #confirmation-page { padding-top: 10%; }
+
+        /* ==========================================================================
+        Dashboard Page Styles
+        ========================================================================== */
+        #dashboard-page { padding-top: 2%; }
+        .number-header {
+            font-size: 95px;
+            font-weight: bold;
+            line-height: 112px;
+        }
+        .divider {
+            border-bottom: #ffffff solid 3px;
+            padding: 15px 0;
+        }
+        .link-container:hover {
+            opacity:0.5;
+            filter:alpha(opacity=50); /* For IE8 and earlier */
+            cursor: pointer;
+        }
+        .link-container a {
+            text-decoration: none;
+        }
+        .legend-label {
+            width: 30px;
+            height: 30px;
+        }
+        .green { background-color: #56AB32; }
+        .blue { background-color: #5BC0DE; }
+        .content-container {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 20px 30px;
+        }
+
+        .abstract-loading {
+        	font-size: 22px;
+        	font-weight: bold;
+        	padding: 50px 0px;
+       		color: #009206;
+        }
+
+        .abstract-container {
+        	display: none;
+        	min-height: 50px;
+        	background-color: #ecf0f1;
+        	font-weight: normal;
+		    margin: 11px 0px;
+		    padding: 10px 15px;
+        }
+
+        @media (max-width: 767px) {
+            .downloads-container { margin-left: -28px; }
+						.downloads-container select { min-width: 115px; }
+						.downloads-container div div div h3 { margin-left: -20px; }
+        }
+				@media (min-width: 768px) {
+					.downloads-container div div div h3 { margin-left: -25px; }
+				}
+        @media (min-width: 992px) {
+            .member-column { margin-left: -20px; }
+						.downloads-header { margin-left: -20px; }
+        }
+    </style>
+
+    ## JS
+    <script type="text/javascript" src="/ieeecs-MyConference-theme/lib/js/modernizr.min.js"></script>
+
+    ## CSS HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="/ieeecs-MyConference-theme/lib/js/html5shiv.js"></script>
+    <script type="text/javascript" src="/ieeecs-MyConference-theme/lib/js/respond.min.js"></script>
+    <![endif]-->
+
+    ## CSS Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="#">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="#">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="#">
+    <link rel="apple-touch-icon-precomposed" href="#">
+    <link rel="shortcut icon" href="/ieeecs-MyConference-theme/images/favicon.ico">
+    <link rel="icon" href="/ieeecs-MyConference-theme/images/favicon.ico">
+</head>
+<body>
+    #if ($is_signed_in)
+    #parse ("$full_templates_path/dockbar.vm")
+    #end
+	## Wrap all page content here
+    <div id="wrap">
+		## Begin page content
+		<div class="container">
+            #if ($selectable)
+                $theme.include($content_include)
+            #else
+                $portletDisplay.recycle()
+                $portletDisplay.setTitle($the_title)
+                $theme.wrapPortlet("portlet.vm", $content_include)
+            #end
+		</div> ## /.container
+	</div> ## /#wrap
+
+    <div id="footer">
+        <div class="container">
+            <div class="col-md-4 col-sm-3 col-xs-1"></div>
+            <div class="col-md-2 col-sm-3 col-xs-5 text-center">
+                <a href="http://www.computer.org/"><img class="footer-logo" src="/ieeecs-MyConference-theme/images/cs-logo.png"/></a>
+            </div>
+            <div class="col-md-2 col-sm-3 col-xs-5 text-center">
+                <a href="http://www.ieee.org/"><img class="footer-logo" src="/ieeecs-MyConference-theme/images/ieee-logo.png"/></a>
+            </div>
+            <div class="col-md-4 col-sm-3 col-xs-1"></div>
+        </div>
+    </div>
+
+    ## Le javascript
+	##==================================================
+	## Placed at the end of the document so the pages load faster
+    <script type="text/javascript" src="/ieeecs-MyConference-theme/lib/js/bootstrap.min.js"></script>
+</body>
+$theme.include($bottom_include)
+</html>

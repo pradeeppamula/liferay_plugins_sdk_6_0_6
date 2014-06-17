@@ -1,0 +1,33 @@
+<div id="login-page">
+    <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-1"></div>
+        <img class="col-md-6 col-sm-6 col-xs-10" src="/ieeecs-MyConference-theme/images/myconference-logo.png"/>
+        <div class="col-md-3 col-sm-3 col-xs-1"></div>
+    </div>
+    <div class="row">
+    <div class="col-md-4 col-sm-3 col-xs-1"></div>
+    <form class="col-md-4 col-sm-6 col-xs-10" name="loginSignInForm" id="loginSignInForm"
+          action="https://www.computer.org/portal/web/myConference?p_p_id=58&amp;p_p_lifecycle=1&amp;p_p_state=maximized&amp;p_p_mode=view&amp;saveLastPath=0&amp;_58_struts_action=%2Flogin%2Flogin&amp;_58_ieee_error=0"
+          method="POST"><input name="redirect" type="hidden" value="/portal/web/myconference"> <input name="rememberMe"
+                                                                                                    type="hidden"
+                                                                                                    value="false">
+            <div class="form-group">
+                <label for="_58_login" class="control-label">Email Address</label>
+                <input type="text" class="form-control input-lg" name="_58_login" id="_58_login" placeholder="EMAIL ADDRESS"
+                       value="">
+            </div>
+            <div class="form-group">
+                <label for="_58_password" class="control-label">Password</label>
+                <input type="password" class="form-control input-lg" name="_58_password" id="_58_password"
+                       placeholder="PASSWORD" value="">
+            </div>
+            <div class="form-group text-right">
+                <a href="#">Help</a>&nbsp;|&nbsp;<a href="#">Forgot Password</a>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-lg btn-primary btn-wide-hard" type="submit">LOG IN</button>
+            </div>
+    </form>
+    <div class="col-md-4 col-sm-3 col-xs-1"></div>
+    </div>
+</div>
