@@ -7,8 +7,11 @@
  */
 package org.ieee.cnp.util;
 
+import com.liferay.portal.kernel.util.ParamUtil;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.ieee.cnp.bean.CustomPreferences;
 import javax.portlet.PortletPreferences;
+import javax.portlet.ResourceRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -82,4 +85,52 @@ public class CSContentAdvancedUtil {
             e.printStackTrace();
         }
 	}
+
+    /**
+     * Update the portlet preferences in the database.
+     * @param request
+     * @param modifiedByUserId
+     * @param instanceId
+     * @param isConfigureMode
+     * @return
+     * @throws Exception
+     */
+    public static boolean updatePortletData(ResourceRequest request, String modifiedByUserId, String instanceId, boolean isConfigureMode) throws Exception {
+        boolean retVal = true;
+        try {
+            // grab the portlet preferences data json off the request
+            PortletPreferences prefs = request.getPreferences();
+            prefs.setValue("modifiedByUserId", modifiedByUserId);
+            prefs.setValue("cssBlock",  ParamUtil.getString(request, "cssBlock_"+instanceId, CSContentAdvancedUtil.CSSBLOCK));
+            prefs.setValue("htmlBlock", ParamUtil.getString(request, "htmlBlock_"+instanceId, CSContentAdvancedUtil.HTMLBLOCK));
+            prefs.setValue("jsBlockInternalPre", ParamUtil.getString(request, "jsBlockInternalPre_"+instanceId, CSContentAdvancedUtil.JSBLOCKINTERNALPRE));
+            prefs.setValue("jsBlockInternalPost",  ParamUtil.getString(request, "jsBlockInternalPost_"+instanceId, CSContentAdvancedUtil.JSBLOCKINTERNALPOST));
+            prefs.setValue("jsBlockExternalPre",  ParamUtil.getString(request, "jsBlockExternalPre_"+instanceId, CSContentAdvancedUtil.JSBLOCKEXTERNALPRE));
+            prefs.setValue("jsBlockExternalPost", ParamUtil.getString(request, "jsBlockExternalPost_"+instanceId, CSContentAdvancedUtil.JSBLOCKEXTERNALPOST));
+
+            // if we are saving from the configure page, we can save all the preferences
+            if(isConfigureMode) {
+                prefs.setValue("portletMode", ParamUtil.getString(request, "portletMode_" + instanceId, CSContentAdvancedUtil.MODE));
+                prefs.setValue("showIntro", ParamUtil.getString(request, "showIntro_" + instanceId, CSContentAdvancedUtil.SHOWINTRO).toUpperCase());
+                prefs.setValue("portletBorderColorTop", ParamUtil.getString(request, "portletBorderColorTop_" + instanceId, CSContentAdvancedUtil.PORTLETBORDERCOLORTOP));
+                prefs.setValue("portletBorderColorRight", ParamUtil.getString(request, "portletBorderColorRight_" + instanceId, CSContentAdvancedUtil.PORTLETBORDERCOLORRIGHT));
+                prefs.setValue("portletBorderColorBottom", ParamUtil.getString(request, "portletBorderColorBottom_" + instanceId, CSContentAdvancedUtil.PORTLETBORDERCOLORBOTTOM));
+                prefs.setValue("portletBorderColorLeft", ParamUtil.getString(request, "portletBorderColorLeft_" + instanceId, CSContentAdvancedUtil.PORTLETBORDERCOLORLEFT));
+                prefs.setValue("portletBorderPixelTop", ParamUtil.getString(request, "portletBorderPixelTop_" + instanceId, CSContentAdvancedUtil.PORTLETBORDERPIXELTOP));
+                prefs.setValue("portletBorderPixelRight", ParamUtil.getString(request, "portletBorderPixelRight_" + instanceId, CSContentAdvancedUtil.PORTLETBORDERPIXELRIGHT));
+                prefs.setValue("portletBorderPixelBottom", ParamUtil.getString(request, "portletBorderPixelBottom_" + instanceId, CSContentAdvancedUtil.PORTLETBORDERPIXELBOTTOM));
+                prefs.setValue("portletBorderPixelLeft", ParamUtil.getString(request, "portletBorderPixelLeft_" + instanceId, CSContentAdvancedUtil.PORTLETBORDERPIXELLEFT));
+                prefs.setValue("portletBackgroundColor", ParamUtil.getString(request, "portletBackgroundColor_" + instanceId, CSContentAdvancedUtil.PORTLETBACKGROUNDCOLOR));
+                prefs.setValue("portletTopLeftRadius", ParamUtil.getString(request, "portletTopLeftRadius_" + instanceId, CSContentAdvancedUtil.PORTLETTOPLEFTRADIUS));
+                prefs.setValue("portletBottomLeftRadius", ParamUtil.getString(request, "portletBottomLeftRadius_" + instanceId, CSContentAdvancedUtil.PORTLETBOTTOMLEFTRADIUS));
+                prefs.setValue("portletTopRightRadius", ParamUtil.getString(request, "portletTopRightRadius_" + instanceId, CSContentAdvancedUtil.PORTLETTOPRIGHTRADIUS));
+                prefs.setValue("portletBottomRightRadius", ParamUtil.getString(request, "portletBottomRightRadius_" + instanceId, CSContentAdvancedUtil.PORTLETBOTTOMRIGHTRADIUS));
+            }
+            // save the portlet data
+            prefs.store();
+        } catch (Exception e) {
+            retVal = false;
+        }
+        return retVal;
+    }
 }

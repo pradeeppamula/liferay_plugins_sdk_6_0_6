@@ -92,7 +92,7 @@ public class CSConfigureContentAdvancedController extends BaseController impleme
             // determine which functionality to use based on the request type
             if (CSContentAdvancedUtil.SAVE_CONFIG.equalsIgnoreCase(requestType)) {
                 // update the data
-                if(this.updatePortletData(request)) {
+                if(CSContentAdvancedUtil.updatePortletData(request, modifiedByUserId, instanceId, true)) {
                     model.put("response", 200);
                 } else {
                     model.put("response", 500);
@@ -108,46 +108,4 @@ public class CSConfigureContentAdvancedController extends BaseController impleme
         modelAndView = new ModelAndView("Response", model);
         return modelAndView;
     }
-
-    /**
-     * Update the portlet preferences in the database.
-     * @param request
-     * @throws Exception
-     */
-	private boolean updatePortletData(ResourceRequest request) throws Exception {
-        boolean retVal = true;
-        try {
-            // grab the portlet preferences data json off the request
-            PortletPreferences prefs = request.getPreferences();
-            prefs.setValue("portletMode", ParamUtil.getString(request, "portletMode_"+instanceId, CSContentAdvancedUtil.MODE));
-            prefs.setValue("modifiedByUserId", modifiedByUserId);
-            prefs.setValue("cssBlock",  ParamUtil.getString(request, "cssBlock_"+instanceId, CSContentAdvancedUtil.CSSBLOCK));
-            prefs.setValue("htmlBlock", ParamUtil.getString(request, "htmlBlock_"+instanceId, CSContentAdvancedUtil.HTMLBLOCK));
-            prefs.setValue("jsBlockInternalPre", ParamUtil.getString(request, "jsBlockInternalPre_"+instanceId, CSContentAdvancedUtil.JSBLOCKINTERNALPRE));
-            prefs.setValue("jsBlockInternalPost",  ParamUtil.getString(request, "jsBlockInternalPost_"+instanceId, CSContentAdvancedUtil.JSBLOCKINTERNALPOST));
-            prefs.setValue("jsBlockExternalPre",  ParamUtil.getString(request, "jsBlockExternalPre_"+instanceId, CSContentAdvancedUtil.JSBLOCKEXTERNALPRE));
-            prefs.setValue("jsBlockExternalPost", ParamUtil.getString(request, "jsBlockExternalPost_"+instanceId, CSContentAdvancedUtil.JSBLOCKEXTERNALPOST));
-            prefs.setValue("showIntro",  ParamUtil.getString(request, "showIntro_"+instanceId, CSContentAdvancedUtil.SHOWINTRO).toUpperCase());
-
-            prefs.setValue("portletBorderColorTop", ParamUtil.getString(request, "portletBorderColorTop_"+instanceId, CSContentAdvancedUtil.PORTLETBORDERCOLORTOP));
-            prefs.setValue("portletBorderColorRight",  ParamUtil.getString(request, "portletBorderColorRight_"+instanceId, CSContentAdvancedUtil.PORTLETBORDERCOLORRIGHT));
-            prefs.setValue("portletBorderColorBottom",  ParamUtil.getString(request, "portletBorderColorBottom_"+instanceId, CSContentAdvancedUtil.PORTLETBORDERCOLORBOTTOM));
-            prefs.setValue("portletBorderColorLeft", ParamUtil.getString(request, "portletBorderColorLeft_"+instanceId, CSContentAdvancedUtil.PORTLETBORDERCOLORLEFT));
-            prefs.setValue("portletBorderPixelTop", ParamUtil.getString(request, "portletBorderPixelTop_"+instanceId, CSContentAdvancedUtil.PORTLETBORDERPIXELTOP));
-            prefs.setValue("portletBorderPixelRight",  ParamUtil.getString(request, "portletBorderPixelRight_"+instanceId, CSContentAdvancedUtil.PORTLETBORDERPIXELRIGHT));
-            prefs.setValue("portletBorderPixelBottom",  ParamUtil.getString(request, "portletBorderPixelBottom_"+instanceId, CSContentAdvancedUtil.PORTLETBORDERPIXELBOTTOM));
-            prefs.setValue("portletBorderPixelLeft", ParamUtil.getString(request, "portletBorderPixelLeft_"+instanceId, CSContentAdvancedUtil.PORTLETBORDERPIXELLEFT));
-            prefs.setValue("portletBackgroundColor",  ParamUtil.getString(request, "portletBackgroundColor_"+instanceId, CSContentAdvancedUtil.PORTLETBACKGROUNDCOLOR));
-            prefs.setValue("portletTopLeftRadius", ParamUtil.getString(request, "portletTopLeftRadius_"+instanceId, CSContentAdvancedUtil.PORTLETTOPLEFTRADIUS));
-            prefs.setValue("portletBottomLeftRadius",  ParamUtil.getString(request, "portletBottomLeftRadius_"+instanceId, CSContentAdvancedUtil.PORTLETBOTTOMLEFTRADIUS));
-            prefs.setValue("portletTopRightRadius",  ParamUtil.getString(request, "portletTopRightRadius_"+instanceId, CSContentAdvancedUtil.PORTLETTOPRIGHTRADIUS));
-            prefs.setValue("portletBottomRightRadius", ParamUtil.getString(request, "portletBottomRightRadius_"+instanceId, CSContentAdvancedUtil.PORTLETBOTTOMRIGHTRADIUS));
-            // save the portlet data
-            prefs.store();
-		} catch (Exception e) {
-            retVal = false;
-            LOGGER.error("A problem occurred when updating the portlet preferences: " + ExceptionUtils.getRootCauseMessage(e));
-        }
-        return retVal;
-	}
 }
