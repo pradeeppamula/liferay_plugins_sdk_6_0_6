@@ -1,4 +1,6 @@
 <%@ include file="/WEB-INF/jsp/inc/includes.jsp" %>
+<portlet:actionURL var="configureAction" portletMode="view" windowState="normal"/>
+<portlet:actionURL var="viewAction" windowState="normal" portletMode="view"/>
 <portlet:resourceURL var='contentAdvancedAjaxHandler' id='contentAdvancedAjaxHandler' />
 <%-- *****************************************************
 	Hide the Portlet when it has been DEACTIVATED.  This 
@@ -25,26 +27,21 @@
 		-moz-border-bottom-right-radius: ${portletBottomRightRadius}px ${portletBottomRightRadius}px;			
 	}
 
-	<c:if test="${cssBlock != ''}">
-	    ${cssBlock}
+	<c:if test="${cssBlockToRender != ''}">
+	    ${cssBlockToRender}
 	</c:if>
 
 	section[class$="section-${id}"] {
         height: 300px;
-        display: none;
     }
 
-    .js-external-section-${id} {  height: 300px !important; }
+    .js-external-section-${id} {  height: 400px !important; }
 
     .css${id}_InfoBlock,
     .html${id}_InfoBlock,
     .intPre${id}_InfoBlock,
     .intPost${id}_InfoBlock {
-        width: 98%;
         height: 650px;
-        margin: 0 0 0 10px;
-        background-color: #FFFFFF;
-        z-index: 100;
     }
     .alert-success, .alert-danger { display: none; }
 
@@ -93,147 +90,149 @@
                 </div>
                 <div class="modal-body">
                     <form id="edit-form-${id}" name="edit-form-${id}" role="form" class="form-horizontal">
-                        <label for="configuration-options-${id}" class="col-sm-1 control-label">Section</label>
-                        <div class="col-sm-6">
-                            <select id="configuration-options-${id}" name="configuration-options-${id}" class="form-control">
-                                <option value="intro-section-${id}">Intro</option>
-                                <option value="css-section-${id}">CSS Block</option>
-                                <option value="html-section-${id}">HTML Block</option>
-                                <option value="js-internal-pre-section-${id}">Internal Javascript (Pre-HTML)</option>
-                                <option value="js-internal-post-section-${id}">Internal Javascript (Post-HTML)</option>
-                                <option value="js-external-section-${id}">External Javascript (Pre and Post HTML)</option>
-                                <option value="portlet-section-${id}">Portlet Configuration</option>
-                            </select>
-                        </div>
+                        <ul id="ca-edit-tabs-${id}" class="nav nav-tabs">
+                            <li class="active"><a href="#css-section-${id}" data-toggle="tab">CSS</a></li>
+                            <li><a href="#html-section-${id}" data-toggle="tab">HTML</a></li>
+                            <li><a href="#js-internal-pre-section-${id}" data-toggle="tab">JS - Pre</a></li>
+                            <li><a href="#js-internal-post-section-${id}" data-toggle="tab">JS - Post</a></li>
+                            <li><a href="#js-external-section-${id}" data-toggle="tab">JS - Ext</a></li>
+                        </ul>
 
-                          <section class="css-section-${id}">
-                            <div class="alert alert-info">
-                                <ul>
-                                    <li>Inline CSS - The <code>&lt;style&gt;&lt;/style&gt;</code> tags are not needed.</li>
-                                    <li>The CSS in this section can be used in other portlets and page-specific HTML as well.</li>
-                                    <li>You can alter the CSS of this portlet itself by defining attributes for "#contentAdvancedContainer" and add the "Instance ID" from above.</li>
-                                    <li>For example:
-                                        <code>
-                                            #content-advanced-container-${id} {
-                                                padding: 50px;
-                                            }
-                                        </code>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div id="editor_cssSection${id}" name="editor_cssSection${id}" class="css${id}_InfoBlock"></div>
-                        </section> <!-- /.css-section-${id} -->
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <section id="css-section-${id}" class="css-section-${id} tab-pane active">
+                              <div class="alert alert-info">
+                                  <ul>
+                                      <li>Inline CSS - The <code>&lt;style&gt;&lt;/style&gt;</code> tags are not needed.</li>
+                                      <li>The CSS in this section can be used in other portlets and page-specific HTML as well.</li>
+                                      <li>You can alter the CSS of this portlet itself by defining attributes for "#contentAdvancedContainer" and add the "Instance ID" from above.</li>
+                                      <li>For example:
+                                          <code>
+                                              #content-advanced-container-${id} {
+                                                  padding: 50px;
+                                              }
+                                          </code>
+                                      </li>
+                                  </ul>
+                              </div>
+                              <div id="editor_cssSection${id}" name="editor_cssSection${id}" class="css${id}_InfoBlock"></div>
+                            </section> <!-- /.css-section-${id} -->
 
-                        <section class="html-section-${id}">
-                            <div class="alert alert-info">
-                                <ul>
-                                    <li>HTML only.</li>
-                                    <li>Javascript and CSS should be entered in their respective editors.</li>
-                                </ul>
-                            </div>
-                            <div id="editor_htmlSection${id}" name="editor_htmlSection${id}" class="html${id}_InfoBlock"></div>
-                        </section> <!-- /.html-section-${id} -->
-
-                        <section class="js-internal-pre-section-${id}">
-                            <div class="alert alert-info">
-                                <ul>
-                                    <li>Inline JS - The <code>&lt;style&gt;&lt;/style&gt;</code> tags are not needed.</li>
-                                    <li>This javascript will render <em>before</em> the HTML.</li>
-                                </ul>
-                            </div>
-                            <div id="editor_jsSectionInternalPre${id}" name="editor_jsSectionInternalPre${id}" class="intPre${id}_InfoBlock"></div>
-                        </section> <!-- /.js-internal-pre-section-${id} -->
-
-                        <section class="js-internal-post-section-${id}">
-                            <div class="alert alert-info">
-                                <ul>
-                                    <li>Inline JS - The <code>&lt;style&gt;&lt;/style&gt;</code> tags are not needed.</li>
-                                    <li>This javascript will render <em>after</em> the HTML.</li>
-                                </ul>
-                            </div>
-                            <div id="editor_jsSectionInternalPost${id}" name="editor_jsSectionInternalPost${id}" class="intPost${id}_InfoBlock"></div>
-                        </section> <!-- /.js-internal-post-section-${id} -->
-
-                        <section class="js-external-section-${id}">
-                            <div class="alert alert-info">
-                                <ul>
-                                    <li>External JS libraries.</li>
-                                    <li>For example, you can enter an entire <code>&lt;script&gt;...&lt;/script&gt;</code> line:
-                                        <code>&lt;script type="text/javascript" src="http://ajax.booya.com/libs/jQbooya/1.7/jQbooya.min.js"&gt;&lt;/script&gt;</code>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-5">PRE : Loaded <em>before</em> the Internal JS (Pre), HTML, and Internal JS (Post):</label>
-                                <div class="col-sm-6">
-                                    <textarea rows="5" id="js-block-external-pre-${id}" name="js-block-external-pre-${id}" class="form-control">${jsBlockExternalPre}</textarea>
+                           <section id="html-section-${id}" class="html-section-${id} tab-pane">
+                                <div class="alert alert-info">
+                                    <ul>
+                                        <li>HTML only.</li>
+                                        <li>Javascript and CSS should be entered in their respective editors.</li>
+                                    </ul>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-5">POST : Loaded <em>after</em> the Internal JS (Pre) and HTML, but <b>before</b> the Internal JS (Post):</label>
-                                <div class="col-sm-6">
-                                    <textarea rows="5" id="js-block-external-post-${id}" name="js-block-external-post-${id}" class="form-control">${jsBlockExternalPost}</textarea>
+                                <div id="editor_htmlSection${id}" name="editor_htmlSection${id}" class="html${id}_InfoBlock"></div>
+                            </section> <!-- /.html-section-${id} -->
+
+                             <section id="js-internal-pre-section-${id}" class="js-internal-pre-section-${id} tab-pane">
+                                <div class="alert alert-info">
+                                    <ul>
+                                        <li>Inline JS - The <code>&lt;style&gt;&lt;/style&gt;</code> tags are not needed.</li>
+                                        <li>This javascript will render <em>before</em> the HTML.</li>
+                                    </ul>
                                 </div>
-                            </div>
-                        </section> <!-- /.js-external-section-${id} -->
+                                <div id="editor_jsSectionInternalPre${id}" name="editor_jsSectionInternalPre${id}" class="intPre${id}_InfoBlock"></div>
+                            </section> <!-- /.js-internal-pre-section-${id} -->
+
+                            <section id="js-internal-post-section-${id}" class="js-internal-post-section-${id} tab-pane">
+                                <div class="alert alert-info">
+                                    <ul>
+                                        <li>Inline JS - The <code>&lt;style&gt;&lt;/style&gt;</code> tags are not needed.</li>
+                                        <li>This javascript will render <em>after</em> the HTML.</li>
+                                    </ul>
+                                </div>
+                                <div id="editor_jsSectionInternalPost${id}" name="editor_jsSectionInternalPost${id}" class="intPost${id}_InfoBlock"></div>
+                            </section> <!-- /.js-internal-post-section-${id} -->
+
+                            <section id="js-external-section-${id}" class="js-external-section-${id} tab-pane">
+                                <div class="alert alert-info">
+                                    <ul>
+                                        <li>External JS libraries.</li>
+                                        <li>For example, you can enter an entire <code>&lt;script&gt;...&lt;/script&gt;</code> line:
+                                            <code>&lt;script type="text/javascript" src="http://ajax.booya.com/libs/jQbooya/1.7/jQbooya.min.js"&gt;&lt;/script&gt;</code>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-5">PRE : Loaded <em>before</em> the Internal JS (Pre), HTML, and Internal JS (Post):</label>
+                                    <div class="col-sm-6">
+                                        <textarea rows="5" id="js-block-external-pre-${id}" name="js-block-external-pre-${id}" class="form-control">${jsBlockExternalPre}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-5">POST : Loaded <em>after</em> the Internal JS (Pre) and HTML, but <b>before</b> the Internal JS (Post):</label>
+                                    <div class="col-sm-6">
+                                        <textarea rows="5" id="js-block-external-post-${id}" name="js-block-external-post-${id}" class="form-control">${jsBlockExternalPost}</textarea>
+                                    </div>
+                                </div>
+                            </section> <!-- /.js-external-section-${id} -->
+                        </div> <!-- /.tab-content -->
                     </form>
-                </div>
+                </div> <!-- /.modal-body -->
+                 <div class="modal-footer">
+                     <!-- Alerts -->
+                        <div id="alert-main-success" class="alert alert-success text-left">
+                            <strong>&#10004;</strong> Your portlet was updated.
+                        </div>
+                      <div id="alert-main-danger" class="alert alert-danger text-left">
+                        <a href="#" class="close">&times;</a>
+                        <strong>&#9888;</strong> There seems to be a problem:
+                        <span id="error-message"></span>
+                      </div>
+                      <!-- End Alerts -->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" id="btn-save-${id}">Save</button>
+                 </div>
             </div>
           </div>
         </div>
-    </c:if>
 
-	<c:if test="${jsBlockExternalPre != ''}">
-	    ${jsBlockExternalPre}
-	</c:if>
-	
-	<c:if test="${jsBlockInternalPre != ''}">
-        <script language="Javascript">
-            ${jsBlockInternalPre}
-        </script>
-	</c:if>	
-	
-	<c:if test="${htmlBlock != ''}">
-	    ${htmlBlock}
-	</c:if>
-	
-	<c:if test="${jsBlockExternalPost != ''}">
-	    ${jsBlockExternalPost}
-	</c:if>
-			
-	<c:if test="${jsBlockInternalPost != ''}">
-        <script language="Javascript">
-            ${jsBlockInternalPost}
-        </script>
-	</c:if>
 
-	<script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script type="application/javascript">
+
         $(document).ready(function() {
-           var CSSMode${id} = require("ace/mode/css").Mode;
-           var HTMLMode${id} = require("ace/mode/html").Mode;
-           var JavaScriptMode${id} = require("ace/mode/javascript").Mode;
+            var codeFolding = "markbegin";
+            var theme = "ace/theme/dreamweaver";
+            var modeJavascript = "ace/mode/javascript";
+            var editor_cssSection${id} = ace.edit("editor_cssSection${id}");
+            editor_cssSection${id}.setTheme(theme);
+            editor_cssSection${id}.getSession().setMode("ace/mode/css");
+            editor_cssSection${id}.getSession().getDocument().insertLines(0, ${cssBlock});
+            editor_cssSection${id}.getSession().setFoldStyle(codeFolding);
+            editor_cssSection${id}.focus();
 
-           var editor_cssSection${id} = ace.edit("editor_cssSection${id}");
-           editor_cssSection${id}.setTheme("ace/theme/textmate");
-           editor_cssSection${id}.getSession().setMode(new CSSMode${id}());
-           editor_cssSection${id}.getSession().getDocument().insertLines(0, ${cssBlock});
+            var editor_htmlSection${id} = ace.edit("editor_htmlSection${id}");
+            editor_htmlSection${id}.setTheme(theme);
+            editor_htmlSection${id}.getSession().setMode("ace/mode/html");
+            editor_htmlSection${id}.getSession().getDocument().insertLines(0, ${htmlBlock});
+            editor_htmlSection${id}.getSession().setFoldStyle(codeFolding);
 
-           var editor_htmlSection${id} = ace.edit("editor_htmlSection${id}");
-           editor_htmlSection${id}.setTheme("ace/theme/textmate");
-           editor_htmlSection${id}.getSession().setMode(new HTMLMode${id}());
-           editor_htmlSection${id}.getSession().getDocument().insertLines(0, ${htmlBlock});
+            var editor_jsSectionInternalPre${id} = ace.edit("editor_jsSectionInternalPre${id}");
+            editor_jsSectionInternalPre${id}.setTheme(theme);
+            editor_jsSectionInternalPre${id}.getSession().setMode(modeJavascript);
+            editor_jsSectionInternalPre${id}.getSession().getDocument().insertLines(0, ${jsBlockInternalPre});
+            editor_jsSectionInternalPre${id}.getSession().setFoldStyle(codeFolding);
 
-           var editor_jsSectionInternalPre${id} = ace.edit("editor_jsSectionInternalPre${id}");
-           editor_jsSectionInternalPre${id}.setTheme("ace/theme/textmate");
-           editor_jsSectionInternalPre${id}.getSession().setMode(new JavaScriptMode${id}());
-           editor_jsSectionInternalPre${id}.getSession().getDocument().insertLines(0, ${jsBlockInternalPre});
+            var editor_jsSectionInternalPost${id} = ace.edit("editor_jsSectionInternalPost${id}");
+            editor_jsSectionInternalPost${id}.setTheme(theme);
+            editor_jsSectionInternalPost${id}.getSession().setMode(modeJavascript);
+            editor_jsSectionInternalPost${id}.getSession().getDocument().insertLines(0, ${jsBlockInternalPost});
+            editor_jsSectionInternalPost${id}.getSession().setFoldStyle(codeFolding);
 
-           var editor_jsSectionInternalPost${id} = ace.edit("editor_jsSectionInternalPost${id}");
-           editor_jsSectionInternalPost${id}.setTheme("ace/theme/textmate");
-           editor_jsSectionInternalPost${id}.getSession().setMode(new JavaScriptMode${id}());
-           editor_jsSectionInternalPost${id}.getSession().getDocument().insertLines(0, ${jsBlockInternalPost});
+            $('#ca-edit-tabs-${id} > li > a').click(function (e) {
+                var id = $(this).attr("href");
+                if(id == "#css-section-${id}") editor_cssSection${id}.focus();
+                else if(id == "#html-section-${id}") editor_htmlSection${id}.focus();
+                else if(id == "#js-internal-pre-section-${id}") editor_jsSectionInternalPre${id}.focus();
+                else if(id == "#js-internal-post-section-${id}") editor_jsSectionInternalPost${id}.focus();
+            });
 
-           $("#btn-save-${id}").click(function() {
+            $("#btn-save-${id}").click(function() {
                var cssBlockLines = editor_cssSection${id}.getSession().getDocument().getAllLines();
                var htmlBlockLines = editor_htmlSection${id}.getSession().getDocument().getAllLines();
                var jsBlockInternalPreLines = editor_jsSectionInternalPre${id}.getSession().getDocument().getAllLines();
@@ -252,78 +251,69 @@
                    jsBlockInternalPostLines.pop();
                }
 
-               cssBlockLines = JSON.stringify(cssBlockLines, null, 10);
-               htmlBlockLines = JSON.stringify(htmlBlockLines, null, 10);
-               jsBlockInternalPreLines = JSON.stringify(jsBlockInternalPreLines, null, 10);
-               jsBlockInternalPostLines = JSON.stringify(jsBlockInternalPostLines, null, 10);
+                var postData = {};
+                postData.requestType_${id} = 'SAVE_CONFIG';
+                postData.cssBlock_${id} = JSON.stringify(cssBlockLines, null, 10);;
+                postData.htmlBlock_${id} = JSON.stringify(htmlBlockLines, null, 10);;
+                postData.jsBlockInternalPre_${id} = JSON.stringify(jsBlockInternalPreLines, null, 10);
+                postData.jsBlockInternalPost_${id} = JSON.stringify(jsBlockInternalPostLines, null, 10);
+                postData.jsBlockExternalPre_${id} = $("#js-block-external-pre-${id}").val();
+                postData.jsBlockExternalPost_${id} = $("#js-block-external-post-${id}").val();
 
-               $("#css-block-${id}").val(cssBlockLines);
-               $("#html-block-${id}").val(htmlBlockLines);
-               $("#js-block-internal-pre-${id}").val(jsBlockInternalPreLines);
-               $("#js-block-internal-post-${id}").val(jsBlockInternalPostLines);
-
-               if ( $("#show-intro-checkbox-${id}").is(':checked') ) {
-                   $("#show-intro-${id}").val("ON");
-               } else {
-                   $("#show-intro-${id}").val("OFF");
-               }
-
-               // build the post data and post to the portlet
-               var postData = {};
-               postData.requestType_${id} = 'SAVE_CONFIG';
-               postData.portletMode_${id} = $("#portlet-mode-${id}").val();
-               postData.showIntro_${id} = $("#show-intro-${id}").val();
-               postData.cssBlock_${id} = $("#css-block-${id}").val();
-               postData.htmlBlock_${id} = $("#html-block-${id}").val();
-               postData.jsBlockInternalPre_${id} = $("#js-block-internal-pre-${id}").val();
-               postData.jsBlockInternalPost_${id} = $("#js-block-internal-post-${id}").val();
-               postData.jsBlockExternalPre_${id} = $("#js-block-external-pre-${id}").val();
-               postData.jsBlockExternalPost_${id} = $("#js-block-external-post-${id}").val();
-
-             $.ajax({
-                 type: "POST",
-                 data: postData,
-                 url: "${contentAdvancedAjaxHandler}",
-                 beforeSend: function() {
-                   $("#btn-save-${id}").prop('disabled', true);
-                 },
-                 success: function (response) { console.log(response);
-                   if(response == 200) {
-                       $("#alert-main-danger").fadeOut(0);
-                        $("#alert-main-success").fadeIn(100);
-                        $("#btn-save-${id}").prop('disabled', false);
-                        setTimeout(function() {$("#alert-main-success").fadeOut(300);},3000);
-                    } else {
-                      console.error(data);
-                      $("#alert-main-danger").fadeIn(100);
-                      $("#error-message").html("There seems to be a problem with your request.  Please contact help@computer.org.");
-                      $("#btn-save-${id}").prop('disabled', false);
-                    }
-                 },
-                 error: function (data) {
-                   console.error(data);
-                   $("#alert-main-danger").fadeIn(100);
-                   $("#error-message").html(data.responseJSON.error);
-                   $("#btn-save-${id}").prop('disabled', false);
-                 }
-             });
-           });
-
-           $("#configuration-options-${id}").on("change", function() {
-               var thisSelected = $(this).val();
-               $("section[class$='section-${id}']").hide();
-               $("." + thisSelected).show();
-               if ( thisSelected == "css-section-${id}" ) {
-                   editor_cssSection${id}.focus();
-               } else if ( thisSelected == "html-section-${id}" ) {
-                   editor_htmlSection${id}.focus();
-               } else if ( thisSelected == "js-internal-post-section-${id}" ) {
-                   editor_jsSectionInternalPost${id}.focus();
-               } else if ( thisSelected == "js-internal-pre-section-${id}" ) {
-                   editor_jsSectionInternalPre${id}.focus();
-               }
+                $.ajax({
+                  type: "POST",
+                  data: postData,
+                  url: "${contentAdvancedAjaxHandler}",
+                  beforeSend: function() {
+                    $("#btn-save-${id}").prop('disabled', true);
+                  },
+                  success: function (response) {
+                    if(response == 200) {
+                        $("#alert-main-danger").fadeOut(0);
+                         $("#alert-main-success").fadeIn(100);
+                         $("#btn-save-${id}").prop('disabled', false);
+                         setTimeout(function() {$("#alert-main-success").fadeOut(300);},3000);
+                     } else {
+                       console.error(data);
+                       $("#alert-main-danger").fadeIn(100);
+                       $("#error-message").html("There seems to be a problem with your request.  Please contact help@computer.org.");
+                       $("#btn-save-${id}").prop('disabled', false);
+                     }
+                  },
+                  error: function (data) {
+                    console.error(data);
+                    $("#alert-main-danger").fadeIn(100);
+                    $("#error-message").html(data.responseJSON.error);
+                    $("#btn-save-${id}").prop('disabled', false);
+                  }
+              });
            });
        });
-	</script>
+       </script>
+    </c:if>
+
+	<c:if test="${jsBlockExternalPre != ''}">
+	    ${jsBlockExternalPre}
+	</c:if>
+	
+	<c:if test="${jsBlockInternalPreToRender != ''}">
+        <script language="Javascript">
+            ${jsBlockInternalPreToRender}
+        </script>
+	</c:if>	
+	
+	<c:if test="${htmlBlockToRender != ''}">
+	    ${htmlBlockToRender}
+	</c:if>
+	
+	<c:if test="${jsBlockExternalPost != ''}">
+	    ${jsBlockExternalPost}
+	</c:if>
+			
+	<c:if test="${jsBlockInternalPostToRender != ''}">
+        <script language="Javascript">
+            ${jsBlockInternalPostToRender}
+        </script>
+	</c:if>
 </div>
 </c:if>

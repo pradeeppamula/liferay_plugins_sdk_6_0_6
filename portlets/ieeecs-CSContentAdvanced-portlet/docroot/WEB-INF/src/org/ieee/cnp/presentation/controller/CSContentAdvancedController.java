@@ -24,6 +24,7 @@ import java.util.Map;
 public class CSContentAdvancedController extends BaseController implements ResourceAwareController {
     static final Logger LOGGER = Logger.getLogger(CSContentAdvancedController.class);
     private String instanceId = "";
+    private String modifiedByUserId = "";
 
     /**
      * This function will render the view to show the portlet's content.  The function
@@ -93,10 +94,10 @@ public class CSContentAdvancedController extends BaseController implements Resou
 				jsBlockInternalPost = jsBlockInternalPost + line + "\r\n";
 			}
 
-			model.put("cssBlock", cssBlock);
-			model.put("htmlBlock", htmlBlock);
-			model.put("jsBlockInternalPre", jsBlockInternalPre);
-			model.put("jsBlockInternalPost", jsBlockInternalPost);
+			model.put("cssBlockToRender", cssBlock);
+			model.put("htmlBlockToRender", htmlBlock);
+			model.put("jsBlockInternalPreToRender", jsBlockInternalPre);
+			model.put("jsBlockInternalPostToRender", jsBlockInternalPost);
 
 			// -----------------------------------------------------------------------------------------------------------------
 			// If the current user has Deactivated this Portlet, we should still let them
@@ -172,6 +173,7 @@ public class CSContentAdvancedController extends BaseController implements Resou
                 String portletId = (String) request.getAttribute(WebKeys.PORTLET_ID);
                 int cropHere = portletId.indexOf("_INSTANCE_");
                 instanceId = "_" + portletId.substring(cropHere + 10);
+                modifiedByUserId = new Long(themeDisplay.getUserId()).toString();
             }
 
             // grab the request type from the request
@@ -179,7 +181,12 @@ public class CSContentAdvancedController extends BaseController implements Resou
 
             // determine which functionality to use based on the request type
             if (CSContentAdvancedUtil.SAVE_CONFIG.equalsIgnoreCase(requestType)) {
-
+                // update the data
+                if(CSContentAdvancedUtil.updatePortletData(request, modifiedByUserId, instanceId, false)) {
+                    model.put("response", 200);
+                } else {
+                    model.put("response", 500);
+                }
             }
             response.setCharacterEncoding("UTF-8");
             response.setContentType("text/json");

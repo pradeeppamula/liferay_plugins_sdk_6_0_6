@@ -315,16 +315,10 @@
 <c:if test="${fallbackJS}">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/ieeecs-CSContentAdvanced-portlet/js/jquery.simplemodal.js"></script>
 </c:if>
 
-<script src="/ieeecs-CSContentAdvanced-portlet/js/jtip.js" type="text/javascript"></script>
 <script src="/ieeecs-CSContentAdvanced-portlet/js/jscolor/jscolor.js" type="text/javascript"></script>
-<script src="/ieeecs-CSContentAdvanced-portlet/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
-<script src="/ieeecs-CSContentAdvanced-portlet/js/ace/theme-textmate.js" type="text/javascript" charset="utf-8"></script>
-<script src="/ieeecs-CSContentAdvanced-portlet/js/ace/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
-<script src="/ieeecs-CSContentAdvanced-portlet/js/ace/mode-css.js" type="text/javascript" charset="utf-8"></script>
-<script src="/ieeecs-CSContentAdvanced-portlet/js/ace/mode-html.js" type="text/javascript" charset="utf-8"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js" type="text/javascript" charset="utf-8"></script>
 
 <!-- NOTE: Don't put the type in the script tag b/c Liferay will mess up during the minifier process -->
 <script>
@@ -348,29 +342,33 @@
         // enable popovers
         $('.popover-help').popover({'html':true});
 
-        var CSSMode${id} = require("ace/mode/css").Mode;
-        var HTMLMode${id} = require("ace/mode/html").Mode;
-        var JavaScriptMode${id} = require("ace/mode/javascript").Mode;
+        var codeFolding = "markbegin";
+        var theme = "ace/theme/dreamweaver";
+        var modeJavascript = "ace/mode/javascript";
 
         var editor_cssSection${id} = ace.edit("editor_cssSection${id}");
-        editor_cssSection${id}.setTheme("ace/theme/textmate");
-        editor_cssSection${id}.getSession().setMode(new CSSMode${id}());
+        editor_cssSection${id}.setTheme(theme);
+        editor_cssSection${id}.getSession().setMode("ace/mode/css");
         editor_cssSection${id}.getSession().getDocument().insertLines(0, ${cssBlock});
+        editor_cssSection${id}.getSession().setFoldStyle(codeFolding);
 
         var editor_htmlSection${id} = ace.edit("editor_htmlSection${id}");
-        editor_htmlSection${id}.setTheme("ace/theme/textmate");
-        editor_htmlSection${id}.getSession().setMode(new HTMLMode${id}());
+        editor_htmlSection${id}.setTheme(theme);
+        editor_htmlSection${id}.getSession().setMode("ace/mode/html");
         editor_htmlSection${id}.getSession().getDocument().insertLines(0, ${htmlBlock});
+        editor_htmlSection${id}.getSession().setFoldStyle(codeFolding);
 
         var editor_jsSectionInternalPre${id} = ace.edit("editor_jsSectionInternalPre${id}");
-        editor_jsSectionInternalPre${id}.setTheme("ace/theme/textmate");
-        editor_jsSectionInternalPre${id}.getSession().setMode(new JavaScriptMode${id}());
+        editor_jsSectionInternalPre${id}.setTheme(theme);
+        editor_jsSectionInternalPre${id}.getSession().setMode(modeJavascript);
         editor_jsSectionInternalPre${id}.getSession().getDocument().insertLines(0, ${jsBlockInternalPre});
+        editor_jsSectionInternalPre${id}.getSession().setFoldStyle(codeFolding);
 
         var editor_jsSectionInternalPost${id} = ace.edit("editor_jsSectionInternalPost${id}");
-        editor_jsSectionInternalPost${id}.setTheme("ace/theme/textmate");
-        editor_jsSectionInternalPost${id}.getSession().setMode(new JavaScriptMode${id}());
+        editor_jsSectionInternalPost${id}.setTheme(theme);
+        editor_jsSectionInternalPost${id}.getSession().setMode(modeJavascript);
         editor_jsSectionInternalPost${id}.getSession().getDocument().insertLines(0, ${jsBlockInternalPost});
+        editor_jsSectionInternalPost${id}.getSession().setFoldStyle(codeFolding);
 
         $("#btn-save-${id}").click(function() {
             var cssBlockLines = editor_cssSection${id}.getSession().getDocument().getAllLines();
@@ -441,7 +439,7 @@
               beforeSend: function() {
                 $("#btn-save-${id}").prop('disabled', true);
               },
-              success: function (response) { console.log(response);
+              success: function (response) {
                 if(response == 200) {
                     $("#alert-main-danger").fadeOut(0);
                      $("#alert-main-success").fadeIn(100);
@@ -467,17 +465,6 @@
         $("#configuration-options-${id}").on("change", function() {
             var thisSelected = $(this).val();
             if (thisSelected == "view-source-${id}") {
-             /*   var browserWindowHeight = $(window).height();
-                var browserWindowWidth = $(window).width();
-                var snapshotModalHeight = Math.floor(browserWindowHeight/1.5) + 100;
-                var snapshotModalWidth = Math.floor(browserWindowWidth/1.5) + 100;
-                var snapshotTextAreaHeight = snapshotModalHeight - 30;
-                var snapshotTextAreaWidth = snapshotModalWidth - 25;
-                var codeSnapshot = getAllSnapshots();
-                $("#viewSourceModal textarea").css({"height":snapshotTextAreaHeight+"px", "width":snapshotTextAreaWidth+"px"});
-                $("#viewSourceModal textarea").val(codeSnapshot);
-                $("#viewSourceModal").modal({"minHeight": snapshotModalHeight, "minWidth":snapshotModalWidth, "maxHeight": snapshotModalHeight+50, "maxWidth":snapshotModalWidth+50});
-               */
                $('#souce-code-${id}').val(getAllSnapshots());
                $('#view-source-modal-${id}').modal({});
             } else {
