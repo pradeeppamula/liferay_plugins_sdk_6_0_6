@@ -5,11 +5,11 @@
  * @description This class will load serve as a basic utility class for
  * the content advanced portlet
  */
-package org.ieee.cnp.util;
+package org.ieeecs.communities.util;
 
 import com.liferay.portal.kernel.util.ParamUtil;
 import org.apache.commons.lang.exception.ExceptionUtils;
-import org.ieee.cnp.bean.CustomPreferences;
+import org.ieeecs.communities.bean.CustomPreferences;
 import javax.portlet.PortletPreferences;
 import javax.portlet.ResourceRequest;
 import java.util.ArrayList;

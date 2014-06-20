@@ -1,4 +1,11 @@
-package org.ieee.cnp.presentation.controller;
+/**
+ * @copyright 2014 IEEE
+ * @package org.ieee.cnp.presentation.controller
+ * @created May 14, 2014
+ * @description This class will handle any requests for
+ * the content advanced portlet
+ */
+package org.ieeecs.communities.presentation.controller;
 
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
@@ -9,7 +16,7 @@ import com.liferay.portal.service.UserLocalServiceUtil;
 import com.liferay.portal.theme.ThemeDisplay;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
-import org.ieee.cnp.util.CSContentAdvancedUtil;
+import org.ieeecs.communities.util.CSContentAdvancedUtil;
 import org.ieee.common.json.JSONArray;
 import org.ieee.common.presentation.controller.BaseController;
 import org.springframework.web.portlet.ModelAndView;
@@ -141,7 +148,7 @@ public class CSContentAdvancedController extends BaseController implements Resou
 
 		} catch (Exception e) {
             // gracefully handle exception and put on model
-            model.put("error", "There was a problem loading your account information.  Please reload the page or contact help@computer.org.");
+            model.put("error", "There was a problem loading the portlet.  Please reload the page or contact help@computer.org.");
             LOGGER.error("A problem occurred when handling a request: " + ExceptionUtils.getRootCauseMessage(e));
 		}
 

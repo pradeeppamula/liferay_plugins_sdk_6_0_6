@@ -5,14 +5,14 @@
  * @description This class will handle any requests for configuring
  * the content advanced portlet
  */
-package org.ieee.cnp.presentation.controller;
+package org.ieeecs.communities.presentation.controller;
 
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.theme.ThemeDisplay;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
-import org.ieee.cnp.util.CSContentAdvancedUtil;
+import org.ieeecs.communities.util.CSContentAdvancedUtil;
 import org.ieee.common.presentation.controller.BaseController;
 import org.springframework.web.portlet.ModelAndView;
 import org.springframework.web.portlet.mvc.ResourceAwareController;
@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CSConfigureContentAdvancedController extends BaseController implements ResourceAwareController {
-    static final Logger LOGGER = Logger.getLogger(CSContentAdvancedController.class);
+    static final Logger LOGGER = Logger.getLogger(CSConfigureContentAdvancedController.class);
     private String instanceId = "";
     private String modifiedByUserId = "";
 
