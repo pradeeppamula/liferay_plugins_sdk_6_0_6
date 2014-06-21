@@ -89,6 +89,8 @@ public class ContentListUtil {
 	public static final String DEFAULTIMAGEPATH  = "/documents/16228/4e75d1a3-0a5e-4911-8107-d68b0ca232c6";
 	public static final String DISPLAYDATEFORMAT = "EEEE, MMM d, yyyy";
 	
+	public static final String SUBCATEGORIES = "";
+	
 	public static final String SHOWINTRO = "ON";
 
 	
@@ -175,6 +177,8 @@ public class ContentListUtil {
 			
 			model.put("defaultImagePath", prefs.getValue("defaultImagePath", DEFAULTIMAGEPATH));
 			model.put("displayDateFormat", prefs.getValue("displayDateFormat", DISPLAYDATEFORMAT));
+			
+			model.put("subCategories", prefs.getValue("subCategories", SUBCATEGORIES));
 			
 			model.put("showIntro", prefs.getValue("showIntro", SHOWINTRO));
 
