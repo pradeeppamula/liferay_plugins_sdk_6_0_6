@@ -1,0 +1,24 @@
+<ul>
+<li>This should be a unique name, for this portlet only.</li>
+<li>
+	<ul>
+		<li>Please keep this name short and alphanumeric only.</li>
+		<li>Please don't use any special characters or spaces.</li>
+	</ul>
+</li>
+<li>This "target" name can be used to bind a "Content List" portlet to this Content Container Portlet.</li>
+<li>Leaving the "target" name blank, or not using it in a "Content List" portlet will mean:
+	<ul>
+		<li>Clicking on a "Content List" link will require a request/response via the normal HTTP method.</li>
+		<li>The user will see a browser refresh/render of the new page.</li>
+	</ul>
+</li>
+<li>Filling out the "target" name and then using it in a "Content List" portlet will mean:
+	<ul>
+		<li>Clicking on a "Content List" link will use an AJAX call to the server to get the content.</li>
+		<li>The user will *not* see a browser refresh/render of the new page.</li>
+		<li>Instead, the previous content will fade out, and then fade in with the new content.</li>
+		<li>There will be no visible page refresh/render.</li>
+	</ul>
+</li>
+</ul>

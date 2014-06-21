@@ -1,0 +1,478 @@
+/* ---------- Common ---------- */
+
+.clearBoth {
+	clear: both;
+}
+
+.floatLeft {
+	float: left;
+}
+
+.floatRight {
+	float: right;
+}
+
+/* ---------- Portlet ---------- */
+
+.contentContainerHolder {
+	margin: 0;
+	width: 99%;
+}
+
+.contentContainerHolder p {
+	margin: 15px 10px 10px 10px;
+	font: 12px arial,helvetica,sans-serif;
+}
+
+.frstText, .prevText, .nextText, .lastText {
+	display: none;
+}
+
+.toTheTop {
+	position: relative;
+	top: -10px;
+	margin: 0 auto;
+	width: 160px;
+	height: 12px;
+	cursor: pointer;
+	background-color: #CCCCCC;
+	border: 1px solid #CCCCCC;
+	border-bottom-left-radius: 5px 5px;		
+	-moz-border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	-moz-border-bottom-right-radius: 5px 5px;	
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+	filter: alpha(opacity=60);
+	-moz-opacity:0.6;
+	-khtml-opacity: 0.6;
+	opacity: 0.6;	
+	text-align: center;
+}
+
+.toTheTop:hover {
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	-moz-opacity:1;
+	-khtml-opacity: 1;
+	opacity: 1;		
+}
+
+.pagesLabel {
+	float: left;
+	font: 12px arial,helvetica,sans-serif;
+	margin:  17px 10px 0 0;
+	height: 80px;
+}
+
+.title {
+	float: left;
+	font: bold 16px arial,sans-serif;
+	margin: 3px 0px 0px 10px;
+	display: none;	
+}
+
+.contentNavHolder {
+	position: relative;
+	top: -20px;
+	width: 98%;
+	height: 120px;
+	margin: auto;
+	margin-bottom: 10px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+.contentIntro {
+	margin: 20px 0 20px 10px;
+}
+
+.contentIntroTitle {
+	font: 18px arial, helvetica, sans-serif;
+	margin: 0 0 10px 0;
+	width: 90%;
+}
+
+.contentIntroCreatorAndDate {
+	font: 14px arial, helvetica, sans-serif #999999;
+	width: 90%;
+}
+
+.contentContainerTitle {
+	margin: 10px 0 20px 10px;	
+	font: 14px arial,sans-serif;
+}
+
+.contentContainerMode {
+	margin: 0 0 20px 10px;
+	font: 12px arial,sans-serif;	
+}
+
+.contentContainerInstanceID {
+	margin: 0 0 20px 10px;
+	font: 12px arial,sans-serif;	
+}
+
+.shareWith {
+	font: 12px arial, sans-serif; 
+	margin: 0 0 10px 0;
+	padding: 3px 10px 3px 10px;
+	background-color: #DDDDDD;
+	border: 1px solid #DDDDDD;
+	border-top-left-radius: 10px 10px;
+	-moz-border-top-left-radius: 10px 10px;
+	border-top-right-radius: 10px 10px;		
+	-moz-border-top-right-radius: 10px 10px;		
+	border-bottom-left-radius: 10px 10px;		
+	-moz-border-bottom-left-radius: 10px 10px;
+	border-bottom-right-radius: 10px 10px;
+	-moz-border-bottom-right-radius: 10px 10px;	
+	width: 97%;
+}
+
+#shareWithLinkList {
+	margin: 0 0 10px 10px;	
+}
+
+.commentTemplate {
+	display: none;	
+}
+
+.commentOn {
+	font: 12px arial, sans-serif; 
+	margin: 30px 0 10px 0;
+	padding: 3px 10px 3px 10px;
+	background-color: #DDDDDD;
+	border: 1px solid #DDDDDD;
+	border-top-left-radius: 10px 10px;
+	-moz-border-top-left-radius: 10px 10px;
+	border-top-right-radius: 10px 10px;		
+	-moz-border-top-right-radius: 10px 10px;		
+	border-bottom-left-radius: 10px 10px;		
+	-moz-border-bottom-left-radius: 10px 10px;
+	border-bottom-right-radius: 10px 10px;
+	-moz-border-bottom-right-radius: 10px 10px;	
+	width: 97%;
+}
+
+.commentNewContainer {	
+	margin: 30px 0 30px 0;
+	padding: 10px 10px 10px 10px;
+	background-color: #DDDDDD;
+	border: 1px solid #DDDDDD;
+	border-top-left-radius: 10px 10px;
+	-moz-border-top-left-radius: 10px 10px;
+	border-top-right-radius: 10px 10px;		
+	-moz-border-top-right-radius: 10px 10px;		
+	border-bottom-left-radius: 10px 10px;		
+	-moz-border-bottom-left-radius: 10px 10px;
+	border-bottom-right-radius: 10px 10px;
+	-moz-border-bottom-right-radius: 10px 10px;	
+}
+
+.commentTitle {
+	font: 12px arial, sans-serif; 
+	margin: 0 0 20px 0; 
+	width: 100%;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.commentName {
+	font: 12px arial, sans-serif;
+	margin: 0 0 10px 10px;
+}
+
+.commentName input {
+	border: 1px solid #CCCCCC;
+	color: #666666;
+}
+
+.commentBody {
+	width: 97%;
+	margin: 0 0 0 10px;
+}
+
+.commentButtons {
+	margin: 10px 0 20px 10px; 
+	width: 97%;
+}
+
+.commentMessage {
+	float: left; 
+	font: 12px bold arial, sans-serif; 
+	color: blue; 
+	padding: 8px 0 0 10px;
+}
+
+.newComment {
+	margin: 20px 10px 5px 10px; 
+	padding: 5px 15px 5px 5px;
+	width: 95%;
+	border-top: 1px solid #CCCCCC;
+	background-color: #EEEEEE;
+	-moz-border-top-right-radius: 5px 5px;		
+	border-bottom-left-radius: 5px 5px;		
+	-moz-border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	-moz-border-bottom-right-radius: 5px 5px;		
+}
+
+.newCommentIFrame {
+	width: 95%;
+}
+
+.newCommentName {
+	float: left; 
+	padding: 5px 5px 5px 5px; 
+	font: bold 12px arial, sans-serif;
+}
+
+.newCommentDate {
+	float: right; 
+	padding: 5px 5px 5px 5px; 
+	font: bold 12px arial, sans-serif;
+}
+
+.newCommentBody {
+	margin: 5px 10px 10px 10px; 
+	padding: 5px 5px 5px 5px;
+}
+
+.configContainerExplanationRow {
+	width: 95%;
+	display: none;		
+}
+
+.configContainerRow {
+	width: 98%;
+	border-top: 1px solid #CCCCCC;
+	background-color: #E8E8E8;
+	display: none;
+	margin: 0 0 0 10px;
+}
+
+.configContainerRowButtons {
+	width: 98%;
+	border-top: 1px solid #CCCCCC;
+	background-color: #E8E8E8;
+	margin: 0 0 0 10px;
+}
+
+.configContainerCellTitle {
+	float: left; 
+	width: 180px; 
+	padding: 10px 0 0 10px;	
+}
+
+.configContainerCell {
+    background-color: #FFFFFF;
+    float: left;
+    margin: 0;
+    padding: 10px 0 10px 10px;
+    width: 250px;	
+}
+
+.configContainerMessage {
+	float: left; 
+	width: 600px; 
+	margin: 10px 0 3px 0; 
+	color: blue; 
+	font: 16px arial,sans-serif;	
+}
+
+.configContainerSave {
+	float: right; 
+	width: 50px; 
+	margin: 10px 0 3px 0;
+}
+
+.contentContainerConfigCell {
+    background-color: #FFFFFF;
+    float: left;
+    margin: 0;
+    padding: 10px 0 10px 10px;
+    width: 250px;	
+}
+
+.contentContainerConfigCellTitle {
+	float: left; 
+	width: 180px; 
+	padding: 10px 0 0 10px;	
+}
+
+.peerReviewedIcon_LargeRight {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: url("http://www.computer.org/cms/Computer.org/ComputingNow/homepage/blog/icons/CNPeerReviewedIcon-45x46.png") no-repeat;
+	width: 45px;
+	height: 46px;
+	display: none;
+}
+
+.peerReviewedIcon_CSDL_LargeRight {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: url("http://www.computer.org/cms/Computer.org/ComputingNow/homepage/blog/icons/CNPeerReviewedIcon-45x46.png") no-repeat;
+	width: 45px;
+	height: 46px;
+	display: none;
+}
+
+/* ---------- Intro Section ---------- */
+
+.contentContainerConfigExplanation {
+	font: 12px arial, helvetica, sans-serif;
+	padding: 5px 0 10px 15px;
+	width: 100%;
+	border: 1px solid #CCCCCC;
+	margin: 0 0 10px 10px;	
+}
+
+.contentContainerConfigExplanation li {
+	margin: 5px 0 5px 0;	
+}
+
+
+/* ---------- Font Size Changer ---------- */
+
+.jfontsize-button {
+    font: bold 12px arial;
+    padding: 5px;
+    border: solid 1px #ccc;
+    margin: 0 5px 0 0;
+    text-decoration: none;
+    background-color: #FFFFFF;
+    float: right;
+}
+ 
+.jfontsize-button:hover {
+    text-decoration: none;
+    background: #333;
+    color: #fff;
+    border: solid 1px #333;
+}
+ 
+.jfontsize-disabled, .jfontsize-disabled:hover {
+    color: #aaa;
+    border: solid 1px #eee;
+    background: #eee;
+}
+
+.fontChanger {
+	position: relative;
+	top: -50px;
+	right: -10px;
+	width: 100%;
+}
+
+
+/* ---------- Related Content ---------- */
+
+.relatedContent {
+	font: 12px arial, sans-serif; 
+	margin: 0 0 10px 0;
+	padding: 3px 10px 3px 10px;
+	background-color: #DDDDDD;
+	border: 1px solid #DDDDDD;
+	border-top-left-radius: 10px 10px;
+	-moz-border-top-left-radius: 10px 10px;
+	border-top-right-radius: 10px 10px;		
+	-moz-border-top-right-radius: 10px 10px;		
+	border-bottom-left-radius: 10px 10px;		
+	-moz-border-bottom-left-radius: 10px 10px;
+	border-bottom-right-radius: 10px 10px;
+	-moz-border-bottom-right-radius: 10px 10px;	
+	width: 97%;
+}
+
+.relatedContentHTML {
+	margin: 0 0 30px 10px;	
+}
+
+
+/* ---------- Multimedia ---------- */
+
+.multiMedia {
+	font: 12px arial, sans-serif; 
+	margin: 0 0 10px 0;
+	padding: 3px 10px 3px 10px;
+	background-color: #DDDDDD;
+	border: 1px solid #DDDDDD;
+	border-top-left-radius: 10px 10px;
+	-moz-border-top-left-radius: 10px 10px;
+	border-top-right-radius: 10px 10px;		
+	-moz-border-top-right-radius: 10px 10px;		
+	border-bottom-left-radius: 10px 10px;		
+	-moz-border-bottom-left-radius: 10px 10px;
+	border-bottom-right-radius: 10px 10px;
+	-moz-border-bottom-right-radius: 10px 10px;	
+	width: 97%;
+}
+
+.multiMediaHTML {
+	margin: 0 0 30px 10px;	
+}
+
+/* ---------- Pagination ---------- */
+
+.containerPaginationTextLabel {
+	float: left; 
+	width: 100px; 
+	margin: 2px 0 2px 0;
+	padding: 5px 0 0 0;
+}
+
+.containerPaginationTextInput {
+	float: left; 
+	width: 140px; 
+	margin: 2px 0 2px 0;
+}
+
+.containerPaginationExampleLabel {
+	float: left; 
+	width: 90px; 
+	margin: 2px 0 2px 0;
+	padding: 5px 0 0 0;
+}
+
+.containerPaginationExampleInput {
+	float: left; 
+	width: 90px; 
+	margin: 2px 0 2px 0;
+}
+
+.containerPaginationDimensionsContainer {
+    background-color: #FFFFFF;
+    float: left;
+    margin: 0;
+    padding: 10px 0 10px 10px;
+    width: 250px;
+}
+
+.containerPaginationDimensionsSettings {
+	float: left; 
+	width: 200px;
+}
+
+.containerPaginationDimensionsExample {
+	float: left; 	
+	padding: 30px 0 0 0;
+}
+
+.containerNumberedDimensionsExample {
+	float: left; 	
+	padding: 30px 0 0 0;
+}
+
+.viewAs {
+	position: relative;
+	top: -21px;
+	left: -15px;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	text-align: center;
+	padding: 5px 2px 2px 5px;				
+	z-index: 10000;	
+}

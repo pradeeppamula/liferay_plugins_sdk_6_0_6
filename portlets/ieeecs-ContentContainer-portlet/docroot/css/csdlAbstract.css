@@ -1,0 +1,206 @@
+.csdlWrapper {
+	position: relative;
+	width: 98%;
+}
+.abstractInfo {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.abstractInfo hr {
+	color: #FFFFFF;
+	background-color: #CCCCCC;
+	height: 1px;
+	border: 1px;
+}
+.abstractInfo a {
+	text-decoration: none;
+}
+.abstractTitle {
+    color: #003366;
+    font: bold 16px Arial,Helvetica,sans-serif;
+	padding: 9px 0 5px 0;
+}
+.abstractVolNum {
+    color: #003366;
+    font: 14px Arial,Helvetica,sans-serif;
+	padding: 3px 0 3px 0;
+}
+.abstractPP {
+	font: 10px Verdana,Arial,Helvetica,sans-serif;
+	padding: 3px 0 5px 0;
+	margin: 0 0 5px 0;
+}
+.abstractAuthors {
+    color: black;
+    font: 12px Arial,Helvetica,sans-serif;
+	padding: 3px 0 3px 0;
+}
+.abstractAuthors a {
+    color: black;
+    font: bold 12px Verdana,Arial,Helvetica,sans-serif;
+}
+.abstractDOIBookmark {
+    margin: 6px 0 3px;
+    padding: 2px 0 3px 0;
+	font: 11px Verdana,Arial,Helvetica,sans-serif;
+	line-height: 1.6em;	
+}
+.abstractImage {
+	margin: 10px 0 0 0;
+}
+.abstractParagraph {
+	font: 11px Verdana,Arial,Helvetica,sans-serif;
+	padding: 3px 0 3px 10px;
+	line-height: 1.6em;
+}
+.abstractReferenceImage {
+	margin: 10px 0 0 0;
+}
+.abstractReferences {
+	font: 11px Verdana,Arial,Helvetica,sans-serif;
+	padding: 3px 10px 3px 10px;
+	line-height: 1.6em;
+}
+.abstractRef {
+	padding: 3px 0 3px 0;
+	margin: 0 0 5px 0;
+}
+.abstractAdditionalInfoImage {
+	margin: 10px 0 0 0;
+}
+.abstractIndexTerms {
+    font: bold 12px Verdana,Arial,Helvetica,sans-serif;
+	padding: 3px 0 3px 10px;
+	line-height: 1.6em;
+}
+.abstractIndexTermsText {
+	font: 12px Arial,Helvetica,sans-serif;
+	padding: 3px 0 3px 20px;
+	line-height: 1.6em;
+}
+.abstractCitation {
+    font: bold 12px Verdana,Arial,Helvetica,sans-serif;
+	padding: 3px 0 3px 10px;
+	line-height: 1.6em;
+}
+.abstractCitationText {
+	font: 12px Arial,Helvetica,sans-serif;
+	padding: 3px 0 3px 20px;
+	line-height: 1.6em;
+}
+.abstractErrorMessage {
+	width: 70%; 
+	margin: 30px 0 0 0; 
+	font: 12px arial,helvetica,sans-serif;
+}
+.accessInfo {
+    display: block;
+    float: right;
+    width: 270px;  
+	margin: 5px -13px 10px 30px;
+}
+.accessThisArticle {
+	font: bold 10px Verdana,Arial,Helvetica,sans-serif;
+	background-color: #CCCCCC;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E3E3E3', endColorstr='#AAAAAA');
+	background: -webkit-gradient(linear, left top, left bottom, from(#E3E3E3), to(#AAAAAA));
+	background: -moz-linear-gradient(top,  #E3E3E3,  #AAAAAA);		
+	padding: 5px 0 5px 10px;
+	border-top: 1px solid #E3E3E3;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #AAAAAA;
+	border-left: 1px solid #CCCCCC;
+	border-top-left-radius: 10px 10px;
+	-moz-border-top-left-radius: 10px 10px;
+	border-top-right-radius: 10px 10px;		
+	-moz-border-top-right-radius: 10px 10px;		
+}	
+.accessBiblioReferences {
+	font: bold 10px Verdana,Arial,Helvetica,sans-serif;
+	background-color: #CCCCCC;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E3E3E3', endColorstr='#AAAAAA');
+	background: -webkit-gradient(linear, left top, left bottom, from(#E3E3E3), to(#AAAAAA));
+	background: -moz-linear-gradient(top,  #E3E3E3,  #AAAAAA);		
+	background-color: #CCCCCC;
+	padding: 5px 0 5px 10px;
+	border-top: 1px solid #E3E3E3;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #AAAAAA;
+	border-left: 1px solid #CCCCCC;
+}
+.accessSearch {
+	font: bold 10px Verdana,Arial,Helvetica,sans-serif;
+	background-color: #CCCCCC;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E3E3E3', endColorstr='#AAAAAA');
+	background: -webkit-gradient(linear, left top, left bottom, from(#E3E3E3), to(#AAAAAA));
+	background: -moz-linear-gradient(top,  #E3E3E3,  #AAAAAA);		
+	background-color: #CCCCCC;
+	padding: 5px 0 5px 10px;
+	border-top: 1px solid #E3E3E3;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #AAAAAA;
+	border-left: 1px solid #CCCCCC;
+}
+.accessThisArticleOptions ul li, 
+.accessBiblioReferencesOptions ul li,
+.accessSearchOptions ul li {
+	padding: 3px 0 3px 0;
+}
+.accessThisArticleOptions {
+	font: 12px Verdana,Arial,Helvetica,sans-serif;
+	border-top: 1px solid #AAAAAA;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #E3E3E3;
+	border-left: 1px solid #CCCCCC;
+	border-top-left-radius: 10px 10px;
+	-moz-border-top-left-radius: 10px 10px;
+	border-top-right-radius: 10px 10px;		
+	-moz-border-top-right-radius: 10px 10px;	
+}
+.accessBiblioReferencesOptions {
+	font: 12px Verdana,Arial,Helvetica,sans-serif;
+	border-top: 1px solid #AAAAAA;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #E3E3E3;
+	border-left: 1px solid #CCCCCC;
+}
+.accessSearchOptions {
+	font: 12px Verdana,Arial,Helvetica,sans-serif;
+	border-top: 1px solid #AAAAAA;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #E3E3E3;
+	border-left: 1px solid #CCCCCC;	
+	border-bottom-left-radius: 10px 10px;		
+	-moz-border-bottom-left-radius: 10px 10px;
+	border-bottom-right-radius: 10px 10px;
+	-moz-border-bottom-right-radius: 10px 10px;		
+}
+
+.acsdlPDFTitle {
+	margin: 10px 0 20px 0;
+}
+.acsdlPDFIntroTitle {
+	font: 18px arial, helvetica, sans-serif;
+	margin: 0 0 10px 0;
+}
+.acsdlPDFIntroCreatorAndDate {
+	font: 12px arial, helvetica, sans-serif;
+	margin: 0 0 20px 0;
+}
+.acsdlPDFIntroCreator {
+	margin: 4px 0 4px 0;
+	line-height: 1.5;
+}
+.acsdlPDFIntroDate {
+	margin: 6px 0 3px 0;
+}
+.acsdlPDFAbstract {
+	font: 14px arial, helvetica, sans-serif;
+	margin: 0 0 20px 0;
+}
+.acsdlPDFAbstract a {
+	font: bold 14px arial, helvetica, sans-serif;
+	text-decoration: none;
+	color: #000000;
+}
