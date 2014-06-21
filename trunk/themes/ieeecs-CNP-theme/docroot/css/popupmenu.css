@@ -1,0 +1,33 @@
+div.mainmenu {
+    z-index: 10000;
+}
+
+div.menu {
+
+}
+
+div.popup a:hover { background-color: #faa; }
+div.menu:hover div:first-child { border-bottom: none; }
+div.menu div.popup { display: none; }
+div.menu:hover div.popup { 
+    display: block; 
+    background-color: #FFFFFF; 
+}
+
+
+div.menu div {
+    width: 55px;
+    background-color: #FFFFFF;
+    padding: 0 5px 0 0;
+}
+
+
+div.popup div, div.popup a { display:block; text-decoration: none; margin: 2px 2px 2px 5px; }
+div.popup div + div, div.popup a + a { margin-top: 10px; } 
+
+div.content {
+    position: absolute;
+    left: 20px;
+    top: 195px;
+    border: 1px dashed gray;
+}

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+#parse ($init)
+#set ($pathFriendlyURLPublic = $theme_display.getPathFriendlyURLPublic())
+
+<html class="#language("lang.dir")" dir="#language("lang.dir")" lang="$w3c_language_id">
+
+<head>
+	<title>$the_title - $company_name</title>
+
+	<link rel="stylesheet" type="text/css" href="/ieeecs-CNP-theme/css/simplemodal.css" media="screen">
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>	 	
+	<script type="text/javascript" src="http://d5w3ne0taiivh.cloudfront.net/IEEECS/ComputingNow/js/pagemenus.js"></script>
+	
+	<script type="text/javascript" src="/ieeecs-CNP-theme/js/underscore.js"></script>
+	<script type="text/javascript" src="/ieeecs-CNP-theme/js/backbone.js"></script>	
+	<script type="text/javascript" src="/ieeecs-CNP-theme/js/ejs_production.js"></script>
+	
+	$theme.include($top_head_include)	
+	
+	<link rel="shortcut icon" href="/ieeecs-CNP-theme/images/favicon.ico">
+	<link rel="icon" href="/ieeecs-CNP-theme/images/favicon.ico">	
+
+</head>
+
+<body class="$css_class">
+
+$theme.include($body_top_include)
+
+#if ($is_signed_in)
+	#dockbar()
+#end
+
+<div class="headerWrapper">
+
+	<div class="headerTopBar">
+	
+		<div class="headerInnerBar">			
+			<div id="headerAdvertisement" class="headerAdvertisement"><script type="text/javascript" src="http://d5w3ne0taiivh.cloudfront.net/IEEECS/ComputingNow/js/CNLeaderboard.js"></script></div>
+			<div class="headerLogoLinks">
+				<div class="headerLinks">
+					<div class="headerLinkTop"><a href="/portal/web/webinars">WEBINARS</a></div>
+					<div class="headerLink"><a href="http://event.on24.com/event/14/10/00/rt/index.html?eventid=141000&sessionid=1&key=259FDA97C9E83CF6DA894D1A7CC9F964&eventuserid=23716879">WHITEPAPERS</a></div>
+					<div class="headerLink"><a href="/portal/web/guest/solutioncenter">SOLUTION CENTERS</a></div>
+					<div class="headerLink"><a href="/portal/web/careers">JOBS BOARD</a></div>
+					<div class="clearBoth"></div>
+				</div>
+				<div class="headerLogos">
+					<div class="headerLogo">
+						<a href="https://www.ieee.org/index.html" target="_blank"><img src="/ieeecs-CNP-theme/images/IEEELogo.jpg" border="0"/></a>
+						<br/>
+						<a href="http://www.computer.org"><img src="/ieeecs-CNP-theme/images/CSLogo.jpg" border="0"/></a>
+					</div>
+				</div>					
+				<div class="clearBoth"></div>
+			</div>
+			<div class="clearBoth"></div>
+		</div>
+	</div>
+
+</div>
+
+<div id="wrapper">
+
+	<header id="banner" role="banner">
+		<hgroup id="heading">
+			
+			<div class="headerBottomBar">			
+				<div class="headerSearchLeftArrow"></div>
+				<div class="headerSearch">&nbsp;</div>
+				<div class="headerSearchRightArrow"></div>
+				<div class="headerComputingNowTagline"><a href="http://computingnow.computer.org"><img src="/ieeecs-CNP-theme/images/cn_logo.jpg" border="0"/></a></div>				
+				<div class="headerAltNavs">
+					<div class="headerAltNavLast"><a href="/portal/web/computingnow/about" target="_parent">ABOUT</a></div>
+					<div class="headerAltNav"><a href="/portal/web/computingnow/writeforus" target="_parent">SUBMISSIONS</a></div>
+					<div class="headerAltNav"><a href="/portal/web/computingnow/events" target="_parent">CONFERENCES</a></div>
+					<div class="headerAltNav"><a href="/portal/web/publications/transactions" target="_blank">JOURNALS</a></div>
+					<div class="headerAltNav"><span class="magazineModalLink" id="magazineModalLink">MAGAZINES</span></div>					
+					<div class="headerAltNav"><a href="/portal/web/computingnow/news" target="_parent">NEWS</a></div>
+					<div class="headerAltNav"><a href="/portal/web/computingnow/education" target="_parent">EDUCATION</a></div>					
+					<div class="headerAltNav"><a href="/portal/web/computingnow/whats-new" target="_parent">WHAT'S NEW</a></div>		
+					<div class="clearBoth"></div>
+				</div>
+				<div class="clearBoth"></div>
+			</div>
+		
+		</hgroup>
+
+		<div class="pageMenu">
+			<ul>
+				<li><a href="/portal/web/computingnow">HOME</a></li>
+				<li><a href="/portal/web/computingnow/cloud">CLOUD</a></li>
+				<li><a href="/portal/web/computingnow/big-data">BIG DATA</a></li>				
+				<li><a href="/portal/web/computingnow/mobile">MOBILE</a></li>	
+				<li><a href="/portal/web/computingnow/networking">NETWORKING</a></li>
+				<li><a href="/portal/web/computingnow/security">SECURITY</a></li>
+				<li><a href="/portal/web/computingnow/software-engineering">SOFTWARE</a></li>
+				<li><a href="/portal/web/computingnow/insights">INSIGHTS</a></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+		
+			var currentPage = window.location.pathname;
+			if ( currentPage.substring(currentPage.length-1) == "/" ) {
+				currentPage = currentPage.substring(0, currentPage.length-1);
+			}
+			
+			var siteMenuData = {};
+		
+			if ( typeof pageMenuData === "undefined" ) {
+				siteMenuData = {
+				'default' : '<ul>' +
+							'<li><a href="/portal/web/computingnow">HOME</a></li>' +
+							'<li><a href="/portal/web/computingnow/cloud">CLOUD</a></li>' +
+							'<li><a href="/portal/web/computingnow/big-data">BIG DATA</a></li>' +				
+							'<li><a href="/portal/web/computingnow/mobile">MOBILE</a></li>' +	
+							'<li><a href="/portal/web/computingnow/networking">NETWORKING</a></li>' +
+							'<li><a href="/portal/web/computingnow/security">SECURITY</a></li>' +
+							'<li><a href="/portal/web/computingnow/software-engineering">SOFTWARE</a></li>' +
+							'<li><a href="/portal/web/computingnow/insights">INSIGHTS</a></li>' +
+							'</ul>'	
+				}
+			} else {
+				siteMenuData = pageMenuData;
+			}		
+			
+			var menuData = "";
+			if ( typeof urlMapper === "undefined" ) {
+				menuData = siteMenuData[ "default" ];
+			} else {
+				currentPage = urlMapper[currentPage];
+				menuData = siteMenuData[ currentPage ];				
+			}
+				
+			if ( menuData == undefined || null == menuData || menuData == "" ) {
+				menuData = siteMenuData["default"];
+			}
+	
+			$(".pageMenu").html(menuData);
+			$(".pageMenu > ul > li > a[href$='" + currentPage + "']").addClass("pageMenuActive");
+			
+		</script>		
+
+	</header>
+
+	<div id="content">
+		#if ($selectable)
+			$theme.include($content_include)
+		#else
+			$portletDisplay.recycle()
+
+			$portletDisplay.setTitle($the_title)
+
+			$theme.wrapPortlet("portlet.vm", $content_include)
+		#end
+	</div>
+	
+	<div id="magazineModal" style="display: none;">
+		<form name="magazineForm" id="magazineForm" method="POST" action="#"></form>
+		<div class="magazineList">
+		
+			<div class="magazineLineItem">
+				<div class="magazineName">
+					<div class="magazineLink"><a href="/portal/web/computingnow/computer"><img src="/ieeecs-CNP-theme/images/magazines/computer.gif" border="0"/></a></div>
+				</div>
+				<div class="magazineDescription"><i>Computer</i> magazine, the IEEE Computer Society's flagship publication, covers all aspects of computer science, computer engineering, computing technology, and applications.</div>
+				<div class="clearBoth"></div>
+			</div>
+				
+			<div class="magazineLineItem">
+				<div class="magazineName">
+					<div class="magazineLink"><a href="/portal/web/computingnow/software"><img src="/ieeecs-CNP-theme/images/magazines/software.gif" border="0"/></a></div>
+				</div>
+				<div class="magazineDescription"><i>IEEE Software</i> offers pioneering ideas, expert analyses, and thoughtful overviews for professional developers and managers who need to keep up with rapid technology change.</div>
+				<div class="clearBoth"></div>
+			</div>							
+				
+			<div class="magazineLineItem">
+				<div class="magazineName">
+					<div class="magazineLink"><a href="/portal/web/computingnow/cga"><img src="/ieeecs-CNP-theme/images/magazines/cga.gif" border="0"/></a></div>
+				</div>
+				<div class="magazineDescription"><i>IEEE Computer Graphics and Applications</i> magazine bridges the theory and practice of computer graphics, from specific algorithms to full system implementations.</div>
+				<div class="clearBoth"></div>
+			</div>				
+				
+			<div class="magazineLineItem">
+				<div class="magazineName">
+					<div class="magazineLink"><a href="/portal/web/computingnow/pervasivecomputing"><img src="/ieeecs-CNP-theme/images/magazines/pervasive.gif" border="0"/></a></div>
+				</div>
+				<div class="magazineDescription"><i>IEEE Pervasive Computing</i> explores pervasive, mobile, and ubiquitous computing for developers, researchers, and educators.</div>
+				<div class="clearBoth"></div>
+			</div>				
+				
+			<div class="magazineLineItem">
+				<div class="magazineName">
+					<div class="magazineLink"><a href="/portal/web/computingnow/internetcomputing"><img src="/ieeecs-CNP-theme/images/magazines/internet.gif" border="0"/></a></div>
+				</div>
+				<div class="magazineDescription"><i>IEEE Internet Computing</i> is a crossroads for researchers and industry developers, providing journal-quality exploration and review of emerging and maturing Internet technologies and applications.</div>
+				<div class="clearBoth"></div>
+			</div>				
+				
+			<div class="magazineLineItem">
+				<div class="magazineName">
+					<div class="magazineLink"><a href="/portal/web/computingnow/securityandprivacy"><img src="/ieeecs-CNP-theme/images/magazines/security.gif" border="0"/></a></div>
+				</div>
+				<div class="magazineDescription"><i>IEEE Security & Privacy</i> presents research articles, case studies, tutorials, and columns for workers at all levels of the information security industry.</div>
+				<div class="clearBoth"></div>
+			</div>				
+				
+			<div class="magazineLineItem">
+				<div class="magazineName">
+					<div class="magazineLink"><a href="/portal/web/computingnow/intelligentsystems"><img src="/ieeecs-CNP-theme/images/magazines/intelligent.gif" border="0"/></a></div>
+				</div>
+				<div class="magazineDescription"><i>IEEE Intelligent Systems</i> magazine covers the theory and application of systems that perceive, reason, learn, and act intelligently.</div>
+				<div class="clearBoth"></div>
+			</div>				
+				
+			<div class="magazineLineItem">
+				<div class="magazineName">
+					<div class="magazineLink"><a href="/portal/web/computingnow/cise"><img src="/ieeecs-CNP-theme/images/magazines/cise.gif" border="0"/></a></div>
+				</div>
+				<div class="magazineDescription"><i>Computing in Science & Engineering</i> addresses the need for efficient algorithms, system software, and computer architecture to address large computational problems in the hard sciences.</div>
+				<div class="clearBoth"></div>
+			</div>				
+				
+			<div class="magazineLineItem">
+				<div class="magazineName">
+					<div class="magazineLink"><a href="/portal/web/computingnow/annals"><img src="/ieeecs-CNP-theme/images/magazines/annals.gif" border="0"/></a></div>
+				</div>
+				<div class="magazineDescription"><i>IEEE Annals of the History of Computing</i> covers computer history with scholarly articles by leading computer scientists and historians, as well as first-hand accounts.</div>
+				<div class="clearBoth"></div>
+			</div>				
+				
+			<div class="magazineLineItem">
+				<div class="magazineName">
+					<div class="magazineLink"><a href="/portal/web/computingnow/multimedia"><img src="/ieeecs-CNP-theme/images/magazines/multimedia.gif" border="0"/></a></div>
+				</div>
+				<div class="magazineDescription"><i>IEEE MultiMedia</i> magazine serves readers who are interested in harmoniously using multiple media types to create new experiences.</div>
+				<div class="clearBoth"></div>
+			</div>				
+				
+			<div class="magazineLineItem">
+				<div class="magazineName">
+					<div class="magazineLink"><a href="/portal/web/computingnow/itpro"><img src="/ieeecs-CNP-theme/images/magazines/itpro.gif" border="0"/></a></div>
+				</div>
+				<div class="magazineDescription"><i>IT Professional</i> magazine examines emerging technologies, security issues, data management techniques, and systems integration challenges and how they affect the enterprise.</div>
+				<div class="clearBoth"></div>
+			</div>				
+				
+			<div class="magazineLineItem">
+				<div class="magazineName">
+					<div class="magazineLink"><a href="/portal/web/computingnow/micro"><img src="/ieeecs-CNP-theme/images/magazines/micro.gif" border="0"/></a></div>
+				</div>
+				<div class="magazineDescription"><i>IEEE Micro</i> focuses on the technologies of computers and peripherals � systems, components, and subassemblies, as well as communications and software.</div>
+				<div class="clearBoth"></div>
+			</div>	
+																																																																						
+		</div>
+	</div>
+
+</div>
+
+<div class="footerWrapper">
+
+	<div class="footerBar">
+		<div class="footerLeftSection">
+			<div class="footerStayConnected">STAY CONNECTED</div>
+			<div class="footerSocialLogos">
+				<ul>
+					<li id="logoIPhone"><a href="http://itunes.apple.com/us/app/ieee-cn/id355128762?mt=8&ign-mpt=uo%3D6 " target="_blank">iPhone</a></li>
+					<li id="logoAndroid"><a href="http://code.google.com/p/ieee-cn/wiki/AndroidMarket" target="_blank">Android</a></li>
+					<li id="logoGoogle"><a href="http://www.google.com/ig/adde?moduleurl=hosting.gmodules.com/ig/gadgets/file/101232161935258676914/computingnow-v1.xml" target="_blank">Google+</a></li>
+					<li id="logoRSSFeed"><a href="/portal/web/computingnow/feeds" target="_blank">RSS Feeds</a></li>
+					<li id="logoYouTube"><a href="http://www.youtube.com/user/ieeeComputerSociety" target="_blank">YouTube</a></li>
+					<li id="logoLinkedIn"><a href="http://www.linkedin.com/groups/Computing-Now-1825418?gid=1825418" target="_blank">LinkedIn</a></li>
+					<li id="logoTwitter"><a href="https://twitter.com/computingnow" target="_blank">Twitter</a> </li>
+					<li id="logoFacebook"><a href="https://www.facebook.com/computingnow" target="_blank">Facebook</a></li>
+				</ul>			
+			</div>
+			<div class="footerCopyright" id="footerCopyright"></div>		
+		</div>
+	
+		<div class="footerRightSection">
+			<div class="footerLinkContainer">
+				<div class="footerLinks">
+					<div class="footerLinkTop"><a href="/portal/web/guest/privacy">PRIVACY POLICY</a></div>
+					<div class="footerLink"><a href="http://www.ieee.org/web/aboutus/whatis/policies/p9-26.html" target="_blank">NONDISCRIMINATION POLICY</a></div>
+					<div class="footerLink"><a href="/portal/web/publications/advertising">PRINT AND ONLINE ADVERTISING OPPORTUNITIES</a></div>
+					<div class="footerLink"><a href="/portal/web/computingnow/about">CONTACT US</a></div>
+					<div class="clearBoth"></div>
+				</div>					
+				<div class="clearBoth"></div>
+			</div>		
+		</div>
+		
+		<div class="clearBoth"></div>
+	</div>
+	
+</div>
+
+$theme.include($body_bottom_include)
+
+<script type="text/javascript" src="/ieeecs-CNP-theme/js/jquery.simplemodal.js"></script>
+<script type="text/javascript" src="/ieeecs-CNP-theme/js/jquery.ui.touch-punch.min.js"></script>
+<script type="text/javascript" src="/ieeecs-CNP-theme/js/jquery.scrollTo-min.js"></script>
+<script type="text/javascript" src="/ieeecs-CNP-theme/js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="/ieeecs-CNP-theme/js/jquery.lazyload.min.js"></script>
+		
+<script>
+
+	var currentDate = new Date();	
+	$("#footerCopyright").html("This site and all contents (unless otherwise noted) are <a href='/portal/web/publications/copyright' class='copyrightLink'>Copyright &copy; " + currentDate.getFullYear() + " IEEE</a>. All right reserved.");
+
+	$(document).ready(function() {
+	
+		$("#magazineModalLink").click(function() {
+			var browserWindowHeight = $(window).height();
+			var magazineModalHeight = Math.floor(browserWindowHeight/2) + 100;
+			$("#magazineModal").modal({"minHeight": magazineModalHeight, "minWidth":650, "maxHeight": magazineModalHeight+50, "maxWidth":700});
+		});
+		
+		$(".magazineLineItem").click(function() {
+			var currentHREF = $(this).find("a").attr("href");
+			$("#magazineForm").attr("action", currentHREF);			
+			$("#magazineForm").submit();
+		});
+
+		$("img.lazy").lazyload();
+		<%--$("img.lazy").lazyload({effect : "fadeIn", container: $("#container")});--%>
+
+	});		
+
+</script>
+
+<script type="text/javascript">
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-381255-5']);
+	_gaq.push(['_setDomainName', 'computer.org']);
+	_gaq.push(['_trackPageview']);
+	
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+
+</script>
+
+<script type="text/javascript">
+	setTimeout(function(){var a=document.createElement("script");
+	var b=document.getElementsByTagName('script')[0];
+	a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0004/7847.js";
+	a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+
+</body>
+
+$theme.include($bottom_include)
+
+</html>

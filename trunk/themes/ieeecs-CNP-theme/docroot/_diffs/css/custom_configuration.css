@@ -1,0 +1,56 @@
+.topNavOptions {
+	width: 98%;
+	margin: 0 0 10px 10px;
+}
+
+.topNavOption {
+	float: left;
+	padding: 0 0 0 10px;
+	height: 24px;
+	width: 90%;
+	background-color: #EEEEEE;	
+	border: 1px solid #CCCCCC;	
+}
+
+.configurationOptions {
+	font: 12px arial, helvetica, sans-serif;
+	border: 1px solid #CCCCCC;
+}
+
+.topNavBackButton {
+	float: right;
+	padding: 4px 5px 0 5px;
+	font: bold 12px arial,sans-serif;
+	cursor: pointer;
+	background-color: #EEEEEE;	
+	border: 1px solid #CCCCCC;
+	height: 20px;
+}
+
+.cornerRadiusCell {
+	float: left; 
+	width: 50%; 
+	margin: 8px 0 8px 10px;
+	padding: 5px 5px 5px 50px;
+}
+
+.cornerRadiusLabel {
+	float: left; 
+	width: 80px; 
+	margin: 2px 0 2px 0;
+	padding: 5px 0 0 0;
+}
+
+.cornerRadiusInput {
+	float: left; 
+	width: 40px; 
+	margin: 2px 0 2px 0;
+}
+
+.showIntroExplanation {
+	font: 12px arial, helvetica, sans-serif;
+	padding: 10px 0 10px 15px;
+	width: 100%;
+	border: 1px solid #CCCCCC;
+	margin: 0 0 10px 10px;		
+}

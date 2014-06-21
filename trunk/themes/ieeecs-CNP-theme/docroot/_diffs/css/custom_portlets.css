@@ -1,0 +1,22 @@
+
+.contentPrevious {
+	float: left; 
+	font: 14px arial, sans-serif; 
+	color: #555555; 
+	margin: 5px 0 0 10px; 
+	cursor: pointer; 
+	display: none;
+	width: 100px;
+}
+
+.contentNext {
+	float: right; 
+	font: 14px arial, sans-serif; 
+	color: #555555; 
+	margin: 5px 10px 0 0; 
+	cursor: pointer; 
+	display: none;
+	width: 100px;
+	text-align: right;
+}
+
