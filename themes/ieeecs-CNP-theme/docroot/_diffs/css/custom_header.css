@@ -1,0 +1,428 @@
+
+.siteMenu {
+	background-color: #282828;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 36px;
+}
+
+.siteMenuInner {
+	background-color: #282828;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 36px;
+}
+
+.selectedMenu {	
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+	filter: alpha(opacity=60);
+	-moz-opacity:0.6;
+	-khtml-opacity: 0.6;
+	opacity: 0.6;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #FFFFFF;
+}
+
+.headerWrapper {
+	width: 100%; 
+	height: 110px; 
+	border: 0px;
+	background-color: #282828;	
+}
+
+.headerTopBar {
+	background-color: #282828;	
+    width: 100%;
+    height: 110px;
+    position: relative;	
+}
+
+.headerInnerBar {
+	background-color: #282828;	
+    margin: 0 auto;
+    max-width: 66%;
+    min-width: 1002px;
+    width: 1002px;
+    height: 110px;
+    position: relative;	
+}
+
+.headerBottomBar {
+	position: relative;
+	width: 100%; 
+	height: 80px; 
+	border: 0px; 
+	background-color: #FFFFFF;
+}
+
+.headerAdvertisement {
+	margin: 10px 20px 20px 0px; 
+	height: 90px; 
+	width: 720px; 
+	float: left; 
+}
+
+.headerLogoLinks {	
+    float: right;
+    height: 110px;
+    width: 260px;	
+}
+
+.headerLinks {
+	width: 100px; 
+	height:100px; 
+	float: right;
+}
+
+.headerLinkTop {
+	margin: 8px 0 0 10px; 
+	width: 115px; 
+	height: 20px;  
+	float: right;
+	color: #CACACA;
+	padding: 5px 0 0 10px;
+	background: url('../images/Bullet.jpg') no-repeat scroll left center transparent;
+}
+
+.headerLink {
+	margin: -2px 0 0 0; 
+	width: 115px; 
+	height: 20px; 
+	float: right;
+	color: #CACACA;
+	padding: 5px 0 0 10px;
+	background: url('../images/Bullet.jpg') no-repeat scroll left center transparent;
+}
+
+.headerLinkTop a,
+.headerLink a,
+.headerLinkTop a:visited,
+.headerLink a:visited {
+	color: #CACACA;
+	text-decoration: none; 
+}
+
+.headerLinkTop a:hover,
+.headerLink a:hover {
+	color: #FFFFFF;
+	text-decoration: none; 
+}
+
+.headerLogos {
+	width: 110px; 
+	height: 100px; 
+	float: left;
+	margin: 10px 0 0 10px;
+}
+
+.headerLogo {	
+	margin: 5px 0 0 0; 
+	width: 90px; 
+	height: 50px; 
+}
+
+.headerSearch {
+	position: absolute; 
+	top: 0px; 
+	right: 0px; 
+	width: 500px; 
+	height: 20px;	
+	background-color: #282828;
+	font: 10px verdana, arial,sans-serif;
+	color: #FFFFFF;
+}
+
+.headerSearchLeftArrow {
+	position: absolute; 
+	top: 0px; 
+	right: 480px;	
+	width: 0px; 
+	height: 0px; 
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-top: 20px solid #282828;
+	font-size: 0px;
+	line-height: 0px;
+}
+
+.headerSearchRightArrow {
+	position: absolute; 
+	top: 0px; 
+	right: -20px;	
+	width: 0px; 
+	height: 0px; 
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-top: 20px solid #282828;
+	font-size: 0px;
+	line-height: 0px;
+}
+
+.headerAltNavs {
+	position: absolute; 
+	top: 55px; 
+	right: 0px; 
+	width: 650px; 
+	height: 24px; 
+}
+
+.headerAltNav {
+	margin: 3px 5px 3px 8px; 
+	float: right;
+	font: 10px verdana, arial,sans-serif;
+	color: #292929;
+}
+
+.headerAltNavLast {
+	margin: 3px 30px 3px 10px; 
+	float: right;
+	font: 10px verdana, arial,sans-serif;
+	color: #292929;
+}
+
+.headerAltNavs a {
+	text-decoration: none;
+	color: #333333;
+}
+
+.headerComputingNowTagline {
+	position: absolute; 
+	top: 20px; 
+	left: 10px; 
+	width: 315px; 
+	height: 52px; 
+}
+
+
+/* Magazine Menu */
+
+.magazineModalLink {
+	color: #333333;
+	cursor: pointer;
+}
+
+.magazineModalLink:hover {
+	color: #0066CC;
+	cursor: pointer;
+}
+
+.magazineList {
+	margin: 15px;
+}
+
+.magazineLineItem {
+	width: 100%;
+	border: 1px solid #CCCCCC;
+	border-top-left-radius: 5px 5px;
+	-moz-border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;		
+	-moz-border-top-right-radius: 5px 5px;		
+	border-bottom-left-radius: 5px 5px;		
+	-moz-border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	-moz-border-bottom-right-radius: 5px 5px;
+	margin: 0 0 15px 0;
+	cursor: pointer;
+}
+
+.magazineLineItem:hover {
+	border: 1px solid #000000;
+}
+
+.magazineName {
+	width: 35%;
+	height: 70px;
+	float: left;	
+	margin: 10px;
+	border-right: 1px solid #999999;
+}
+
+.magazineLink {
+	width: 99%;
+	margin: 0 0 10px 0;
+}
+
+.magazineLink a {
+	font: bold 16px Arial, Helvetica, sans-serif;
+	color: #000000;
+	text-decoration: none;
+}
+
+.magazineDescription {
+	width: 55%;
+	float: left;
+	font: 12px Verdana, Arial, Helvetica, sans-serif;
+	margin: 10px 5px 10px 10px;
+	line-height: 1.5em;
+}
+
+
+/* Site Menus */
+
+.pageMenu { 
+	height: 33px; 
+	display: block; 
+	padding: 0; 
+	margin: 0;  
+	border: 1px solid #282828;  
+}
+
+.pageMenuActive {
+	background: #666666; 
+	background: -moz-linear-gradient(top, #666666 0%, #222222 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#666666), color-stop(100%,#222222)); 
+	background: -webkit-linear-gradient(top, #666666 0%,#222222 100%); 
+	background: -o-linear-gradient(top, #666666 0%,#222222 100%); 
+	background: -ms-linear-gradient(top, #666666 0%,#222222 100%); 
+	background: linear-gradient(top, #666666 0%,#222222 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666666', endColorstr='#222222', GradientType=0 ); 
+}
+
+.pageMenu > ul {
+	list-style: inside none; 
+	padding: 0; 
+	margin: 0;
+}
+
+.pageMenu > ul > li {
+	list-style:inside none; 
+	padding:0; 
+	margin:0; 
+	float:left; 
+	display:block; 
+	position:relative;
+}
+
+.pageMenu > ul > li > a { 
+	outline: none; 
+	display: block; 
+	position: relative; 
+	padding: 9px 14px; 
+	font: bold 12px Arial, Helvetica, sans-serif; 
+	text-align: center; 
+	text-decoration: none; 
+	text-shadow: 1px 1px 0 rgba(0,0,0, 0.4); 
+}
+
+.pageMenu > ul > li > a:after { 
+	content: ''; 
+	position: absolute; 
+	border-right: 1px solid; 
+	top: -1px; 
+	bottom: -1px; 
+	right: -2px; 
+	z-index: 299; 
+}
+
+.pageMenu ul li.has-sub:hover > a:after {
+	top: 0; 
+	bottom: 0;
+}
+
+.pageMenu > ul > li.has-sub {
+	margin: 0 10px 0 0;
+}
+
+.pageMenu > ul > li.has-sub > a:before { 
+	content: ''; 
+	position: absolute; 
+	top: 15px; 
+	right: 0px; 
+	border: 5px solid transparent; 
+	border-top: 5px solid #FFFFFF; 
+}
+
+.pageMenu > ul > li.has-sub:hover > a:before {
+	top: 15px;
+}
+
+.pageMenu ul li.has-sub:hover > a { 
+	background: #3f3f3f; 
+	border-top: 0px solid #3f3f3f;
+	border-right: 1px solid #3f3f3f;
+	border-bottom: 0px solid #3f3f3f;
+	border-left: 0px solid #3f3f3f;
+	padding-bottom: 10px; 
+	padding-top: 9px; 
+	top: 0px; 
+	z-index: 999; 
+}
+
+.pageMenu ul li.has-sub:hover > ul, 
+.pageMenu ul li.has-sub:hover > div {
+	display:block;
+}
+
+.pageMenu ul li.has-sub > a:hover {
+	background: #3f3f3f; 
+	border-color: #3f3f3f;
+}
+
+.pageMenu ul li > ul, 
+.pageMenu ul li > div { 
+	display: none; 
+	width: auto; 
+	position: absolute; 
+	top: 34px; 
+	padding: 10px 0; 
+	background: #3f3f3f; 
+	border-radius: 0 0 5px 5px; 
+	z-index: 999; 
+	margin: 0px;
+}
+
+.pageMenu ul li > ul {
+	width:200px;
+}
+
+.pageMenu ul li > ul li {
+	display:block; 
+	list-style:inside none; 
+	padding:0; 
+	margin:0; 
+	position:relative;
+}
+
+.pageMenu ul li > ul li a { 
+	outline: none; 
+	display: block; 
+	position: relative; 
+	margin: 0; 
+	padding: 8px 20px; 
+	font: 10pt Arial, Helvetica, sans-serif; 
+	color: #fff; 
+	text-decoration: none; 
+	text-shadow: 1px 1px 0 rgba(0,0,0, 0.5); 
+} 
+
+.pageMenu, 
+.pageMenu > ul > li > ul > li a:hover { 
+	background: #282828; 
+	background: -moz-linear-gradient(top, #282828 0%, #222222 100%); 
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#282828), color-stop(100%,#222222)); 
+	background: -webkit-linear-gradient(top, #282828 0%,#222222 100%); 
+	background: -o-linear-gradient(top, #282828 0%,#222222 100%); 
+	background: -ms-linear-gradient(top, #282828 0%,#222222 100%); 
+	background: linear-gradient(top, #282828 0%,#222222 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#282828', endColorstr='#222222',GradientType=0 ); 
+} 
+
+.pageMenu {
+	border-color: #000000;
+}
+
+.pageMenu > ul > li > a {
+	border-right: 1px solid #282828; 
+	color: #FFFFFF;
+}
+
+.pageMenu > ul > li > a:after {
+	border-color: #282828;
+}
+
+.pageMenu > ul > li > a:hover {
+	background: #3F3F3F;
+}

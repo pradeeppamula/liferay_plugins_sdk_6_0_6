@@ -1,0 +1,150 @@
+
+.footerWrapper {
+	width: 100%; 
+	height: 150px; 
+	border: 0px;
+	background-color: #282828;	
+}
+
+.footerBar {
+	background-color: #282828;	
+    margin: 0 auto;
+    max-width: 66%;
+    min-width: 1002px;
+    width: 1002px;
+    height: 150px;
+    position: relative;	
+}
+
+.footerLeftSection {
+	float: left;
+	width: 600px;
+	height: 148px;
+}
+
+.footerRightSection {
+	float: right;	
+	width: 400px;
+	height: 148px;	
+}
+
+.footerLinkContainer {	
+    float: right;
+    height: 148px;
+    width: 390px;	
+}
+
+.footerLinks {
+	width: 300px; 
+	height:100px; 
+	float: right;
+}
+
+.footerLinkTop {
+	margin: 15px 0 0 0; 
+	width: 295px; 
+	height: 20px; 
+	float: right;
+	color: #CACACA;
+	padding: 5px 0 0 10px;
+	background: url('../images/Bullet.jpg') no-repeat scroll left center transparent;	
+}
+
+.footerLink {
+	margin: 1px 0 0 0; 
+	width: 295px; 
+	height: 20px; 
+	float: right;
+	color: #CACACA;
+	padding: 5px 0 0 10px;
+	background: url('../images/Bullet.jpg') no-repeat scroll left center transparent;
+}
+
+.footerLinkTop a,
+.footerLink a,
+.footerLinkTop a:visited,
+.footerLink a:visited {
+	color: #CACACA;
+	text-decoration: none; 
+}
+
+.footerLinkTop a:hover,
+.footerLink a:hover {
+	color: #FFFFFF;
+	text-decoration: none; 
+}
+
+.copyrightLink,
+.copyrightLink:visited {
+	color: #CACACA;
+	text-decoration: none; 
+}
+
+.copyrightLink:hover {
+	color: #FFFFFF;
+	text-decoration: none; 
+}
+
+.footerStayConnected {
+	font: 10px verdana, arial,sans-serif;
+	color: #CACACA;	
+	margin: 15px 0 10px 20px;
+}
+
+.footerCopyright {
+	font: 10px verdana, arial,sans-serif;
+	color: #CACACA;	
+	margin: 15px 0 0 20px;
+}
+
+.footerSocialLogos {
+	width: 560px; 
+	height: 60px; 	
+	margin: 5px 0 10px 0;
+}
+
+.footerSocialLogos ul li {
+	list-style: none; 
+	padding: 3px 0 0 5px; 
+	float: right;
+}
+
+.footerSocialLogos ul li a {
+	text-indent: -9999px;
+	font-size: 0;
+	line-height: 0;
+	overflow: hidden;
+	height: 56px;
+	width: 60px;
+	border: 0;
+	background: url(../images/SocialIcons.png) no-repeat;
+	display: block;
+}
+
+.footerSocialLogos li#logoFacebook a {background-position: 0px 3px;}
+.footerSocialLogos li#logoFacebook a:hover {background-position: 0px -63px;}
+
+.footerSocialLogos li#logoTwitter a {background-position: -60px 3px;}
+.footerSocialLogos li#logoTwitter a:hover {background-position: -60px -63px;}
+
+.footerSocialLogos li#logoLinkedIn a {background-position: -120px 3px;}
+.footerSocialLogos li#logoLinkedIn a:hover {background-position: -120px -63px;}
+
+.footerSocialLogos li#logoYouTube a {background-position: -180px 3px;}
+.footerSocialLogos li#logoYouTube a:hover {background-position: -180px -63px;}
+
+.footerSocialLogos li#logoRSSFeed a {background-position: -240px 3px;}
+.footerSocialLogos li#logoRSSFeed a:hover {background-position: -240px -63px;}
+
+.footerSocialLogos li#logoGoogle a {background-position: -303px 3px;}
+.footerSocialLogos li#logoGoogle a:hover {background-position: -303px -63px;}
+
+.footerSocialLogos li#logoAndroid a {background-position: -366px 3px;}
+.footerSocialLogos li#logoAndroid a:hover {background-position: -366px -63px;}
+
+.footerSocialLogos li#logoIPhone a {background-position: -429px 3px;}
+.footerSocialLogos li#logoIPhone a:hover {background-position: -429px -63px;}
+
+
+
+
