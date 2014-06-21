@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="docroot/WEB-INF/src"/>
-	<classpathentry kind="lib" path="docroot/WEB-INF/lib/common-ieeecs.jar"/>
+	<classpathentry kind="lib" path="docroot/WEB-INF/lib/common-ieeecs.jar" sourcepath="/common-ieeecs/src"/>
 	<classpathentry kind="lib" path="lib/commons-collections.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io.jar"/>
 	<classpathentry kind="lib" path="lib/commons-lang.jar"/>

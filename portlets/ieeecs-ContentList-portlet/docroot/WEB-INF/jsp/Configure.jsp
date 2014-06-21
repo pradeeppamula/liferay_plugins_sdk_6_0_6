@@ -266,6 +266,20 @@
 	<div class="contentListConfigRow channelSection${id}">
 		<div class="contentListSummaryList" id="contentListSummaryList${id}"></div>
 	</div>		
+	
+	<div class="contentListConfigRow channelSection${id}">
+		<div class="contentListConfigCellTitle">Sub-Categories</div>
+		<div class="contentListConfigCell">
+			<input type="text" id="subCategories${id}" name="subCategories${id}" value="${subCategories}" size="50"/>
+		</div>
+		<div class="clearBoth"></div>
+	</div>		
+	
+	<div class="contentListConfigRow channelSection${id}">
+		<div class="contentListConfigCellTitle">&nbsp;</div>
+		<div class="contentListConfigCell"><b>Use |  symbol for multiple values. <br/>Leading and ending "space" characters are truncated.</b></div>
+		<div class="clearBoth"></div>
+	</div>	
 
 	<div class="contentListConfigRow optionsSection${id}">
 		<div class="contentListConfigCellTitle">Page Mode <a href="/ieeecs-ContentList-portlet/templates/toolTip_PageMode.html?width=300" class="jTip" id="pageModeToolTip${id}" name="When a Content List link is clicked, where will it go?">(?)</a></div>

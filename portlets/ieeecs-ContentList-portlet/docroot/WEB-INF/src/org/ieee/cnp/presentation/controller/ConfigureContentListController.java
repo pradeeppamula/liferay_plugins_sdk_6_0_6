@@ -12,7 +12,6 @@ import com.liferay.portal.model.Group;
 
 import com.liferay.portal.service.GroupLocalServiceUtil;
 import com.liferay.portal.theme.ThemeDisplay;
-import com.liferay.portlet.PortletURLUtil;
 import com.liferay.portlet.asset.model.AssetCategory;
 import com.liferay.portlet.asset.model.AssetVocabulary;
 import com.liferay.portlet.asset.service.AssetCategoryLocalServiceUtil;
@@ -207,6 +206,8 @@ public class ConfigureContentListController extends BaseController {
 				String defaultImagePath = ParamUtil.getString(actionRequest, "defaultImagePath"+instanceId, ContentListUtil.DEFAULTIMAGEPATH);
 				String displayDateFormat = ParamUtil.getString(actionRequest, "displayDateFormat"+instanceId, ContentListUtil.DISPLAYDATEFORMAT);
 				
+				String subCategories = ParamUtil.getString(actionRequest, "subCategories"+instanceId, ContentListUtil.SUBCATEGORIES);
+				
 				String showIntro = ParamUtil.getString(actionRequest, "showIntro"+instanceId, ContentListUtil.SHOWINTRO);
 	
 				PortletPreferences prefs = actionRequest.getPreferences();
@@ -292,6 +293,8 @@ public class ConfigureContentListController extends BaseController {
 				
 				prefs.setValue("defaultImagePath", defaultImagePath);
 				prefs.setValue("displayDateFormat", displayDateFormat);
+				
+				prefs.setValue("subCategories", subCategories);				
 				
 				prefs.setValue("showIntro", showIntro.toUpperCase());
 	

@@ -32,6 +32,7 @@ public class ContentListController extends BaseController {
 		int totalRecords = 0;
 		boolean fallbackJS = true;
 		List<ContentBean> contentList = new ArrayList<ContentBean>();
+		List<ContentBean> contentListHolder = new ArrayList<ContentBean>();
 		
 		try {
 			
@@ -63,6 +64,7 @@ public class ContentListController extends BaseController {
 			String articleImagePath          = prefs.getValue("articleImagePath", ContentListUtil.ARTICLEIMAGEPATH);
 			String blogImagePath             = prefs.getValue("blogImagePath", ContentListUtil.BLOGIMAGEPATH);
 			String supplement                = prefs.getValue("supplement", ContentListUtil.SUPPLEMENT);
+			String subCategories             = prefs.getValue("subCategories", ContentListUtil.SUBCATEGORIES);
 			String defaultImagePath          = prefs.getValue("defaultImagePath", ContentListUtil.DEFAULTIMAGEPATH);
 			String displayDateFormat         = prefs.getValue("displayDateFormat", ContentListUtil.DISPLAYDATEFORMAT);
 						
@@ -74,9 +76,34 @@ public class ContentListController extends BaseController {
 			//		] 			
 			//
 
-			contentList = ContentUtil.getContentList(companyGroupId, start, end, contentListData, 
+			contentListHolder = ContentUtil.getContentList(companyGroupId, start, end, contentListData, 
 														urlTargetName, channelVocabularyName, contentTypeVocabularyName, 
 														publicServletMapping, articleImagePath, blogImagePath, supplement, defaultImagePath, displayDateFormat);
+			
+			// Filter the holder list based on any "SubCategories" that might have been set.
+			if ( null != contentListHolder && contentListHolder.size() > 0 ) {
+				
+				// We can have multiple values for the SubCategories to filter this list.  
+				// Loop through these SubCategory values.
+				String[] subCategoryArray = subCategories.split("\\|");
+				
+				for ( int index = 0; index < subCategoryArray.length; index++ ) {
+					
+					String currentSubCategory = subCategoryArray[index].trim();
+					
+					for ( ContentBean currentCB : contentListHolder ) {
+						
+						String cbSubCategories = currentCB.getSubCategories();
+						
+						if ( cbSubCategories.indexOf( currentSubCategory ) > -1 ) {
+							if ( !contentList.contains(currentCB) ) {
+								contentList.add(currentCB);
+							}							
+						}	
+					}					
+				}				
+			}
+			
 			initialContentListJSON = JSONFactoryUtil.serialize( contentList );
 
 			// If the current user has Deactivated this Portlet, we should still let them
