@@ -1,0 +1,1 @@
+Liferay.Service.register("Liferay.Service.Services", "org.ieeecs.communities.sb.service");

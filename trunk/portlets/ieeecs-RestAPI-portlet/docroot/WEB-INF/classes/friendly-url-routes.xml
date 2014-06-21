@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE routes PUBLIC "-//Liferay//DTD Friendly URL Routes 6.0.0//EN" "http://www.liferay.com/dtd/liferay-friendly-url-routes_6_0_0.dtd">
+
+<routes>   
+    
+    <route>
+        <pattern>/comment/{process}</pattern>
+        <implicit-parameter name="_RestAPI_WAR_ieeecsRestAPIportlet_action">commentView</implicit-parameter>
+    </route>    
+    
+    <route>
+        <pattern>/csdl/{process}/{id}/{index}</pattern>
+        <implicit-parameter name="_RestAPI_WAR_ieeecsRestAPIportlet_action">autoCSDLView</implicit-parameter>
+    </route>  
+    
+    <route>
+        <pattern>/csdl/{process}/{id}/{index}</pattern>
+        <implicit-parameter name="_RestAPI_WAR_ieeecsRestAPIportlet_action">autoCSDLView</implicit-parameter>
+    </route> 
+    
+    <route>
+        <pattern>/mycs-ml/{groupUID}</pattern>
+        <implicit-parameter name="_RestAPI_WAR_ieeecsRestAPIportlet_action">mailingListView</implicit-parameter>
+    </route>               
+    
+    <route>
+        <pattern>/abstract/{id}/{type}</pattern>
+        <implicit-parameter name="_RestAPI_WAR_ieeecsRestAPIportlet_action">csdlAbstractView</implicit-parameter>
+    </route>   
+    
+    <route>
+        <pattern>/abstract/{id}/{type}/{fileName}/{fileExt}</pattern>
+        <implicit-parameter name="_RestAPI_WAR_ieeecsRestAPIportlet_action">csdlAbstractView</implicit-parameter>
+    </route>   
+    
+    <route>
+        <pattern>/status/{process}</pattern>
+        <implicit-parameter name="_RestAPI_WAR_ieeecsRestAPIportlet_action">statusView</implicit-parameter>
+    </route> 
+    
+    <route>
+        <pattern>/search/{process}/{data}</pattern>
+        <implicit-parameter name="_RestAPI_WAR_ieeecsRestAPIportlet_action">searchView</implicit-parameter>
+    </route>         
+    
+    <!-- API calls with "contentType" at the very beginning must be the last two routes of this list, 
+         otherwise the {contentType} will try to pick up the first word of the URL passed in (ie. comment, csdl, mycs-ml, etc). 
+    -->
+    <route>
+        <pattern>/{contentType}</pattern>
+        <implicit-parameter name="_RestAPI_WAR_ieeecsRestAPIportlet_action">contentView</implicit-parameter>
+    </route>
+
+    <route>
+        <pattern>/{contentType}/{groupId}/{urlTitle}</pattern>
+        <implicit-parameter name="_RestAPI_WAR_ieeecsRestAPIportlet_action">contentView</implicit-parameter>
+    </route>     
+    
+</routes>
