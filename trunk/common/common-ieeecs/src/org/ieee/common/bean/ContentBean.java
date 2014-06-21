@@ -17,6 +17,7 @@ public class ContentBean {
 	private String target;
 	private String channel;
 	private boolean peerReviewed;
+	private String subCategories;
 	
 	public String getImagePath() {
 		return imagePath;
@@ -101,6 +102,12 @@ public class ContentBean {
 	}
 	public void setPeerReviewed(boolean peerReviewed) {
 		this.peerReviewed = peerReviewed;
+	}
+	public String getSubCategories() {
+		return subCategories;
+	}
+	public void setSubCategories(String subCategories) {
+		this.subCategories = subCategories;
 	}
 
 }
