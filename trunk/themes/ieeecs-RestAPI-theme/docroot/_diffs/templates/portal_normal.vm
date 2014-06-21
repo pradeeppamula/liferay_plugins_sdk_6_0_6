@@ -1,0 +1,8 @@
+#set ($liferayContent = $request.getAttribute("LAYOUT_CONTENT"))
+#set ($Integer = 0)
+#set ($start = $liferayContent.toString().indexOf('~~~~~~'))
+#set ($end = $liferayContent.toString().indexOf('^^^^^^'))
+#set ($s = $Integer.parseInt($start.toString()) + 6)
+#set ($e = $Integer.parseInt($end.toString()))
+#set ($content = $liferayContent.toString().substring( $s, $e ))
+$content

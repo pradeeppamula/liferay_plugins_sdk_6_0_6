@@ -1,0 +1,7 @@
+#*
+This file allows you to override and define new Velocity variables.
+*#
+
+#set ($liferay_toggle_controls = "hidden")
+#set ($css_class = $css_class + " controls-hidden")
+#set ($show_dock = false)
