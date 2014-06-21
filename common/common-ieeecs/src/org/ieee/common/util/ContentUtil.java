@@ -657,6 +657,14 @@ public class ContentUtil {
 												peerReviewed = (Boolean) currentArticle.getExpandoBridge().getAttribute( "PeerReviewed" );
 											}
 										}
+										
+										// Get the Sub-Categoy values for this content object	
+										String subCategories = "";
+										if ( currentArticle.getExpandoBridge().hasAttribute( "SubCategories" ) ) {
+											if ( null != currentArticle.getExpandoBridge().getAttribute( "SubCategories" ) ) {
+												subCategories = (String) currentArticle.getExpandoBridge().getAttribute( "SubCategories" );
+											}
+										}										
 
 										// Should this content open up in a new browser or exist in the current?
 										String customURLTarget = "_self";
@@ -699,7 +707,8 @@ public class ContentUtil {
 										contentBean.setSubType( subType );
 										contentBean.setChannel(channel);
 										contentBean.setPeerReviewed(peerReviewed);
-										contentBean.setTarget(customURLTarget);			
+										contentBean.setTarget(customURLTarget);	
+										contentBean.setSubCategories(subCategories);
 										contentBeanList.add(contentBean);
 
 									} // if ( type.equalsIgnoreCase("article") ) {
@@ -995,7 +1004,15 @@ public class ContentUtil {
 							types = (String[]) currentEntry.getExpandoBridge().getAttribute( "BlogType" );	
 							type = null != types && types.length > 0 ? types[0].toLowerCase() : "";
 						}
-					}		
+					}	
+					
+					// Get the Sub-Categoy values for this content object	
+					String subCategories = "";
+					if ( currentEntry.getExpandoBridge().hasAttribute( "SubCategories" ) ) {
+						if ( null != currentEntry.getExpandoBridge().getAttribute( "SubCategories" ) ) {
+							subCategories = (String) currentEntry.getExpandoBridge().getAttribute( "SubCategories" );
+						}
+					}						
 
 					// Construct the URL that will be used to view this content
 					// Group    = community url
@@ -1069,6 +1086,7 @@ public class ContentUtil {
 					contentBean.setGroupId( currentEntry.getGroupId() );
 					contentBean.setChannel(channel);
 					contentBean.setTarget("_self");
+					contentBean.setSubCategories(subCategories);
 
 					if ( currentEntry.getExpandoBridge().hasAttribute( "Description" ) ) {
 						if ( null != currentEntry.getExpandoBridge().getAttribute( "Description" ) ) {
