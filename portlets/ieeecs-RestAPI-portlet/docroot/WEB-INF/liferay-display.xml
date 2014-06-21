@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+ <display>
+ 	<category name="IEEE CS">
+ 		<category name="Destination">
+ 			<portlet id="RestAPI" />
+ 		</category>
+ 	</category>
+ </display>
