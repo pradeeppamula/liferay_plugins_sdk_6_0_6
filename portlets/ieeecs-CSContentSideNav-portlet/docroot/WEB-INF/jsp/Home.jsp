@@ -8,11 +8,12 @@
 	to the portlet, without having the users/visitors
 	see those changes.
 ***************************************************** --%>
-<c:if test="${portletMode == 'ACTIVATED' || portletMode == 'PREVIEW'}">
-
 <style type="text/css">
+    .cs-content-side-nav-links {
+        padding-top: 20px;
+    }
+
     <c:if test="${canInlineEdit}">
-        /* INLINE EDIT STYLES */
         #edit-content-advanced-${id} {
             position: absolute;
             top: 0;
@@ -35,14 +36,16 @@
             filter: alpha(opacity=100);
             cursor: pointer;
         }
-        /* END INLINE EDIT STYLES */
+        #alert-main-success-${id}, #alert-main-danger-${id} {
+            display: none;
+        }
     </c:if>
 </style>
 
 <div id="content-side-nav-container-${id}">
     <c:if test="${canInlineEdit}">
-        <span id="edit-content-advanced-${id}" class="label label-danger"><a class="inline-edit" data-toggle="modal" data-target="#ca-edit-modal-${id}">Edit</a></span>
-        <div id="ca-edit-modal-${id}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ca-edit-modal" aria-hidden="true">
+        <span id="edit-content-side-nav-${id}" class="label label-danger"><a class="inline-edit" data-toggle="modal" data-target="#csn-edit-modal-${id}">Edit</a></span>
+        <div id="csn-edit-modal-${id}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="csn-edit-modal" aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -50,17 +53,26 @@
                     <h4 class="modal-title">Content Side Navigation Administration</h4>
                 </div>
                 <div class="modal-body">
-                   Modal Body
+                   <form id="edit-content-side-nav-form-${id}" role="form">
+                    <div class="form-group">
+                         <label for="show-links-select-${id}">Display Type</label>
+                         <select id="show-links-select-${id}" class="form-control">
+                            <option value="YES">Show All Community Links</option>
+                            <option value="NO">Show Only Page Links</option>
+                         </select>
+                         <p id="show-links-select-help-${id}" class="help-block"></p>
+                    </div>
+                   </form>
                 </div> <!-- /.modal-body -->
                  <div class="modal-footer">
                      <!-- Alerts -->
-                        <div id="alert-main-success" class="alert alert-success text-left">
+                        <div id="alert-main-success-${id}" class="alert alert-success text-left">
                             <strong>&#10004;</strong> Your portlet was updated.
                         </div>
-                      <div id="alert-main-danger" class="alert alert-danger text-left">
+                      <div id="alert-main-danger-${id}" class="alert alert-danger text-left">
                         <a href="#" class="close">&times;</a>
                         <strong>&#9888;</strong> There seems to be a problem:
-                        <span id="error-message"></span>
+                        <span id="error-message-${id}"></span>
                       </div>
                       <!-- End Alerts -->
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -70,11 +82,33 @@
           </div>
         </div> <!-- /#ca-edit-modal-${id} -->
 
-        <script type="application/javascript">
+        <script>
+            var setDisplayHelp = function() {
+                var showAllHelp = "All sublinks of the community will be displayed.";
+                var showPageHelp = "Only sublinks of the community page will be displayed.";
+                var selectedDisplayType = $('#show-links-select-${id}').val();
+                if(selectedDisplayType == 'YES') {
+                    $('#show-links-select-help-${id}').html(showAllHelp);
+                } else {
+                    $('#show-links-select-help-${id}').html(showPageHelp);
+                }
+            }
+
             $(document).ready(function() {
+                var showAllCommunityLinks = '${showAllCommunityLinks}';
+                showAllCommunityLinks = showAllCommunityLinks == '' ? 'YES' : showAllCommunityLinks;
+                $('#show-links-select-${id} option[value="'+showAllCommunityLinks+'"]').attr("selected", "selected");
+
+                setDisplayHelp();
+
+                $('#show-links-select-${id}').change(function() {
+                     setDisplayHelp();
+                 });
+
                 $("#btn-save-${id}").click(function() {
                     var postData = {};
                     postData.requestType_${id} = 'SAVE_CONFIG';
+                    postData.showAllCommunityLinks_${id} = $('#show-links-select-${id}').val();
 
                     $.ajax({
                       type: "POST",
@@ -85,21 +119,21 @@
                       },
                       success: function (response) {
                         if(response == 200) {
-                            $("#alert-main-danger").fadeOut(0);
-                             $("#alert-main-success").fadeIn(100);
+                            $("#alert-main-danger-${id}").fadeOut(0);
+                             $("#alert-main-success-${id}").fadeIn(100);
                              $("#btn-save-${id}").prop('disabled', false);
-                             setTimeout(function() {$("#alert-main-success").fadeOut(300);},3000);
+                             setTimeout(function() {$("#alert-main-success-${id}").fadeOut(300);},3000);
                          } else {
                            console.error(data);
-                           $("#alert-main-danger").fadeIn(100);
-                           $("#error-message").html("There seems to be a problem with your request.  Please contact help@computer.org.");
+                           $("#alert-main-danger-${id}").fadeIn(100);
+                           $("#error-message-${id}").html("There seems to be a problem with your request.  Please contact help@computer.org.");
                            $("#btn-save-${id}").prop('disabled', false);
                          }
                       },
                       error: function (data) {
                         console.error(data);
-                        $("#alert-main-danger").fadeIn(100);
-                        $("#error-message").html(data.responseJSON.error);
+                        $("#alert-main-danger-${id}").fadeIn(100);
+                        $("#error-message-${id}").html(data.responseJSON.error);
                         $("#btn-save-${id}").prop('disabled', false);
                       }
                   });
@@ -107,11 +141,18 @@
             });
        </script>
     </c:if>
-
-    <ul>
-    <li>Link 1</li>
-    <li>Link 2</li>
-
-    </ul>
+    <ul id="cs-content-side-nav-links-${id}" class="cs-content-side-nav-links"></ul>
 </div>
-</c:if>
+<script>
+   $(document).ready(function() {
+    var links = $.parseJSON('${links}');
+    $.each(links, function(i, link) {
+        var html;
+        if(link.active) {
+            $('#cs-content-side-nav-links-${id}').append('<li><a class="active ${community}" href="'+link.url+'">'+link.title+'</a></li>');
+        } else {
+            $('#cs-content-side-nav-links-${id}').append('<li><a href="'+link.url+'">'+link.title+'</a></li>');
+        }
+    });
+   });
+</script>
