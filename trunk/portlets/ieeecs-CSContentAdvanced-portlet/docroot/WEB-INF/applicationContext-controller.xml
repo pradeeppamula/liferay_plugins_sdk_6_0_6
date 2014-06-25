@@ -16,15 +16,15 @@
 	<!--           CONTROLLERS           -->
 	<!-- =============================== -->
 
-	<bean id="cscontentAdvancedController" class="org.ieee.cnp.presentation.controller.CSContentAdvancedController">
+	<bean id="cscontentAdvancedController" class="org.ieeecs.communities.presentation.controller.CSContentAdvancedController">
 		<property name="velocityConfigurer" ref="velocityConfigurer"/>
-		<property name="commandClass" value="org.ieee.cnp.formbean.ViewBean"/>
+		<property name="commandClass" value="org.ieeecs.communities.formbean.ViewBean"/>
 		<property name="commandName" value="viewBean"/>
 	</bean>	
 	
-	<bean id="csconfigureContentAdvancedController" class="org.ieee.cnp.presentation.controller.CSConfigureContentAdvancedController">
+	<bean id="csconfigureContentAdvancedController" class="org.ieeecs.communities.presentation.controller.CSConfigureContentAdvancedController">
 		<property name="velocityConfigurer" ref="velocityConfigurer"/>
-		<property name="commandClass" value="org.ieee.cnp.formbean.ViewBean"/>
+		<property name="commandClass" value="org.ieeecs.communities.formbean.ViewBean"/>
 		<property name="commandName" value="viewBean"/>
 	</bean>				
 		

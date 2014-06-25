@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
  <display>
- 	<category name="IEEE CS">
- 		<category name="Destination">
- 			<portlet id="CSContentAdvanced" />
- 		</category>
+ 	<category name="CS Communities">
+        <portlet id="CSContentAdvanced" />
  	</category>
  </display>
