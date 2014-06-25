@@ -62,6 +62,14 @@
                          </select>
                          <p id="show-links-select-help-${id}" class="help-block"></p>
                     </div>
+                    <div class="form-group">
+                         <label for="show-child-links-select-${id}">Show Sub Page Links</label>
+                         <select id="show-child-links-select-${id}" class="form-control">
+                            <option value="YES">YES</option>
+                            <option value="NO">NO</option>
+                         </select>
+                         <p id="show-child-links-select-help-${id}" class="help-block"></p>
+                    </div>
                    </form>
                 </div> <!-- /.modal-body -->
                  <div class="modal-footer">
@@ -99,6 +107,10 @@
                 showAllCommunityLinks = showAllCommunityLinks == '' ? 'YES' : showAllCommunityLinks;
                 $('#show-links-select-${id} option[value="'+showAllCommunityLinks+'"]').attr("selected", "selected");
 
+                var showChildLinks = '${showChildLinks}';
+                showChildLinks = showChildLinks == '' ? 'YES' : showChildLinks;
+                $('#show-child-links-select-${id} option[value="'+showChildLinks+'"]').attr("selected", "selected");
+
                 setDisplayHelp();
 
                 $('#show-links-select-${id}').change(function() {
@@ -109,6 +121,7 @@
                     var postData = {};
                     postData.requestType_${id} = 'SAVE_CONFIG';
                     postData.showAllCommunityLinks_${id} = $('#show-links-select-${id}').val();
+                    postData.showChildLinks_${id} = $('#show-child-links-select-${id}').val();
 
                     $.ajax({
                       type: "POST",
@@ -147,12 +160,18 @@
    $(document).ready(function() {
     var links = $.parseJSON('${links}');
     $.each(links, function(i, link) {
-        var html;
-        if(link.active) {
-            $('#cs-content-side-nav-links-${id}').append('<li><a class="active ${community}" href="'+link.url+'">'+link.title+'</a></li>');
-        } else {
-            $('#cs-content-side-nav-links-${id}').append('<li><a href="'+link.url+'">'+link.title+'</a></li>');
+        var html = link.active ? '<li><a class="active ${community}"' : '<li><a class="${community}"';
+        html +=' href="'+link.url+'">'+link.title+'</a>';
+        if(link.childLinks != undefined && link.childLinks.length > 0) {
+            html += '<ul>';
+            for(var i=0;i<link.childLinks.length;i++) {
+                html += link.childLinks[i].active ? '<li><a class="active ${community}"' : '<li><a class="${community}"';
+                html +=' href="'+link.childLinks[i].url+'">'+link.childLinks[i].title+'</a></li>';
+            }
+            html += '</ul>';
         }
+        html += '</li>';
+        $('#cs-content-side-nav-links-${id}').append(html);
     });
    });
 </script>
