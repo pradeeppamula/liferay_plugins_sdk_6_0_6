@@ -43,7 +43,6 @@
     .intPost${id}_InfoBlock {
         height: 650px;
     }
-    .alert-success, .alert-danger { display: none; }
 
     <c:if test="${canInlineEdit}">
         /* INLINE EDIT STYLES */
@@ -69,6 +68,7 @@
             filter: alpha(opacity=100);
             cursor: pointer;
         }
+          #alert-main-success-${id},#alert-main-danger-${id} { display: none; }
         /* END INLINE EDIT STYLES */
     </c:if>
 </style>
@@ -175,13 +175,13 @@
                 </div> <!-- /.modal-body -->
                  <div class="modal-footer">
                      <!-- Alerts -->
-                        <div id="alert-main-success" class="alert alert-success text-left">
+                        <div id="alert-main-success-${id}" class="alert alert-success text-left">
                             <strong>&#10004;</strong> Your portlet was updated.
                         </div>
-                      <div id="alert-main-danger" class="alert alert-danger text-left">
+                      <div id="alert-main-danger-${id}" class="alert alert-danger text-left">
                         <a href="#" class="close">&times;</a>
                         <strong>&#9888;</strong> There seems to be a problem:
-                        <span id="error-message"></span>
+                        <span id="error-message-${id}"></span>
                       </div>
                       <!-- End Alerts -->
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -269,21 +269,21 @@
                   },
                   success: function (response) {
                     if(response == 200) {
-                        $("#alert-main-danger").fadeOut(0);
-                         $("#alert-main-success").fadeIn(100);
+                        $("#alert-main-danger-${id}").fadeOut(0);
+                         $("#alert-main-success-${id}").fadeIn(100);
                          $("#btn-save-${id}").prop('disabled', false);
-                         setTimeout(function() {$("#alert-main-success").fadeOut(300);},3000);
+                         setTimeout(function() {$("#alert-main-success-${id}").fadeOut(300);},3000);
                      } else {
                        console.error(data);
-                       $("#alert-main-danger").fadeIn(100);
-                       $("#error-message").html("There seems to be a problem with your request.  Please contact help@computer.org.");
+                       $("#alert-main-danger-${id}").fadeIn(100);
+                       $("#error-message-${id}").html("There seems to be a problem with your request.  Please contact help@computer.org.");
                        $("#btn-save-${id}").prop('disabled', false);
                      }
                   },
                   error: function (data) {
                     console.error(data);
-                    $("#alert-main-danger").fadeIn(100);
-                    $("#error-message").html(data.responseJSON.error);
+                    $("#alert-main-danger-${id}").fadeIn(100);
+                    $("#error-message-${id}").html(data.responseJSON.error);
                     $("#btn-save-${id}").prop('disabled', false);
                   }
               });
