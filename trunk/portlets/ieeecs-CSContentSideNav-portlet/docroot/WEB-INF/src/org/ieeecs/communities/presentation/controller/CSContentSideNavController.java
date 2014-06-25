@@ -240,7 +240,7 @@ public class CSContentSideNavController extends BaseController implements Resour
      */
     private StringBuilder buildChildLinks(NavItem subSectionItem, String title, StringBuilder linksJSON) throws Exception {
         boolean firstChildItem = true;
-        linksJSON.append("\",\"childLinks\": [");
+        linksJSON.append(",\"childLinks\": [");
         for (NavItem subSectionItemChild : subSectionItem.getChildren()) {
             if(firstChildItem) {
                 firstChildItem = false;
