@@ -16,9 +16,9 @@
 	<!--           CONTROLLERS           -->
 	<!-- =============================== -->
 
-	<bean id="cscontentSideNaveController" class="org.ieeecs.communities.presentation.controller.CSContentSideNavController">
+	<bean id="cscontentSideNavController" class="org.ieeecs.communities.presentation.controller.CSContentSideNavController">
 		<property name="velocityConfigurer" ref="velocityConfigurer"/>
-		<property name="commandClass" value="org.ieee.cnp.formbean.ViewBean"/>
+		<property name="commandClass" value="org.ieeecs.communities.formbean.ViewBean"/>
 		<property name="commandName" value="viewBean"/>
 	</bean>			
 </beans>

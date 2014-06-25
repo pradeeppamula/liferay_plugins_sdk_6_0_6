@@ -7,6 +7,7 @@
  */
 package org.ieeecs.communities.util;
 
+import com.liferay.portal.kernel.util.ParamUtil;
 import org.ieeecs.communities.bean.CustomPreferences;
 
 import javax.portlet.PortletPreferences;
@@ -19,11 +20,14 @@ public class CSContentSideNavUtil {
     public static final String SAVE_CONFIG = "SAVE_CONFIG";
 	public static final String MODE   = "DEACTIVATED";
 	public static final String USERID = "";
-	public static final String SHOWINTRO = "ON";
+    public static final String SHOW_CHILD_LINKS = "NO";
+    public static final String SHOW_ALL_COMMUNITY_LINKS = "YES";
 
     public static List<CustomPreferences> customPreferences = new ArrayList<CustomPreferences>() {
         {
             add(new CustomPreferences("modifiedByUserId", USERID));
+            add(new CustomPreferences("showChildLinks", SHOW_CHILD_LINKS));
+            add(new CustomPreferences("showAllCommunityLinks", SHOW_ALL_COMMUNITY_LINKS));
         }
     };
 
@@ -57,6 +61,8 @@ public class CSContentSideNavUtil {
             // grab the portlet preferences data json off the request
             PortletPreferences prefs = request.getPreferences();
             prefs.setValue("modifiedByUserId", modifiedByUserId);
+            prefs.setValue("showChildLinks", ParamUtil.getString(request, "showChildLinks_" + instanceId, CSContentSideNavUtil.SHOW_CHILD_LINKS));
+            prefs.setValue("showAllCommunityLinks", ParamUtil.getString(request, "showAllCommunityLinks_" + instanceId, CSContentSideNavUtil.SHOW_ALL_COMMUNITY_LINKS));
             // save the portlet data
             prefs.store();
         } catch (Exception e) {
