@@ -26,7 +26,6 @@ import org.springframework.web.portlet.ModelAndView;
 import org.springframework.web.portlet.mvc.ResourceAwareController;
 
 import javax.portlet.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -279,7 +278,7 @@ public class CSContentSideNavController extends BaseController implements Resour
         Layout retVal = null;
         for (Layout currLayout : layouts) {
             if (layout.getLayoutId() == currLayout.getLayoutId() ||
-                    layout.getParentLayoutId() == currLayout.getLayoutId()) {
+                    layout.getAncestorLayoutId() == currLayout.getLayoutId()) {
                 retVal = currLayout;
                 break;
             }

@@ -1,6 +1,6 @@
 /**
  * @copyright 2014 IEEE
- * @package org.ieee.cnp.util
+ * @package org.ieeecs.communities.util
  * @created June 19, 2014
  * @description This class will load serve as a basic utility class for
  * the content side nav portlet

@@ -20,7 +20,13 @@
 		<property name="velocityConfigurer" ref="velocityConfigurer"/>
 		<property name="commandClass" value="org.ieeecs.communities.formbean.ViewBean"/>
 		<property name="commandName" value="viewBean"/>
-	</bean>			
+	</bean>
+
+    <bean id="csconfigureContentSideNavController" class="org.ieeecs.communities.presentation.controller.CSConfigureContentSideNavController">
+        <property name="velocityConfigurer" ref="velocityConfigurer"/>
+        <property name="commandClass" value="org.ieeecs.communities.formbean.ViewBean"/>
+        <property name="commandName" value="viewBean"/>
+    </bean>
 </beans>
 	
 	

@@ -32,7 +32,12 @@
 						<entry key="contentSideNavView"><ref bean="cscontentSideNavController"/></entry>
 					</map>
 				</entry>
-			</map>
+                <entry key="edit">
+                    <map>
+                        <entry key="contentSideNavConfigure"><ref bean="csconfigureContentSideNavController"/></entry>
+                    </map>
+                </entry>
+            </map>
 		</property>
 	</bean>
 	
@@ -47,6 +52,7 @@
 		<property name="portletModeMap">
 			<map>
 				<entry key="view"><ref bean="cscontentSideNavController"/></entry>
+                <entry key="edit"><ref bean="csconfigureContentSideNavController"/></entry>
 			</map>
 		</property>
 	</bean>	
