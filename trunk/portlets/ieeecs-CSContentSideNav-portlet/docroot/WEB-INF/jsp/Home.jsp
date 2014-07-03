@@ -160,12 +160,12 @@
    $(document).ready(function() {
     var links = $.parseJSON('${links}');
     $.each(links, function(i, link) {
-        var html = link.active ? '<li><a class="active ${community}"' : '<li><a class="${community}"';
+        var html = link.active ? '<li class="active ${community}"><a' : '<li class="${community}"><a';
         html +=' href="'+link.url+'">'+link.title+'</a>';
         if(link.childLinks != undefined && link.childLinks.length > 0) {
             html += '<ul>';
             for(var i=0;i<link.childLinks.length;i++) {
-                html += link.childLinks[i].active ? '<li><a class="active ${community}"' : '<li><a class="${community}"';
+                html += link.childLinks[i].active ? '<li class="active ${community}"><a' : '<li class="${community}"><a';
                 html +=' href="'+link.childLinks[i].url+'">'+link.childLinks[i].title+'</a></li>';
             }
             html += '</ul>';
