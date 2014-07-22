@@ -3,7 +3,7 @@
  * @package org.ieee.cnp.presentation.controller
  * @created  July 2, 2014
  * @description This class will handle any requests for configuring
- * the content advanced portlet
+ * the content breadcrumbs portlet
  */
 package org.ieeecs.communities.presentation.controller;
 
@@ -12,7 +12,6 @@ import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.theme.ThemeDisplay;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
-import org.ieeecs.communities.util.CSBreadcrumbsUtil;
 import org.ieeecs.communities.util.CSBreadcrumbsUtil;
 import org.ieee.common.presentation.controller.BaseController;
 import org.springframework.web.portlet.ModelAndView;

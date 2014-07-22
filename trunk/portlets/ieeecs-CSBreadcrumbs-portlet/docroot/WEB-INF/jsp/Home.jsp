@@ -9,6 +9,10 @@
 	see those changes.
 ***************************************************** --%>
 <style type="text/css">
+    #cs-breadcrumbs-container-${id} {
+        position: relative;
+    }
+    
     .cs-breadcrumbs {
         padding-top: 20px;
     }

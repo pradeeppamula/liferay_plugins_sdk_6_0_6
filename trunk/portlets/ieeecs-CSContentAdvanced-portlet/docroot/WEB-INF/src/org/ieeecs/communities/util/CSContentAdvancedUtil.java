@@ -31,16 +31,15 @@ public class CSContentAdvancedUtil {
 	public static final String PORTLETBORDERCOLORRIGHT  = "CCCCCC";
 	public static final String PORTLETBORDERCOLORBOTTOM = "CCCCCC";
 	public static final String PORTLETBORDERCOLORLEFT   = "CCCCCC";
-	public static final String PORTLETBORDERPIXELTOP    = "1";
-	public static final String PORTLETBORDERPIXELRIGHT  = "1";
-	public static final String PORTLETBORDERPIXELBOTTOM = "1";
-	public static final String PORTLETBORDERPIXELLEFT   = "1";
+	public static final String PORTLETBORDERPIXELTOP    = "0";
+	public static final String PORTLETBORDERPIXELRIGHT  = "0";
+	public static final String PORTLETBORDERPIXELBOTTOM = "0";
+	public static final String PORTLETBORDERPIXELLEFT   = "0";
 	public static final String PORTLETBACKGROUNDCOLOR   = "FFFFFF";
 	public static final String PORTLETTOPLEFTRADIUS     = "0";
 	public static final String PORTLETBOTTOMLEFTRADIUS  = "0";
 	public static final String PORTLETTOPRIGHTRADIUS    = "0";
 	public static final String PORTLETBOTTOMRIGHTRADIUS = "0";
-	public static final String PORTLETHEIGHT            = "200";
 
     public static List<CustomPreferences> customPreferences = new ArrayList<CustomPreferences>() {
         {
@@ -60,7 +59,6 @@ public class CSContentAdvancedUtil {
             add(new CustomPreferences("portletBottomLeftRadius", PORTLETBOTTOMLEFTRADIUS));
             add(new CustomPreferences("portletTopRightRadius",PORTLETTOPRIGHTRADIUS));
             add(new CustomPreferences("portletBottomRightRadius", PORTLETBOTTOMRIGHTRADIUS));
-            add(new CustomPreferences("portletHeight",PORTLETHEIGHT));
             add(new CustomPreferences("cssBlock", CSSBLOCK));
             add(new CustomPreferences("htmlBlock", HTMLBLOCK));
             add(new CustomPreferences("jsBlockExternalPre", JSBLOCKEXTERNALPRE));
