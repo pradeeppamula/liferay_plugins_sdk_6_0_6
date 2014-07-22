@@ -56,10 +56,14 @@ $structureMap.get('header')
 $structureMap.get('footer')
 $theme.include($body_bottom_include)
 
+## Sign In Modal Template
+#if (!$is_signed_in)
+#parse ("$full_templates_path/login.vm")
+#end
+
 <div id="themeDiagnostic" class="themeDiagnostic">.</div>
 <script type="text/javascript">
 	$(document).ready(function() {
-
 		$("#themeDiagnostic").click(function() {
 
 			console.log("Theme generated from data in: " + $structureMap.get('showInfo') + " ms.");
