@@ -1,0 +1,27 @@
+<div id="login-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="csn-edit-modal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Please Sign In</h4>
+            </div>
+            <form name="login-form" id="login-form" role="form" action="/web/guest?p_p_id=58&amp;p_p_lifecycle=1&amp;p_p_state=maximized&amp;p_p_mode=view&amp;saveLastPath=0&amp;_58_struts_action=%2Flogin%2Flogin&amp;_58_ieee_error=0" method="POST">
+                <input name="redirect" type="hidden" value="/web/guest"/>
+                <input name="rememberMe" type="hidden" value="false" />
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="_58_login" class="control-label">Username</label>
+                        <input type="text" class="form-control input-lg " name="_58_login" id="_58_login" placeholder="Username" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="_58_password" class="control-label">Password</label>
+                        <input type="password" class="form-control input-lg" name="_58_password" id="_58_password" placeholder="Password" value="">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
