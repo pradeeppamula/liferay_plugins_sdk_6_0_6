@@ -24,6 +24,8 @@ import org.ieee.common.presentation.controller.BaseController;
 import org.ieeecs.communities.util.CSContentSideNavUtil;
 import org.springframework.web.portlet.ModelAndView;
 import org.springframework.web.portlet.mvc.ResourceAwareController;
+import com.liferay.portal.kernel.velocity.VelocityContext;
+import com.liferay.portal.kernel.velocity.VelocityEngineUtil;
 
 import javax.portlet.*;
 import java.util.HashMap;
@@ -178,7 +180,9 @@ public class CSContentSideNavController extends BaseController implements Resour
             List<Layout> layouts = themeDisplay.getLayouts();
             // get active page name
             String title = layout.getName(themeDisplay.getLocale()).toLowerCase();
-            RequestVars requestVars = new RequestVars(PortalUtil.getHttpServletRequest(renderRequest), themeDisplay, layout.getAncestorPlid(), layout.getAncestorLayoutId());
+            
+            VelocityContext velocityContext = VelocityEngineUtil.getWrappedStandardToolsContext();
+            RequestVars requestVars = new RequestVars(PortalUtil.getHttpServletRequest(renderRequest), themeDisplay, layout.getAncestorPlid(), layout.getAncestorLayoutId(), velocityContext);
 
             // determine if we are not showing all the links for the community
             String showAllCommunityLinks = prefs.getValue("showAllCommunityLinks", CSContentSideNavUtil.SHOW_ALL_COMMUNITY_LINKS);

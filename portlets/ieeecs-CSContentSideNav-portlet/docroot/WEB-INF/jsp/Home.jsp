@@ -9,6 +9,10 @@
 	see those changes.
 ***************************************************** --%>
 <style type="text/css">
+    #content-side-nav-container-${id} {
+        position: relative;
+    }
+    
     .cs-content-side-nav-links {
         padding-top: 20px;
     }

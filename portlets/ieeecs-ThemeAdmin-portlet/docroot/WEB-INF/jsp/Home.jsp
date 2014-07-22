@@ -7,7 +7,6 @@
 	see those changes.
 ***************************************************** --%>
 <c:if test="${isAuthenticated && hasAccess}">
-
 	    <div class="navbar navbar-midnight navbar-static-top" role="navigation">
           <div class="container-fluid">
             <div class="navbar-header">
