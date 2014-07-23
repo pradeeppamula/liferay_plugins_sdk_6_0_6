@@ -1,0 +1,2031 @@
+
+.portlet-borderless-bar {
+	display: none;
+}
+
+.digitalLibraryContentLeft {
+	float: left;
+	border-left: 1px solid #DDDDDD;
+	border-right: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+	background-color: #FFFFFF;
+	padding: 0 0 50px 0;
+}
+
+.digitalLibraryContentRight {
+	float: left;
+	padding: 30px 0 0 0;
+}
+
+.digitalLibraryContentRightAdvertisements {
+	text-align: center; 
+	margin: 20px auto;
+	min-width: 310px;
+	width: 60%;
+}
+
+.digitalLibraryContentRightFullText {
+	padding: 30px 0 0 0;
+}
+
+.digitalLibraryNavigation {
+	
+}
+
+.digitalLibraryNavigationInner {
+	margin: 20px auto;
+	background-color: #006198;
+	padding: 5px 0 5px 0;
+	width: 65%;
+}
+
+.digitalLibraryNavigationInnerLast {
+	margin: 20px auto 40px auto;
+	background-color: #006198;
+	padding: 5px 0 5px 0;
+	width: 65%;
+}
+
+.digitalLibraryNavigationInnerHeader {
+	color: #FFFFFF;
+	font: bold 16px Helvetica, arial, sans-serif;
+	margin: 10px 0 10px 20px;
+}
+
+.digitalLibraryNavigationInnerSubscribe a {
+	text-decoration: none;
+}
+
+.digitalLibraryNavigationInnerCitationAnchor,
+.digitalLibraryNavigationInnerShareAnchor {
+	text-decoration: none;
+}
+
+.digitalLibraryNavigationInnerLink {
+	margin: 5px 15px 5px 20px;
+	padding: 0 0 10px 0;
+}
+
+.digitalLibraryNavigationInnerLinkContainer {
+	margin: 0 0 5px 0;
+}
+
+.digitalLibraryNavigationInnerLinkContainer:hover {
+	background-color: #4994BF;
+}
+
+.digitalLibraryNavigationInnerLinkContainer:hover a {
+	color: #FFFFFF;
+}
+
+.digitalLibraryNavigationInnerLinkContainer:hover span {
+	color: #407898;
+}
+
+.digitalLibraryNavigationInnerLinkIcon {
+	width: 20px;
+	float: left;
+	margin: 2px 0 0 5px;
+}
+
+.digitalLibraryNavigationInnerLinkText {
+	color: #FFFFFF;
+	font: 14px Helvetica, arial, sans-serif;
+	float: left;
+	padding: 5px 0 5px 8px;
+}
+
+.digitalLibraryNavigationInnerLinkText a {
+	text-decoration: none;
+	color: #FFFFFF;
+	font: 14px Helvetica, arial, sans-serif;
+}
+
+.digitalLibraryNavigationInnerLinkTextNoAccess {
+	color: #407898;
+}
+
+.digitalLibraryNavigationInnerLinkAuthorText {
+	color: #FFFFFF;
+	font: 14px Helvetica, arial, sans-serif;
+	padding: 5px 0 5px 8px;
+}
+
+.digitalLibraryNavigationInnerLinkAuthorText a {
+	text-decoration: none;
+	color: #FFFFFF;
+	font: 14px Helvetica, arial, sans-serif;
+}
+
+.digitalLibraryNavigationInnerPub {
+	margin: 10px auto 80px auto;
+	background-color: #006198;
+	padding: 5px 0 5px 0;
+	width: 65%;
+}
+
+.digitalLibraryNavigationInnerPubHeader {
+	color: #FFFFFF;
+	font: bold 16px Helvetica, arial, sans-serif;
+	margin: 15px 0 15px 20px;
+}
+
+.digitalLibraryNavigationInnerPubLink {
+	margin: 5px 15px 5px 20px;
+}
+
+.digitalLibraryNavigationInnerPubLinkContainer {
+	margin: 0 0 5px 0;
+}
+
+.digitalLibraryNavigationInnerPubLinkContainer:hover {
+	background-color: #4994BF;
+}
+
+.digitalLibraryNavigationInnerPubLinkContainer:hover a {
+	color: #FFFFFF;
+}
+
+.digitalLibraryNavigationInnerPubLinkContainer:hover span {
+	color: #407898;
+}	
+
+.digitalLibraryNavigationInnerPubLinkIcon {
+	width: 20px;
+	float: left;
+	margin: 5px 0 0 15px;
+}
+
+.digitalLibraryNavigationInnerPubLinkText {
+	color: #FFFFFF;
+	font: 14px Helvetica, arial, sans-serif;
+	float: left;
+	padding: 7px 0 5px 8px;
+}
+
+.digitalLibraryNavigationInnerPubLinkText a {
+	text-decoration: none;
+	color: #FFFFFF;
+	font: 14px Helvetica, arial, sans-serif;
+}
+
+.digitalLibraryNavigationInnerPubLinkTextNoAccess {
+	color: #407898;
+}
+
+.digitalLibraryNavigationInnerDownloadICDLinkIcon {
+	width: 20px;
+	float: left;
+	margin: 15px 0 0 15px;
+}
+
+.digitalLibraryNavigationInnerDownloadICDLinkText {
+	color: #FFFFFF;
+	font: 14px Helvetica, arial, sans-serif;
+	float: left;
+	padding: 7px 0 10px 8px;
+	width: 70%;
+}
+
+.digitalLibraryNavigationInnerDownloadICDLinkText a {
+	text-decoration: none;
+	color: #FFFFFF;
+	font: 14px Helvetica, arial, sans-serif;
+}
+
+.digitalLibraryNavigationInnerWhatsNewContainer {
+	margin: 10px auto 80px auto;
+	background-color: #006198;
+	padding: 3px 1px 1px 1px;
+	width: 80%;
+}
+
+.digitalLibraryNavigationInnerWhatsNew {
+	color: #FFFFFF;
+	font: bold 16px Helvetica, arial, sans-serif;
+	margin: 5px 0 5px 0;
+	text-align: center;
+}
+
+.digitalLibraryNavigationInnerWhatsNewMessage {
+	background-color: #FFFFFF;
+	color: #000000;
+	font: 14px Helvetica, arial, sans-serif;
+	padding: 20px;
+}
+
+.digitalLibraryContentRightMarginTopOffset { 
+	margin: -250px 0 0 0; 
+}
+
+.digitalLibraryContentRightMarginTopOffset2 { 
+	margin: -200px 0 0 0; 
+}
+
+.digitalLibraryTitle {
+	margin: 15px 0 20px 15px;	
+	font: 14px arial,sans-serif;
+}
+
+.digitalLibraryMode {
+	margin: 0 0 20px 15px;
+	font: 12px arial,sans-serif;	
+}
+
+.digitalLibraryInstanceID {
+	margin: 0 0 20px 15px;
+	font: 12px arial,sans-serif;	
+}
+
+.digitalLibraryRowButtons {
+	width: 98%;
+	border-top: 1px solid #CCCCCC;
+	background-color: #E8E8E8;
+	margin: 0 0 0 10px;
+}
+
+.digitalLibraryCellTitle {
+	float: left; 
+	width: 180px; 
+	padding: 10px 0 0 10px;	
+	font: 12px arial,sans-serif;
+}
+
+.digitalLibraryCell {
+    background-color: #FFFFFF;
+    float: left;
+    margin: 0;
+    padding: 10px 0 10px 10px;
+    width: 250px;	
+}
+
+.digitalLibraryMessage {
+	float: left; 
+	width: 600px; 
+	margin: 10px 0 3px 0; 
+	color: blue; 
+	font: 16px arial,sans-serif;	
+}
+
+.digitalLibrarySave {
+	float: right; 
+	width: 50px; 
+	margin: 10px 0 3px 0;
+}
+
+.digitalLibraryConfigExplanation,
+.digitalLibraryConfigExternalExplanation {
+	font: 12px arial, helvetica, sans-serif;
+	padding: 5px 0 10px 15px;
+	width: 100%;
+	border: 1px solid #CCCCCC;
+	margin: 0 0 10px 10px;	
+}
+
+.digitalLibraryConfigExplanation {
+	display: none;
+}
+
+.digitalLibraryConfigExplanation li,
+.digitalLibraryConfigExternalExplanation li {
+	margin: 5px 0 5px 0;	
+}
+
+.digitalLibraryConfigExplanationExternal {
+	font: 12px arial, helvetica, sans-serif;
+	padding: 5px 0 10px 5px;
+	width: 98%;
+	margin: 0 0 0 10px;
+}
+
+.linkFileType {
+	color: #CCCCCC;
+}
+
+#digitalLibraryInnerContainer {
+	margin: 20px;
+}
+
+#digitalLibraryContainer {
+	background-color: #FFFFFF;	
+}
+
+/* ---------- Common: Configure ---------- */
+
+.customConfigRow {
+	width: 95%;
+	height: 600px;
+	display: none;		
+}	
+
+.portletConfigRow {
+	width: 98%;
+	border-top: 1px solid #CCCCCC;
+	background-color: #E8E8E8;
+	display: none;
+	margin: 0 0 0 10px;
+}
+
+/* ---------- Common ---------- */
+
+.clearBoth {
+	clear: both;
+}
+
+.floatLeft {
+	float: left;
+}
+
+.floatRight {
+	float: right;
+}
+
+.topNavOptions {
+	width: 98%;
+	margin: 0 0 10px 10px;
+}
+
+.topNavOption {
+	float: left;
+	padding: 0 0 0 10px;
+	height: 24px;
+	width: 90%;
+	background-color: #EEEEEE;	
+	border: 1px solid #CCCCCC;	
+}
+
+.configurationOptions {
+	font: 12px arial, helvetica, sans-serif;
+	border: 1px solid #CCCCCC;
+	padding: 0;
+	margin: 2px 0 0 0;	
+}
+
+.topNavBackButton {
+	float: right;
+	padding: 4px 5px 0 5px;
+	font: bold 12px arial,sans-serif;
+	cursor: pointer;
+	background-color: #EEEEEE;	
+	border: 1px solid #CCCCCC;
+	height: 20px;
+}
+
+.cornerRadiusCell {
+	float: left; 
+	width: 50%; 
+	margin: 8px 0 8px 10px;
+	padding: 5px 5px 5px 50px;
+}
+
+.cornerRadiusLabel {
+	float: left; 
+	width: 80px; 
+	margin: 2px 0 2px 0;
+	padding: 5px 0 0 0;
+}
+
+.cornerRadiusInput {
+	float: left; 
+	width: 40px; 
+	margin: 2px 0 2px 0;
+}
+
+.breadCrumbsContainer {
+	margin: 0 0 10px 0;
+	padding: 10px 15px 15px 25px;
+	float: left;
+	background-color: #FFFFFF;
+	z-index: 100;
+}
+
+.breadCrumbsContainer a {
+	text-decoration: none;
+}
+
+.breadCrumbsPageInformation {
+	float: right;
+	width: 10px;
+}
+
+.hiddenCoverImage {
+	display: none;
+}
+
+.noIssuesForThisVolume p {
+	font: 14px arial, helvetica, sans-serif;
+	color: #FFFFFF;
+}
+
+.prePrints,
+.rapidPosts {
+	margin: 15px 0 15px 25px;
+	width: 89%;	
+	font: 12px arial, helvetica, sans-serif;
+	border: 1px solid #EEEEEE;
+	border-top-left-radius: 5px 5px;
+	-moz-border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;
+	-moz-border-top-right-radius: 5px 5px;
+	border-bottom-left-radius: 5px 5px;
+	-moz-border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	-moz-border-bottom-right-radius: 5px 5px;	
+}
+
+.prePrints a,
+.rapidPosts a {
+	text-decoration: none;	
+}
+
+.prePrintsLink,
+.rapidPostsLink {
+	margin: 5px 0 10px 20px;
+}
+
+.prePrintsDescription,
+.rapidPostsDescription {
+	font: 12px arial, helvetica, sans-serif;
+	margin: 0 20px 10px 20px;
+}
+
+.linkItem,
+.linkItemFull {
+	margin: 10px 5px 5px 0;
+}
+
+.linkItem a,
+.linkItemFull a {
+	text-decoration: none;
+	color: #0A6BA7;
+	font: 14px arial, helvetica, sans-serif;
+}
+
+.linkItem:hover,
+.linkItemFull:hover {
+	background-color: #E6EFF4;
+}
+
+.linkItem {
+	width: 90%;
+}
+
+.linkItemFull {
+	width: 100%;
+}
+
+.linkItemTop {
+	margin: 20px 0 0 0;
+}
+
+.linkItemBullet {
+	width: 6%;
+	float: left;
+	margin: 2px 0 0 0;
+	font: 12px arial, helvetica, sans-serif;
+}
+
+.linkItemAnchor {
+	width: 94%;
+	float: left;
+	cursor: pointer;
+}
+
+.mainSearchContainer {
+	width: 50%;
+	margin: 0 0 25px 0;
+	display: none;
+}
+
+.mainSearchLabel {
+	font: bold 20px arial, helvetica, sans-serif;
+	width: 80%;
+	margin: 10px 0 15px 25px;
+}
+
+.mainSearch {
+	width: 100%;
+	height: 40px;
+	margin: 0 0 30px 0;
+}
+
+.mainSearchControls {
+	width: 70%;
+	height: 30px;
+	border: 1px solid #333333;
+	background-color: #E8E8E8;
+	float: left;
+	margin: 0 0 0 25px;
+}
+
+.mainSearchButtonContainer {
+	background-color: #004D85;	
+	width: 30px;
+	height: 30px;
+	float: left;
+	margin: 0 0 0 10px;
+	border: 1px solid #004D85;	
+}
+
+.mainSearchButton {
+	background-color: #004D85;
+	width: 20px;
+	height: 20px;
+}
+
+.magazineListing {
+	float: left;
+	width: 50%;	
+	margin: 0 0 10px 0;
+}
+
+.magazineListingHeader {
+	background-color: #91B5CB;
+	width: 90%;
+	height: 13px;	
+}
+
+.magazineListingImage {
+	width: 20px;
+	float: left;
+	background-color: #FFFFFF;
+}
+
+.magazineListingImage img {
+	width: 20px;
+	height: 25px;
+	background-color: #FFFFFF;
+	margin: -12px 0 0 0;
+}
+
+.magazineListingTitle {
+	font: bold 20px arial, helvetica, sans-serif;
+	float: left;
+	width: 120px;
+	background-color: #FFFFFF;
+	text-align: center;
+	margin: -7px 0 0 0;
+}
+
+.magazineListingDescription {
+	font: 14px arial, helvetica, sans-serif;
+	margin: 15px 0 0 0;
+	width: 90%;	
+}
+
+.transactionListing {
+	float: left;
+	width: 50%;	
+	margin: 0 0 10px 0;	
+}
+
+.transactionListingHeader {
+	background-color: #91B5CB;
+	width: 100%;
+	height: 13px;
+}
+
+.transactionListingImage {
+	width: 30px;
+	float: left;
+	background-color: #FFFFFF;	
+}
+
+.transactionListingImage img {
+	width: 30px;
+	height: 25px;
+	background-color: #FFFFFF;
+	margin: -12px 0 0 0;	
+}
+
+.transactionListingTitle {
+	font: bold 20px arial, helvetica, sans-serif;
+	float: left;
+	width: 150px;
+	background-color: #FFFFFF;
+	text-align: center;	
+	margin: -7px 0 0 0;
+}
+
+.transactionListingDescription {
+	font: 14px arial, helvetica, sans-serif;
+	margin: 15px 0 0 0;
+	width: 100%;	
+}
+
+.letterListing {
+	width: 100%;	
+	margin: 25px 0 0 0;	
+}
+
+.letterListingHeader {
+	background-color: #91B5CB;
+	width: 100%;
+	height: 13px;	
+}
+
+.letterListingImage {
+	width: 27px;
+	float: left;
+	background-color: #FFFFFF;
+}
+
+.letterListingImage img {
+	width: 27px;
+	height: 25px;
+	background-color: #FFFFFF;
+	margin: -12px 0 0 0;	
+}
+
+.letterListingTitle {
+	font: bold 20px arial, helvetica, sans-serif;
+	float: left;
+	width: 120px;
+	background-color: #FFFFFF;
+	text-align: center;
+	margin: -7px 0 0 0;	
+}
+
+.letterListingDescription {
+	font: 14px arial, helvetica, sans-serif;
+	margin: 15px 0 0 0;
+	width: 100%;	
+	min-height: 40px;
+}
+
+.proceedingListing {
+	width: 100%;	
+	margin: 45px 0 0 0;	
+}
+
+.proceedingListingHeader {
+	background-color: #91B5CB;
+	width: 100%;
+	height: 13px;
+	margin: 0 0 15px 0;
+}
+
+.proceedingListingImage {
+	width: 24px;
+	float: left;
+	background-color: #FFFFFF;
+}
+
+.proceedingListingImage img {
+	width: 24px;
+	height: 25px;
+	background-color: #FFFFFF;
+	margin: -12px 0 0 0;	
+}
+
+.proceedingListingTitle {
+	font: bold 20px arial, helvetica, sans-serif;
+	float: left;
+	width: 150px;
+	background-color: #FFFFFF;
+	text-align: center;	
+	margin: -7px 0 0 0;	
+}
+
+.proceedingListingDescription {
+	font: 14px arial, helvetica, sans-serif;
+	margin: 15px 0 0 0;
+	width: 100%;	
+	min-height: 50px;
+}
+
+.proceedingLink {
+	width: 40px;
+	margin: 5px 3px 10px 0;
+	text-align: center;
+	font: bold 12px arial, helvetica, sans-serif;
+	float: left;
+	cursor: pointer;
+}
+
+.proceedingLink a {
+	text-decoration: none;
+	color: #0A6BA7;
+}
+
+.proceedingLink:hover {
+	background-color: #E6EFF4;
+}
+
+.resourceListing {
+	width: 100%;	
+	margin: 35px 0 60px 0;	
+}
+
+.resourceListingHeader {
+	background-color: #91B5CB;
+	width: 100%;
+	height: 13px;
+}
+
+.resourceListingImage {
+	width: 20px;
+	float: left;
+	background-color: #FFFFFF;
+}
+
+.resourceListingImage img {
+	width: 20px;
+	height: 25px;
+	background-color: #FFFFFF;
+	margin: -12px 0 0 0;	
+}
+
+.resourceListingTitle {
+	font: bold 20px arial, helvetica, sans-serif;
+	float: left;
+	width: 150px;
+	background-color: #FFFFFF;
+	text-align: center;	
+	margin: -7px 0 0 0;	
+}
+
+.resourceListingContent {
+	width: 90%;
+	margin: 20px 0 0 0;	
+}
+
+.volume,
+.volumeInactive {
+    border: 1px solid #EEEEEE;
+    float: left;
+    margin: 5px 5px 0 5px;
+    padding: 4px 5px 2px 5px;
+    text-align: center;
+    width: 13%;	
+	border-top-left-radius: 5px 5px;
+	-moz-border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;		
+	-moz-border-top-right-radius: 5px 5px;		
+	border-bottom-left-radius: 5px 5px;		
+	-moz-border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	-moz-border-bottom-right-radius: 5px 5px; 
+	color: #CCCCCC;
+}
+
+.volume {		  
+	cursor: pointer;  
+}
+
+.volume:hover {
+	background-color: #EEEEEE;
+}
+
+.volume:hover a {
+	color: #000000;
+}
+
+.volume a {
+	text-decoration: none;
+	color: #000000;
+	font: 11px arial, helvetica, sans-serif;
+}
+
+.volumeYear {
+	color: #0A6BA7;
+	font: bold 12px arial, helvetica, sans-serif;	
+	margin: 0 0 0 5px;
+}
+
+.volumePrePrintRapidPost {
+	color: #0A6BA7;
+	font: bold 12px arial, helvetica, sans-serif;	
+}
+
+ .volumeIcon {
+ 	color: #CCCCCC;
+ }
+ 
+ .volumeIconContainer {
+ 	margin: -1px 0 0 0;
+ }
+ 
+ .publicationIcon {
+ 	color: #CCCCCC;
+ } 
+ 
+ .pageInformationIcon {
+ 	color: #EEEEEE;
+ } 
+ 
+ .breadCrumbIcon {
+ 	color: #888888;
+ 	margin: 0 2px 0 2px;
+ }  
+ 
+ .volumeSpecific {
+    border: 1px solid #EEEEEE;
+    margin: 0 5px 5px 5px;
+    padding: 4px 5px 2px 15px;
+    width: 25%;	
+	border-top-left-radius: 5px 5px;
+	-moz-border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;		
+	-moz-border-top-right-radius: 5px 5px;		
+	border-bottom-left-radius: 5px 5px;		
+	-moz-border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	-moz-border-bottom-right-radius: 5px 5px;
+}
+ 
+ .issue {
+    border: 1px solid #EEEEEE;
+    float: left;
+    margin: 5px 5px 0 5px;
+    padding: 4px 5px 2px 15px;
+    width: 25%;	
+	border-top-left-radius: 5px 5px;
+	-moz-border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;		
+	-moz-border-top-right-radius: 5px 5px;		
+	border-bottom-left-radius: 5px 5px;		
+	-moz-border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	-moz-border-bottom-right-radius: 5px 5px;		  
+	cursor: pointer;  
+}
+
+.issue:hover {
+	background-color: #EEEEEE;
+}
+
+.issue:hover a {
+	color: #000000;
+}
+
+.issue a {
+	text-decoration: none;
+	color: #0A6BA7;
+	font: 12px arial, helvetica, sans-serif;
+}
+
+.issueNumberLabel {
+	width: 80px;
+	min-width: 80px;
+	float: left;
+}
+
+.issuePeriod {
+	float: left;	
+}
+
+.tableOfContentsHeading {
+	width: 100%;
+}
+
+.tableOfContentsHeadingFirst {
+	border-top: 1px solid #CCCCCC;
+}
+
+.tableOfContentsHeadingIcon {
+	color: #72BA45;
+	width: 20px;
+	float: left;
+	margin: 4px 0 0 0;
+}
+
+.tableOfContentsHeadingTitle {
+	font: bold 14px arial, helvetica, sans-serif; 	
+	float: left;
+	margin: 5px 0 0 0;	
+}
+
+.tableOfContentsLineItemContainer {
+	width: 100%;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.tableOfContentsLineItem {
+	width: 100%;
+	margin: 0 0 15px 20px;
+}
+
+.tableOfContentsLineItemTitle {
+	font: bold 14px arial, helvetica, sans-serif;	
+	margin: 5px 0 8px 0;
+}
+ 
+.tableOfContentsLineItemTitle a {
+	text-decoration: none;
+	color: #0A6BA7;
+}
+
+.lineItemType {
+	font: 11px arial, helvetica, sans-serif;
+	color: #777777;
+	margin: 0 0 0 10px;
+}
+
+.tableOfContentsLineItemCreator {
+ 	font: 12px arial, helvetica, sans-serif;
+ 	margin: 5px 25px 5px 0;
+}
+
+.itemCreatorName {
+	color: #0A6BA7;
+	text-decoration: none;
+}
+
+.tableOfContentsLineItemLength {
+ 	font: 12px arial, helvetica, sans-serif;	
+ 	margin: 5px 0 0 0;
+}
+
+.tableOfContentsLineOptions {
+	width: 100%;
+	margin: 0 0 25px 15px;
+}
+
+.tableOfContentsLineOption,
+.tableOfContentsLineOptionPDF,
+.tableOfContentsLineOptionHTML,
+.tableOfContentsLineOptionOpenURL,
+.tableOfContentsLineOptionXplore {
+	margin: 3px 0 3px 0;
+	padding: 5px 0 0 0;
+	height: 24px;
+}
+
+.tableOfContentsLineOption:hover,
+.tableOfContentsLineOptionPDF:hover,
+.tableOfContentsLineOptionHTML:hover,
+.tableOfContentsLineOptionOpenURL:hover,
+.tableOfContentsLineOptionXplore:hover {
+	background-color: #E6EFF4;
+}
+
+.tableOfContentsLineOptionsAbstract,
+.tableOfContentsLineOptionsFullText,
+.tableOfContentsLineOptionsOpenURL,
+.tableOfContentsLineOptionsXplore {
+	font: bold 12px arial, helvetica, sans-serif;	
+	border: 1px solid #E2E6E9;	  
+	cursor: pointer;  	
+	padding: 5px;
+	margin: 0 5px 0 0;
+}
+
+.tableOfContentsLineOptionsAbstract,
+.tableOfContentsLineOptionsFullText,
+.tableOfContentsLineOptionsOpenURL {
+	font: bold 12px arial, helvetica, sans-serif;	
+	border: 1px solid #E2E6E9;	  
+	cursor: pointer;  	
+	width: 100px;
+	padding: 5px;
+	margin: 0 5px 0 0;
+}
+
+.tableOfContentsLineOptionsXplore {  	
+	width: 120px;
+}
+
+.tableOfContentsLineOptionsAbstractIcon,
+.tableOfContentsLineOptionsFullTextIcon,
+.tableOfContentsLineOptionsOpenURLIcon,
+.tableOfContentsLineOptionsXploreIcon {
+	width: 24px;
+	float: left;
+}
+
+.tableOfContentsLineOptionsPDFIcon,
+.tableOfContentsLineOptionsHTMLIcon,
+.tableOfContentsLineOptionsXPLOREIcon,
+.tableOfContentsLineOptionsOPENURLIcon {
+	width: 24px;
+	float: left;
+	margin: 0 0 0 10px;
+}
+
+.tableOfContentsLineOptionsAbstract:hover,
+.tableOfContentsLineOptionsFullText:hover,
+.tableOfContentsLineOptionsOpenURL:hover,
+.tableOfContentsLineOptionsXplore:hover {
+	background-color: #E6EFF4;
+}
+
+.tableOfContentsLineOptionsAbstractText,
+.tableOfContentsLineOptionsFullTextText,
+.tableOfContentsLineOptionsOpenURLText,
+.tableOfContentsLineOptionsXploreText {
+	color: #000000;
+	float: left;
+	margin: 1px 0 0 0;	
+}
+
+.tableOfContentsLineOptionsAbstractText,
+.tableOfContentsLineOptionsFullTextText,
+.tableOfContentsLineOptionsOpenURLText {
+	width: 65px;
+}
+
+.tableOfContentsLineOptionsXploreText {
+	width: 85px;
+}
+
+.tableOfContentsLineOptionsPDFText,
+.tableOfContentsLineOptionsHTMLText,
+.tableOfContentsLineOptionsXPLOREText,
+.tableOfContentsLineOptionsOPENURLText {
+	color: #000000;
+	width: 100px;
+	float: left;
+	margin: 1px 0 10px 0;	
+}
+
+.tableOfContentsLineOptionsAbstractText a,
+.tableOfContentsLineOptionsFullTextText a,
+.tableOfContentsLineOptionsOpenURLText a,
+.tableOfContentsLineOptionsXploreText a {
+	color: #000000;
+	text-decoration: none;
+}
+
+ .shoppingCartIcon {
+ 	color: #65CA33;
+ 	margin: -1px 5px 0 2px;
+ 	font-size: 16px;
+ }  
+
+.tableOfContentsLineOptionsPurchase {
+	font: bold 12px arial, helvetica, sans-serif;	
+	background-color: #3382AD;
+	border: 1px solid #3382AD;		  
+	cursor: pointer;  	
+	color: #FFFFFF;
+	width: 100px;
+	padding: 5px;
+	margin: 0 5px 0 0;
+}
+
+.tableOfContentsLineOptionsPurchaseText a {
+	color: #FFFFFF;
+	text-decoration: none;	
+}
+
+.tableOfContentsLineOptionsPurchaseIcon {
+	width: 24px;
+	float: left;
+	margin: 0 0 0 20px;
+}
+
+.tableOfContentsLineOptionsPurchase:hover {
+	background-color: #E6EFF4;
+	color: #000000;
+}
+
+.tableOfContentsLineOptionsPurchase:hover a,
+.tableOfContentsLineOptionsPurchase a:hover {
+	color: #000000;
+	text-decoration: none;
+}
+
+.tableOfContentsLineOptionsPurchaseText {
+	width: 35px;
+	float: left;
+	margin: 1px 0 0 2px;	
+}
+
+.tableOfContentsLineOptionsPDFFileSize {
+	color: #888888;
+}
+
+.tableOfContentsLineOptionsGreyedOutText {
+	color: #CCCCCC;
+}
+
+.abstractHeader {
+	font: bold 16px arial, helvetica, sans-serif;
+	margin: 20px 0 10px 0;
+}
+
+.abstractText {
+	font: 12px arial, helvetica, sans-serif;
+	margin: 0 0 15px 0;
+}
+
+.abstractText404Container {
+    border: 1px solid #CCCCCC;
+    width: 100%;	
+	border-top-left-radius: 5px 5px;
+	-moz-border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;		
+	-moz-border-top-right-radius: 5px 5px;		
+	border-bottom-left-radius: 5px 5px;		
+	-moz-border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	-moz-border-bottom-right-radius: 5px 5px; 
+}
+
+.abstractText404 {
+	font: bold 14px arial, helvetica, sans-serif;
+	margin: 15px 0 10px 10px;
+	color: red;
+	width: 90%;
+}
+
+.abstractText404Plain {
+	font:  14px arial, helvetica, sans-serif;
+	margin: 15px 15px 10px 10px;	
+}
+
+.abstractText404PlainEmail {
+	font:  14px arial, helvetica, sans-serif;
+	margin: 15px 15px 10px 30px;		
+}
+
+.abstractReference {
+	font: 12px arial, helvetica, sans-serif;
+	margin: 0 0 15px 0;	
+}
+
+.abstractReference a {
+	text-decoration:  none;
+	color: #0A6BA7;
+}
+
+/* ---------- Section Header:  Home Publications ---------- */
+ 
+ .sectionalHeaderHomePublications {
+ 	margin: 10px 0 50px 20px;
+	width: 97%;
+ }
+ 
+ .sectionalHeaderHomePublicationsCover {
+ 	float: left;
+ 	margin: 0 15px 10px 0;
+ }
+ 
+ .sectionalHeaderHomePublicationsIntroText {
+ 	float: left;
+ 	font: 14px arial, helvetica, sans-serif;
+ 	width: 50%;
+ }
+ 
+ .sectionalHeaderHomePublicationsIntroTextInner {
+   	float: right;
+   	color: #333333;
+   	font: 12px arial, helvetica, sans-serif;
+   	margin: 15px 0 0 0;
+   	padding: 5px 10px 4px 10px;
+ } 
+ 
+ .sectionalHeaderHomePublicationsLabel {
+ 	font: bold 22px arial, helvetica, sans-serif;
+ 	width: 90%;
+ 	margin: 10px 0 15px 5px;
+ }
+ 
+.sectionalHeaderHomePublicationsSocialSubscribeText {
+   	float: right;
+   	color: #333333;
+   	font: 12px arial, helvetica, sans-serif;
+   	margin: 15px 0 0 0;
+   	background-color: #E3F5DB;
+   	padding: 5px 10px 4px 10px;
+ }
+ 
+ .sectionalHeaderHomePublicationsSocialSubscribe {
+   	float: right;
+   	background-color: #72BA45;
+   	color: #FFFFFF;
+   	font: bold 12px arial, helvetica, sans-serif;
+   	width: 120px;
+   	height: 21px;
+   	padding: 9px 6px 0 6px;
+   	margin: 25px 0 0 0;
+   	text-align: center;
+   	cursor: pointer;
+ }
+ 
+ .sectionalHeaderHomePublicationsSocialRSS {
+   	float: right;
+   	background-color: #A8A8A8;
+   	color: #FFFFFF;   	
+   	width: 26px;
+   	height: 26px;   	
+   	text-align: center;
+   	padding: 4px 0 0 0;
+   	cursor: pointer;
+   	margin: 25px 0 0 0;
+   	display: none;
+ }
+ 
+ .sectionalHeaderHomePublicationsSocialRSS img {
+ 	width: 18px;
+ 	height: 18px;
+ } 
+ 
+ .invalidSessionText {
+ 	float: left;
+ 	font: 14px arial, helvetica, sans-serif;
+ 	width: 65%;
+ 	margin: 0 0 0 10px;
+ }
+  
+ .invalidSessionInner {
+   	float: right;
+   	color: #333333;
+   	font: 18px arial, helvetica, sans-serif;
+   	margin: 15px 0 0 0;
+   	padding: 5px 10px 4px 10px;
+ }  
+
+/* ---------- Section Header:  Volume / Issue ---------- */
+ 
+ .sectionalHeaderVolumeIssue {
+ 	margin: 10px 0 0 20px;
+	width: 97%;
+ }
+ 
+ .sectionalHeaderVolumeIssueCover {
+ 	height: 210px;
+ 	padding: 10px 20px;
+ }
+ 
+ .sectionalHeaderVolumeIssueCoverRight {
+ 	margin: 0 0 20px 0;
+ 	height: 210px;
+ } 
+ 
+ .sectionalHeaderVolumeIssueLogo {
+ 	height: 140px;
+ 	padding: 40px 0 0 0;
+ 	margin: 0 0 0 -20px;
+ }
+ 
+ .sectionalHeaderVolumeIssueLabel {
+ 	font: bold 24px arial, helvetica, sans-serif;
+ 	width: 90%;
+ 	margin: 0 0 0 -15px;
+ }
+ 
+ .sectionalHeaderVolumeIssueSearch {
+ 	width: 250px;
+ 	height: 30px;
+ 	background-color: #CCCCCC;
+ 	float: right;
+ 	margin: 10px 0 0 0;
+ 	display: none;
+ }
+ 
+   .sectionalHeaderVolumeIssueSearchFRM
+ {
+ 	float: left;
+ }
+ .sectionalHeaderVolumeIssueSearchBtn
+ {
+ 	float: left;
+ }
+ .sectionalHeaderVolumeIssueSearch input[type="image"] {
+ 	width: 28px;
+ 	height: 28px;
+ }
+ 
+ .sectionalHeaderVolumeIssueSocial {
+  	float: right;
+  	margin: 10px 10px 0 15px;
+  	display: none;
+ }
+ 
+ .sectionalHeaderVolumeIssueSocialSubscribe {
+   	float: right;
+   	background-color: #72BA45;
+   	color: #FFFFFF;
+   	font: bold 12px arial, helvetica, sans-serif;
+   	width: 80px;
+   	height: 22px;
+   	padding: 8px 0 0 0;
+   	margin: 0 5px 0 0;
+   	text-align: center;
+   	cursor: pointer;
+ }
+ 
+ .sectionalHeaderVolumeIssueSocialShare {
+   	float: right;
+   	background-color: #A8A8A8;
+   	color: #FFFFFF;
+   	font: bold 12px arial, helvetica, sans-serif;   
+   	width: 50px;
+   	height: 18px;
+   	padding: 5px 0 0 0;
+   	margin: 0 5px 0 0;
+   	text-align: center;	
+ }
+ 
+ .sectionalHeaderVolumeIssueSocialRSS {
+   	float: right;
+   	background-color: #A8A8A8;
+   	color: #FFFFFF;   	
+   	width: 26px;
+   	height: 26px;   	
+   	text-align: center;
+   	padding: 4px 0 0 0;
+   	cursor: pointer;
+ }
+ 
+ .sectionalHeaderVolumeIssueSocialRSS img {
+ 	width: 18px;
+ 	height: 18px;
+ }
+ 
+ /* ---------- Section Header:  Table of Contents ---------- */
+ 
+  .sectionalHeaderTableOfContents {
+ 	margin: 0 0 25px 20px;
+	width: 97%;
+ }
+ 
+  .sectionalHeaderTableOfContentsLogo {
+ 	margin: 0 0 10px 0;
+ }
+ 
+ .sectionalHeaderTableOfContentsLogo img {
+	height: auto;
+}
+ 
+ .sectionalHeaderTableOfContentsText {
+ 	font: 12px arial, helvetica, sans-serif;
+ 	width: 60%;
+ 	margin: 0 0 5px 5px;
+ }
+ 
+  .sectionalHeaderTableOfContentsProceedingsText {
+ 	font: 14px arial, helvetica, sans-serif;
+ 	width: 60%;
+ 	margin: 0 0 5px 5px;
+ }
+ 
+ .sectionalHeaderTableOfContentsLabel {
+ 	font: bold 22px arial, helvetica, sans-serif;
+ 	width: 40%;
+ 	margin: 0 0 0 5px;
+ 	float: left;
+ }
+
+  .sectionalHeaderTableOfContentsProceedingsLabel {
+ 	font: bold 22px arial, helvetica, sans-serif;
+ 	width: 90%;
+ 	margin:20px 0 0 5px;
+ }
+ 
+  .sectionalHeaderTableOfContentsProceedingsHeader {
+ 	font: bold 16px arial, helvetica, sans-serif;
+ 	width: 60%;
+ 	margin: 0 0 5px 5px;
+ 	color: #0A6BA7;
+ }
+ 
+ .sectionalHeaderTableOfContentsSearch {
+ 	width: 250px;
+ 	height: 30px;
+ 	background-color: #CCCCCC;
+ 	position: absolute;
+ 	top: 30px;
+ 	right: 0px;
+ }
+  .sectionalHeaderTableOfContentsSearchFRM
+ {
+ 	float: left;
+ }
+ .sectionalHeaderTableOfContentsSearchBtn
+ {
+ 	float: left;
+ }
+ .sectionalHeaderTableOfContentsSearch input[type="image"] {
+ 	width: 28px;
+ 	height: 28px;
+ }
+ 
+ 
+ .sectionalHeaderTableOfContentsSocial {
+  	float: right;
+  	margin: -25px 5px 0 0;
+ }
+ 
+ .sectionalHeaderTableOfContentsSocialSubscribe {
+   	float: right;
+   	background-color: #72BA45;
+   	color: #FFFFFF;
+   	font: bold 12px arial, helvetica, sans-serif;
+   	width: 70px;
+   	height: 18px;
+   	padding: 5px 0 0 0;
+   	margin: 0 5px 0 0;
+   	text-align: center;
+ }
+ 
+ .sectionalHeaderTableOfContentsSocialShare {
+   	float: right;
+   	background-color: #A8A8A8;
+   	color: #FFFFFF;
+   	font: bold 12px arial, helvetica, sans-serif;   
+   	width: 50px;
+   	height: 18px;
+   	padding: 5px 0 0 0;
+   	margin: 0 5px 0 0;
+   	text-align: center;	
+ }
+ 
+ .sectionalHeaderTableOfContentsSocialRSS {
+   	float: right;
+   	background-color: #A8A8A8;
+   	color: #FFFFFF;   	
+   	width: 24px;
+   	height: 22px;   	
+   	text-align: center;
+   	padding: 1px 0 0 0;
+ }
+ 
+ .sectionalHeaderTableOfContentsSocialRSS img {
+ 	width: 18px;
+ 	height: 18px;
+ }
+ 
+ /* ---------- Section Header:  Abstract ---------- */
+ 
+  .sectionalHeaderAbstract {
+	border-left: 1px solid #DDDDDD;
+	border-right: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+	background-color: #FFFFFF;
+	padding: 10px 0 10px 0;
+ }
+ 
+  .sectionalHeaderAbstractLogo {
+ 	margin: 0 0 20px 20px;
+ }
+ 
+.sectionalHeaderAbstractLogo img {
+	width: 200px;
+	height: auto;
+}
+
+.sectionalHeaderAbstractProceedingsConferenceName {
+ 	font: 14px arial, helvetica, sans-serif;
+ 	width: 60%;
+ 	margin: 0 0 20px 10px;
+}
+ 
+ .sectionalHeaderAbstractText {
+ 	font: 12px arial, helvetica, sans-serif;
+ 	margin: 0 0 5px 20px;
+}
+ 
+  .sectionalHeaderAbstractText h2 {
+ 	font: bold 24px arial, helvetica, sans-serif;
+ 	width: 90%;
+ 	margin: 0 0 10px 0;
+ 	color: #0A6BA7;
+ }
+ 
+ .sectionalHeaderAbstractText a {
+ 	text-decoration: none;
+ }
+ 
+.sectionalHeaderAbstractProceedingsText {
+ 	font: 14px arial, helvetica, sans-serif;
+ 	width: 60%;
+ 	margin: 0 0 5px 20px;
+}
+
+.sectionalHeaderAbstractProceedingsHeaderText {
+ 	font: 14px arial, helvetica, sans-serif;
+ 	width: 60%;
+ 	margin: 0 0 10px 0;
+}
+ 
+.sectionalHeaderAbstractProceedingsTitleText h2 {
+ 	font: bold 24px arial, helvetica, sans-serif;
+ 	width: 90%;
+ 	margin: 0 0 10px 20px;
+ 	color: #0A6BA7;
+}
+
+.sectionalHeaderAbstractProceedingsTitleText a {
+	text-decoration: none;
+}
+ 
+ .sectionalHeaderAbstractCreator {
+ 	font: 12px arial, helvetica, sans-serif;
+ 	margin: 10px 0 0 20px;
+ }
+ 
+ .sectionalHeaderAbstractDOI {
+  	font: 12px arial, helvetica, sans-serif;
+ 	margin: 10px 0 30px 20px;
+ }
+ 
+ .sectionalHeaderAbstractSearch {
+ 	height: 30px;
+ 	background-color: #CCCCCC;
+ 	float: right;
+ }
+   .sectionalHeaderAbstractSearchFRM
+ {
+ 	float: left;
+ }
+ .sectionalHeaderAbstractSearchBtn
+ {
+ 	float: left;
+ }
+ .sectionalHeaderAbstractSearch input[type="image"] {
+ 	width: 28px;
+ 	height: 28px;
+ }
+ .sectionalHeaderAbstractSocial {
+  	float: right;
+  	margin: 3px 20px 0 0;
+ }
+ 
+ .sectionalHeaderAbstractSocialSubscribe {
+   	float: right;
+   	background-color: #72BA45;
+   	color: #FFFFFF;
+   	font: bold 12px arial, helvetica, sans-serif;
+   	width: 70px;
+   	height: 18px;
+   	padding: 5px 0 0 0;
+   	margin: 0 5px 0 0;
+   	text-align: center;
+ }
+ 
+ .sectionalHeaderAbstractSocialShare {
+   	float: right;
+   	background-color: #A8A8A8;
+   	color: #FFFFFF;
+   	font: bold 12px arial, helvetica, sans-serif;   
+   	width: 50px;
+   	height: 18px;
+   	padding: 5px 0 0 0;
+   	margin: 0 5px 0 0;
+   	text-align: center;	
+ }
+ 
+ .sectionalHeaderAbstractSocialRSS {
+   	float: right;
+   	background-color: #A8A8A8;
+   	color: #FFFFFF;   	
+   	width: 24px;
+   	height: 22px;   	
+   	text-align: center;
+   	padding: 1px 0 0 0;
+ }
+ 
+ .sectionalHeaderAbstractSocialRSS img {
+ 	width: 18px;
+ 	height: 18px;
+ }
+  
+ /* ---------- Proceeding Alpha-Numeric List ---------- */
+ 
+ .proceedingListHeader {
+ 	width: 100%;
+ 	margin: 10px 0 20px 10px;
+}
+ 
+.proceedingListItem { }
+
+.proceedingListItemEven {
+	background-color: #E6EFF4;	
+ 	border: 1px solid #E6EFF4;	
+}
+
+.proceedingListItemOdd {
+	background-color: #FFFFFF;	
+ 	border: 1px solid #FFFFFF;	
+}
+
+.proceeding-toggle {
+	text-decoration: none;
+}
+ 
+ .proceedingListAcronymLabel {
+  	font: bold 18px arial, helvetica, sans-serif;
+  	width: 20%;
+  	float: left;
+}
+ 
+ .proceedingListAcronym {
+  	font: bold 14px arial, helvetica, sans-serif;
+  	min-width: 20%;
+  	color: #0A6BA7;
+  	float: left;
+}
+ 
+ .proceedingListConferenceNameLabel {
+  	font: bold 18px arial, helvetica, sans-serif; 
+  	width: 30%;
+  	float: left;  	
+}
+ 
+ .proceedingListConferenceQuickFilter {
+  	width: 35%;
+  	float: right;  	
+} 
+ 
+.proceedingListConferenceName {
+    font: 14px arial,helvetica,sans-serif;
+    width: 75%;
+  	float: left;    
+}
+
+.proceedingListYearLabel {
+	font: bold 12px arial, helvetica, sans-serif;
+	color: #0A6BA7;
+	margin: 5px 0 10px 20px;
+}
+
+.proceedingYearItemLabel {
+	font: 12px arial, helvetica, sans-serif;
+	margin: 0 0 15px 30px;
+}
+
+.proceedingYearItemLabel a {
+	text-decoration: none;
+}
+
+.proceedingYear {
+	width: 100%;
+	height: 22px;
+	color: #0A6BA7;
+	margin: 20px 0 10px 0;
+	background-color: #E6EFF4;
+	padding: 5px 0 0 0;
+}
+
+.proceedingYearText {
+	font: bold 14px arial, helvetica, sans-serif;
+	margin: 0 0 0 10px;
+}
+
+.proceedingName {
+	width: 95%;
+	margin: 0 0 5px 10px;
+}
+
+.proceedingNameIcon {
+	width: 25px;
+	float: left;
+	margin: -3px 0 0 0;
+}
+
+.proceedingNameTitle {
+	font: 12px arial, helvetica, sans-serif;
+	width: 95%;
+	float: left;
+}
+
+.proceedingNameTitle a {
+	text-decoration: none;
+	color: #0A6BA7;
+}
+
+.proceedingListNoContentContainer {
+ 	width: 80%;
+ 	margin: 10px;
+ 	border: 1px solid #DDDDDD;
+}
+
+.proceedingListNoContentMessage {
+	background-color: #FFFFFF;
+	color: #000000;
+	font: 14px Helvetica, arial, sans-serif;
+	padding: 20px;
+}
+
+/* ---------- Proceeding Year / Conference List ---------- */
+
+.proceedingYearConference {
+    width: 100%;
+    margin: 0 0 15px 10px;
+}
+
+.proceedingYearConferenceDescription {
+    font: bold 14px arial,helvetica,sans-serif;
+    width: 100%;	
+    color: #0A6BA7;
+}
+
+/* ************************* 
+CSS Media 0 to 480      
+*************************** */
+@media (max-width: 480px) {
+	
+	.linkItem {
+	    width: 100%;
+	}
+	
+	.magazineListing {
+	    margin: 0 0 30px;
+	    width: 100%;
+	}
+	
+	.magazineListingHeader {
+	    background-color: #91B5CB;
+	    height: 13px;
+	    width: 100%;
+	}
+	
+	.transactionListing {
+	    margin: 0 0 25px;
+	    width: 100%;
+	}	
+	
+	.digitalLibraryContentRightMarginTopOffset,
+	.digitalLibraryContentRightMarginTopOffset2 { 
+		margin: 0; 
+	}	
+	
+	.mainSearchContainer {
+		width: 80%;
+		margin: 0 0 25px 0;
+		display: block;
+	}	
+	
+	.sectionalHeaderVolumeIssueSocial {
+	  	float: right;
+	  	margin: 10px 10px 0 15px;
+	  	display: block;
+	}
+	
+	.sectionalHeaderVolumeIssueSearch {
+	 	width: 250px;
+	 	height: 30px;
+	 	background-color: #CCCCCC;
+	 	float: right;
+	 	margin: 10px 0 0 0;
+	 	display: block;
+	}	
+	
+	.sectionalHeaderHomePublicationsSocialRSS {
+	   	float: right;
+	   	background-color: #A8A8A8;
+	   	color: #FFFFFF;   	
+	   	width: 26px;
+	   	height: 26px;   	
+	   	text-align: center;
+	   	padding: 4px 0 0 0;
+	   	cursor: pointer;
+	   	margin: 25px 0 0 0;
+	   	display: block;
+	}
+	
+	.sectionalHeaderHomePublicationsSocialSubscribe {
+	   	float: right;
+	   	background-color: #72BA45;
+	   	color: #FFFFFF;
+	   	font: bold 12px arial, helvetica, sans-serif;
+	   	width: 120px;
+	   	height: 21px;
+	   	padding: 9px 6px 0 6px;
+	   	margin: 25px 15px 0 0;
+	   	text-align: center;
+	   	cursor: pointer;
+	}		
+	 	
+}
+
+/* ************************* 
+CSS Media 0 to 967      
+*************************** */
+@media (max-width: 967px) {
+	
+	.linkItem {
+	    width: 100%;
+	}
+	
+	.magazineListing {
+	    margin: 0 0 30px;
+	    width: 100%;
+	}
+	
+	.magazineListingHeader {
+	    background-color: #91B5CB;
+	    height: 13px;
+	    width: 100%;
+	}
+	
+	.transactionListing {
+	    margin: 0 0 25px;
+	    width: 100%;
+	}	
+	
+	.digitalLibraryContentRightMarginTopOffset,
+	.digitalLibraryContentRightMarginTopOffset2 { 
+		margin: 0; 
+	}		
+	
+	.mainSearchContainer {
+		width: 80%;
+		margin: 0 0 25px 0;
+		display: block;
+	}	
+	
+	.sectionalHeaderVolumeIssueSocial {
+	  	float: right;
+	  	margin: 10px 10px 0 15px;
+	  	display: block;
+	}
+	
+	.sectionalHeaderVolumeIssueSearch {
+	 	width: 250px;
+	 	height: 30px;
+	 	background-color: #CCCCCC;
+	 	float: right;
+	 	margin: 10px 0 0 0;
+	 	display: block;
+	}		
+	
+	.sectionalHeaderHomePublicationsSocialRSS {
+	   	float: right;
+	   	background-color: #A8A8A8;
+	   	color: #FFFFFF;   	
+	   	width: 26px;
+	   	height: 26px;   	
+	   	text-align: center;
+	   	padding: 4px 0 0 0;
+	   	cursor: pointer;
+	   	margin: 25px 0 0 0;
+	   	display: block;
+	}	
+	
+	.sectionalHeaderHomePublicationsSocialSubscribe {
+	   	float: right;
+	   	background-color: #72BA45;
+	   	color: #FFFFFF;
+	   	font: bold 12px arial, helvetica, sans-serif;
+	   	width: 120px;
+	   	height: 21px;
+	   	padding: 9px 6px 0 6px;
+	   	margin: 25px 15px 0 0;
+	   	text-align: center;
+	   	cursor: pointer;
+	}	
+
+}
+
+/* ************************* 
+CSS Media 968 to 979      
+*************************** */
+@media (min-width: 968px) and (max-width: 979px) {
+	
+	.linkItem {
+	    width: 100%;
+	}
+	
+	.magazineListing {
+	    margin: 0 0 30px;
+	    width: 100%;
+	}
+	
+	.magazineListingHeader {
+	    background-color: #91B5CB;
+	    height: 13px;
+	    width: 100%;
+	}
+	
+	.transactionListing {
+	    margin: 0 0 25px;
+	    width: 100%;
+	}		
+
+}
+
+/* ************************* 
+CSS Media 1200 to Infinity      
+*************************** */
+@media (min-width: 1200px) {
+	
+	.linkItem {
+		width: 90%;
+	}	
+	
+	.magazineListing {
+		float: left;
+		width: 50%;	
+		margin: 0 0 10px 0;
+	}	
+	
+	.magazineListingHeader {
+		background-color: #91B5CB;
+		width: 90%;
+		height: 13px;	
+	}	
+	
+	.transactionListing {
+		float: left;
+		width: 50%;	
+		margin: 0 0 10px 0;	
+	}	
+	
+}
+
+
+ /* ---------- CSS for the XSLT transformation HTML ---------- */
+ 
+ .abs-content-large {
+ 	font: 12px Verdana, Arial, Helvetica, sans-serif;
+ 	margin: 0 0 10px 0;
+ }
+ 
+#maincontent .separator {
+	width: 100%;
+	border: 1px solid lightgrey;
+	margin: 0 0 20px 0;
+	height: 1px;
+}
+
+#maincontent .captionText {
+	font: 11px Verdana, Arial, Helvetica, sans-serif;
+	color:#003366;
+	padding-bottom: 20px
+}
+ 
+.section {
+	width: 100%;
+	height: 30px;
+	margin: 15px 0 0 0;
+} 
+ 
+.section .section-title {
+	float: left;
+	font: 16px Verdana, Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	color:#003366;	
+}
+
+.section .top-ref {
+	float: right;
+	vertical-align: top;
+	font-weight: normal;
+}
+
+.section .top-ref a {
+	text-decoration: none;
+}
+ 
+#maincontent {
+	margin: 10px 0 0 0;
+} 
+ 
+#maincontent .ss1-heading {
+	font: 15px Verdana, Arial, Helvetica, sans-serif;
+	color:#003366;
+	font-weight:bolder;
+	padding-bottom: 10px;
+	padding-top: 10px;
+} 
+ 
+#maincontent .ss2-heading {
+	font: 14px Georgia, "Times New Roman", Times, serif;
+	line-height:1.75em;
+}
+
+ /* ---------- Sticky Stuff ---------- */
+
+.stickyContainer {
+	margin: 20px 0 0 0;
+	width: 350px;
+}
+
+ /* ---------- Table of Contents ---------- */
+
+#toc {
+	padding: 10px 0 0 0;
+    color: #FFFFFF;
+}
+
+#toc ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#toc li {
+    padding: 5px 10px;
+}
+
+#toc a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+#toc .toc-h2 {
+    padding-left: 10px;
+}
+
+#toc .toc-h3 {
+    padding-left: 20px;
+}
+
+#toc .toc-active {
+    background: #1971A1;
+}
