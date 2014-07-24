@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+		<entry key="cas.login">https://cas.computer.org:8443/security/login</entry>
+		<entry key="cas.logout">https://cas.computer.org:8443/security/logout</entry>
+		<entry key="cas.validate">https://cas.computer.org:8443/proxyValidate</entry>
+		<entry key="ldap.entry-count">5</entry>
+		<entry key="ldap.users">ou=People,o=ieee.org</entry>
+		<entry key="ldap.cs-member-code">C016</entry>
+		<entry key="ldap.1.key">java.naming.factory.initial</entry>
+		<entry key="ldap.1.value">com.sun.jndi.ldap.LdapCtxFactory</entry>
+		<entry key="ldap.2.key">java.naming.provider.url</entry>
+		<entry key="ldap.2.value">ldap://itdsvbms.ieee.org:389</entry>
+		<entry key="ldap.3.key">java.naming.security.authentication</entry>
+		<entry key="ldap.3.value">simple</entry>
+		<entry key="ldap.4.key">java.naming.security.principal</entry>
+		<entry key="ldap.4.value">uid=MComputerSoc,o=ieee.org</entry>
+		<entry key="ldap.5.key">java.naming.security.credentials</entry>
+		<entry key="ldap.5.value">remark9praY</entry>
+		<entry key="ldap.organizationalUnits.ignored">Visitors,People,nonstaff</entry>
+</properties>

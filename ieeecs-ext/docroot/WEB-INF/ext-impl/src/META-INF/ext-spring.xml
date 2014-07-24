@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+
+<beans
+	default-destroy-method="destroy"
+	default-init-method="afterPropertiesSet"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+>
+
+
+	 <bean id="ldapToPortalConverter" class="org.computer.portal.security.ldap.BaseLDAPToPortalConverter" />
+	 <bean id="com.liferay.portal.service.UserLocalService" class="org.computer.my.portal.service.MyUserLocalServiceImpl"  />
+	 <bean id="com.liferay.portal.service.RoleLocalService" class="org.computer.my.portal.service.MyRoleLocalServiceImpl" />
+	 
+	 <bean id="org.computer.portal.service.ExtUserLocalServiceUtil" class="org.computer.portal.service.ExtUserLocalServiceUtil">
+		<property name="service" ref="org.computer.portal.service.ExtUserLocalService.impl" />
+	</bean>
+	
+	<bean id="org.computer.portal.service.ExtUserLocalService.impl" class="org.computer.portal.service.impl.ExtUserLocalServiceImpl" />
+	
+	
+	
+	
+
+	<bean id="org.computer.portal.service.ExtGroupLocalService.impl" class="org.computer.portal.service.impl.ExtGroupLocalServiceImpl" />
+	<bean id="org.computer.portal.service.ExtGroupLocalServiceUtil" class="org.computer.portal.service.ExtGroupLocalServiceUtil">
+		<property name="service" ref="org.computer.portal.service.ExtGroupLocalService.impl" />
+	</bean>
+
+	<bean id="org.computer.portal.service.ExtGroupService.impl" class="org.computer.portal.service.impl.ExtGroupServiceImpl" />
+
+	<bean id="org.computer.portal.service.ExtGroupServiceUtil" class="org.computer.portal.service.ExtGroupServiceUtil">
+		<property name="service" ref="org.computer.portal.service.ExtGroupService.impl" />
+	</bean>
+	<bean id="org.computer.portal.service.persistence.ExtGroupPersistence.impl" class="org.computer.portal.service.persistence.ExtGroupPersistenceImpl" parent="basePersistence" />
+	<bean id="org.computer.portal.service.persistence.ExtGroupUtil" class="org.computer.portal.service.persistence.ExtGroupUtil">
+		<property name="persistence" ref="org.computer.portal.service.persistence.ExtGroupPersistence.impl" />
+	</bean>
+	
+	<bean id="org.computer.portal.service.ExtUserService.impl" class="org.computer.portal.service.impl.ExtUserServiceImpl" />
+	<bean id="org.computer.portal.service.ExtUserServiceUtil" class="org.computer.portal.service.ExtUserServiceUtil">
+		<property name="service" ref="org.computer.portal.service.ExtUserService.impl" />
+	</bean>
+	<bean id="org.computer.portal.service.persistence.ExtUserPersistence.impl" class="org.computer.portal.service.persistence.ExtUserPersistenceImpl" parent="basePersistence" />
+	<bean id="org.computer.portal.service.persistence.ExtUserUtil" class="org.computer.portal.service.persistence.ExtUserUtil">
+		<property name="persistence" ref="org.computer.portal.service.persistence.ExtUserPersistence.impl" />
+	</bean>
+	
+	<bean id="com.liferay.portal.security.ldap.PortalLDAPImporterUtil" class="com.liferay.portal.security.ldap.PortalLDAPImporterUtil">
+		<property name="portalLDAPImporter">
+			<bean class="org.computer.portal.security.ldap.PortalLDAPImporterImpl">
+				<property name="LDAPToPortalConverter" ref="ldapToPortalConverter" />
+			</bean>
+		</property>
+	</bean>
+	 
+</beans>

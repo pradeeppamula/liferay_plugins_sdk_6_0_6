@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model-hints>
+	<model name="org.computer.portal.model.ExtGroup">
+		<field name="groupId" type="long" />
+		<field name="instantCommunity" type="boolean" />
+		<field name="keywords" type="String" />
+		<field name="modifierUserId" type="String" />
+		<field name="created" type="Date" />
+		<field name="modified" type="Date" />
+	</model>
+	<model name="org.computer.portal.model.ExtUser">
+		<field name="userId" type="long" />
+		<field name="csMember" type="boolean" />
+		<field name="staff" type="boolean" />
+		<field name="canCreateInstantCommunities" type="boolean" />
+		<field name="societies" type="String" />
+		<field name="publications" type="String" />
+	</model>
+</model-hints>
