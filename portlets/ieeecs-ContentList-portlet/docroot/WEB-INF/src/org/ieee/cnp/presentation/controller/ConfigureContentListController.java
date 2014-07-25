@@ -48,6 +48,11 @@ public class ConfigureContentListController extends BaseController {
 		Map<String, GroupBean> communityMap = new TreeMap<String, GroupBean>();
 		Map<String, CategoryBean> channelMap = new TreeMap<String, CategoryBean>();
 		Map<String, Map<String,CategoryBean>> vocabularyMap = new TreeMap<String, Map<String,CategoryBean>>();
+		
+		
+		Map<String, CategoryBean> subCategoriesMap = new TreeMap<String, CategoryBean>();
+		
+		
 		String instanceId = "";
 		boolean fallbackJS = true;
 		
@@ -68,7 +73,7 @@ public class ConfigureContentListController extends BaseController {
 			instanceId = "_" + themeDisplay.getPortletDisplay().getInstanceId();	
 
 			populateMaps(themeDisplay.getCompanyGroupId(), themeDisplay.getScopeGroupId(), 
-						 prefs.getValue("propertiesFile", ContentListUtil.PROPERTIESFILE), communityMap, channelMap, vocabularyMap);
+						 prefs.getValue("propertiesFile", ContentListUtil.PROPERTIESFILE), communityMap, channelMap, vocabularyMap, subCategoriesMap);
 						
 			String contentListData = prefs.getValue("contentListData", ContentListUtil.CONTENTLISTDATA);
 			contentListData = "".equals(contentListData.trim()) ? "[]" : contentListData;
@@ -89,6 +94,10 @@ public class ConfigureContentListController extends BaseController {
 		model.put("groupMap", groupMap);
 		model.put("communityMap", communityMap);
 		model.put("channelMap", channelMap);
+		
+		model.put("subCategoriesMap", subCategoriesMap);
+		
+		
 		model.put("vocabularyMap", vocabularyMap);
 		model.put("fallbackJS", fallbackJS);		
 		ModelAndView modelAndView = new ModelAndView("Configure", model);
@@ -195,6 +204,12 @@ public class ConfigureContentListController extends BaseController {
 				String urlTargetName = ParamUtil.getString(actionRequest, "urlTargetName"+instanceId, ContentListUtil.URLTARGETNAME);
 				String channelVocabularyName = ParamUtil.getString(actionRequest, "channelVocabularyName"+instanceId, ContentListUtil.CHANNELVOCABULARYNAME);
 				String contentTypeVocabularyName = ParamUtil.getString(actionRequest, "contentTypeVocabularyName"+instanceId, ContentListUtil.CONTENTTYPEVOCABULARYNAME);
+				
+				
+				String subCategoriesVocabularyName = ParamUtil.getString(actionRequest, "subCategoriesVocabularyName"+instanceId, ContentListUtil.SUBCATEGORIESVOCABULARYNAME);
+				
+				
+				
 				String restAPI = ParamUtil.getString(actionRequest, "restAPI"+instanceId, ContentListUtil.RESTAPI);
 				String propertiesFile = ParamUtil.getString(actionRequest, "propertiesFile"+instanceId, ContentListUtil.PROPERTIESFILE);
 				String publicServletMapping = ParamUtil.getString(actionRequest, "publicServletMapping"+instanceId, ContentListUtil.PUBLICSERVLETMAPPING);
@@ -205,9 +220,7 @@ public class ConfigureContentListController extends BaseController {
 				
 				String defaultImagePath = ParamUtil.getString(actionRequest, "defaultImagePath"+instanceId, ContentListUtil.DEFAULTIMAGEPATH);
 				String displayDateFormat = ParamUtil.getString(actionRequest, "displayDateFormat"+instanceId, ContentListUtil.DISPLAYDATEFORMAT);
-				
-				String subCategories = ParamUtil.getString(actionRequest, "subCategories"+instanceId, ContentListUtil.SUBCATEGORIES);
-				
+												
 				String showIntro = ParamUtil.getString(actionRequest, "showIntro"+instanceId, ContentListUtil.SHOWINTRO);
 	
 				PortletPreferences prefs = actionRequest.getPreferences();
@@ -283,6 +296,13 @@ public class ConfigureContentListController extends BaseController {
 				prefs.setValue("urlTargetName", urlTargetName);
 				prefs.setValue("channelVocabularyName", channelVocabularyName);
 				prefs.setValue("contentTypeVocabularyName", contentTypeVocabularyName);
+				
+				
+				
+				prefs.setValue("subCategoriesVocabularyName", subCategoriesVocabularyName);
+				
+				
+				
 				prefs.setValue("restAPI", restAPI);
 				prefs.setValue("propertiesFile", propertiesFile);
 				prefs.setValue("publicServletMapping", publicServletMapping);
@@ -294,7 +314,7 @@ public class ConfigureContentListController extends BaseController {
 				prefs.setValue("defaultImagePath", defaultImagePath);
 				prefs.setValue("displayDateFormat", displayDateFormat);
 				
-				prefs.setValue("subCategories", subCategories);				
+			
 				
 				prefs.setValue("showIntro", showIntro.toUpperCase());
 	
@@ -307,7 +327,7 @@ public class ConfigureContentListController extends BaseController {
 	}
 
 	private void populateMaps(long globalGroupId, long groupId, String propertyFile, Map<String, GroupBean> communityMap, Map<String, CategoryBean> channelMap,
-								Map<String, Map<String,CategoryBean>> vocabularyMap) {
+								Map<String, Map<String,CategoryBean>> vocabularyMap,Map<String, CategoryBean> subCategoriesMap) {
 
 		try {
 
@@ -432,7 +452,32 @@ public class ConfigureContentListController extends BaseController {
 					} // if ( !StringUtils.startsWith(line, "#") && !"".equals(line.trim()) ) {
 				} // while ((line = br.readLine()) != null)   {	
 				is.close();				
-			} // if ( null != fileEntryList && fileEntryList.size() > 0 ) {			
+			} // if ( null != fileEntryList && fileEntryList.size() > 0 ) {	
+			
+			
+			
+			// ------------------------------------------------------------------
+			// Get the Categories for the Sub Categories Vocabulary 
+		
+			// ------------------------------------------------------------------	
+			
+			OrderByComparator obc = new EntryNameComparator(true);
+			AssetVocabulary channelVocabulary = AssetVocabularyLocalServiceUtil.getGroupVocabulary(globalGroupId, ContentListUtil.SUBCATEGORIESVOCABULARYNAME) ; 														
+			List<AssetCategory> categoryList = AssetCategoryLocalServiceUtil.getVocabularyCategories(channelVocabulary.getVocabularyId(), 
+																QueryUtil.ALL_POS, QueryUtil.ALL_POS, obc);
+			
+			if ( null != categoryList && categoryList.size() > 0 ) {
+				
+				for ( AssetCategory category : categoryList ) {									
+					CategoryBean cb = new CategoryBean();
+					cb.setCategoryId( category.getCategoryId() );
+					cb.setName( category.getName() );									
+					subCategoriesMap.put(category.getName(), cb);
+				}								
+			}
+			
+
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
