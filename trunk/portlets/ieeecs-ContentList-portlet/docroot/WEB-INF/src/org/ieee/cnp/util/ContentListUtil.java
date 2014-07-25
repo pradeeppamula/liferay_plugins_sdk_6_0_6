@@ -79,6 +79,10 @@ public class ContentListUtil {
 	public static final String URLTARGETNAME             = "content";
 	public static final String CHANNELVOCABULARYNAME     = "Computing Now Channels";
 	public static final String CONTENTTYPEVOCABULARYNAME = "Content Types";
+	
+	public static final String SUBCATEGORIESVOCABULARYNAME = "SubCategories";
+	
+	
 	public static final String RESTAPI                   = "/portal/web/computingnow/rest/-/api/";
 	public static final String PROPERTIESFILE			 = "ComputingNow.txt";
 	public static final String PUBLICSERVLETMAPPING      = "/portal/web";
@@ -87,10 +91,7 @@ public class ContentListUtil {
 	public static final String BLOGIMAGEPATH     = "/cms/Computer.org/ComputingNow/homepage/blog/logos";
 	public static final String SUPPLEMENT        = "";
 	public static final String DEFAULTIMAGEPATH  = "/documents/16228/4e75d1a3-0a5e-4911-8107-d68b0ca232c6";
-	public static final String DISPLAYDATEFORMAT = "EEEE, MMM d, yyyy";
-	
-	public static final String SUBCATEGORIES = "";
-	
+	public static final String DISPLAYDATEFORMAT = "EEEE, MMM d, yyyy";	
 	public static final String SHOWINTRO = "ON";
 
 	
@@ -167,6 +168,13 @@ public class ContentListUtil {
 			model.put("urlTargetName", prefs.getValue("urlTargetName", URLTARGETNAME));
 			model.put("channelVocabularyName", prefs.getValue("channelVocabularyName", CHANNELVOCABULARYNAME));
 			model.put("contentTypeVocabularyName", prefs.getValue("contentTypeVocabularyName", CONTENTTYPEVOCABULARYNAME));
+			
+			
+			
+			model.put("subCategoriesVocabularyName", prefs.getValue("subCategoriesVocabularyName", SUBCATEGORIESVOCABULARYNAME));
+			
+			
+			
 			model.put("restAPI", prefs.getValue("restAPI", RESTAPI));
 			model.put("propertiesFile", prefs.getValue("propertiesFile", PROPERTIESFILE));
 			model.put("publicServletMapping", prefs.getValue("publicServletMapping", PUBLICSERVLETMAPPING));
@@ -176,10 +184,7 @@ public class ContentListUtil {
 			model.put("supplement", prefs.getValue("supplement", SUPPLEMENT));
 			
 			model.put("defaultImagePath", prefs.getValue("defaultImagePath", DEFAULTIMAGEPATH));
-			model.put("displayDateFormat", prefs.getValue("displayDateFormat", DISPLAYDATEFORMAT));
-			
-			model.put("subCategories", prefs.getValue("subCategories", SUBCATEGORIES));
-			
+			model.put("displayDateFormat", prefs.getValue("displayDateFormat", DISPLAYDATEFORMAT));						
 			model.put("showIntro", prefs.getValue("showIntro", SHOWINTRO));
 
 		} catch (Exception e) {
