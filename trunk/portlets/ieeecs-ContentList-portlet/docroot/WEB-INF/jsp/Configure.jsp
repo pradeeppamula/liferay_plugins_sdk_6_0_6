@@ -250,7 +250,28 @@
 			</div>
 		</div>
 		<div class="clearBoth"></div>
-	</div>		
+	</div>	
+	
+	
+	
+	<div class="contentListConfigRow channelSection${id}">
+		<div class="contentListConfigCellTitle">
+			With Sub Category ...
+		</div>
+		<div class="contentListConfigCell">
+	<select name="subCategories${id}" id="subCategories${id}">
+				<option value="" selected="selected">No Subcategory Selected</option>
+		<c:forEach var="subCategoryItem" items="${subCategoriesMap}" varStatus="chIndex">			
+				<option value="${subCategoryItem.value.categoryId}">${subCategoryItem.value.name}</option>
+		</c:forEach>			
+			</select>		
+		</div>
+		<div class="clearBoth"></div>
+	</div>	
+	
+	
+	
+		
 	<div class="contentListConfigRow channelSection${id}">
 		<div class="contentListConfigCellTitle">&nbsp;</div>
 		<div class="contentListConfigCell">
@@ -266,21 +287,7 @@
 	<div class="contentListConfigRow channelSection${id}">
 		<div class="contentListSummaryList" id="contentListSummaryList${id}"></div>
 	</div>		
-	
-	<div class="contentListConfigRow channelSection${id}">
-		<div class="contentListConfigCellTitle">Sub-Categories</div>
-		<div class="contentListConfigCell">
-			<input type="text" id="subCategories${id}" name="subCategories${id}" value="${subCategories}" size="50"/>
-		</div>
-		<div class="clearBoth"></div>
-	</div>		
-	
-	<div class="contentListConfigRow channelSection${id}">
-		<div class="contentListConfigCellTitle">&nbsp;</div>
-		<div class="contentListConfigCell"><b>Use |  symbol for multiple values. <br/>Leading and ending "space" characters are truncated.</b></div>
-		<div class="clearBoth"></div>
-	</div>	
-
+ 
 	<div class="contentListConfigRow optionsSection${id}">
 		<div class="contentListConfigCellTitle">Page Mode <a href="/ieeecs-ContentList-portlet/templates/toolTip_PageMode.html?width=300" class="jTip" id="pageModeToolTip${id}" name="When a Content List link is clicked, where will it go?">(?)</a></div>
 		<div class="contentListConfigCell">
@@ -922,6 +929,18 @@ $(document).ready(function() {
 			categoryNames = categoryNames.substring(0, categoryNames.length - 2);
 		}		
 		
+		
+		<%-- ************* --%>
+		<%--    SUBCATEGORIES    --%>
+		<%-- ************* --%>
+	
+		var subCategoriesId = $("#subCategories${id}").val();
+		var subCategoriesName = $("#subCategories${id} option:selected").text(); 
+		
+		if ( subCategoriesId != "" ) {
+			newContentConfig["categories"].push(subCategoriesId);
+		}
+			
 		<%-- ************* --%>
 		<%--  DESCRIPTION  --%>
 		<%-- ************* --%>		
@@ -934,7 +953,16 @@ $(document).ready(function() {
 		
 		if ( categoryNames != "" ) {
 			description = description + ", of Type: " + categoryNames;
-		}		
+		}	
+		
+				
+		if ( subCategoriesName == "No Subcategory selected" ) {
+			description = description + ", No Subcategory selected";
+		} else {
+			description = description + ", with Subcategory: '" + subCategoriesName + "'";
+		}			
+		
+		
 		newContentConfig["description"] = description;
 		
 		<%-- ************* --%>
@@ -975,6 +1003,10 @@ $(document).ready(function() {
 			$(this).attr("checked", false);
 		});		
 		$("#channel${id}").val("");
+		
+				
+		$("#subCategories${id}").val("");
+		
 				
 	});
 	
