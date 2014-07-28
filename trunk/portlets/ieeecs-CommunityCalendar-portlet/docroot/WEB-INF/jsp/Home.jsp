@@ -117,6 +117,18 @@
 	<div class="clearBoth"></div>
 </div>
 
+
+<%-- ************************ --%>
+<%--     Legend Information    --%>
+<%-- ************************ --%>
+
+<div  id="legendInfo" style='padding: 1%;' >
+<h3>LEGEND</h3>
+
+
+</div>
+
+
 <%-- ************************ --%>
 <%--     Event Information    --%>
 <%-- ************************ --%>
@@ -168,6 +180,7 @@
 
 	$.ajaxSetup({ cache: false });
 
+	
 	<%-- ***************************************************** 
 		Initial Values/Variables 
 	***************************************************** --%>
@@ -217,6 +230,7 @@
 	} else {
 		$("#communityCalendarHeaderBar").show();	
 	}	
+		
 	
 	<%-- *****************************************************
 		Change the Content Calendar title at will...
@@ -233,6 +247,36 @@
 	var communityCalendarJSON = ${communityCalendarJSON};
 
 	$(document).ready(function() {	
+		
+		
+		
+		
+		
+		<%-- *****************************************************
+	Populate Legend Info
+	***************************************************** --%>				
+	var calendarDataForLegend = ${calendarDataForLegend};
+		
+	for ( key in calendarDataForLegend ) {
+			
+			var uiId = calendarDataForLegend[key].uiId;
+			
+			
+			var categoriesString = calendarDataForLegend[key].categoryNames;
+			
+			
+			var bgColor = calendarDataForLegend[key].bgColor;
+			
+			
+			
+		$("#legendInfo").append("<div style='float:left;'> <h4>&nbsp;"+categoriesString+ ": &nbsp;&nbsp;</h4> </div> <div style='float:left; padding: 1%; background-color: #"+ bgColor +"; width : 8%; height : 5%;'></div>");
+		
+	}
+		
+	$("#legendInfo").append("<div style='clear:left;'>");
+	
+
+	
 	
 	$('#calendar').fullCalendar({
 		slotMinutes: ${slotMinutes},
