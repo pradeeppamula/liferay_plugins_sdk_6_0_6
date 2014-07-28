@@ -616,6 +616,12 @@ $(document).ready(function() {
 		});
 		if ( categoryNames != "" ) {
 			categoryNames = categoryNames.substring(0, categoryNames.length - 2);
+			
+			
+			<%-- saving CategoryNames into data array  --%>	
+			newContentConfig["categoryNames"] = categoryNames;
+			
+		
 		}		
 		
 		<%-- ********************** --%>
