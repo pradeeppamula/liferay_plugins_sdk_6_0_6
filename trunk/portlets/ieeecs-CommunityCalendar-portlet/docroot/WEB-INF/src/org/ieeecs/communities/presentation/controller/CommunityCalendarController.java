@@ -94,6 +94,12 @@ public class CommunityCalendarController extends BaseController {
 			String modifiedByUserId = prefs.getValue("modifiedByUserId", CommunityCalendarUtil.USERID);
 			String currentMode = prefs.getValue("portletMode", CommunityCalendarUtil.MODE);
 			
+			
+			//adding the calendarData into model so that legend can be shown on the portlet			
+			model.put("calendarDataForLegend", communityCalendarData);
+			
+
+			
 			if ( currentUserId.trim().equalsIgnoreCase(modifiedByUserId.trim()) && currentMode.trim().equalsIgnoreCase(CommunityCalendarUtil.MODE) ) {
 				model.put("portletMode", "PREVIEW");
 			}			
