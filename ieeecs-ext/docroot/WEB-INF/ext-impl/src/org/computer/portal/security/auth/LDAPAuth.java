@@ -12,6 +12,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 
 import javax.naming.Binding;
@@ -24,9 +25,9 @@ import javax.naming.ldap.Control;
 import javax.naming.ldap.InitialLdapContext;
 import javax.naming.ldap.LdapContext;
 
-import org.computer.auth.util.Configs;
 import org.computer.portal.model.ExtUser;
 import org.computer.portal.service.ExtUserLocalServiceUtil;
+import org.computer.utils.Constants;
 import org.computer.utils.HealthCheckFactory;
 
 import com.google.gson.Gson;
@@ -39,6 +40,7 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.PropsKeys;
+import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
@@ -68,6 +70,7 @@ import com.liferay.portlet.expando.service.ExpandoValueLocalServiceUtil;
  */
 public class LDAPAuth implements Authenticator {
 	
+	private static String authenticationServiceURL;
 	public static final String AUTH_METHOD_BIND = "bind";
 
 	public static final String AUTH_METHOD_PASSWORD_COMPARE =
@@ -211,14 +214,9 @@ public class LDAPAuth implements Authenticator {
 			_log.debug("LDAP Context for LDAP server " + ldapServerId);
 		}
 
-//
-//		String baseDN = PrefsPropsUtil.getString(
-//			companyId, PropsKeys.LDAP_BASE_DN);
-		
-//		LdapContext ctx = PortalLDAPUtil.getContext(companyId);
-		String url = Configs.AUTHORIZATION_URL;
+
 		if (ctx == null) {
-			_log.error("ctx is NULL - url is " + url);
+			_log.error("ctx is NULL - url is " );
 			return Authenticator.FAILURE;
 		}
 
@@ -510,8 +508,12 @@ public class LDAPAuth implements Authenticator {
 		ArrayList<String> roles = new ArrayList<String>();
 		String[] ipAddresses = headerMap.get("X-FORWARD-FOR");
 		_log.info("user - " + user.getEmailAddress() + " ipaddress - " + ipAddresses);
-		String byUserIpaddress = "byUserIpaddress?userId=cscsdltest@gmail&ipAddress=2886729985";
-		String urlString = Configs.AUTHORIZATION_URL;
+		
+		if(authenticationServiceURL==null)
+		{
+			authenticationServiceURL = PropsUtil.get("ieeecsAuthenticationServiceURl");
+		}
+		String urlString =authenticationServiceURL;
 		urlString = urlString + "byUserIpaddress?userId=cscsdltest@gmail&ipAddress=2886729985";
 		_log.info("URL -" + urlString);
 		//String urlString = "http://localhost:8085/AuthorizationWebService/service/byUserIpaddress?userId=cscsdltest@gmail&ipAddress=2886729985";
@@ -603,75 +605,23 @@ public class LDAPAuth implements Authenticator {
 			}
 		}
 		
-		// Now, do the same thing using the Expando Table
-		boolean isMember = false;
-		try {
-			//ExpandoValueLocalServiceUtil.addValue(User.class.getName(), ExpandoTableConstants.DEFAULT_TABLE_NAME, "roles", user.getUserId(), roles);
-			isMember = ExpandoValueLocalServiceUtil.getValue(User.class.getName(), ExpandoTableConstants.DEFAULT_TABLE_NAME, "isMember", user.getUserId()).getBoolean();
-		} catch (Exception e) {
-			// May not exist if a new user
-			_log.debug(e.getMessage());
-		}
+	
 		
-		// Are they just now becoming a member
-		if (!isMember && userPriv.isMember()) {
-			// Turn them into a member
-			try {
-				_log.debug("Set the expando value isMember to true");
-				ExpandoValueLocalServiceUtil.addValue(User.class.getName(), ExpandoTableConstants.DEFAULT_TABLE_NAME, "isMember", user.getUserId(), true);
-				_log.debug("Set the expando value canCreateInstantCommunities to true");
-				ExpandoValueLocalServiceUtil.addValue(User.class.getName(), ExpandoTableConstants.DEFAULT_TABLE_NAME, "canCreateInstantCommunities", user.getUserId(), true);
-			} catch (Exception e) {
-				_log.error(e);
-			}
-		}
-		// Check for membership expiration
-		else if (isMember && !userPriv.isMember()) {
-			// Update their membership status.  For example, it may have expired
-			try {
-				_log.debug("Set the expando value isMember to false");
-				ExpandoValueLocalServiceUtil.addValue(User.class.getName(), ExpandoTableConstants.DEFAULT_TABLE_NAME, "isMember", user.getUserId(), false);
-				ExpandoValueLocalServiceUtil.addValue(User.class.getName(), ExpandoTableConstants.DEFAULT_TABLE_NAME, "canCreateInstantCommunities", user.getUserId(), false);
-				_log.debug("Set the expando value canCreateInstantCommunities to false");
-			} catch (Exception e) {
-				_log.error(e);
-			}
-		}
-		
-		// Update the basic info
-		extUser.setStaff(userPriv.isStaff());
-		try {
-			_log.debug("Set the expando value isStaff to " + userPriv.isStaff());
-			ExpandoValueLocalServiceUtil.addValue(User.class.getName(), ExpandoTableConstants.DEFAULT_TABLE_NAME, "isStaff", user.getUserId(), userPriv.isStaff());
-		} catch (Exception e) {
-			_log.error(e);
-		}
-
-		
-		// Set their CAP status
-		try {
-			_log.debug("Set the expando value isCap to " + userPriv.isCap());
-			ExpandoValueLocalServiceUtil.addValue(User.class.getName(), ExpandoTableConstants.DEFAULT_TABLE_NAME, "isCap", user.getUserId(), userPriv.isCap());
-		} catch (Exception e) {
-			_log.error(e);
-		}
+	
 		
 		// And save the updates
 		_log.debug("User attributes now -- " + extUser.toString());
 		ExtUserLocalServiceUtil.updateExtUser(extUser);
 		
-		// Update user group associations
-		updateUserGroup(user, "CS Member", extUser.isCsMember());
-		updateUserGroup(user, "IC Owner", extUser.getCanCreateInstantCommunities());
-		updateUserGroup(user, "Staff", extUser.isStaff());
-		updateUserGroup(user, "Default Group", true);
-		updateUserGroup(user, "CAP", userPriv.isCap());
+		
 		
 		if (userPriv.isCap())
 			updateUserOrganization(companyId, user, userPriv.getCAPOrganization());
 
 		try {
-			ExpandoValueLocalServiceUtil.addValue(User.class.getName(), ExpandoTableConstants.DEFAULT_TABLE_NAME, "roles", user.getUserId(), roles);
+			ExpandoValueLocalServiceUtil.
+			addValue(companyId,User.class.getName(), ExpandoTableConstants.DEFAULT_TABLE_NAME, Constants.IEEECS_ROLES, user.getUserId(), toStringArray(roles));
+			 
 			
 		} catch (JsonSyntaxException e) {
 			e.printStackTrace();
@@ -786,5 +736,15 @@ public class LDAPAuth implements Authenticator {
 	private final static int 	LDAP_ERROR_MAX = 4;
 	
 	private static Log _log = LogFactoryUtil.getLog(LDAPAuth.class);
+	
+	private static String[] toStringArray(List<String> input)
+	{
+		String[] output = new String[input.size()];
+		for(int i=0; i < input.size();i++)
+		{
+			output[i] = input.get(i);
+		}
+		return output;
+	}
 	
 }

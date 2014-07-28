@@ -10,8 +10,6 @@ import javax.naming.Binding;
 import javax.naming.directory.ModificationItem;
 import javax.naming.ldap.LdapContext;
 
-import org.computer.auth.util.Configs;
-
 import com.liferay.portal.ContactFirstNameException;
 import com.liferay.portal.ContactLastNameException;
 import com.liferay.portal.DuplicateUserScreenNameException;
@@ -125,7 +123,7 @@ public class MyUserLocalServiceImpl extends  com.liferay.portal.service.impl.Use
 		// Get user
 
 		User user = null;
-		String url = Configs.AUTHORIZATION_URL;
+		
 		try {
 			if (authType.equals(CompanyConstants.AUTH_TYPE_EA)) {
 				user = userPersistence.findByC_EA(companyId, login);
