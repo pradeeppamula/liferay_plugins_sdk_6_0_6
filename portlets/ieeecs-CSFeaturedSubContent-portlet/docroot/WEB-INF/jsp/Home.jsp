@@ -1,0 +1,445 @@
+<%@ include file="/WEB-INF/jsp/inc/includes.jsp" %>
+<portlet:actionURL var="configureAction" portletMode="view" windowState="normal"/>
+<portlet:actionURL var="viewAction" windowState="normal" portletMode="view"/>
+<portlet:resourceURL var='csfeaturedSubContentAjaxHandler' id='csfeaturedSubContentAjaxHandler' />
+<%-- *****************************************************
+	Hide the Portlet when it has been DEACTIVATED.  This 
+	will allow the admin of the page/site to make changes
+	to the portlet, without having the users/visitors
+	see those changes.
+***************************************************** --%>
+<style type="text/css">
+    #cs-featured-subcontent-container-${id} { position: relative; }
+    .cs-featured-subcontent { padding-top: 2%; }
+
+    div[id^="subcontent-item"] {
+        height: 350px;
+        position: relative;
+    }
+
+    .subcontent-container {
+        padding: 0px;
+        height: 340px;
+        overflow: hidden;
+    }
+
+    .subcontent-container:hover {
+        box-shadow: 0px 0px 15px #a6a6a6;
+    }
+
+    .subcontent-container h3 {
+       padding-bottom: 10px;
+    }
+
+    div[id^="subcontent-item"]:hover .bg-image {
+        visibility:visible;
+        opacity:1;
+        transition-delay:0s;
+    }
+
+    div[id^="subcontent-item"] .bg-image {
+        background: url('http://img.talkandroid.com/uploads/2013/11/stack_of_books.jpg') 100%;
+        background-size: cover;
+        visibility:hidden;
+        opacity:0;
+        height: 150px;
+        transition:visibility 0s linear 0.2s,opacity 0.2s linear;
+    }
+
+    div[id^="subcontent-item"] .bar {
+        height: 4px;
+        position: relative;
+        z-index: 2;
+    }
+
+    div[id^="subcontent-item"] .bar-square {
+       width: 20px;
+       background-color: #000099;
+       height: 20px;
+       position: relative;
+       top: -8px;
+       left: 49%;
+    }
+
+    div[id^="subcontent-item"] .description {
+        height: 100px;
+        padding-top: 20px;
+    }
+
+    div[id^="subcontent-item"] .description-container {
+        background-color: #ffffff;
+    }
+
+    div[id^="subcontent-item"] a {
+        margin-top: 100px;
+        visibility:hidden;
+        opacity:0;
+        transition:visibility 0s linear 0.2s,opacity 0.2s linear;
+    }
+
+    div[id^="subcontent-item"]:hover a {
+       visibility:visible;
+       opacity:1;
+       transition-delay:0s;
+    }
+
+    #subcontent-item-1-${id} .bar {
+      background-color: #000099;
+    }
+
+    <c:if test="${canInlineEdit}">
+        #edit-featured-subcontent-${id} {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 99;
+        }
+        a.inline-edit {
+            opacity: 0.6;
+            filter: alpha(opacity=60);
+            transition: 0.1s linear;
+            -moz-transition: 0.1s linear;
+            -webkit-transition: 0.1s linear;
+            color: #ffffff;
+            font-size: 14px;
+            line-height: 14px;
+        }
+        a.inline-edit:hover {
+            text-decoration: none;
+            opacity: 1.0;
+            filter: alpha(opacity=100);
+            cursor: pointer;
+        }
+        #alert-main-success-${id}, #alert-main-danger-${id} {
+            display: none;
+        }
+    </c:if>
+</style>
+
+<div id="cs-featured-subcontent-container-${id}">
+    <c:if test="${canInlineEdit}">
+        <span id="edit-featured-subcontent-${id}" class="label label-danger"><a class="inline-edit" data-toggle="modal" data-target="#featured-subcontent-edit-modal-${id}">Edit</a></span>
+        <div id="featured-subcontent-edit-modal-${id}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="featured-subcontent-edit-modal-${id}" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Featured Subcontent Administration</h4>
+                </div>
+                <div class="modal-body">
+                   <form id="edit-featured-subcontent-form-${id}" role="form">
+                     <div class="form-group row">
+                        <div class="col-sm-2">
+                             <label for="number-items-select-${id}">Number of Items</label>
+                             <select id="number-items-select-${id}" class="form-control">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                             </select>
+                         </div>
+                     </div>
+                     <hr />
+                     <!-- Nav tabs -->
+                     <ul class="nav nav-pills">
+                       <li id="list-item-1-${id}" class="active"><a href="#item-1-${id}" role="tab" data-toggle="tab">Item 1</a></li>
+                       <li id="list-item-2-${id}" class="hide"><a href="#item-2-${id}" role="tab" data-toggle="tab">Item 2</a></li>
+                       <li id="list-item-3-${id}" class="hide"><a href="#item-3-${id}" role="tab" data-toggle="tab">Item 3</a></li>
+                       <li id="list-item-4-${id}" class="hide"><a href="#item-4-${id}" role="tab" data-toggle="tab">Item 4</a></li>
+                     </ul> <!-- /.nav-tabs -->
+
+                     <!-- Tab panes -->
+                     <div class="tab-content">
+                       <div class="tab-pane active" id="item-1-${id}">
+                        <div class="form-group">
+                         <label for="item-1-header-${id}">Header</label>
+                         <input type="text" class="form-control" id="item-1-header-${id}" placeholder="Header" maxlength="140">
+                        </div>
+                        <div class="form-group">
+                         <label for="item-1-description-${id}">Content Description</label>
+                         <textarea class="form-control" id="item-1-description-${id}" rows="3" maxlength="140"></textarea>
+                         <p class="help-block">140 characters or less.</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="item-1-accent-color-${id}">Accent Color</label>
+                            <div class="accent-color-picker input-group col-sm-2">
+                                <input class="form-control" id="item-1-accent-color-${id}" type="text" placeholder="CCCCCC" maxlength="6" value="" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                         </div>
+                        <div class="form-group">
+                         <label for="item-1-bg-image-${id}">Background Image URL</label>
+                         <input type="text" class="form-control" id="item-1-bg-image-${id}" placeholder="http://www.computer.org/images/background.jpg" maxlength="140">
+                         <p class="help-block">Please use the full url, i.e http://www.art.com/345.jpg</p>
+                        </div>
+                         <div class="form-group">
+                         <label for="item-1-dest-url-${id}">Destination URL</label>
+                         <input type="text" class="form-control" id="item-1-dest-url-${id}" placeholder="http://www.computer.org/images/background.jpg" maxlength="140">
+                         <p class="help-block">Please use the full url, i.e http://www.computer.org/science</p>
+                       </div>
+                       </div> <!-- /#item-1-${id} -->
+
+                       <div class="tab-pane" id="item-2-${id}">
+                           <div class="form-group">
+                           <label for="item-2-header-${id}">Header</label>
+                           <input type="text" class="form-control" id="item-2-header-${id}" placeholder="Header" maxlength="140">
+                          </div>
+                          <div class="form-group">
+                           <label for="item-2-description-${id}">Content Description</label>
+                           <textarea class="form-control" id="item-2-description-${id}" rows="3" maxlength="140"></textarea>
+                           <p class="help-block">140 characters or less.</p>
+                          </div>
+                          <div class="form-group">
+                              <label for="item-2-accent-color-${id}">Accent Color</label>
+                              <div class="accent-color-picker input-group col-sm-2">
+                                  <input class="form-control" id="item-2-accent-color-${id}" type="text" placeholder="CCCCCC" maxlength="6" value="" />
+                                  <span class="input-group-addon"><i></i></span>
+                              </div>
+                           </div>
+                          <div class="form-group">
+                           <label for="item-2-bg-image-${id}">Background Image URL</label>
+                           <input type="text" class="form-control" id="item-2-bg-image-${id}" placeholder="http://www.computer.org/images/background.jpg" maxlength="140">
+                           <p class="help-block">Please use the full url, i.e http://www.art.com/345.jpg</p>
+                          </div>
+                           <div class="form-group">
+                             <label for="item-2-dest-url-${id}">Destination URL</label>
+                             <input type="text" class="form-control" id="item-2-dest-url-${id}" placeholder="http://www.computer.org/images/background.jpg" maxlength="140">
+                             <p class="help-block">Please use the full url, i.e http://www.computer.org/science</p>
+                           </div>
+                       </div> <!-- /#item-2-${id} -->
+
+                       <div class="tab-pane" id="item-3-${id}">
+                         <div class="form-group">
+                         <label for="item-3-header-${id}">Header</label>
+                         <input type="text" class="form-control" id="item-3-header-${id}" placeholder="Header" maxlength="140">
+                        </div>
+                        <div class="form-group">
+                         <label for="item-3-description-${id}">Content Description</label>
+                         <textarea class="form-control" id="item-3-description-${id}" rows="3" maxlength="140"></textarea>
+                         <p class="help-block">140 characters or less.</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="item-3-accent-color-${id}">Accent Color</label>
+                            <div class="accent-color-picker input-group col-sm-2">
+                                <input class="form-control" id="item-3-accent-color-${id}" type="text" placeholder="CCCCCC" maxlength="6" value="" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                         </div>
+                        <div class="form-group">
+                         <label for="item-3-bg-image-${id}">Background Image URL</label>
+                         <input type="text" class="form-control" id="item-3-bg-image-${id}" placeholder="http://www.computer.org/images/background.jpg" maxlength="140">
+                         <p class="help-block">Please use the full url, i.e http://www.art.com/345.jpg</p>
+                        </div>
+                        <div class="form-group">
+                        <label for="item-3-dest-url-${id}">Destination URL</label>
+                        <input type="text" class="form-control" id="item-3-dest-url-${id}" placeholder="http://www.computer.org/images/background.jpg" maxlength="140">
+                        <p class="help-block">Please use the full url, i.e http://www.computer.org/science</p>
+                      </div>
+                       </div> <!-- /#item-3-${id} -->
+
+                       <div class="tab-pane" id="item-4-${id}">
+                        <div class="form-group">
+                            <label for="item-4-header-${id}">Header</label>
+                            <input type="text" class="form-control" id="item-4-header-${id}" placeholder="Header" maxlength="140">
+                           </div>
+                           <div class="form-group">
+                            <label for="item-4-description-${id}">Content Description</label>
+                            <textarea class="form-control" id="item-4-description-${id}" rows="3" maxlength="140"></textarea>
+                            <p class="help-block">140 characters or less.</p>
+                           </div>
+                           <div class="form-group">
+                               <label for="item-4-accent-color-${id}">Accent Color</label>
+                               <div class="accent-color-picker input-group col-sm-2">
+                                   <input class="form-control" id="item-4-accent-color-${id}" type="text" placeholder="CCCCCC" maxlength="6" value="" />
+                                   <span class="input-group-addon"><i></i></span>
+                               </div>
+                            </div>
+                           <div class="form-group">
+                            <label for="item-4-bg-image-${id}">Background Image URL</label>
+                            <input type="text" class="form-control" id="item-4-bg-image-${id}" placeholder="http://www.computer.org/images/background.jpg" maxlength="140">
+                            <p class="help-block">Please use the full url, i.e http://www.art.com/345.jpg</p>
+                           </div>
+                            <div class="form-group">
+                                <label for="item-4-dest-url-${id}">Destination URL</label>
+                                <input type="text" class="form-control" id="item-4-dest-url-${id}" placeholder="http://www.computer.org/images/background.jpg" maxlength="140">
+                                <p class="help-block">Please use the full url, i.e http://www.computer.org/science</p>
+                              </div>
+                       </div> <!-- /#item-4-${id} -->
+                     </div>  <!-- /.tab-content -->
+
+                   </form>
+                </div> <!-- /.modal-body -->
+                 <div class="modal-footer">
+                     <!-- Alerts -->
+                        <div id="alert-main-success-${id}" class="alert alert-success text-left">
+                            <strong>&#10004;</strong> Your portlet was updated.
+                        </div>
+                      <div id="alert-main-danger-${id}" class="alert alert-danger text-left">
+                        <a href="#" class="close">&times;</a>
+                        <strong>&#9888;</strong> There seems to be a problem:
+                        <span id="error-message-${id}"></span>
+                      </div>
+                      <!-- End Alerts -->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" id="btn-save-${id}">Save</button>
+                 </div>
+            </div>
+          </div>
+        </div> <!-- /#featured-subcontent-edit-modal-${id} -->
+
+        <script>
+            $(document).ready(function() {
+
+                var buildItemsData = function(postData) {
+                    postData.item1_${id} = getItemData(1);
+                    switch(parseInt(postData.numberOfItems_${id})) {
+                        case 2: postData.item2_${id} = getItemData(2);
+                        break;
+                        case 3:
+                            postData.item2_${id} = getItemData(2);
+                            postData.item3_${id} = getItemData(3);
+                        break;
+                        case 4:
+                            postData.item2_${id} = getItemData(2);
+                            postData.item3_${id} = getItemData(3);
+                            postData.item4_${id} = getItemData(4);
+                        break;
+                    }
+                    return postData;
+                }
+
+                var getItemData = function(itemNumber) {
+                    var item = {};
+                    item.header = $('#item-'+itemNumber+'-header-${id}').val();
+                    item.description = $('#item-'+itemNumber+'-description-${id}').val();
+                    item.accentColor = $('#item-'+itemNumber+'-accent-color-${id}').val();
+                    item.bgImage = $('#item-'+itemNumber+'-bg-image-${id}').val();
+                    item.destURL = $('#item-'+itemNumber+'-dest-url-${id}').val();
+                    return JSON.stringify(item);
+                }
+
+                $("#btn-save-${id}").click(function() {
+                    var postData = {};
+                    postData.requestType_${id} = 'SAVE_CONFIG';
+                    postData.numberOfItems_${id} = $('#number-items-select-${id}').val();
+                    postData = buildItemsData(postData);
+                    $.ajax({
+                      type: "POST",
+                      data: postData,
+                      url: "${csfeaturedSubContentAjaxHandler}",
+                      beforeSend: function() {
+                        $("#btn-save-${id}").prop('disabled', true);
+                      },
+                      success: function (response) {
+                        if(response == 200) {
+                            $("#alert-main-danger-${id}").fadeOut(0);
+                             $("#alert-main-success-${id}").fadeIn(100);
+                             $("#btn-save-${id}").prop('disabled', false);
+                             setTimeout(function() {$("#alert-main-success-${id}").fadeOut(300);},3000);
+                         } else {
+                           console.error(data);
+                           $("#alert-main-danger-${id}").fadeIn(100);
+                           $("#error-message-${id}").html("There seems to be a problem with your request.  Please contact help@computer.org.");
+                           $("#btn-save-${id}").prop('disabled', false);
+                         }
+                      },
+                      error: function (data) {
+                        console.error(data);
+                        $("#alert-main-danger-${id}").fadeIn(100);
+                        $("#error-message-${id}").html(data.responseJSON.error);
+                        $("#btn-save-${id}").prop('disabled', false);
+                      }
+                  });
+               });
+            });
+       </script>
+    </c:if>
+
+    <div class="cs-featured-subcontent">
+       <div id="subcontent-item-1-${id}" class="col-sm-12">
+          <div class="subcontent-container">
+               <h3 class="text-center">Header</h3>
+               <div class="bar"><div class="bar-square"></div></div>
+               <div class="col-sm-12 description-container">
+                   <div class="col-sm-offset-2 col-sm-8 description text-center">
+                    <em>This is the description in which I love what I do and I do what I love.</em>
+                   </div>
+               </div>
+               <div class="col-sm-12 text-center bg-image"><a class="btn btn-primary">More Information</a></div>
+          </div>
+       </div>
+    </div>
+
+</div>
+<script language="JavaScript" type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap-colorpicker.min.js"></script>
+<script>
+   var showItemsAsNeeded = function() {
+     var numberOfItems =  parseInt($('#number-items-select-${id}').val());
+     switch(numberOfItems) {
+         case 1:
+             $('#list-item-2-${id},#list-item-3-${id},#list-item-4-${id}').addClass('hide');
+             $('#item-2-${id},#item-3-${id},#item-4-${id}').addClass('hide');
+             $('a[href="#item-1-${id}"]').tab('show');
+         break;
+         case 2:
+             $('#list-item-2-${id},#item-2-${id}').removeClass('hide');
+             $('#list-item-3-${id},#list-item-4-${id},#item-3-${id},#item-4-${id}').addClass('hide');
+             $('a[href="#item-2-${id}"]').tab('show');
+         break;
+         case 3:
+             $('#list-item-2-${id},#item-2-${id},#list-item-3-${id},#item-3-${id}').removeClass('hide');
+             $('#list-item-4-${id},#item-4-${id}').addClass('hide');
+             $('a[href="#item-3-${id}"]').tab('show');
+         break;
+         case 4:
+             $('#list-item-2-${id},#item-2-${id},#list-item-3-${id},#item-3-${id},#list-item-4-${id},#item-4-${id}').removeClass('hide');
+             $('a[href="#item-4-${id}"]').tab('show');
+         break;
+     }
+   }
+
+   var setItemsOnForm = function() {
+       var numberOfItems =  parseInt($('#number-items-select-${id}').val());
+       setItemDataOnForm(1, $.parseJSON('${item1}'));
+       switch(numberOfItems) {
+           case 2:
+           setItemDataOnForm(2, $.parseJSON('${item2}'));
+           break;
+           case 3:
+           setItemDataOnForm(2, $.parseJSON('${item2}'));
+           setItemDataOnForm(3, $.parseJSON('${item3}'));
+           break;
+           case 4:
+           setItemDataOnForm(2, $.parseJSON('${item2}'));
+           setItemDataOnForm(3, $.parseJSON('${item3}'));
+           setItemDataOnForm(4, $.parseJSON('${item4}'));
+           break;
+       }
+   }
+
+   var setItemDataOnForm = function(itemNumber, item) {
+        $('#item-'+itemNumber+'-header-${id}').val(item.header);
+        $('#item-'+itemNumber+'-description-${id}').val(item.description);
+        $('#item-'+itemNumber+'-accent-color-${id}').val(item.accentColor);
+        $('#item-'+itemNumber+'-bg-image-${id}').val(item.bgImage);
+        $('#item-'+itemNumber+'-dest-url-${id}').val(item.destURL);
+   }
+
+   $(document).ready(function() {
+        var numberOfItems = '${numberOfItems}';
+        numberOfItems = numberOfItems == '' ? '1' : numberOfItems;
+        $('#number-items-select-${id} option[value="'+numberOfItems+'"]').attr("selected", "selected");
+        showItemsAsNeeded();
+        setItemsOnForm();
+
+        $('#number-items-select-${id}').change(function() {
+             showItemsAsNeeded();
+        });
+        $('.accent-color-picker').colorpicker();
+
+        var idx = 0;
+        for(idx=0;idx<numberOfItems;idx++) {
+            var html;
+        }
+   });
+</script>
