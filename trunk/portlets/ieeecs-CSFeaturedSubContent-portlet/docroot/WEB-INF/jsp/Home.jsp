@@ -6,7 +6,7 @@
     #cs-featured-subcontent-container-${id} { position: relative; }
     .cs-featured-subcontent { padding-top: 2%; }
 
-    div[id^="subcontent-item"] {
+    div[id^="subcontent-item-${id}"] {
         height: 350px;
         position: relative;
     }
@@ -23,28 +23,29 @@
 
     .subcontent-container h5 {
        padding:20px 0;
+       text-transform:uppercase;
     }
 
-    div[id^="subcontent-item"]:hover .bottom-section {
+    div[id^="subcontent-item-${id}"]:hover .bottom-section {
         visibility:visible;
         opacity:1;
         transition-delay:0s;
     }
 
-    div[id^="subcontent-item"] .bottom-section {
+    div[id^="subcontent-item-${id}"] .bottom-section {
         visibility:hidden;
         opacity:0;
         height: 250px;
         transition:visibility 0s linear 0.2s,opacity 0.2s linear;
     }
 
-    div[id^="subcontent-item"] .bar {
+    div[id^="subcontent-item-${id}"] .bar {
         height: 4px;
         position: relative;
         z-index: 3;
     }
 
-    div[id^="subcontent-item"] .bar-square {
+    div[id^="subcontent-item-${id}"] .bar-square {
        width: 20px;
        height: 20px;
        position: relative;
@@ -52,7 +53,7 @@
        margin: 0 auto;
     }
 
-    div[id^="subcontent-item"] .description-container {
+    div[id^="subcontent-item-${id}"] .description-container {
         background: -moz-linear-gradient(top,  rgba(255,255,255,1) 48%, rgba(255,255,255,0.35) 82%, rgba(255,255,255,0) 100%); /* FF3.6+ */
         background: -webkit-gradient(linear, left top, left bottom, color-stop(48%,rgba(255,255,255,1)), color-stop(82%,rgba(255,255,255,0.35)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
         background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 48%,rgba(255,255,255,0.35) 82%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
@@ -66,7 +67,7 @@
         z-index: 2;
     }
 
-    div[id^="subcontent-item"] a {
+    div[id^="subcontent-item-${id}"] a {
         margin-top: 100px;
     }
 
@@ -145,9 +146,9 @@
                         </div>
                         <div class="form-group">
                             <label for="item-1-accent-color-${id}">Accent Color</label>
-                            <div class="accent-color-picker input-group col-sm-2">
+                            <div class="input-group col-sm-2">
+                                <span class="input-group-addon">#</span>
                                 <input class="form-control" id="item-1-accent-color-${id}" type="text" placeholder="CCCCCC" maxlength="6" value="" />
-                                <span class="input-group-addon"><i></i></span>
                             </div>
                          </div>
                         <div class="form-group">
@@ -174,9 +175,9 @@
                           </div>
                           <div class="form-group">
                               <label for="item-2-accent-color-${id}">Accent Color</label>
-                              <div class="accent-color-picker input-group col-sm-2">
+                              <div class="input-group col-sm-2">
+                                <span class="input-group-addon">#</span>
                                   <input class="form-control" id="item-2-accent-color-${id}" type="text" placeholder="CCCCCC" maxlength="6" value="" />
-                                  <span class="input-group-addon"><i></i></span>
                               </div>
                            </div>
                           <div class="form-group">
@@ -203,9 +204,9 @@
                         </div>
                         <div class="form-group">
                             <label for="item-3-accent-color-${id}">Accent Color</label>
-                            <div class="accent-color-picker input-group col-sm-2">
+                            <div class="input-group col-sm-2">
+                                <span class="input-group-addon">#</span>
                                 <input class="form-control" id="item-3-accent-color-${id}" type="text" placeholder="CCCCCC" maxlength="6" value="" />
-                                <span class="input-group-addon"><i></i></span>
                             </div>
                          </div>
                         <div class="form-group">
@@ -419,7 +420,7 @@
         }
 
         for(var idx=0;idx<numberOfItems;idx++) {
-            var html = '<div id="subcontent-item-'+idx+'-${id}" class="'+colCSSClass+'">';
+            var html = '<div id="subcontent-item-${id}-'+idx+'" class="'+colCSSClass+'">';
             html += '<div class="subcontent-container"><h5 class="text-center">'+items[idx].header+'</h5>';
             html += '<div class="bar" style="background-color: #'+items[idx].accentColor+'"><div class="bar-square" style="background-color: #'+items[idx].accentColor+'"></div></div>';
             html += '<div class="col-sm-12 description-container"><div class="description text-center">';
@@ -429,5 +430,14 @@
             html += '<a href="'+items[idx].destURL+'" class="btn btn-primary" style="background-color: #'+items[idx].accentColor+'; border-color: #'+items[idx].accentColor+';">More Information</a></div></div></div></div>';
             $('#cs-featured-subcontent-${id}').append(html);
         }
+
+         $('div[id^="subcontent-item-${id}"]').hover(function() {
+              var id =  $(this).attr('id');
+              var tokens = id.split('-');
+              $('#'+ id + ' .subcontent-container').css({'border-bottom': '1px solid #'+items[parseInt(tokens[3])].accentColor+''});
+            },function() {
+              $('#'+ $(this).attr('id') + ' .subcontent-container').css({'border-bottom': 'none'});
+            }
+         );
    });
 </script>
