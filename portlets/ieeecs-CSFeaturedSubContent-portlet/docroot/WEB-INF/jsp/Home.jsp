@@ -2,12 +2,6 @@
 <portlet:actionURL var="configureAction" portletMode="view" windowState="normal"/>
 <portlet:actionURL var="viewAction" windowState="normal" portletMode="view"/>
 <portlet:resourceURL var='csfeaturedSubContentAjaxHandler' id='csfeaturedSubContentAjaxHandler' />
-<%-- *****************************************************
-	Hide the Portlet when it has been DEACTIVATED.  This 
-	will allow the admin of the page/site to make changes
-	to the portlet, without having the users/visitors
-	see those changes.
-***************************************************** --%>
 <style type="text/css">
     #cs-featured-subcontent-container-${id} { position: relative; }
     .cs-featured-subcontent { padding-top: 2%; }
@@ -38,8 +32,6 @@
     }
 
     div[id^="subcontent-item"] .bottom-section {
-        background: url('http://img.talkandroid.com/uploads/2013/11/stack_of_books.jpg') 100%;
-        background-size: cover;
         visibility:hidden;
         opacity:0;
         height: 250px;
@@ -49,7 +41,7 @@
     div[id^="subcontent-item"] .bar {
         height: 4px;
         position: relative;
-        z-index: 2;
+        z-index: 3;
     }
 
     div[id^="subcontent-item"] .bar-square {
@@ -60,11 +52,6 @@
        margin: 0 auto;
     }
 
-    div[id^="subcontent-item"] .description {
-        height: 100px;
-        padding-top: 20px;
-    }
-
     div[id^="subcontent-item"] .description-container {
         background: -moz-linear-gradient(top,  rgba(255,255,255,1) 48%, rgba(255,255,255,0.35) 82%, rgba(255,255,255,0) 100%); /* FF3.6+ */
         background: -webkit-gradient(linear, left top, left bottom, color-stop(48%,rgba(255,255,255,1)), color-stop(82%,rgba(255,255,255,0.35)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
@@ -73,19 +60,14 @@
         background: -ms-linear-gradient(top,  rgba(255,255,255,1) 48%,rgba(255,255,255,0.35) 82%,rgba(255,255,255,0) 100%); /* IE10+ */
         background: linear-gradient(to bottom,  rgba(255,255,255,1) 48%,rgba(255,255,255,0.35) 82%,rgba(255,255,255,0) 100%); /* W3C */
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+        min-height: 100px;
+        padding-top: 20px;
+        position: relative;
+        z-index: 2;
     }
 
     div[id^="subcontent-item"] a {
         margin-top: 100px;
-        visibility:hidden;
-        opacity:0;
-        transition:visibility 0s linear 0.2s,opacity 0.2s linear;
-    }
-
-    div[id^="subcontent-item"]:hover a {
-       visibility:visible;
-       opacity:1;
-       transition-delay:0s;
     }
 
     <c:if test="${canInlineEdit}">
@@ -250,9 +232,9 @@
                            </div>
                            <div class="form-group">
                                <label for="item-4-accent-color-${id}">Accent Color</label>
-                               <div class="accent-color-picker input-group col-sm-2">
+                               <div class="input-group col-sm-2">
+                                   <span class="input-group-addon">#</span>
                                    <input class="form-control" id="item-4-accent-color-${id}" type="text" placeholder="CCCCCC" maxlength="6" value="" />
-                                   <span class="input-group-addon"><i></i></span>
                                </div>
                             </div>
                            <div class="form-group">
@@ -357,25 +339,9 @@
     </c:if>
 
     <div id="cs-featured-subcontent-${id}" class="cs-featured-subcontent">
-
-      <!-- <div id="subcontent-item-1-${id}" class="col-sm-12">
-          <div class="subcontent-container">
-               <h3 class="text-center">Header</h3>
-               <div class="bar"><div class="bar-square"></div></div>
-               <div class="bottom-section">
-                   <div class="col-sm-12 description-container">
-                       <div class="col-sm-offset-2 col-sm-8 description text-center">
-                        <em>This is the description in which I love what I do and I do what I love.</em>
-                       </div>
-                   </div>
-                   <div class="col-sm-12 text-center bg-image"><a class="btn btn-primary">More Information</a></div>
-               </div>
-          </div>
-       </div> -->
     </div> <!-- /#cs-featured-subcontent-${id} -->
 </div>
 
-<script language="JavaScript" type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap-colorpicker.min.js"></script>
 <script>
    var showItemsAsNeeded = function() {
      var numberOfItems =  parseInt($('#number-items-select-${id}').val());
@@ -441,7 +407,6 @@
         $('#number-items-select-${id}').change(function() {
              showItemsAsNeeded();
         });
-        /*$('.accent-color-picker').colorpicker(); */
 
         var colCSSClass = "col-sm-12";
         switch(parseInt(numberOfItems)) {
@@ -457,9 +422,10 @@
             var html = '<div id="subcontent-item-'+idx+'-${id}" class="'+colCSSClass+'">';
             html += '<div class="subcontent-container"><h5 class="text-center">'+items[idx].header+'</h5>';
             html += '<div class="bar" style="background-color: #'+items[idx].accentColor+'"><div class="bar-square" style="background-color: #'+items[idx].accentColor+'"></div></div>';
-            html += '<div class="bottom-section"><div class="col-sm-12 description-container"><div class="col-sm-offset-2 col-sm-8 description text-center">';
-            html += '<em>'+items[idx].description+'</em>';
-            html += '</div></div><div class="col-sm-12 text-center bg-image">';
+            html += '<div class="col-sm-12 description-container"><div class="description text-center">';
+            html += '<em>'+items[idx].description+'</em></div></div>';
+            html += '<div class="bottom-section" style="background: url('+items[idx].bgImage+') 100%; background-size: cover;">';
+            html += '<div class="col-sm-12 text-center bg-image">';
             html += '<a href="'+items[idx].destURL+'" class="btn btn-primary" style="background-color: #'+items[idx].accentColor+'; border-color: #'+items[idx].accentColor+';">More Information</a></div></div></div></div>';
             $('#cs-featured-subcontent-${id}').append(html);
         }
