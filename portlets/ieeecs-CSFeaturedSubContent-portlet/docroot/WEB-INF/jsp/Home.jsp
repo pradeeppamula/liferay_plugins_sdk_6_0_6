@@ -27,22 +27,22 @@
         box-shadow: 0px 0px 15px #a6a6a6;
     }
 
-    .subcontent-container h3 {
-       padding-bottom: 10px;
+    .subcontent-container h5 {
+       padding:20px 0;
     }
 
-    div[id^="subcontent-item"]:hover .bg-image {
+    div[id^="subcontent-item"]:hover .bottom-section {
         visibility:visible;
         opacity:1;
         transition-delay:0s;
     }
 
-    div[id^="subcontent-item"] .bg-image {
+    div[id^="subcontent-item"] .bottom-section {
         background: url('http://img.talkandroid.com/uploads/2013/11/stack_of_books.jpg') 100%;
         background-size: cover;
         visibility:hidden;
         opacity:0;
-        height: 150px;
+        height: 250px;
         transition:visibility 0s linear 0.2s,opacity 0.2s linear;
     }
 
@@ -54,11 +54,10 @@
 
     div[id^="subcontent-item"] .bar-square {
        width: 20px;
-       background-color: #000099;
        height: 20px;
        position: relative;
        top: -8px;
-       left: 49%;
+       margin: 0 auto;
     }
 
     div[id^="subcontent-item"] .description {
@@ -67,7 +66,13 @@
     }
 
     div[id^="subcontent-item"] .description-container {
-        background-color: #ffffff;
+        background: -moz-linear-gradient(top,  rgba(255,255,255,1) 48%, rgba(255,255,255,0.35) 82%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(48%,rgba(255,255,255,1)), color-stop(82%,rgba(255,255,255,0.35)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 48%,rgba(255,255,255,0.35) 82%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  rgba(255,255,255,1) 48%,rgba(255,255,255,0.35) 82%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  rgba(255,255,255,1) 48%,rgba(255,255,255,0.35) 82%,rgba(255,255,255,0) 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  rgba(255,255,255,1) 48%,rgba(255,255,255,0.35) 82%,rgba(255,255,255,0) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
     }
 
     div[id^="subcontent-item"] a {
@@ -81,10 +86,6 @@
        visibility:visible;
        opacity:1;
        transition-delay:0s;
-    }
-
-    #subcontent-item-1-${id} .bar {
-      background-color: #000099;
     }
 
     <c:if test="${canInlineEdit}">
@@ -355,22 +356,25 @@
        </script>
     </c:if>
 
-    <div class="cs-featured-subcontent">
-       <div id="subcontent-item-1-${id}" class="col-sm-12">
+    <div id="cs-featured-subcontent-${id}" class="cs-featured-subcontent">
+
+      <!-- <div id="subcontent-item-1-${id}" class="col-sm-12">
           <div class="subcontent-container">
                <h3 class="text-center">Header</h3>
                <div class="bar"><div class="bar-square"></div></div>
-               <div class="col-sm-12 description-container">
-                   <div class="col-sm-offset-2 col-sm-8 description text-center">
-                    <em>This is the description in which I love what I do and I do what I love.</em>
+               <div class="bottom-section">
+                   <div class="col-sm-12 description-container">
+                       <div class="col-sm-offset-2 col-sm-8 description text-center">
+                        <em>This is the description in which I love what I do and I do what I love.</em>
+                       </div>
                    </div>
+                   <div class="col-sm-12 text-center bg-image"><a class="btn btn-primary">More Information</a></div>
                </div>
-               <div class="col-sm-12 text-center bg-image"><a class="btn btn-primary">More Information</a></div>
           </div>
-       </div>
-    </div>
-
+       </div> -->
+    </div> <!-- /#cs-featured-subcontent-${id} -->
 </div>
+
 <script language="JavaScript" type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap-colorpicker.min.js"></script>
 <script>
    var showItemsAsNeeded = function() {
@@ -398,21 +402,23 @@
      }
    }
 
+   var items = [$.parseJSON('${item1}'),$.parseJSON('${item2}'),$.parseJSON('${item3}'),$.parseJSON('${item4}')];
+
    var setItemsOnForm = function() {
        var numberOfItems =  parseInt($('#number-items-select-${id}').val());
-       setItemDataOnForm(1, $.parseJSON('${item1}'));
+       setItemDataOnForm(1, items[0]);
        switch(numberOfItems) {
            case 2:
-           setItemDataOnForm(2, $.parseJSON('${item2}'));
+           setItemDataOnForm(2, items[1]);
            break;
            case 3:
-           setItemDataOnForm(2, $.parseJSON('${item2}'));
-           setItemDataOnForm(3, $.parseJSON('${item3}'));
+           setItemDataOnForm(2, items[1]);
+           setItemDataOnForm(3, items[2]);
            break;
            case 4:
-           setItemDataOnForm(2, $.parseJSON('${item2}'));
-           setItemDataOnForm(3, $.parseJSON('${item3}'));
-           setItemDataOnForm(4, $.parseJSON('${item4}'));
+           setItemDataOnForm(2, items[1]);
+           setItemDataOnForm(3, items[2]);
+           setItemDataOnForm(4, items[3]);
            break;
        }
    }
@@ -435,11 +441,27 @@
         $('#number-items-select-${id}').change(function() {
              showItemsAsNeeded();
         });
-        $('.accent-color-picker').colorpicker();
+        /*$('.accent-color-picker').colorpicker(); */
 
-        var idx = 0;
-        for(idx=0;idx<numberOfItems;idx++) {
-            var html;
+        var colCSSClass = "col-sm-12";
+        switch(parseInt(numberOfItems)) {
+            case 2: colCSSClass = "col-sm-6";
+            break;
+            case 3: colCSSClass = "col-sm-4";
+            break;
+            case 4: colCSSClass = "col-sm-3";
+            break;
+        }
+
+        for(var idx=0;idx<numberOfItems;idx++) {
+            var html = '<div id="subcontent-item-'+idx+'-${id}" class="'+colCSSClass+'">';
+            html += '<div class="subcontent-container"><h5 class="text-center">'+items[idx].header+'</h5>';
+            html += '<div class="bar" style="background-color: #'+items[idx].accentColor+'"><div class="bar-square" style="background-color: #'+items[idx].accentColor+'"></div></div>';
+            html += '<div class="bottom-section"><div class="col-sm-12 description-container"><div class="col-sm-offset-2 col-sm-8 description text-center">';
+            html += '<em>'+items[idx].description+'</em>';
+            html += '</div></div><div class="col-sm-12 text-center bg-image">';
+            html += '<a href="'+items[idx].destURL+'" class="btn btn-primary" style="background-color: #'+items[idx].accentColor+'; border-color: #'+items[idx].accentColor+';">More Information</a></div></div></div></div>';
+            $('#cs-featured-subcontent-${id}').append(html);
         }
    });
 </script>
