@@ -54,21 +54,20 @@ public class CSFeaturedSubContentUtil {
      * Update the portlet preferences in the database.
      * @param request
      * @param modifiedByUserId
-     * @param instanceId
      * @return boolean
      * @throws Exception
      */
-    public static boolean updatePortletData(ResourceRequest request, String modifiedByUserId, String instanceId) throws Exception {
+    public static boolean updatePortletData(ResourceRequest request, String modifiedByUserId) throws Exception {
         boolean retVal = true;
         try {
             // grab the portlet preferences data json off the request
             PortletPreferences prefs = request.getPreferences();
             prefs.setValue("modifiedByUserId", modifiedByUserId);
-            prefs.setValue("numberOfItems", ParamUtil.getString(request, "numberOfItems_" + instanceId, CSFeaturedSubContentUtil.NUMBER_OF_ITEMS));
-            prefs.setValue("item1", ParamUtil.getString(request, "item1_" + instanceId, EMPTY_JSON));
-            prefs.setValue("item2", ParamUtil.getString(request, "item2_" + instanceId, EMPTY_JSON));
-            prefs.setValue("item3", ParamUtil.getString(request, "item3_" + instanceId, EMPTY_JSON));
-            prefs.setValue("item4", ParamUtil.getString(request, "item4_" + instanceId, EMPTY_JSON));
+            prefs.setValue("numberOfItems", ParamUtil.getString(request, "numberOfItems", CSFeaturedSubContentUtil.NUMBER_OF_ITEMS));
+            prefs.setValue("item1", ParamUtil.getString(request, "item1", EMPTY_JSON));
+            prefs.setValue("item2", ParamUtil.getString(request, "item2", EMPTY_JSON));
+            prefs.setValue("item3", ParamUtil.getString(request, "item3", EMPTY_JSON));
+            prefs.setValue("item4", ParamUtil.getString(request, "item4", EMPTY_JSON));
 
             // save the portlet data
             prefs.store();

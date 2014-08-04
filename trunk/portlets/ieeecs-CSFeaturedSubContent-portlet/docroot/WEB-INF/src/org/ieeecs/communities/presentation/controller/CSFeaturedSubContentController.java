@@ -18,7 +18,6 @@ import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.ieee.common.presentation.controller.BaseController;
 import org.ieeecs.communities.util.CSFeaturedSubContentUtil;
-import org.ieeecs.communities.util.CSFeaturedSubContentUtil;
 import org.springframework.web.portlet.ModelAndView;
 import org.springframework.web.portlet.mvc.ResourceAwareController;
 
@@ -119,6 +118,10 @@ public class CSFeaturedSubContentController extends BaseController implements Re
         ModelAndView modelAndView = null;
         Map<String,Object> model = new HashMap<String,Object>();
         try{
+            // grab the instance id from the request since this controller could be
+            // potentially handling requests from portlets of the same type
+            this.instanceId = ParamUtil.getString(request, "instanceId", "");
+
             // grab the ThemeDisplay that contains all needed information on the user
             // first grab the theme display for the portlet
             if("".equals(this.instanceId)) {
@@ -130,12 +133,12 @@ public class CSFeaturedSubContentController extends BaseController implements Re
             }
 
             // grab the request type from the request
-            String requestType = ParamUtil.getString(request, "requestType_" + instanceId, "");
+            String requestType = ParamUtil.getString(request, "requestType", "");
 
             // determine which functionality to use based on the request type
             if (CSFeaturedSubContentUtil.SAVE_CONFIG.equalsIgnoreCase(requestType)) {
                 // update the data
-                if(CSFeaturedSubContentUtil.updatePortletData(request, modifiedByUserId, instanceId)) {
+                if(CSFeaturedSubContentUtil.updatePortletData(request, modifiedByUserId)) {
                     model.put("response", 200);
                 } else {
                     model.put("response", 500);
