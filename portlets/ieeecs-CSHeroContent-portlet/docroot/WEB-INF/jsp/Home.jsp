@@ -370,7 +370,7 @@
                     item.header = $('#item-'+itemNumber+'-header-${id}').val().replace(/'/g, "&#39;");
                     item.description = $('#item-'+itemNumber+'-description-${id}').val().replace(/'/g, "&#39;");
                     item.accentColor = $('#item-'+itemNumber+'-accent-color-${id}').val();
-                    item.destURL = $('#item-'+itemNumber+'-dest-url-${id}').val();
+                    item.destURL = encodeURIComponent($('#item-'+itemNumber+'-dest-url-${id}').val());
                     item.bgMode = $('#item-'+itemNumber+'-bg-mode-${id}').val();
                     item.bgImage = encodeURIComponent($('#item-'+itemNumber+'-bg-image-${id}').val());
                     item.bgMedia = encodeURIComponent($('#item-'+itemNumber+'-bg-media-${id}').val().replace(/\n/g, ""));
@@ -471,10 +471,10 @@
         $('#item-'+itemNumber+'-header-${id}').val(item.header);
         $('#item-'+itemNumber+'-description-${id}').val(item.description);
         $('#item-'+itemNumber+'-accent-color-${id}').val(item.accentColor);
-        $('#item-'+itemNumber+'-dest-url-${id}').val(item.destURL);
+        $('#item-'+itemNumber+'-dest-url-${id}').val((item.destURL == '') ? '' : decodeURIComponent(item.destURL));
         $('#item-'+itemNumber+'-bg-mode-${id} option[value="'+item.bgMode+'"]').attr("selected", "selected");
-        $('#item-'+itemNumber+'-bg-image-${id}').val(decodeURIComponent(item.bgImage));
-        $('#item-'+itemNumber+'-bg-media-${id}').val(decodeURIComponent(item.bgMedia));
+        $('#item-'+itemNumber+'-bg-image-${id}').val((item.bgImage == '') ? '' : decodeURIComponent(item.bgImage));
+        $('#item-'+itemNumber+'-bg-media-${id}').val((item.bgMedia == '') ? '' : decodeURIComponent(item.bgMedia));
         setItemFormForBgMode${id}(item.bgMode, itemNumber);
    }
 
@@ -526,7 +526,7 @@
 
         $('div[id^="hero-content-item-${id}"] .hero-content-container').click(function() {
             var tokens = $(this).parent().attr('id').split('-');
-            window.location = items${id}[tokens[4]].destURL;
+            window.location = decodeURIComponent(items${id}[tokens[4]].destURL);
         });
 
         $('select[id$="bg-mode-${id}"]').change(function() {
