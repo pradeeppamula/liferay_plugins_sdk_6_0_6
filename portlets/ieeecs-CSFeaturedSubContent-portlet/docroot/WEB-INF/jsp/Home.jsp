@@ -1,7 +1,7 @@
 <%@ include file="/WEB-INF/jsp/inc/includes.jsp" %>
 <portlet:actionURL var="configureAction" portletMode="view" windowState="normal"/>
 <portlet:actionURL var="viewAction" windowState="normal" portletMode="view"/>
-<portlet:resourceURL var='csfeaturedSubContentAjaxHandler' id='csfeaturedSubContentAjaxHandler' />
+<portlet:resourceURL var='csfeaturedSubContentAjaxHandler' id='${id}csfeaturedSubContentAjaxHandler' />
 <style type="text/css">
     #cs-featured-subcontent-container-${id} { position: relative; }
     .cs-featured-subcontent { padding-top: 2%; }
@@ -274,39 +274,40 @@
         <script>
             $(document).ready(function() {
 
-                var buildItemsData = function(postData) {
-                    postData.item1_${id} = getItemData(1);
-                    switch(parseInt(postData.numberOfItems_${id})) {
-                        case 2: postData.item2_${id} = getItemData(2);
+                var buildItemsData${id} = function(postData) {
+                    postData.item1 = getItemData${id}(1);
+                    switch(parseInt(postData.numberOfItems)) {
+                        case 2: postData.item2 = getItemData${id}(2);
                         break;
                         case 3:
-                            postData.item2_${id} = getItemData(2);
-                            postData.item3_${id} = getItemData(3);
+                            postData.item2 = getItemData${id}(2);
+                            postData.item3 = getItemData${id}(3);
                         break;
                         case 4:
-                            postData.item2_${id} = getItemData(2);
-                            postData.item3_${id} = getItemData(3);
-                            postData.item4_${id} = getItemData(4);
+                            postData.item2 = getItemData${id}(2);
+                            postData.item3 = getItemData${id}(3);
+                            postData.item4 = getItemData${id}(4);
                         break;
                     }
                     return postData;
                 }
 
-                var getItemData = function(itemNumber) {
+                var getItemData${id} = function(itemNumber) {
                     var item = {};
-                    item.header = $('#item-'+itemNumber+'-header-${id}').val();
-                    item.description = $('#item-'+itemNumber+'-description-${id}').val();
+                    item.header = $('#item-'+itemNumber+'-header-${id}').val().replace(/'/g, "&#39;");
+                    item.description = $('#item-'+itemNumber+'-description-${id}').val().replace(/'/g, "&#39;");
                     item.accentColor = $('#item-'+itemNumber+'-accent-color-${id}').val();
-                    item.bgImage = $('#item-'+itemNumber+'-bg-image-${id}').val();
-                    item.destURL = $('#item-'+itemNumber+'-dest-url-${id}').val();
+                    item.bgImage = encodeURIComponent($('#item-'+itemNumber+'-bg-image-${id}').val());
+                    item.destURL = encodeURIComponent($('#item-'+itemNumber+'-dest-url-${id}').val());
                     return JSON.stringify(item);
                 }
 
                 $("#btn-save-${id}").click(function() {
                     var postData = {};
-                    postData.requestType_${id} = 'SAVE_CONFIG';
-                    postData.numberOfItems_${id} = $('#number-items-select-${id}').val();
-                    postData = buildItemsData(postData);
+                    postData.instanceId = '${id}';
+                    postData.requestType = 'SAVE_CONFIG';
+                    postData.numberOfItems = $('#number-items-select-${id}').val();
+                    postData = buildItemsData${id}(postData);
                     $.ajax({
                       type: "POST",
                       data: postData,
@@ -330,7 +331,7 @@
                       error: function (data) {
                         console.error(data);
                         $("#alert-main-danger-${id}").fadeIn(100);
-                        $("#error-message-${id}").html(data.responseJSON.error);
+                        $("#error-message-${id}").html("There seems to be a problem with your request.  Please contact help@computer.org.");
                         $("#btn-save-${id}").prop('disabled', false);
                       }
                   });
@@ -339,14 +340,14 @@
        </script>
     </c:if>
 
-    <div id="cs-featured-subcontent-${id}" class="cs-featured-subcontent">
+    <div id="cs-featured-subcontent-${id}" class="cs-featured-subcontent row">
     </div> <!-- /#cs-featured-subcontent-${id} -->
 </div>
 
 <script>
-   var showItemsAsNeeded = function() {
-     var numberOfItems =  parseInt($('#number-items-select-${id}').val());
-     switch(numberOfItems) {
+   var showItemsAsNeeded${id} = function() {
+     var count${id} =  parseInt($('#number-items-select-${id}').val());
+     switch(count${id}) {
          case 1:
              $('#list-item-2-${id},#list-item-3-${id},#list-item-4-${id}').addClass('hide');
              $('#item-2-${id},#item-3-${id},#item-4-${id}').addClass('hide');
@@ -369,48 +370,48 @@
      }
    }
 
-   var items = [$.parseJSON('${item1}'),$.parseJSON('${item2}'),$.parseJSON('${item3}'),$.parseJSON('${item4}')];
+   var items${id} = [$.parseJSON('${item1}'),$.parseJSON('${item2}'),$.parseJSON('${item3}'),$.parseJSON('${item4}')];
 
-   var setItemsOnForm = function() {
-       var numberOfItems =  parseInt($('#number-items-select-${id}').val());
-       setItemDataOnForm(1, items[0]);
-       switch(numberOfItems) {
-           case 2:
-           setItemDataOnForm(2, items[1]);
-           break;
-           case 3:
-           setItemDataOnForm(2, items[1]);
-           setItemDataOnForm(3, items[2]);
-           break;
-           case 4:
-           setItemDataOnForm(2, items[1]);
-           setItemDataOnForm(3, items[2]);
-           setItemDataOnForm(4, items[3]);
-           break;
-       }
+   var setItemsOnForm${id} = function() {
+     var numberOfItems =  parseInt($('#number-items-select-${id}').val());
+     setItemDataOnForm${id}(1,  items${id}[0]);
+     switch(numberOfItems) {
+         case 2:
+         setItemDataOnForm${id}(2,  items${id}[1]);
+         break;
+         case 3:
+         setItemDataOnForm${id}(2,  items${id}[1]);
+         setItemDataOnForm${id}(3,  items${id}[2]);
+         break;
+         case 4:
+         setItemDataOnForm${id}(2,  items${id}[1]);
+         setItemDataOnForm${id}(3,  items${id}[2]);
+         setItemDataOnForm${id}(4,  items${id}[3]);
+         break;
+     }
    }
 
-   var setItemDataOnForm = function(itemNumber, item) {
+   var setItemDataOnForm${id} = function(itemNumber, item) {
         $('#item-'+itemNumber+'-header-${id}').val(item.header);
         $('#item-'+itemNumber+'-description-${id}').val(item.description);
         $('#item-'+itemNumber+'-accent-color-${id}').val(item.accentColor);
-        $('#item-'+itemNumber+'-bg-image-${id}').val(item.bgImage);
-        $('#item-'+itemNumber+'-dest-url-${id}').val(item.destURL);
+        $('#item-'+itemNumber+'-bg-image-${id}').val(decodeURIComponent(item.bgImage));
+        $('#item-'+itemNumber+'-dest-url-${id}').val(decodeURIComponent(item.destURL));
    }
 
    $(document).ready(function() {
-        var numberOfItems = '${numberOfItems}';
-        numberOfItems = numberOfItems == '' ? '1' : numberOfItems;
-        $('#number-items-select-${id} option[value="'+numberOfItems+'"]').attr("selected", "selected");
-        showItemsAsNeeded();
-        setItemsOnForm();
+        var numberOfItems${id} = '${numberOfItems}';
+        numberOfItems${id} = numberOfItems${id} == '' ? '1' : numberOfItems${id};
+        $('#number-items-select-${id} option[value="'+numberOfItems${id}+'"]').attr("selected", "selected");
+        showItemsAsNeeded${id}();
+        setItemsOnForm${id}();
 
         $('#number-items-select-${id}').change(function() {
-             showItemsAsNeeded();
+             showItemsAsNeeded${id}();
         });
 
         var colCSSClass = "col-sm-12";
-        switch(parseInt(numberOfItems)) {
+        switch(parseInt(numberOfItems${id})) {
             case 2: colCSSClass = "col-sm-6";
             break;
             case 3: colCSSClass = "col-sm-4";
@@ -419,22 +420,22 @@
             break;
         }
 
-        for(var idx=0;idx<numberOfItems;idx++) {
+        for(var idx=0;idx<numberOfItems${id};idx++) {
             var html = '<div id="subcontent-item-${id}-'+idx+'" class="'+colCSSClass+'">';
-            html += '<div class="subcontent-container"><h5 class="text-center">'+items[idx].header+'</h5>';
-            html += '<div class="bar" style="background-color: #'+items[idx].accentColor+'"><div class="bar-square" style="background-color: #'+items[idx].accentColor+'"></div></div>';
+            html += '<div class="subcontent-container"><h5 class="text-center">'+items${id}[idx].header+'</h5>';
+            html += '<div class="bar" style="background-color: #'+items${id}[idx].accentColor+'"><div class="bar-square" style="background-color: #'+items${id}[idx].accentColor+'"></div></div>';
             html += '<div class="col-sm-12 description-container"><div class="description text-center">';
-            html += '<em>'+items[idx].description+'</em></div></div>';
-            html += '<div class="bottom-section" style="background: url('+items[idx].bgImage+') 100%; background-size: cover;">';
+            html += '<em>'+items${id}[idx].description+'</em></div></div>';
+            html += '<div class="bottom-section" style="background: url('+decodeURIComponent(items${id}[idx].bgImage)+') 100%; background-size: cover;">';
             html += '<div class="col-sm-12 text-center bg-image">';
-            html += '<a href="'+items[idx].destURL+'" class="btn btn-primary" style="background-color: #'+items[idx].accentColor+'; border-color: #'+items[idx].accentColor+';">More Information</a></div></div></div></div>';
+            html += '<a href="'+decodeURIComponent(items${id}[idx].destURL)+'" class="btn btn-primary" style="background-color: #'+items${id}[idx].accentColor+'; border-color: #'+items${id}[idx].accentColor+';">More Information</a></div></div></div></div>';
             $('#cs-featured-subcontent-${id}').append(html);
         }
 
          $('div[id^="subcontent-item-${id}"]').hover(function() {
               var id =  $(this).attr('id');
               var tokens = id.split('-');
-              $('#'+ id + ' .subcontent-container').css({'border-bottom': '1px solid #'+items[parseInt(tokens[3])].accentColor+''});
+              $('#'+ id + ' .subcontent-container').css({'border-bottom': '1px solid #'+items${id}[parseInt(tokens[3])].accentColor+''});
             },function() {
               $('#'+ $(this).attr('id') + ' .subcontent-container').css({'border-bottom': 'none'});
             }
