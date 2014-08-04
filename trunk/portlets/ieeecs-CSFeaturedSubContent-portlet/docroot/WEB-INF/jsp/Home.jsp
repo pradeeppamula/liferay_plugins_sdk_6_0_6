@@ -395,8 +395,8 @@
         $('#item-'+itemNumber+'-header-${id}').val(item.header);
         $('#item-'+itemNumber+'-description-${id}').val(item.description);
         $('#item-'+itemNumber+'-accent-color-${id}').val(item.accentColor);
-        $('#item-'+itemNumber+'-bg-image-${id}').val(decodeURIComponent(item.bgImage));
-        $('#item-'+itemNumber+'-dest-url-${id}').val(decodeURIComponent(item.destURL));
+        $('#item-'+itemNumber+'-bg-image-${id}').val((item.bgImage == '') ? '' : decodeURIComponent(item.bgImage));
+        $('#item-'+itemNumber+'-dest-url-${id}').val((item.destURL == '') ? '' : decodeURIComponent(item.destURL));
    }
 
    $(document).ready(function() {
