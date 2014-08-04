@@ -496,7 +496,7 @@
         setItemsOnForm${id}();
 
         $('#number-items-select-${id}').change(function() {
-             showItemsAsNeeded();
+             showItemsAsNeeded${id}();
         });
 
         var colCSSClass = "col-sm-12";

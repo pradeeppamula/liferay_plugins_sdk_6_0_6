@@ -118,7 +118,8 @@ public class CSHeroContentController extends BaseController implements ResourceA
         ModelAndView modelAndView = null;
         Map<String,Object> model = new HashMap<String,Object>();
         try{
-            // grab the instance id from the request
+            // grab the instance id from the request since this controller could be
+            // potentially handling requests from portlets of the same type
             this.instanceId = ParamUtil.getString(request, "instanceId", "");
 
             // grab the ThemeDisplay that contains all needed information on the user
